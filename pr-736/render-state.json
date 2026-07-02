@@ -1,0 +1,383 @@
+{
+  "lastProcessedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+  "lastRenderTimestamp": "2026-07-02T14:06:27.642Z",
+  "renderedEntities": {
+    "pokemon:abomasnowmega": {
+      "identifier": "pokemon:abomasnowmega",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "36e60e17e29136c157b6304d931ae90268b800c1a4a9e190855d8d3c280b2546",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "1b4f3d549c3a92deedda37fd96376b2b3bb4da63c206787fd8a6747c23c5524a",
+      "shinyTextureHash": "1b4f3d549c3a92deedda37fd96376b2b3bb4da63c206787fd8a6747c23c5524a",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:abra": {
+      "identifier": "pokemon:abra",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "486d8a1ed4d684d0daa18eb5eb787687220474d6d25524898d62841097788d04",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "e12252a4ed2da18fdfd0c84c2f64921e4ce28591bc98431a4f14de08a2389f5d",
+      "shinyTextureHash": "e12252a4ed2da18fdfd0c84c2f64921e4ce28591bc98431a4f14de08a2389f5d",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:aerodactyl": {
+      "identifier": "pokemon:aerodactyl",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "a2be5c9a3794664a2af67be2e9401d232de1311d7c0b057932f622c16b461377",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "74a8ba2c3b3a68d80d71e4d444ccc0f5fe484eae4f94a814d6ee6de99cf3a926",
+      "shinyTextureHash": "74a8ba2c3b3a68d80d71e4d444ccc0f5fe484eae4f94a814d6ee6de99cf3a926",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:aerodactylmega": {
+      "identifier": "pokemon:aerodactylmega",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "99bce605fba336bf7e379d91af7487092026542b311161937492a76e37e5fcb3",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "e3da57b1d5f45ac04986c4435749c473cceb3557136b6c01ed48eb27f30b9b78",
+      "shinyTextureHash": "e3da57b1d5f45ac04986c4435749c473cceb3557136b6c01ed48eb27f30b9b78",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:aipom": {
+      "identifier": "pokemon:aipom",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "511b4f6136a63a7e2de8dc7b48e343318bebe1a027a7f40a92cb157f56582800",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "45b5b8e565f4e63ec45617fa2c6477b306e0e48a263609d17b2737fa769fec50",
+      "shinyTextureHash": "45b5b8e565f4e63ec45617fa2c6477b306e0e48a263609d17b2737fa769fec50",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:alakazam": {
+      "identifier": "pokemon:alakazam",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "7575fd54f51d0938376b03ff0d7bee372c320b34b957a20eac8d14df2895b582",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "46a1c408c51560f8d73ab0a455ad2be6b2c3f39ba1b5795d092e59102b86af1c",
+      "shinyTextureHash": "46a1c408c51560f8d73ab0a455ad2be6b2c3f39ba1b5795d092e59102b86af1c",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:alakazammega": {
+      "identifier": "pokemon:alakazammega",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "31b3d9a09f9bd8a77bf0b879ddb8ceb758b4681d6d42c09f16f5cd6e0ef1cfcc",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "21e90e75ba7135952fcc24caf98205502b2329d277714e5ebfd0b68de677f216",
+      "shinyTextureHash": "21e90e75ba7135952fcc24caf98205502b2329d277714e5ebfd0b68de677f216",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:alcremie": {
+      "identifier": "pokemon:alcremie",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "405b8de26aac349c93ca08d1e942827bfaf53fe5de447c99dd0b0db7aa67083b",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "0c0f662090f90b46c805655f75d912acd528e8af3b37fbbec4f687d70e5b7582",
+      "shinyTextureHash": "0c0f662090f90b46c805655f75d912acd528e8af3b37fbbec4f687d70e5b7582",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:alomomola": {
+      "identifier": "pokemon:alomomola",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "7872844ad0500bfba04c33566df470b7f44e1e4ebf6a35150b4f50269b771592",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "60c89abebeeb00262390c3d4874d01294cbc7d617c0fdeac4b04553a529e68aa",
+      "shinyTextureHash": "60c89abebeeb00262390c3d4874d01294cbc7d617c0fdeac4b04553a529e68aa",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:amaura": {
+      "identifier": "pokemon:amaura",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "5beab80dca4432e0bfb6867e5a9d38cd68ecdc317bd5ca1e13aefe85ff847309",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "ccc4ed13f2aa658beec911f0cce903dadab7f02d199d12812f3d079b850b56fb",
+      "shinyTextureHash": "ccc4ed13f2aa658beec911f0cce903dadab7f02d199d12812f3d079b850b56fb",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:ambipom": {
+      "identifier": "pokemon:ambipom",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "6ca2047cbefdc3c1445c3be9e48f6536a91db72da97c61bda61bdda423786206",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "aad70b65edee49c1ebee0c71a9c1688b3d0945082bf34418a3fa3701f08c0940",
+      "shinyTextureHash": "aad70b65edee49c1ebee0c71a9c1688b3d0945082bf34418a3fa3701f08c0940",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:ampharos": {
+      "identifier": "pokemon:ampharos",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "068530d3d61c58c6df08d820eb9cd74d14d9eaad440b45c20706947faf4b7c65",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "61a40e4712d181958b374813a99d364f1bdc7033ac48349eca9407eeed7e10e9",
+      "shinyTextureHash": "61a40e4712d181958b374813a99d364f1bdc7033ac48349eca9407eeed7e10e9",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:anorith": {
+      "identifier": "pokemon:anorith",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "49aa3207c8ad4b375af867be38a2f4ca2e92e63f34e5a7e9eecf84c4ad602007",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "21336f3f09f4aff9205b542f6b272601546c7d797ddf2072ea19659af68c33cd",
+      "shinyTextureHash": "21336f3f09f4aff9205b542f6b272601546c7d797ddf2072ea19659af68c33cd",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:applin": {
+      "identifier": "pokemon:applin",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "cd5f3045b3662ab2551088e66e76d7ec2783f2907b66ebb11fa3c88e6eb2a1ef",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "aaaeb511031682b92ae187eb0033c4d6c7ae31f224c22129b4ec724925bf8df2",
+      "shinyTextureHash": "aaaeb511031682b92ae187eb0033c4d6c7ae31f224c22129b4ec724925bf8df2",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arbok": {
+      "identifier": "pokemon:arbok",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "2fad6c533f05f7cc9dc12f16df1b796915e7e3cef99886a625dab22b292b11b6",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "72fd92585f8849792a0d2800400a327a8bc3e66ef19c4620312635f42ce8aeb0",
+      "shinyTextureHash": "72fd92585f8849792a0d2800400a327a8bc3e66ef19c4620312635f42ce8aeb0",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arcanine": {
+      "identifier": "pokemon:arcanine",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "53181eac2b4843626f306d76c574f3f1ab29225eee81fcef429a387c45d90b4a",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "934b559db143c30ffc7e4422f274c1e68f31043a4d8b6b922f2b3acbff57ffe4",
+      "shinyTextureHash": "934b559db143c30ffc7e4422f274c1e68f31043a4d8b6b922f2b3acbff57ffe4",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceus": {
+      "identifier": "pokemon:arceus",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "e1a14c88129c1edc6120886c23033eb6e70352ef4eb2a8343e59f8bac93a2cdb",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "c36bec176ef62b42bceb80cd1210f2d0b6850bb92f59f78b7891e65b8a396cf0",
+      "shinyTextureHash": "c36bec176ef62b42bceb80cd1210f2d0b6850bb92f59f78b7891e65b8a396cf0",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceusbug": {
+      "identifier": "pokemon:arceusbug",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "11255625fdf0e1c2635a73712c56b7c1aa217cfb071fa6a8bc4c02d5d735e08a",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "6653b3a7e5fa9da03f0a7dd6b9ba3cdf2bea811801eb4801c4cc966d7a815660",
+      "shinyTextureHash": "6653b3a7e5fa9da03f0a7dd6b9ba3cdf2bea811801eb4801c4cc966d7a815660",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceusdark": {
+      "identifier": "pokemon:arceusdark",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "8580f3c9a3f43c1c7c268b7e628929fa9d28e272915f87562719853b5e82d10c",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "d9e7e2caa124b6e91c2c7dbd131f7a33c428f661176899b50dedbc68d0b3b22d",
+      "shinyTextureHash": "d9e7e2caa124b6e91c2c7dbd131f7a33c428f661176899b50dedbc68d0b3b22d",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceusdragon": {
+      "identifier": "pokemon:arceusdragon",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "25c24a30898616e6355ff1a903148be64c8bf226d88fcd23ccf91c7985c72924",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "436203b8dcba980fa15f95d52730adbf1a15dbd1e565bd8b75b44a303ad55cd0",
+      "shinyTextureHash": "436203b8dcba980fa15f95d52730adbf1a15dbd1e565bd8b75b44a303ad55cd0",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceuselectric": {
+      "identifier": "pokemon:arceuselectric",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "a641fe8130c078fdc7889c8e1fe7df7a93b019b68716a5a965e25eee88ca2ece",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "9190916be9f11b654af966a87875f95912e5b82ccf7850436bcdbdb5f05e7388",
+      "shinyTextureHash": "9190916be9f11b654af966a87875f95912e5b82ccf7850436bcdbdb5f05e7388",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceusfairy": {
+      "identifier": "pokemon:arceusfairy",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "8d8b478a3d68953d3590cbfc8d727123d0def353c1bafd9b1d3361b0b089f433",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "c5ba29017fa55427377b029bbb432dbc6f21abc29f7e711b15d4ec33ccd2f38e",
+      "shinyTextureHash": "c5ba29017fa55427377b029bbb432dbc6f21abc29f7e711b15d4ec33ccd2f38e",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceusfighting": {
+      "identifier": "pokemon:arceusfighting",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "cb85d7dd394d356bf032cfbbbbf90960d6aa0ab2e7a3e196e13d02c78b8e80bc",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "b368cadfd12c8602f2da3e76201a6841e039761bae6cfc8df4a14bdb8f5b9728",
+      "shinyTextureHash": "b368cadfd12c8602f2da3e76201a6841e039761bae6cfc8df4a14bdb8f5b9728",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceusfire": {
+      "identifier": "pokemon:arceusfire",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "f76c170dc8d36bceb2dc4c5eb580e0f14db586b27ffa320a0077444c7b38d7c9",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "ba164e63fe53d30e9026550b2b9617b32ac4b4d4db4141275175a9cb98a0808f",
+      "shinyTextureHash": "ba164e63fe53d30e9026550b2b9617b32ac4b4d4db4141275175a9cb98a0808f",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceusflying": {
+      "identifier": "pokemon:arceusflying",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "c0fa7287ebd4d16a61ba42a686a31be5b8a028710b4eb44f4fec57192b66d9d0",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "ddcd8267318b2d6c283bf1051c9b21489f5db488294846a099aae90f640323ed",
+      "shinyTextureHash": "ddcd8267318b2d6c283bf1051c9b21489f5db488294846a099aae90f640323ed",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceusghost": {
+      "identifier": "pokemon:arceusghost",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "30f7b6fe83150a95eaad03d4dc65a893aa82b226a3228de9983ea8cc890c875a",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "8b49a1e950193c64bb7c931f18987facc4b1496f2a62df84121e2f099b7b19f9",
+      "shinyTextureHash": "8b49a1e950193c64bb7c931f18987facc4b1496f2a62df84121e2f099b7b19f9",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceusgrass": {
+      "identifier": "pokemon:arceusgrass",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "14963911012cbb3c3b5d9ca9bdc9193aef479fd1011ab5470415a87059e3b005",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "b4283556ce701fa7be6f79d7f991fb2932be5a73c439727b79b3a4d59c6c63dd",
+      "shinyTextureHash": "b4283556ce701fa7be6f79d7f991fb2932be5a73c439727b79b3a4d59c6c63dd",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceusground": {
+      "identifier": "pokemon:arceusground",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "a029192f6ad83c87ec636c7cb5f875aeab7c84a7664f06d8743899ed34f25102",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "97370aa6b769249fab79ab420215365cc081bd1e5942867fcff5c0bccf67d9cc",
+      "shinyTextureHash": "97370aa6b769249fab79ab420215365cc081bd1e5942867fcff5c0bccf67d9cc",
+      "animationHashes": {},
+      "materialHashes": {}
+    },
+    "pokemon:arceusice": {
+      "identifier": "pokemon:arceusice",
+      "renderedCommit": "4a6d379f6170dd725c75d55a92198ba9f12786f7",
+      "hasShiny": true,
+      "entityFileHash": "03cff1a0d82e5cd9108156589478a9a807afbd9cc48f6d4871d4167f29944921",
+      "geometryHashes": {
+        "models/entity/substitute.geo.json": "6c0b7bd033b727f2a15baa63aa6b2d5e10c66105130c2cbaca1c48f01e5bb31a"
+      },
+      "defaultTextureHash": "783789f409a4b1f609c26382bd4f2cbfb11457d17354dba8fef40820fc169921",
+      "shinyTextureHash": "783789f409a4b1f609c26382bd4f2cbfb11457d17354dba8fef40820fc169921",
+      "animationHashes": {},
+      "materialHashes": {}
+    }
+  }
+}
