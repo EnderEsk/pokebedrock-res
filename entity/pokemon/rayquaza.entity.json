@@ -4,80 +4,25 @@
 		"description": {
 			"identifier": "pokemon:rayquaza",
 			"materials": {
-				"default": "entity_emissive_alpha",
-				"aura": "charged_creeper"
+				"default": "zombie"
 			},
 			"textures": {
-				"evo_aura": "textures/entity/evolving",
-				"default": "textures/entity/pokemon/rayquaza/rayquaza.png",
-				"shiny_default": "textures/entity/pokemon/rayquaza/shiny_rayquaza.png",
-				"pbranni": "textures/entity/pokemon/rayquaza/rayquaza_pbranni.png",
-				"shiny_pbranni": "textures/entity/pokemon/rayquaza/shiny_rayquaza_pbranni.png"
+				"default": "textures/sprites/default/rayquaza",
+				"shiny_default": "textures/sprites/default/rayquaza",
+				"default_male": "textures/sprites/default/rayquaza",
+				"default_female": "textures/sprites/default/rayquaza",
+				"shiny_male": "textures/sprites/default/rayquaza",
+				"shiny_female": "textures/sprites/default/rayquaza"
 			},
-			"scripts": {
-				"scale": "q.property('pokeb:scale')",
-				"initialize": [
-					"v.blink_chance = 0.01;",
-					"v.move_threshold = 0.01;"
-				],
-				"pre_animation": [
-					"v.skin_index = query.property('pokeb:skin_index');",
-					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
-					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
-					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
-					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
-					"v.is_swimming = query.is_swimming;",
-					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
-					"v.is_sleeping = q.is_sleeping;",
-					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
-				],
-				"animate": [
-					"controller",
-					{
-						"blink": "v.should_blink"
-					}
-				]
-			},
-			"animations": {
-				"default_blink": "animation.rayquaza.blink",
-				"default_ground_idle": "animation.rayquaza.ground_idle",
-				"default_air_idle": "animation.rayquaza.ground_idle",
-				"default_water_idle": "animation.rayquaza.water_idle",
-				"default_walking": "animation.rayquaza.walking",
-				"default_flying": "animation.rayquaza.ground_idle",
-				"default_swimming": "animation.rayquaza.swimming",
-				"default_sleeping": "animation.rayquaza.ground_idle",
-				"default_attack": "animation.rayquaza.attack",
-				"pbranni_flying": "animation.rayquaza_pbranni.flying",
-				"pbranni_air_idle": "animation.rayquaza_pbranni.air_idle",
-				"pbranni_swimming": "animation.rayquaza_pbranni.swimming",
-				"pbranni_water_idle": "animation.rayquaza_pbranni.water_idle",
-				"pbranni_walking": "animation.rayquaza_pbranni.walking",
-				"pbranni_ground_idle": "animation.rayquaza_pbranni.ground_idle",
-				"pbranni_sleeping": "animation.rayquaza_pbranni.sleeping",
-				"pbranni_blink": "animation.rayquaza_pbranni.blink",
-				"pbranni_attack": "animation.rayquaza_pbranni.attack",
-				"pbranni_faint": "animation.rayquaza_pbranni.faint",
-				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "controller.animation.pokemon.rayquaza_attack",
-				"blink": "controller.animation.pokemon.rayquaza_blink",
-				"controller": "controller.animation.pokemon.rayquaza"
+			"geometry": {
+				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				{
-					"controller.render.pokemon:rayquaza": "query.variant==0"
-				},
-				{
-					"controller.render.pokemon:rayquaza.evolve": "query.variant==1"
-				}
+				"controller.render.pokemon"
 			],
 			"spawn_egg": {
 				"texture": "rayquaza",
 				"texture_index": 0
-			},
-			"geometry": {
-				"default": "geometry.rayquaza",
-				"pbranni": "geometry.rayquaza_pbranni"
 			}
 		}
 	}

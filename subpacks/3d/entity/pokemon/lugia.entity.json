@@ -1,0 +1,97 @@
+{
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:lugia",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/lugia/lugia.png",
+				"shiny_default": "textures/entity/pokemon/lugia/shiny_lugia.png",
+				"shadow": "textures/entity/pokemon/lugia/lugia_shadow.png",
+				"shiny_shadow": "textures/entity/pokemon/lugia/shiny_lugia_shadow.png",
+				"zohshia": "textures/entity/pokemon/lugia/lugia_zohshia.png",
+				"shiny_zohshia": "textures/entity/pokemon/lugia/shiny_lugia_zohshia.png"
+			},
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_blink": "animation.lugia.blink",
+				"default_ground_idle": "animation.lugia.ground_idle",
+				"default_air_idle": "animation.lugia.air_idle",
+				"default_water_idle": "animation.lugia.water_idle",
+				"default_walking": "animation.lugia.walking",
+				"default_flying": "animation.lugia.flying",
+				"default_swimming": "animation.lugia.swimming",
+				"default_sleeping": "animation.lugia.sleeping",
+				"default_attack": "animation.lugia.attack",
+				"shadow_flying": "animation.lugia_shadow.flying",
+				"shadow_air_idle": "animation.lugia_shadow.air_idle",
+				"shadow_swimming": "animation.lugia_shadow.swimming",
+				"shadow_water_idle": "animation.lugia_shadow.water_idle",
+				"shadow_walking": "animation.lugia_shadow.walking",
+				"shadow_ground_idle": "animation.lugia_shadow.ground_idle",
+				"shadow_sleeping": "animation.lugia_shadow.sleeping",
+				"shadow_blink": "animation.lugia_shadow.blink",
+				"shadow_attack": "animation.lugia_shadow.attack",
+				"shadow_faint": "animation.lugia_shadow.faint",
+				"zohshia_flying": "animation.lugia_zohshia.flying",
+				"zohshia_air_idle": "animation.lugia_zohshia.air_idle",
+				"zohshia_swimming": "animation.lugia_zohshia.swimming",
+				"zohshia_water_idle": "animation.lugia_zohshia.water_idle",
+				"zohshia_walking": "animation.lugia_zohshia.walking",
+				"zohshia_ground_idle": "animation.lugia_zohshia.ground_idle",
+				"zohshia_sleeping": "animation.lugia_zohshia.sleeping",
+				"zohshia_blink": "animation.lugia_zohshia.blink",
+				"zohshia_attack": "animation.lugia_zohshia.attack",
+				"zohshia_faint": "animation.lugia_zohshia.faint",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "controller.animation.pokemon.lugia_attack",
+				"blink": "controller.animation.pokemon.lugia_blink",
+				"controller": "controller.animation.pokemon.lugia"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:lugia": "query.variant==0"
+				},
+				{
+					"controller.render.pokemon:lugia.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "lugia",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.lugia",
+				"shadow": "geometry.lugia_shadow",
+				"zohshia": "geometry.lugia_zohshia"
+			}
+		}
+	}
+}

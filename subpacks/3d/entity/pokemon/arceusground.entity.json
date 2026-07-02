@@ -1,0 +1,84 @@
+{
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:arceusground",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/arceusground/arceusground.png",
+				"shiny_default": "textures/entity/pokemon/arceusground/shiny_arceusground.png",
+				"omega": "textures/entity/pokemon/arceusground/arceusground_omega.png",
+				"shiny_omega": "textures/entity/pokemon/arceusground/shiny_arceusground_omega.png"
+			},
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_blink": "animation.arceusground.blink",
+				"default_ground_idle": "animation.arceusground.ground_idle",
+				"default_air_idle": "animation.arceusground.air_idle",
+				"default_water_idle": "animation.arceusground.water_idle",
+				"default_walking": "animation.arceusground.walking",
+				"default_flying": "animation.arceusground.flying",
+				"default_swimming": "animation.arceusground.swimming",
+				"default_sleeping": "animation.arceusground.sleeping",
+				"default_attack": "animation.arceusground.attack",
+				"omega_flying": "animation.arceusground_omega.flying",
+				"omega_air_idle": "animation.arceusground_omega.air_idle",
+				"omega_swimming": "animation.arceusground_omega.swimming",
+				"omega_water_idle": "animation.arceusground_omega.water_idle",
+				"omega_walking": "animation.arceusground_omega.walking",
+				"omega_ground_idle": "animation.arceusground_omega.ground_idle",
+				"omega_sleeping": "animation.arceusground_omega.sleeping",
+				"omega_blink": "animation.arceusground_omega.blink",
+				"omega_attack": "animation.arceusground_omega.attack",
+				"omega_faint": "animation.arceusground_omega.faint",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "controller.animation.pokemon.arceusground_attack",
+				"blink": "controller.animation.pokemon.arceusground_blink",
+				"controller": "controller.animation.pokemon.arceusground"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:arceusground": "query.variant==0"
+				},
+				{
+					"controller.render.pokemon:arceusground.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "arceusground",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.arceusground",
+				"omega": "geometry.arceusground_omega"
+			}
+		}
+	}
+}

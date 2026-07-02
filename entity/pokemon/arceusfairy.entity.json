@@ -4,80 +4,25 @@
 		"description": {
 			"identifier": "pokemon:arceusfairy",
 			"materials": {
-				"default": "entity_emissive_alpha",
-				"aura": "charged_creeper"
+				"default": "zombie"
 			},
 			"textures": {
-				"evo_aura": "textures/entity/evolving",
-				"default": "textures/entity/pokemon/arceusfairy/arceusfairy.png",
-				"shiny_default": "textures/entity/pokemon/arceusfairy/shiny_arceusfairy.png",
-				"omega": "textures/entity/pokemon/arceusfairy/arceusfairy_omega.png",
-				"shiny_omega": "textures/entity/pokemon/arceusfairy/shiny_arceusfairy_omega.png"
+				"default": "textures/sprites/default/arceusfairy",
+				"shiny_default": "textures/sprites/default/arceusfairy",
+				"default_male": "textures/sprites/default/arceusfairy",
+				"default_female": "textures/sprites/default/arceusfairy",
+				"shiny_male": "textures/sprites/default/arceusfairy",
+				"shiny_female": "textures/sprites/default/arceusfairy"
 			},
-			"scripts": {
-				"scale": "q.property('pokeb:scale')",
-				"initialize": [
-					"v.blink_chance = 0.01;",
-					"v.move_threshold = 0.01;"
-				],
-				"pre_animation": [
-					"v.skin_index = query.property('pokeb:skin_index');",
-					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
-					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
-					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
-					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
-					"v.is_swimming = query.is_swimming;",
-					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
-					"v.is_sleeping = q.is_sleeping;",
-					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
-				],
-				"animate": [
-					"controller",
-					{
-						"blink": "v.should_blink"
-					}
-				]
-			},
-			"animations": {
-				"default_blink": "animation.arceusfairy.blink",
-				"default_ground_idle": "animation.arceusfairy.ground_idle",
-				"default_air_idle": "animation.arceusfairy.ground_idle",
-				"default_water_idle": "animation.arceusfairy.water_idle",
-				"default_walking": "animation.arceusfairy.walking",
-				"default_flying": "animation.arceusfairy.ground_idle",
-				"default_swimming": "animation.arceusfairy.swimming",
-				"default_sleeping": "animation.arceusfairy.sleeping",
-				"default_attack": "animation.arceusfairy.attack",
-				"omega_flying": "animation.arceusfairy_omega.flying",
-				"omega_air_idle": "animation.arceusfairy_omega.air_idle",
-				"omega_swimming": "animation.arceusfairy_omega.swimming",
-				"omega_water_idle": "animation.arceusfairy_omega.water_idle",
-				"omega_walking": "animation.arceusfairy_omega.walking",
-				"omega_ground_idle": "animation.arceusfairy_omega.ground_idle",
-				"omega_sleeping": "animation.arceusfairy_omega.sleeping",
-				"omega_blink": "animation.arceusfairy_omega.blink",
-				"omega_attack": "animation.arceusfairy_omega.attack",
-				"omega_faint": "animation.arceusfairy_omega.faint",
-				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "controller.animation.pokemon.arceusfairy_attack",
-				"blink": "controller.animation.pokemon.arceusfairy_blink",
-				"controller": "controller.animation.pokemon.arceusfairy"
+			"geometry": {
+				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				{
-					"controller.render.pokemon:arceusfairy": "query.variant==0"
-				},
-				{
-					"controller.render.pokemon:arceusfairy.evolve": "query.variant==1"
-				}
+				"controller.render.pokemon"
 			],
 			"spawn_egg": {
 				"texture": "arceusfairy",
 				"texture_index": 0
-			},
-			"geometry": {
-				"default": "geometry.arceusfairy",
-				"omega": "geometry.arceusfairy_omega"
 			}
 		}
 	}
