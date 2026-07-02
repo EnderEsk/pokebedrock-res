@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/gastly",
 				"default_female": "textures/sprites/default/gastly",
 				"shiny_male": "textures/sprites/default/gastly",
-				"shiny_female": "textures/sprites/default/gastly"
+				"shiny_female": "textures/sprites/default/gastly",
+				"halloween": "textures/sprites/default/gastly_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:gastly"
 			],
 			"spawn_egg": {
 				"texture": "gastly",

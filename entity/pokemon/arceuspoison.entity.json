@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/arceuspoison",
 				"default_female": "textures/sprites/default/arceuspoison",
 				"shiny_male": "textures/sprites/default/arceuspoison",
-				"shiny_female": "textures/sprites/default/arceuspoison"
+				"shiny_female": "textures/sprites/default/arceuspoison",
+				"omega": "textures/sprites/default/arceuspoison_omega"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:arceuspoison"
 			],
 			"spawn_egg": {
 				"texture": "arceuspoison",

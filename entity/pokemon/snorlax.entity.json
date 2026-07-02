@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/snorlax",
 				"default_female": "textures/sprites/default/snorlax",
 				"shiny_male": "textures/sprites/default/snorlax",
-				"shiny_female": "textures/sprites/default/snorlax"
+				"shiny_female": "textures/sprites/default/snorlax",
+				"santa": "textures/sprites/default/snorlax_santa"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:snorlax"
 			],
 			"spawn_egg": {
 				"texture": "snorlax",

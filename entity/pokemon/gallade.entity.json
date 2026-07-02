@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/gallade",
 				"default_female": "textures/sprites/default/gallade",
 				"shiny_male": "textures/sprites/default/gallade",
-				"shiny_female": "textures/sprites/default/gallade"
+				"shiny_female": "textures/sprites/default/gallade",
+				"christmas": "textures/sprites/default/gallade_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:gallade"
 			],
 			"spawn_egg": {
 				"texture": "gallade",

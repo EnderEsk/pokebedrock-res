@@ -12,13 +12,15 @@
 				"default_male": "textures/sprites/default/meloetta",
 				"default_female": "textures/sprites/default/meloetta",
 				"shiny_male": "textures/sprites/default/meloetta",
-				"shiny_female": "textures/sprites/default/meloetta"
+				"shiny_female": "textures/sprites/default/meloetta",
+				"diva": "textures/sprites/default/meloetta_diva",
+				"christmas": "textures/sprites/default/meloetta_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:meloetta"
 			],
 			"spawn_egg": {
 				"texture": "meloetta",

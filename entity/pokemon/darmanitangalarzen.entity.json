@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/darmanitangalarzen",
 				"default_female": "textures/sprites/default/darmanitangalarzen",
 				"shiny_male": "textures/sprites/default/darmanitangalarzen",
-				"shiny_female": "textures/sprites/default/darmanitangalarzen"
+				"shiny_female": "textures/sprites/default/darmanitangalarzen",
+				"christmas": "textures/sprites/default/darmanitangalarzen_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:darmanitangalarzen"
 			],
 			"spawn_egg": {
 				"texture": "darmanitangalarzen",

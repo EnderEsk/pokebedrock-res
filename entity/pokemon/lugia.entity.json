@@ -12,13 +12,15 @@
 				"default_male": "textures/sprites/default/lugia",
 				"default_female": "textures/sprites/default/lugia",
 				"shiny_male": "textures/sprites/default/lugia",
-				"shiny_female": "textures/sprites/default/lugia"
+				"shiny_female": "textures/sprites/default/lugia",
+				"shadow": "textures/sprites/default/lugia_shadow",
+				"zohshia": "textures/sprites/default/lugia_zohshia"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:lugia"
 			],
 			"spawn_egg": {
 				"texture": "lugia",

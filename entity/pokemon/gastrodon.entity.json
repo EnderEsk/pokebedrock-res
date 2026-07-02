@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/gastrodon",
 				"default_female": "textures/sprites/default/gastrodon",
 				"shiny_male": "textures/sprites/default/gastrodon",
-				"shiny_female": "textures/sprites/default/gastrodon"
+				"shiny_female": "textures/sprites/default/gastrodon",
+				"east": "textures/sprites/default/gastrodon_east"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:gastrodon"
 			],
 			"spawn_egg": {
 				"texture": "gastrodon",

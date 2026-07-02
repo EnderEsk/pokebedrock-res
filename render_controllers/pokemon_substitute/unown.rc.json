@@ -1,0 +1,50 @@
+{
+	"format_version": "1.10.0",
+	"render_controllers": {
+		"controller.render.pokemon_substitute:unown": {
+			"arrays": {
+				"textures": {
+					"Array.skins": [
+						"Texture.default",
+						"Texture.b",
+						"Texture.c",
+						"Texture.d",
+						"Texture.e",
+						"Texture.f",
+						"Texture.g",
+						"Texture.h",
+						"Texture.i",
+						"Texture.j",
+						"Texture.k",
+						"Texture.l",
+						"Texture.m",
+						"Texture.n",
+						"Texture.o",
+						"Texture.p",
+						"Texture.q",
+						"Texture.r",
+						"Texture.s",
+						"Texture.t",
+						"Texture.u",
+						"Texture.v",
+						"Texture.w",
+						"Texture.x",
+						"Texture.y",
+						"Texture.z",
+						"Texture.exclamation",
+						"Texture.question"
+					]
+				}
+			},
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Array.skins[query.property('pokeb:skin_index')]"
+			]
+		}
+	}
+}

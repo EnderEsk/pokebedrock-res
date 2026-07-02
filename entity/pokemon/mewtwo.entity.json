@@ -12,13 +12,16 @@
 				"default_male": "textures/sprites/default/mewtwo",
 				"default_female": "textures/sprites/default/mewtwo",
 				"shiny_male": "textures/sprites/default/mewtwo",
-				"shiny_female": "textures/sprites/default/mewtwo"
+				"shiny_female": "textures/sprites/default/mewtwo",
+				"shadow": "textures/sprites/default/mewtwo_shadow",
+				"armored": "textures/sprites/default/mewtwo_armored",
+				"bnw": "textures/sprites/default/mewtwo_bnw"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:mewtwo"
 			],
 			"spawn_egg": {
 				"texture": "mewtwo",

@@ -12,13 +12,15 @@
 				"default_male": "textures/sprites/default/genesectburn",
 				"default_female": "textures/sprites/default/genesectburn",
 				"shiny_male": "textures/sprites/default/genesectburn",
-				"shiny_female": "textures/sprites/default/genesectburn"
+				"shiny_female": "textures/sprites/default/genesectburn",
+				"beru": "textures/sprites/default/genesectburn_beru",
+				"teamplasma": "textures/sprites/default/genesectburn_teamplasma"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:genesectburn"
 			],
 			"spawn_egg": {
 				"texture": "genesectburn",

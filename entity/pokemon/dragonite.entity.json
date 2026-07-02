@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/dragonite",
 				"default_female": "textures/sprites/default/dragonite",
 				"shiny_male": "textures/sprites/default/dragonite",
-				"shiny_female": "textures/sprites/default/dragonite"
+				"shiny_female": "textures/sprites/default/dragonite",
+				"christmas": "textures/sprites/default/dragonite_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:dragonite"
 			],
 			"spawn_egg": {
 				"texture": "dragonite",

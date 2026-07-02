@@ -12,13 +12,15 @@
 				"default_male": "textures/sprites/default/burmy",
 				"default_female": "textures/sprites/default/burmy",
 				"shiny_male": "textures/sprites/default/burmy",
-				"shiny_female": "textures/sprites/default/burmy"
+				"shiny_female": "textures/sprites/default/burmy",
+				"sandy": "textures/sprites/default/burmy_sandy",
+				"trash": "textures/sprites/default/burmy_trash"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:burmy"
 			],
 			"spawn_egg": {
 				"texture": "burmy",

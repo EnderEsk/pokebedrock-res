@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/tinkaton",
 				"default_female": "textures/sprites/default/tinkaton",
 				"shiny_male": "textures/sprites/default/tinkaton",
-				"shiny_female": "textures/sprites/default/tinkaton"
+				"shiny_female": "textures/sprites/default/tinkaton",
+				"christmas": "textures/sprites/default/tinkaton_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:tinkaton"
 			],
 			"spawn_egg": {
 				"texture": "tinkaton",

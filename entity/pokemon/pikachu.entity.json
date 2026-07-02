@@ -12,13 +12,18 @@
 				"default_male": "textures/sprites/default/pikachu",
 				"default_female": "textures/sprites/default/pikachu",
 				"shiny_male": "textures/sprites/default/pikachu",
-				"shiny_female": "textures/sprites/default/pikachu"
+				"shiny_female": "textures/sprites/default/pikachu",
+				"witch": "textures/sprites/default/pikachu_witch",
+				"captin": "textures/sprites/default/pikachu_captin",
+				"santa": "textures/sprites/default/pikachu_santa",
+				"detective": "textures/sprites/default/pikachu_detective",
+				"doll": "textures/sprites/default/pikachu_doll"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:pikachu"
 			],
 			"spawn_egg": {
 				"texture": "pikachu",

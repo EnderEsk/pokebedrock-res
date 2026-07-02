@@ -12,13 +12,16 @@
 				"default_male": "textures/sprites/default/yveltal",
 				"default_female": "textures/sprites/default/yveltal",
 				"shiny_male": "textures/sprites/default/yveltal",
-				"shiny_female": "textures/sprites/default/yveltal"
+				"shiny_female": "textures/sprites/default/yveltal",
+				"christmas": "textures/sprites/default/yveltal_christmas",
+				"goremagala": "textures/sprites/default/yveltal_goremagala",
+				"alastor": "textures/sprites/default/yveltal_alastor"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:yveltal"
 			],
 			"spawn_egg": {
 				"texture": "yveltal",

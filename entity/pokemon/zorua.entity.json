@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/zorua",
 				"default_female": "textures/sprites/default/zorua",
 				"shiny_male": "textures/sprites/default/zorua",
-				"shiny_female": "textures/sprites/default/zorua"
+				"shiny_female": "textures/sprites/default/zorua",
+				"halloween": "textures/sprites/default/zorua_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:zorua"
 			],
 			"spawn_egg": {
 				"texture": "zorua",

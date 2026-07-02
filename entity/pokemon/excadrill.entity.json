@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/excadrill",
 				"default_female": "textures/sprites/default/excadrill",
 				"shiny_male": "textures/sprites/default/excadrill",
-				"shiny_female": "textures/sprites/default/excadrill"
+				"shiny_female": "textures/sprites/default/excadrill",
+				"miner": "textures/sprites/default/excadrill_miner"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:excadrill"
 			],
 			"spawn_egg": {
 				"texture": "excadrill",

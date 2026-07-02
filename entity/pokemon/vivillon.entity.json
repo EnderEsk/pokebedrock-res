@@ -12,13 +12,31 @@
 				"default_male": "textures/sprites/default/vivillon",
 				"default_female": "textures/sprites/default/vivillon",
 				"shiny_male": "textures/sprites/default/vivillon",
-				"shiny_female": "textures/sprites/default/vivillon"
+				"shiny_female": "textures/sprites/default/vivillon",
+				"archipelago": "textures/sprites/default/vivillon_archipelago",
+				"continental": "textures/sprites/default/vivillon_continental",
+				"elegant": "textures/sprites/default/vivillon_elegant",
+				"garden": "textures/sprites/default/vivillon_garden",
+				"high_plains": "textures/sprites/default/vivillon_high_plains",
+				"icy_snow": "textures/sprites/default/vivillon_icy_snow",
+				"jungle": "textures/sprites/default/vivillon_jungle",
+				"marine": "textures/sprites/default/vivillon_marine",
+				"modern": "textures/sprites/default/vivillon_modern",
+				"monsoon": "textures/sprites/default/vivillon_monsoon",
+				"ocean": "textures/sprites/default/vivillon_ocean",
+				"polar": "textures/sprites/default/vivillon_polar",
+				"river": "textures/sprites/default/vivillon_river",
+				"sandstorm": "textures/sprites/default/vivillon_sandstorm",
+				"savanna": "textures/sprites/default/vivillon_savanna",
+				"sun": "textures/sprites/default/vivillon_sun",
+				"tundra": "textures/sprites/default/vivillon_tundra",
+				"valentine": "textures/sprites/default/vivillon_valentine"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:vivillon"
 			],
 			"spawn_egg": {
 				"texture": "vivillon",

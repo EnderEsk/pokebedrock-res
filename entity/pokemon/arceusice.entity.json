@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/arceusice",
 				"default_female": "textures/sprites/default/arceusice",
 				"shiny_male": "textures/sprites/default/arceusice",
-				"shiny_female": "textures/sprites/default/arceusice"
+				"shiny_female": "textures/sprites/default/arceusice",
+				"omega": "textures/sprites/default/arceusice_omega"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:arceusice"
 			],
 			"spawn_egg": {
 				"texture": "arceusice",

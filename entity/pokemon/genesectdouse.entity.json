@@ -12,13 +12,15 @@
 				"default_male": "textures/sprites/default/genesectdouse",
 				"default_female": "textures/sprites/default/genesectdouse",
 				"shiny_male": "textures/sprites/default/genesectdouse",
-				"shiny_female": "textures/sprites/default/genesectdouse"
+				"shiny_female": "textures/sprites/default/genesectdouse",
+				"beru": "textures/sprites/default/genesectdouse_beru",
+				"teamplasma": "textures/sprites/default/genesectdouse_teamplasma"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:genesectdouse"
 			],
 			"spawn_egg": {
 				"texture": "genesectdouse",

@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/garbodor",
 				"default_female": "textures/sprites/default/garbodor",
 				"shiny_male": "textures/sprites/default/garbodor",
-				"shiny_female": "textures/sprites/default/garbodor"
+				"shiny_female": "textures/sprites/default/garbodor",
+				"halloween": "textures/sprites/default/garbodor_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:garbodor"
 			],
 			"spawn_egg": {
 				"texture": "garbodor",

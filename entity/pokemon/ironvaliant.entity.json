@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/ironvaliant",
 				"default_female": "textures/sprites/default/ironvaliant",
 				"shiny_male": "textures/sprites/default/ironvaliant",
-				"shiny_female": "textures/sprites/default/ironvaliant"
+				"shiny_female": "textures/sprites/default/ironvaliant",
+				"ichigo": "textures/sprites/default/ironvaliant_ichigo"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:ironvaliant"
 			],
 			"spawn_egg": {
 				"texture": "ironvaliant",

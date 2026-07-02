@@ -12,13 +12,15 @@
 				"default_male": "textures/sprites/default/genesect",
 				"default_female": "textures/sprites/default/genesect",
 				"shiny_male": "textures/sprites/default/genesect",
-				"shiny_female": "textures/sprites/default/genesect"
+				"shiny_female": "textures/sprites/default/genesect",
+				"beru": "textures/sprites/default/genesect_beru",
+				"teamplasma": "textures/sprites/default/genesect_teamplasma"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:genesect"
 			],
 			"spawn_egg": {
 				"texture": "genesect",

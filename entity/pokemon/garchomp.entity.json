@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/garchomp",
 				"default_female": "textures/sprites/default/garchomp",
 				"shiny_male": "textures/sprites/default/garchomp",
-				"shiny_female": "textures/sprites/default/garchomp"
+				"shiny_female": "textures/sprites/default/garchomp",
+				"halloween": "textures/sprites/default/garchomp_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:garchomp"
 			],
 			"spawn_egg": {
 				"texture": "garchomp",

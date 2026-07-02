@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/arceusfighting",
 				"default_female": "textures/sprites/default/arceusfighting",
 				"shiny_male": "textures/sprites/default/arceusfighting",
-				"shiny_female": "textures/sprites/default/arceusfighting"
+				"shiny_female": "textures/sprites/default/arceusfighting",
+				"omega": "textures/sprites/default/arceusfighting_omega"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:arceusfighting"
 			],
 			"spawn_egg": {
 				"texture": "arceusfighting",

@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/rayquaza",
 				"default_female": "textures/sprites/default/rayquaza",
 				"shiny_male": "textures/sprites/default/rayquaza",
-				"shiny_female": "textures/sprites/default/rayquaza"
+				"shiny_female": "textures/sprites/default/rayquaza",
+				"pbranni": "textures/sprites/default/rayquaza_pbranni"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:rayquaza"
 			],
 			"spawn_egg": {
 				"texture": "rayquaza",

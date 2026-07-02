@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/hydreigon",
 				"default_female": "textures/sprites/default/hydreigon",
 				"shiny_male": "textures/sprites/default/hydreigon",
-				"shiny_female": "textures/sprites/default/hydreigon"
+				"shiny_female": "textures/sprites/default/hydreigon",
+				"christmas": "textures/sprites/default/hydreigon_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:hydreigon"
 			],
 			"spawn_egg": {
 				"texture": "hydreigon",

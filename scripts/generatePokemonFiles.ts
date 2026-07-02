@@ -43,6 +43,10 @@ const pokemonSubstituteEntityTemplatePath = path.join(
   "pokemonSubstitute.entity.json"
 );
 const pokemonRCTemplatePath = path.join(templatesPath, "pokemon.rc.json");
+const pokemonSubstituteRCTemplatePath = path.join(
+  templatesPath,
+  "pokemonSubstitute.rc.json"
+);
 const pokemonACTemplatePath = path.join(
   templatesPath,
   "pokemon.animation_controller.json"
@@ -62,6 +66,13 @@ const renderControllersPath = path.join(
   "render_controllers",
   "pokemon"
 );
+// Per-species substitute render controllers stay in the pack root (the 2D
+// sprite entities they drive load on every device).
+const substituteRenderControllersPath = path.join(
+  cwd,
+  "render_controllers",
+  "pokemon_substitute"
+);
 const animationControllersPath = path.join(
   cwd,
   SUBPACK_3D,
@@ -80,10 +91,12 @@ const texturesSourceDir = path.join(SUBPACK_3D, "textures", "entity", "pokemon")
 fsExtra.ensureDirSync(pokemonEntityFilesDir);
 fsExtra.ensureDirSync(modeledEntityFilesDir);
 fsExtra.ensureDirSync(renderControllersPath);
+fsExtra.ensureDirSync(substituteRenderControllersPath);
 fsExtra.ensureDirSync(animationControllersPath);
 fsExtra.emptyDirSync(pokemonEntityFilesDir);
 fsExtra.emptyDirSync(modeledEntityFilesDir);
 fsExtra.emptyDirSync(renderControllersPath);
+fsExtra.emptyDirSync(substituteRenderControllersPath);
 fsExtra.emptyDirSync(animationControllersPath);
 
 // --- Global Report State ---
@@ -117,6 +130,9 @@ const pokemonSubstituteEntityTemplate = safeReadJSON<EntityFile>(
 const pokemonRCTemplate = safeReadJSON<RenderControllerFile>(
   pokemonRCTemplatePath
 );
+const pokemonSubstituteRCTemplate = safeReadJSON<RenderControllerFile>(
+  pokemonSubstituteRCTemplatePath
+);
 const pokemonACTemplate = safeReadJSON<AnimationControllerFile>(
   pokemonACTemplatePath
 );
@@ -125,6 +141,7 @@ if (
   !pokemonEntityFileTemplate ||
   !pokemonSubstituteEntityTemplate ||
   !pokemonRCTemplate ||
+  !pokemonSubstituteRCTemplate ||
   !pokemonACTemplate ||
   !itemTexturesFile
 ) {
@@ -914,6 +931,45 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
 }
 
 /**
+ * Creates the 2D substitute render controller for a Pokémon that has skins, so
+ * its flat sprite billboard shows the active skin's sprite (selected by the
+ * `pokeb:skin_index` property) instead of always the default sprite.
+ *
+ * Sprites have no shiny/gender variants, so a single sprite per skin is indexed
+ * directly: index 0 is the default sprite and each skin follows in declaration
+ * order — matching the `pokeb:skin_index` values used by the 3D controller.
+ *
+ * @param pokemonTypeId The Pokémon whose substitute render controller to generate.
+ * @throws if the cloned template is missing its controller entry.
+ */
+function makeSubstituteRenderController(pokemonTypeId: PokemonTypeId): void {
+  const customizations = PokemonCustomizations[pokemonTypeId];
+  const skinKeys = Object.keys(customizations?.skins ?? {});
+  if (skinKeys.length === 0) return;
+
+  const rcFile = cloneTemplate(pokemonSubstituteRCTemplate!, pokemonTypeId);
+  const controller =
+    rcFile.render_controllers[
+      `controller.render.pokemon_substitute:${pokemonTypeId}`
+    ];
+  if (!controller)
+    throw new Error(
+      `No controller found in substitute render controller for ${pokemonTypeId}`
+    );
+
+  controller.arrays.textures["Array.skins"] = [
+    "Texture.default",
+    ...skinKeys.map((skin) => `Texture.${skin}`),
+  ];
+
+  writeJsonFileSync(
+    path.join(substituteRenderControllersPath, `${pokemonTypeId}.rc.json`),
+    rcFile,
+    { detectIndent: true }
+  );
+}
+
+/**
  * Creates a render controller for the given Pokémon type.
  */
 function makeRenderController(pokemonTypeId: PokemonTypeId): void {
@@ -1502,6 +1558,26 @@ async function processPokemon() {
         pokemonSubstituteEntityTemplate!,
         typeId
       );
+
+      // Skinned Pokémon: drive the 2D sprite from a per-species substitute
+      // render controller so the active skin's sprite shows (indexed by
+      // pokeb:skin_index) instead of always the default sprite.
+      const substituteSkinKeys = Object.keys(customizations?.skins ?? {});
+      if (substituteSkinKeys.length > 0) {
+        const description =
+          substituteFile["minecraft:client_entity"].description;
+        for (const skin of substituteSkinKeys) {
+          description.textures[skin] =
+            `textures/sprites/default/${typeId}_${skin}`;
+        }
+        // Bare-string reference (always render), matching the base substitute
+        // template; the EntityFile type only models the conditional object form.
+        description.render_controllers = [
+          `controller.render.pokemon_substitute:${typeId}`,
+        ] as unknown as { [key: string]: string }[];
+        makeSubstituteRenderController(typeId);
+      }
+
       writeJsonFileSync(
         path.join(pokemonEntityFilesDir, `${typeId}.entity.json`),
         substituteFile,

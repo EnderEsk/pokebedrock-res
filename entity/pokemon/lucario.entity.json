@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/lucario",
 				"default_female": "textures/sprites/default/lucario",
 				"shiny_male": "textures/sprites/default/lucario",
-				"shiny_female": "textures/sprites/default/lucario"
+				"shiny_female": "textures/sprites/default/lucario",
+				"christmas": "textures/sprites/default/lucario_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:lucario"
 			],
 			"spawn_egg": {
 				"texture": "lucario",

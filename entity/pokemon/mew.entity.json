@@ -12,13 +12,16 @@
 				"default_male": "textures/sprites/default/mew",
 				"default_female": "textures/sprites/default/mew",
 				"shiny_male": "textures/sprites/default/mew",
-				"shiny_female": "textures/sprites/default/mew"
+				"shiny_female": "textures/sprites/default/mew",
+				"christmas": "textures/sprites/default/mew_christmas",
+				"shadow": "textures/sprites/default/mew_shadow",
+				"princess": "textures/sprites/default/mew_princess"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:mew"
 			],
 			"spawn_egg": {
 				"texture": "mew",

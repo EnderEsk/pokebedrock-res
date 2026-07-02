@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/gengar",
 				"default_female": "textures/sprites/default/gengar",
 				"shiny_male": "textures/sprites/default/gengar",
-				"shiny_female": "textures/sprites/default/gengar"
+				"shiny_female": "textures/sprites/default/gengar",
+				"halloween": "textures/sprites/default/gengar_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:gengar"
 			],
 			"spawn_egg": {
 				"texture": "gengar",

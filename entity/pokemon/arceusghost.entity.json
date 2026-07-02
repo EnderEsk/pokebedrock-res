@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/arceusghost",
 				"default_female": "textures/sprites/default/arceusghost",
 				"shiny_male": "textures/sprites/default/arceusghost",
-				"shiny_female": "textures/sprites/default/arceusghost"
+				"shiny_female": "textures/sprites/default/arceusghost",
+				"omega": "textures/sprites/default/arceusghost_omega"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:arceusghost"
 			],
 			"spawn_egg": {
 				"texture": "arceusghost",

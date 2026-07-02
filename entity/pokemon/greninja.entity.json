@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/greninja",
 				"default_female": "textures/sprites/default/greninja",
 				"shiny_male": "textures/sprites/default/greninja",
-				"shiny_female": "textures/sprites/default/greninja"
+				"shiny_female": "textures/sprites/default/greninja",
+				"ash": "textures/sprites/default/greninja_ash"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:greninja"
 			],
 			"spawn_egg": {
 				"texture": "greninja",

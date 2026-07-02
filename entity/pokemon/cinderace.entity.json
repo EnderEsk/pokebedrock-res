@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/cinderace",
 				"default_female": "textures/sprites/default/cinderace",
 				"shiny_male": "textures/sprites/default/cinderace",
-				"shiny_female": "textures/sprites/default/cinderace"
+				"shiny_female": "textures/sprites/default/cinderace",
+				"christmas": "textures/sprites/default/cinderace_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:cinderace"
 			],
 			"spawn_egg": {
 				"texture": "cinderace",

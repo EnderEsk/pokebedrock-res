@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/gabite",
 				"default_female": "textures/sprites/default/gabite",
 				"shiny_male": "textures/sprites/default/gabite",
-				"shiny_female": "textures/sprites/default/gabite"
+				"shiny_female": "textures/sprites/default/gabite",
+				"halloween": "textures/sprites/default/gabite_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:gabite"
 			],
 			"spawn_egg": {
 				"texture": "gabite",

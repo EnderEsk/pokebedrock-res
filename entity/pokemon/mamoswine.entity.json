@@ -12,13 +12,15 @@
 				"default_male": "textures/sprites/default/mamoswine",
 				"default_female": "textures/sprites/default/mamoswine",
 				"shiny_male": "textures/sprites/default/mamoswine",
-				"shiny_female": "textures/sprites/default/mamoswine"
+				"shiny_female": "textures/sprites/default/mamoswine",
+				"appa": "textures/sprites/default/mamoswine_appa",
+				"christmas": "textures/sprites/default/mamoswine_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:mamoswine"
 			],
 			"spawn_egg": {
 				"texture": "mamoswine",

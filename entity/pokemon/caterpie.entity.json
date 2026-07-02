@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/caterpie",
 				"default_female": "textures/sprites/default/caterpie",
 				"shiny_male": "textures/sprites/default/caterpie",
-				"shiny_female": "textures/sprites/default/caterpie"
+				"shiny_female": "textures/sprites/default/caterpie",
+				"king": "textures/sprites/default/caterpie_king"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:caterpie"
 			],
 			"spawn_egg": {
 				"texture": "caterpie",

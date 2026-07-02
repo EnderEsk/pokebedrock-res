@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/meowscarada",
 				"default_female": "textures/sprites/default/meowscarada",
 				"shiny_male": "textures/sprites/default/meowscarada",
-				"shiny_female": "textures/sprites/default/meowscarada"
+				"shiny_female": "textures/sprites/default/meowscarada",
+				"valentine": "textures/sprites/default/meowscarada_valentine"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:meowscarada"
 			],
 			"spawn_egg": {
 				"texture": "meowscarada",

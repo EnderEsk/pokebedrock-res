@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/tyrantrum",
 				"default_female": "textures/sprites/default/tyrantrum",
 				"shiny_male": "textures/sprites/default/tyrantrum",
-				"shiny_female": "textures/sprites/default/tyrantrum"
+				"shiny_female": "textures/sprites/default/tyrantrum",
+				"christmas": "textures/sprites/default/tyrantrum_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:tyrantrum"
 			],
 			"spawn_egg": {
 				"texture": "tyrantrum",

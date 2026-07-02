@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/trubbish",
 				"default_female": "textures/sprites/default/trubbish",
 				"shiny_male": "textures/sprites/default/trubbish",
-				"shiny_female": "textures/sprites/default/trubbish"
+				"shiny_female": "textures/sprites/default/trubbish",
+				"halloween": "textures/sprites/default/trubbish_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:trubbish"
 			],
 			"spawn_egg": {
 				"texture": "trubbish",

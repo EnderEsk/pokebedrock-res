@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/mewtwomegax",
 				"default_female": "textures/sprites/default/mewtwomegax",
 				"shiny_male": "textures/sprites/default/mewtwomegax",
-				"shiny_female": "textures/sprites/default/mewtwomegax"
+				"shiny_female": "textures/sprites/default/mewtwomegax",
+				"shadow": "textures/sprites/default/mewtwomegax_shadow"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:mewtwomegax"
 			],
 			"spawn_egg": {
 				"texture": "mewtwomegax",

@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/haunter",
 				"default_female": "textures/sprites/default/haunter",
 				"shiny_male": "textures/sprites/default/haunter",
-				"shiny_female": "textures/sprites/default/haunter"
+				"shiny_female": "textures/sprites/default/haunter",
+				"halloween": "textures/sprites/default/haunter_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:haunter"
 			],
 			"spawn_egg": {
 				"texture": "haunter",

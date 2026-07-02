@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/wailord",
 				"default_female": "textures/sprites/default/wailord",
 				"shiny_male": "textures/sprites/default/wailord",
-				"shiny_female": "textures/sprites/default/wailord"
+				"shiny_female": "textures/sprites/default/wailord",
+				"independence": "textures/sprites/default/wailord_independence"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:wailord"
 			],
 			"spawn_egg": {
 				"texture": "wailord",

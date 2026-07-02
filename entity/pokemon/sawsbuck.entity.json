@@ -12,13 +12,16 @@
 				"default_male": "textures/sprites/default/sawsbuck",
 				"default_female": "textures/sprites/default/sawsbuck",
 				"shiny_male": "textures/sprites/default/sawsbuck",
-				"shiny_female": "textures/sprites/default/sawsbuck"
+				"shiny_female": "textures/sprites/default/sawsbuck",
+				"summer": "textures/sprites/default/sawsbuck_summer",
+				"autumn": "textures/sprites/default/sawsbuck_autumn",
+				"winter": "textures/sprites/default/sawsbuck_winter"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:sawsbuck"
 			],
 			"spawn_egg": {
 				"texture": "sawsbuck",

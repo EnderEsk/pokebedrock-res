@@ -12,13 +12,16 @@
 				"default_male": "textures/sprites/default/mimikyu",
 				"default_female": "textures/sprites/default/mimikyu",
 				"shiny_male": "textures/sprites/default/mimikyu",
-				"shiny_female": "textures/sprites/default/mimikyu"
+				"shiny_female": "textures/sprites/default/mimikyu",
+				"raichu": "textures/sprites/default/mimikyu_raichu",
+				"riolu": "textures/sprites/default/mimikyu_riolu",
+				"yamper": "textures/sprites/default/mimikyu_yamper"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:mimikyu"
 			],
 			"spawn_egg": {
 				"texture": "mimikyu",

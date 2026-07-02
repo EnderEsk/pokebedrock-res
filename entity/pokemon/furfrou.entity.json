@@ -12,13 +12,22 @@
 				"default_male": "textures/sprites/default/furfrou",
 				"default_female": "textures/sprites/default/furfrou",
 				"shiny_male": "textures/sprites/default/furfrou",
-				"shiny_female": "textures/sprites/default/furfrou"
+				"shiny_female": "textures/sprites/default/furfrou",
+				"dandy": "textures/sprites/default/furfrou_dandy",
+				"debutante": "textures/sprites/default/furfrou_debutante",
+				"diamond": "textures/sprites/default/furfrou_diamond",
+				"heart": "textures/sprites/default/furfrou_heart",
+				"kabuki": "textures/sprites/default/furfrou_kabuki",
+				"la_reine": "textures/sprites/default/furfrou_la_reine",
+				"matron": "textures/sprites/default/furfrou_matron",
+				"pharaoh": "textures/sprites/default/furfrou_pharaoh",
+				"star": "textures/sprites/default/furfrou_star"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:furfrou"
 			],
 			"spawn_egg": {
 				"texture": "furfrou",

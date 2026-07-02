@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/gardevoirmega",
 				"default_female": "textures/sprites/default/gardevoirmega",
 				"shiny_male": "textures/sprites/default/gardevoirmega",
-				"shiny_female": "textures/sprites/default/gardevoirmega"
+				"shiny_female": "textures/sprites/default/gardevoirmega",
+				"pbranni": "textures/sprites/default/gardevoirmega_pbranni"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:gardevoirmega"
 			],
 			"spawn_egg": {
 				"texture": "gardevoirmega",

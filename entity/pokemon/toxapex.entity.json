@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/toxapex",
 				"default_female": "textures/sprites/default/toxapex",
 				"shiny_male": "textures/sprites/default/toxapex",
-				"shiny_female": "textures/sprites/default/toxapex"
+				"shiny_female": "textures/sprites/default/toxapex",
+				"christmas": "textures/sprites/default/toxapex_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:toxapex"
 			],
 			"spawn_egg": {
 				"texture": "toxapex",

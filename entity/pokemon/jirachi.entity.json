@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/jirachi",
 				"default_female": "textures/sprites/default/jirachi",
 				"shiny_male": "textures/sprites/default/jirachi",
-				"shiny_female": "textures/sprites/default/jirachi"
+				"shiny_female": "textures/sprites/default/jirachi",
+				"christmas": "textures/sprites/default/jirachi_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:jirachi"
 			],
 			"spawn_egg": {
 				"texture": "jirachi",

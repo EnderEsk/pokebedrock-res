@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/ceruledge",
 				"default_female": "textures/sprites/default/ceruledge",
 				"shiny_male": "textures/sprites/default/ceruledge",
-				"shiny_female": "textures/sprites/default/ceruledge"
+				"shiny_female": "textures/sprites/default/ceruledge",
+				"halloween": "textures/sprites/default/ceruledge_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:ceruledge"
 			],
 			"spawn_egg": {
 				"texture": "ceruledge",

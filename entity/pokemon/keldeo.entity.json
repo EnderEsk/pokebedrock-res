@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/keldeo",
 				"default_female": "textures/sprites/default/keldeo",
 				"shiny_male": "textures/sprites/default/keldeo",
-				"shiny_female": "textures/sprites/default/keldeo"
+				"shiny_female": "textures/sprites/default/keldeo",
+				"pbranni": "textures/sprites/default/keldeo_pbranni"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:keldeo"
 			],
 			"spawn_egg": {
 				"texture": "keldeo",

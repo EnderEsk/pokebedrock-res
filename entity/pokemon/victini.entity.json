@@ -12,13 +12,15 @@
 				"default_male": "textures/sprites/default/victini",
 				"default_female": "textures/sprites/default/victini",
 				"shiny_male": "textures/sprites/default/victini",
-				"shiny_female": "textures/sprites/default/victini"
+				"shiny_female": "textures/sprites/default/victini",
+				"valentine": "textures/sprites/default/victini_valentine",
+				"christmas": "textures/sprites/default/victini_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:victini"
 			],
 			"spawn_egg": {
 				"texture": "victini",

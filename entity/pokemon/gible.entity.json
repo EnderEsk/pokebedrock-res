@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/gible",
 				"default_female": "textures/sprites/default/gible",
 				"shiny_male": "textures/sprites/default/gible",
-				"shiny_female": "textures/sprites/default/gible"
+				"shiny_female": "textures/sprites/default/gible",
+				"halloween": "textures/sprites/default/gible_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:gible"
 			],
 			"spawn_egg": {
 				"texture": "gible",

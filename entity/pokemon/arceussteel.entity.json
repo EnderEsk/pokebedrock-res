@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/arceussteel",
 				"default_female": "textures/sprites/default/arceussteel",
 				"shiny_male": "textures/sprites/default/arceussteel",
-				"shiny_female": "textures/sprites/default/arceussteel"
+				"shiny_female": "textures/sprites/default/arceussteel",
+				"omega": "textures/sprites/default/arceussteel_omega"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:arceussteel"
 			],
 			"spawn_egg": {
 				"texture": "arceussteel",

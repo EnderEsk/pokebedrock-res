@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/azumarill",
 				"default_female": "textures/sprites/default/azumarill",
 				"shiny_male": "textures/sprites/default/azumarill",
-				"shiny_female": "textures/sprites/default/azumarill"
+				"shiny_female": "textures/sprites/default/azumarill",
+				"christmas": "textures/sprites/default/azumarill_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:azumarill"
 			],
 			"spawn_egg": {
 				"texture": "azumarill",

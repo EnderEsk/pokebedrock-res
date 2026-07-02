@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/arceusground",
 				"default_female": "textures/sprites/default/arceusground",
 				"shiny_male": "textures/sprites/default/arceusground",
-				"shiny_female": "textures/sprites/default/arceusground"
+				"shiny_female": "textures/sprites/default/arceusground",
+				"omega": "textures/sprites/default/arceusground_omega"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:arceusground"
 			],
 			"spawn_egg": {
 				"texture": "arceusground",

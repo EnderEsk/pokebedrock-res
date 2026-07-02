@@ -12,13 +12,21 @@
 				"default_male": "textures/sprites/default/alcremie",
 				"default_female": "textures/sprites/default/alcremie",
 				"shiny_male": "textures/sprites/default/alcremie",
-				"shiny_female": "textures/sprites/default/alcremie"
+				"shiny_female": "textures/sprites/default/alcremie",
+				"ruby_cream": "textures/sprites/default/alcremie_ruby_cream",
+				"matcha_cream": "textures/sprites/default/alcremie_matcha_cream",
+				"mint_cream": "textures/sprites/default/alcremie_mint_cream",
+				"lemon_cream": "textures/sprites/default/alcremie_lemon_cream",
+				"salted_cream": "textures/sprites/default/alcremie_salted_cream",
+				"ruby_swirl": "textures/sprites/default/alcremie_ruby_swirl",
+				"caramel_swirl": "textures/sprites/default/alcremie_caramel_swirl",
+				"rainbow_swirl": "textures/sprites/default/alcremie_rainbow_swirl"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:alcremie"
 			],
 			"spawn_egg": {
 				"texture": "alcremie",

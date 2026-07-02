@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/gardevoir",
 				"default_female": "textures/sprites/default/gardevoir",
 				"shiny_male": "textures/sprites/default/gardevoir",
-				"shiny_female": "textures/sprites/default/gardevoir"
+				"shiny_female": "textures/sprites/default/gardevoir",
+				"pbranni": "textures/sprites/default/gardevoir_pbranni"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:gardevoir"
 			],
 			"spawn_egg": {
 				"texture": "gardevoir",

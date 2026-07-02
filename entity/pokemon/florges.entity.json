@@ -12,13 +12,17 @@
 				"default_male": "textures/sprites/default/florges",
 				"default_female": "textures/sprites/default/florges",
 				"shiny_male": "textures/sprites/default/florges",
-				"shiny_female": "textures/sprites/default/florges"
+				"shiny_female": "textures/sprites/default/florges",
+				"blue": "textures/sprites/default/florges_blue",
+				"orange": "textures/sprites/default/florges_orange",
+				"white": "textures/sprites/default/florges_white",
+				"yellow": "textures/sprites/default/florges_yellow"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:florges"
 			],
 			"spawn_egg": {
 				"texture": "florges",

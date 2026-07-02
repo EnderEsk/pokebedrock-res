@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/arceusdragon",
 				"default_female": "textures/sprites/default/arceusdragon",
 				"shiny_male": "textures/sprites/default/arceusdragon",
-				"shiny_female": "textures/sprites/default/arceusdragon"
+				"shiny_female": "textures/sprites/default/arceusdragon",
+				"omega": "textures/sprites/default/arceusdragon_omega"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:arceusdragon"
 			],
 			"spawn_egg": {
 				"texture": "arceusdragon",

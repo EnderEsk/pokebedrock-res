@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/maushold",
 				"default_female": "textures/sprites/default/maushold",
 				"shiny_male": "textures/sprites/default/maushold",
-				"shiny_female": "textures/sprites/default/maushold"
+				"shiny_female": "textures/sprites/default/maushold",
+				"christmas": "textures/sprites/default/maushold_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:maushold"
 			],
 			"spawn_egg": {
 				"texture": "maushold",

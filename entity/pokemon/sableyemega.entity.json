@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/sableyemega",
 				"default_female": "textures/sprites/default/sableyemega",
 				"shiny_male": "textures/sprites/default/sableyemega",
-				"shiny_female": "textures/sprites/default/sableyemega"
+				"shiny_female": "textures/sprites/default/sableyemega",
+				"sculk": "textures/sprites/default/sableyemega_sculk"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:sableyemega"
 			],
 			"spawn_egg": {
 				"texture": "sableyemega",

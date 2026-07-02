@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/lechonk",
 				"default_female": "textures/sprites/default/lechonk",
 				"shiny_male": "textures/sprites/default/lechonk",
-				"shiny_female": "textures/sprites/default/lechonk"
+				"shiny_female": "textures/sprites/default/lechonk",
+				"halloween": "textures/sprites/default/lechonk_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:lechonk"
 			],
 			"spawn_egg": {
 				"texture": "lechonk",

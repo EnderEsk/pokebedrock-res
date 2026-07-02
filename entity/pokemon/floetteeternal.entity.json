@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/floetteeternal",
 				"default_female": "textures/sprites/default/floetteeternal",
 				"shiny_male": "textures/sprites/default/floetteeternal",
-				"shiny_female": "textures/sprites/default/floetteeternal"
+				"shiny_female": "textures/sprites/default/floetteeternal",
+				"pbranni": "textures/sprites/default/floetteeternal_pbranni"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:floetteeternal"
 			],
 			"spawn_egg": {
 				"texture": "floetteeternal",

@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/scizor",
 				"default_female": "textures/sprites/default/scizor",
 				"shiny_male": "textures/sprites/default/scizor",
-				"shiny_female": "textures/sprites/default/scizor"
+				"shiny_female": "textures/sprites/default/scizor",
+				"ranger": "textures/sprites/default/scizor_ranger"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:scizor"
 			],
 			"spawn_egg": {
 				"texture": "scizor",

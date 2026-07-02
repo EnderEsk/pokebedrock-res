@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/houndoom",
 				"default_female": "textures/sprites/default/houndoom",
 				"shiny_male": "textures/sprites/default/houndoom",
-				"shiny_female": "textures/sprites/default/houndoom"
+				"shiny_female": "textures/sprites/default/houndoom",
+				"independence": "textures/sprites/default/houndoom_independence"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:houndoom"
 			],
 			"spawn_egg": {
 				"texture": "houndoom",

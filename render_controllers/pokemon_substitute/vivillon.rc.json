@@ -1,0 +1,41 @@
+{
+	"format_version": "1.10.0",
+	"render_controllers": {
+		"controller.render.pokemon_substitute:vivillon": {
+			"arrays": {
+				"textures": {
+					"Array.skins": [
+						"Texture.default",
+						"Texture.archipelago",
+						"Texture.continental",
+						"Texture.elegant",
+						"Texture.garden",
+						"Texture.high_plains",
+						"Texture.icy_snow",
+						"Texture.jungle",
+						"Texture.marine",
+						"Texture.modern",
+						"Texture.monsoon",
+						"Texture.ocean",
+						"Texture.polar",
+						"Texture.river",
+						"Texture.sandstorm",
+						"Texture.savanna",
+						"Texture.sun",
+						"Texture.tundra",
+						"Texture.valentine"
+					]
+				}
+			},
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Array.skins[query.property('pokeb:skin_index')]"
+			]
+		}
+	}
+}

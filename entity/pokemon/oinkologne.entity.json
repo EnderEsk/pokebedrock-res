@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/oinkologne",
 				"default_female": "textures/sprites/default/oinkologne",
 				"shiny_male": "textures/sprites/default/oinkologne",
-				"shiny_female": "textures/sprites/default/oinkologne"
+				"shiny_female": "textures/sprites/default/oinkologne",
+				"halloween": "textures/sprites/default/oinkologne_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:oinkologne"
 			],
 			"spawn_egg": {
 				"texture": "oinkologne",

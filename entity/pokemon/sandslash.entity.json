@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/sandslash",
 				"default_female": "textures/sprites/default/sandslash",
 				"shiny_male": "textures/sprites/default/sandslash",
-				"shiny_female": "textures/sprites/default/sandslash"
+				"shiny_female": "textures/sprites/default/sandslash",
+				"halloween": "textures/sprites/default/sandslash_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:sandslash"
 			],
 			"spawn_egg": {
 				"texture": "sandslash",

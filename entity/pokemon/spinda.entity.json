@@ -12,13 +12,21 @@
 				"default_male": "textures/sprites/default/spinda",
 				"default_female": "textures/sprites/default/spinda",
 				"shiny_male": "textures/sprites/default/spinda",
-				"shiny_female": "textures/sprites/default/spinda"
+				"shiny_female": "textures/sprites/default/spinda",
+				"bow_ties": "textures/sprites/default/spinda_bow_ties",
+				"face_scar": "textures/sprites/default/spinda_face_scar",
+				"doublegangar": "textures/sprites/default/spinda_doublegangar",
+				"dots": "textures/sprites/default/spinda_dots",
+				"glasses": "textures/sprites/default/spinda_glasses",
+				"eyebrows": "textures/sprites/default/spinda_eyebrows",
+				"small_king": "textures/sprites/default/spinda_small_king",
+				"heart": "textures/sprites/default/spinda_heart"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:spinda"
 			],
 			"spawn_egg": {
 				"texture": "spinda",

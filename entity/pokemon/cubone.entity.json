@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/cubone",
 				"default_female": "textures/sprites/default/cubone",
 				"shiny_male": "textures/sprites/default/cubone",
-				"shiny_female": "textures/sprites/default/cubone"
+				"shiny_female": "textures/sprites/default/cubone",
+				"independence": "textures/sprites/default/cubone_independence"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:cubone"
 			],
 			"spawn_egg": {
 				"texture": "cubone",

@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/darmanitangalar",
 				"default_female": "textures/sprites/default/darmanitangalar",
 				"shiny_male": "textures/sprites/default/darmanitangalar",
-				"shiny_female": "textures/sprites/default/darmanitangalar"
+				"shiny_female": "textures/sprites/default/darmanitangalar",
+				"christmas": "textures/sprites/default/darmanitangalar_christmas"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:darmanitangalar"
 			],
 			"spawn_egg": {
 				"texture": "darmanitangalar",

@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/garganacl",
 				"default_female": "textures/sprites/default/garganacl",
 				"shiny_male": "textures/sprites/default/garganacl",
-				"shiny_female": "textures/sprites/default/garganacl"
+				"shiny_female": "textures/sprites/default/garganacl",
+				"pbranni": "textures/sprites/default/garganacl_pbranni"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:garganacl"
 			],
 			"spawn_egg": {
 				"texture": "garganacl",

@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/darkrai",
 				"default_female": "textures/sprites/default/darkrai",
 				"shiny_male": "textures/sprites/default/darkrai",
-				"shiny_female": "textures/sprites/default/darkrai"
+				"shiny_female": "textures/sprites/default/darkrai",
+				"halloween": "textures/sprites/default/darkrai_halloween"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:darkrai"
 			],
 			"spawn_egg": {
 				"texture": "darkrai",
