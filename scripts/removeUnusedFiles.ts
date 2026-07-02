@@ -22,15 +22,17 @@ const itemTexturesPath = join(root, "textures", "item_texture.json");
  * @returns
  */
 const getPath = (folder: string) => {
+  // Pokémon 3D assets live in the high-tier subpack; cries stay in the root.
+  const subpack3d = join(root, "subpacks", "3d");
   switch (folder) {
     case "animations":
-      return join(root, folder, "pokemon");
+      return join(subpack3d, folder, "pokemon");
     case "models":
-      return join(root, folder, "entity", "pokemon");
+      return join(subpack3d, folder, "entity", "pokemon");
     case "sounds":
       return join(root, folder, "mob", "pokemon");
     case "textures":
-      return join(root, folder, "entity", "pokemon");
+      return join(subpack3d, folder, "entity", "pokemon");
     default:
       return join(root, folder);
   }

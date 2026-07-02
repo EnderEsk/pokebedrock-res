@@ -1,0 +1,84 @@
+{
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:oinkologne",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/oinkologne/oinkologne.png",
+				"shiny_default": "textures/entity/pokemon/oinkologne/shiny_oinkologne.png",
+				"halloween": "textures/entity/pokemon/oinkologne/oinkologne_halloween.png",
+				"shiny_halloween": "textures/entity/pokemon/oinkologne/shiny_oinkologne_halloween.png"
+			},
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_blink": "animation.oinkologne.blink",
+				"default_ground_idle": "animation.oinkologne.ground_idle",
+				"default_air_idle": "animation.oinkologne.ground_idle",
+				"default_water_idle": "animation.oinkologne.water_idle",
+				"default_walking": "animation.oinkologne.walking",
+				"default_flying": "animation.oinkologne.ground_idle",
+				"default_swimming": "animation.oinkologne.swimming",
+				"default_sleeping": "animation.oinkologne.sleeping",
+				"default_attack": "animation.oinkologne.attack",
+				"halloween_flying": "animation.oinkologne_halloween.flying",
+				"halloween_air_idle": "animation.oinkologne_halloween.air_idle",
+				"halloween_swimming": "animation.oinkologne_halloween.swimming",
+				"halloween_water_idle": "animation.oinkologne_halloween.water_idle",
+				"halloween_walking": "animation.oinkologne_halloween.walking",
+				"halloween_ground_idle": "animation.oinkologne_halloween.ground_idle",
+				"halloween_sleeping": "animation.oinkologne_halloween.sleeping",
+				"halloween_blink": "animation.oinkologne_halloween.blink",
+				"halloween_attack": "animation.oinkologne_halloween.attack",
+				"halloween_faint": "animation.oinkologne_halloween.faint",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "controller.animation.pokemon.oinkologne_attack",
+				"blink": "controller.animation.pokemon.oinkologne_blink",
+				"controller": "controller.animation.pokemon.oinkologne"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:oinkologne": "query.variant==0"
+				},
+				{
+					"controller.render.pokemon:oinkologne.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "oinkologne",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.oinkologne",
+				"halloween": "geometry.oinkologne_halloween"
+			}
+		}
+	}
+}

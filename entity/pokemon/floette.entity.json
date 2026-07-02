@@ -12,13 +12,17 @@
 				"default_male": "textures/sprites/default/floette",
 				"default_female": "textures/sprites/default/floette",
 				"shiny_male": "textures/sprites/default/floette",
-				"shiny_female": "textures/sprites/default/floette"
+				"shiny_female": "textures/sprites/default/floette",
+				"blue": "textures/sprites/default/floette_blue",
+				"orange": "textures/sprites/default/floette_orange",
+				"white": "textures/sprites/default/floette_white",
+				"yellow": "textures/sprites/default/floette_yellow"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:floette"
 			],
 			"spawn_egg": {
 				"texture": "floette",

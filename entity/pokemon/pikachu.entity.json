@@ -4,77 +4,30 @@
 		"description": {
 			"identifier": "pokemon:pikachu",
 			"materials": {
-				"default": "entity_emissive_alpha",
-				"aura": "charged_creeper"
+				"default": "zombie"
 			},
 			"textures": {
-				"evo_aura": "textures/entity/evolving",
-				"male_default": "textures/entity/pokemon/pikachu/male_pikachu.png",
-				"shiny_male_default": "textures/entity/pokemon/pikachu/male_shiny_pikachu.png",
-				"female_default": "textures/entity/pokemon/pikachu/female_pikachu.png",
-				"shiny_female_default": "textures/entity/pokemon/pikachu/female_shiny_pikachu.png",
-				"male_witch": "textures/entity/pokemon/pikachu/male_pikachu_witch.png",
-				"female_witch": "textures/entity/pokemon/pikachu/female_pikachu_witch.png",
-				"male_captin": "textures/entity/pokemon/pikachu/male_pikachu_captin.png",
-				"female_captin": "textures/entity/pokemon/pikachu/female_pikachu_captin.png",
-				"male_santa": "textures/entity/pokemon/pikachu/male_pikachu_santa.png",
-				"female_santa": "textures/entity/pokemon/pikachu/female_pikachu_santa.png",
-				"male_detective": "textures/entity/pokemon/pikachu/male_pikachu_detective.png",
-				"female_detective": "textures/entity/pokemon/pikachu/female_pikachu_detective.png",
-				"male_doll": "textures/entity/pokemon/pikachu/male_pikachu_doll.png",
-				"female_doll": "textures/entity/pokemon/pikachu/female_pikachu_doll.png"
+				"default": "textures/sprites/default/pikachu",
+				"shiny_default": "textures/sprites/default/pikachu",
+				"default_male": "textures/sprites/default/pikachu",
+				"default_female": "textures/sprites/default/pikachu",
+				"shiny_male": "textures/sprites/default/pikachu",
+				"shiny_female": "textures/sprites/default/pikachu",
+				"witch": "textures/sprites/default/pikachu_witch",
+				"captin": "textures/sprites/default/pikachu_captin",
+				"santa": "textures/sprites/default/pikachu_santa",
+				"detective": "textures/sprites/default/pikachu_detective",
+				"doll": "textures/sprites/default/pikachu_doll"
 			},
-			"scripts": {
-				"scale": "q.property('pokeb:scale')",
-				"initialize": [
-					"v.blink_chance = 0.01;",
-					"v.move_threshold = 0.01;"
-				],
-				"pre_animation": [
-					"v.skin_index = query.property('pokeb:skin_index');",
-					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
-					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
-					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
-					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
-					"v.is_swimming = query.is_swimming;",
-					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
-					"v.is_sleeping = q.is_sleeping;",
-					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
-				],
-				"animate": [
-					"controller",
-					{
-						"blink": "v.should_blink"
-					}
-				]
-			},
-			"animations": {
-				"default_ground_idle": "animation.pikachu.ground_idle",
-				"default_air_idle": "animation.pikachu.ground_idle",
-				"default_water_idle": "animation.pikachu.water_idle",
-				"default_walking": "animation.pikachu.walking",
-				"default_flying": "animation.pikachu.ground_idle",
-				"default_swimming": "animation.pikachu.swimming",
-				"default_sleeping": "animation.pikachu.sleeping",
-				"look_at_target": "animation.pokemon.look_at_target",
-				"attack": "animation.pikachu.attack",
-				"blink": "animation.pikachu.blink",
-				"controller": "controller.animation.pokemon"
+			"geometry": {
+				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				{
-					"controller.render.pokemon:pikachu": "query.variant==0"
-				},
-				{
-					"controller.render.evolve": "query.variant==1"
-				}
+				"controller.render.pokemon_substitute:pikachu"
 			],
 			"spawn_egg": {
 				"texture": "pikachu",
 				"texture_index": 0
-			},
-			"geometry": {
-				"default": "geometry.pikachu"
 			}
 		}
 	}

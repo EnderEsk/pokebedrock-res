@@ -1,0 +1,84 @@
+{
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:gardevoirmega",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/gardevoirmega/gardevoirmega.png",
+				"shiny_default": "textures/entity/pokemon/gardevoirmega/shiny_gardevoirmega.png",
+				"pbranni": "textures/entity/pokemon/gardevoirmega/gardevoirmega_pbranni.png",
+				"shiny_pbranni": "textures/entity/pokemon/gardevoirmega/shiny_gardevoirmega_pbranni.png"
+			},
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_blink": "animation.gardevoirmega.blink",
+				"default_ground_idle": "animation.gardevoirmega.ground_idle",
+				"default_air_idle": "animation.gardevoirmega.ground_idle",
+				"default_water_idle": "animation.gardevoirmega.water_idle",
+				"default_walking": "animation.gardevoirmega.walking",
+				"default_flying": "animation.gardevoirmega.ground_idle",
+				"default_swimming": "animation.gardevoirmega.swimming",
+				"default_sleeping": "animation.gardevoirmega.sleeping",
+				"default_attack": "animation.gardevoirmega.attack",
+				"pbranni_flying": "animation.gardevoirmega_pbranni.flying",
+				"pbranni_air_idle": "animation.gardevoirmega_pbranni.air_idle",
+				"pbranni_swimming": "animation.gardevoirmega_pbranni.swimming",
+				"pbranni_water_idle": "animation.gardevoirmega_pbranni.water_idle",
+				"pbranni_walking": "animation.gardevoirmega_pbranni.walking",
+				"pbranni_ground_idle": "animation.gardevoirmega_pbranni.ground_idle",
+				"pbranni_sleeping": "animation.gardevoirmega_pbranni.sleeping",
+				"pbranni_blink": "animation.gardevoirmega_pbranni.blink",
+				"pbranni_attack": "animation.gardevoirmega_pbranni.attack",
+				"pbranni_faint": "animation.gardevoirmega_pbranni.faint",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "controller.animation.pokemon.gardevoirmega_attack",
+				"blink": "controller.animation.pokemon.gardevoirmega_blink",
+				"controller": "controller.animation.pokemon.gardevoirmega"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:gardevoirmega": "query.variant==0"
+				},
+				{
+					"controller.render.pokemon:gardevoirmega.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "gardevoirmega",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.gardevoirmega",
+				"pbranni": "geometry.gardevoirmega_pbranni"
+			}
+		}
+	}
+}

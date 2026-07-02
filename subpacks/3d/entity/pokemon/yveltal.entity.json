@@ -1,0 +1,110 @@
+{
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:yveltal",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/yveltal/yveltal.png",
+				"shiny_default": "textures/entity/pokemon/yveltal/shiny_yveltal.png",
+				"christmas": "textures/entity/pokemon/yveltal/yveltal_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/yveltal/shiny_yveltal_christmas.png",
+				"goremagala": "textures/entity/pokemon/yveltal/yveltal_goremagala.png",
+				"shiny_goremagala": "textures/entity/pokemon/yveltal/shiny_yveltal_goremagala.png",
+				"alastor": "textures/entity/pokemon/yveltal/yveltal_alastor.png",
+				"shiny_alastor": "textures/entity/pokemon/yveltal/shiny_yveltal_alastor.png"
+			},
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					}
+				]
+			},
+			"animations": {
+				"default_blink": "animation.yveltal.blink",
+				"default_ground_idle": "animation.yveltal.ground_idle",
+				"default_air_idle": "animation.yveltal.air_idle",
+				"default_water_idle": "animation.yveltal.ground_idle",
+				"default_walking": "animation.yveltal.walking",
+				"default_flying": "animation.yveltal.flying",
+				"default_swimming": "animation.yveltal.ground_idle",
+				"default_sleeping": "animation.yveltal.sleeping",
+				"default_attack": "animation.yveltal.attack",
+				"christmas_flying": "animation.yveltal_christmas.flying",
+				"christmas_air_idle": "animation.yveltal_christmas.air_idle",
+				"christmas_swimming": "animation.yveltal_christmas.swimming",
+				"christmas_water_idle": "animation.yveltal_christmas.water_idle",
+				"christmas_walking": "animation.yveltal_christmas.walking",
+				"christmas_ground_idle": "animation.yveltal_christmas.ground_idle",
+				"christmas_sleeping": "animation.yveltal_christmas.sleeping",
+				"christmas_blink": "animation.yveltal_christmas.blink",
+				"christmas_attack": "animation.yveltal_christmas.attack",
+				"christmas_faint": "animation.yveltal_christmas.faint",
+				"goremagala_flying": "animation.yveltal_goremagala.flying",
+				"goremagala_air_idle": "animation.yveltal_goremagala.air_idle",
+				"goremagala_swimming": "animation.yveltal_goremagala.swimming",
+				"goremagala_water_idle": "animation.yveltal_goremagala.water_idle",
+				"goremagala_walking": "animation.yveltal_goremagala.walking",
+				"goremagala_ground_idle": "animation.yveltal_goremagala.ground_idle",
+				"goremagala_sleeping": "animation.yveltal_goremagala.sleeping",
+				"goremagala_blink": "animation.yveltal_goremagala.blink",
+				"goremagala_attack": "animation.yveltal_goremagala.attack",
+				"goremagala_faint": "animation.yveltal_goremagala.faint",
+				"alastor_flying": "animation.yveltal_alastor.flying",
+				"alastor_air_idle": "animation.yveltal_alastor.air_idle",
+				"alastor_swimming": "animation.yveltal_alastor.swimming",
+				"alastor_water_idle": "animation.yveltal_alastor.water_idle",
+				"alastor_walking": "animation.yveltal_alastor.walking",
+				"alastor_ground_idle": "animation.yveltal_alastor.ground_idle",
+				"alastor_sleeping": "animation.yveltal_alastor.sleeping",
+				"alastor_blink": "animation.yveltal_alastor.blink",
+				"alastor_attack": "animation.yveltal_alastor.attack",
+				"alastor_faint": "animation.yveltal_alastor.faint",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"attack": "controller.animation.pokemon.yveltal_attack",
+				"blink": "controller.animation.pokemon.yveltal_blink",
+				"controller": "controller.animation.pokemon.yveltal"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:yveltal": "query.variant==0"
+				},
+				{
+					"controller.render.pokemon:yveltal.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "yveltal",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.yveltal",
+				"christmas": "geometry.yveltal_christmas",
+				"goremagala": "geometry.yveltal_goremagala",
+				"alastor": "geometry.yveltal_alastor"
+			}
+		}
+	}
+}

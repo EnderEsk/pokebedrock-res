@@ -12,13 +12,40 @@
 				"default_male": "textures/sprites/default/unown",
 				"default_female": "textures/sprites/default/unown",
 				"shiny_male": "textures/sprites/default/unown",
-				"shiny_female": "textures/sprites/default/unown"
+				"shiny_female": "textures/sprites/default/unown",
+				"b": "textures/sprites/default/unown_b",
+				"c": "textures/sprites/default/unown_c",
+				"d": "textures/sprites/default/unown_d",
+				"e": "textures/sprites/default/unown_e",
+				"f": "textures/sprites/default/unown_f",
+				"g": "textures/sprites/default/unown_g",
+				"h": "textures/sprites/default/unown_h",
+				"i": "textures/sprites/default/unown_i",
+				"j": "textures/sprites/default/unown_j",
+				"k": "textures/sprites/default/unown_k",
+				"l": "textures/sprites/default/unown_l",
+				"m": "textures/sprites/default/unown_m",
+				"n": "textures/sprites/default/unown_n",
+				"o": "textures/sprites/default/unown_o",
+				"p": "textures/sprites/default/unown_p",
+				"q": "textures/sprites/default/unown_q",
+				"r": "textures/sprites/default/unown_r",
+				"s": "textures/sprites/default/unown_s",
+				"t": "textures/sprites/default/unown_t",
+				"u": "textures/sprites/default/unown_u",
+				"v": "textures/sprites/default/unown_v",
+				"w": "textures/sprites/default/unown_w",
+				"x": "textures/sprites/default/unown_x",
+				"y": "textures/sprites/default/unown_y",
+				"z": "textures/sprites/default/unown_z",
+				"exclamation": "textures/sprites/default/unown_exclamation",
+				"question": "textures/sprites/default/unown_question"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:unown"
 			],
 			"spawn_egg": {
 				"texture": "unown",

@@ -1,0 +1,26 @@
+{
+	"format_version": "1.10.0",
+	"render_controllers": {
+		"controller.render.pokemon_substitute:mew": {
+			"arrays": {
+				"textures": {
+					"Array.skins": [
+						"Texture.default",
+						"Texture.christmas",
+						"Texture.shadow",
+						"Texture.princess"
+					]
+				}
+			},
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Array.skins[query.property('pokeb:skin_index')]"
+			]
+		}
+	}
+}
