@@ -171,6 +171,77 @@
       "textures": "textures/blocks/materials/crystal/small_crystal_bud"
     },
 
+    // Plushies
+    "bulbasaur_plushy": {
+      "textures": "textures/blocks/plushies/bulbasaur"
+    },
+    "charmander_plushy": {
+      "textures": "textures/blocks/plushies/charmander"
+    },
+    "chickorita_plushy": {
+      "textures": "textures/blocks/plushies/chickorita"
+    },
+    "chimchar_plushy": {
+      "textures": "textures/blocks/plushies/chimchar"
+    },
+    "clefairy_plushy": {
+      "textures": "textures/blocks/plushies/clefairy"
+    },
+    "cyndaquil_plushy": {
+      "textures": "textures/blocks/plushies/cyndaquil"
+    },
+    "eevee_plushy": {
+      "textures": "textures/blocks/plushies/eevee"
+    },
+    "espeon_plushy": {
+      "textures": "textures/blocks/plushies/espeon"
+    },
+    "flareon_plushy": {
+      "textures": "textures/blocks/plushies/flareon"
+    },
+    "glaceon_plushy": {
+      "textures": "textures/blocks/plushies/glaceon"
+    },
+    "jolteon_plushy": {
+      "textures": "textures/blocks/plushies/jolteon"
+    },
+    "leafeon_plushy": {
+      "textures": "textures/blocks/plushies/leafeon"
+    },
+    "mudkip_plushy": {
+      "textures": "textures/blocks/plushies/mudkip"
+    },
+    "pikachu_plushy": {
+      "textures": "textures/blocks/plushies/pikachu"
+    },
+    "piplup_plushy": {
+      "textures": "textures/blocks/plushies/piplup"
+    },
+    "squirtle_plushy": {
+      "textures": "textures/blocks/plushies/squirtle"
+    },
+    "sylveon_plushy": {
+      "textures": "textures/blocks/plushies/sylveon"
+    },
+    "torchic_plushy": {
+      "textures": "textures/blocks/plushies/torchic"
+    },
+    "totodile_plushy": {
+      "textures": "textures/blocks/plushies/totodile"
+    },
+    "treecko_plushy": {
+      "textures": "textures/blocks/plushies/treecko"
+    },
+    "turtwig_plushy": {
+      "textures": "textures/blocks/plushies/turtwig"
+    },
+    "umbreon_plushy": {
+      "textures": "textures/blocks/plushies/umbreon"
+    },
+    "vaporeon_plushy": {
+      "textures": "textures/blocks/plushies/vaporeon"
+    },
+
     // Ores
     "amethyst_ore": {
       "textures": "textures/blocks/materials/amethyst/stone_ore"
