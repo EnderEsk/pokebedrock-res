@@ -191,6 +191,7 @@ item.pokeb:trade_panel=Панель обмена
 
 ## Ores
 tile.pokeb:bauxite_ore.name=Bauxite Ore
+tile.pokeb:amethyst_ore.name=Аметистовая руда
 tile.pokeb:silver_ore.name=Silver Ore
 tile.pokeb:dawn_stone_ore.name=Рассветная руда
 tile.pokeb:dusk_stone_ore.name=Сумеречная руда

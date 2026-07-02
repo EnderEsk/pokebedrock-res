@@ -190,6 +190,7 @@ item.pokeb:trade_panel=Panel de intercambio
 
 ## Ores
 tile.pokeb:bauxite_ore.name=Mineral de bauxita
+tile.pokeb:amethyst_ore.name=Mineral de amatista
 tile.pokeb:silver_ore.name=Mineral de Plata
 tile.pokeb:dawn_stone_ore.name=Mineral de piedra alba
 tile.pokeb:dusk_stone_ore.name=Mineral de piedra noche

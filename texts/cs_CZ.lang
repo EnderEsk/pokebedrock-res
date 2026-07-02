@@ -191,6 +191,7 @@ item.pokeb:trade_panel=ObchodnÃ­ panel
 
 ## Ores
 tile.pokeb:bauxite_ore.name=BauxitovÃ¡ ruda
+tile.pokeb:amethyst_ore.name=Ametystová ruda
 tile.pokeb:silver_ore.name=Silver Ore
 tile.pokeb:dawn_stone_ore.name=ÃšsvitovÃ¡ kamennÃ¡ ruda
 tile.pokeb:dusk_stone_ore.name=SoumrakovÃ¡ kamennÃ¡ ruda

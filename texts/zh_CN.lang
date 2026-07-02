@@ -191,6 +191,7 @@ item.pokeb:trade_panel=交换面板
 
 ## Ores
 tile.pokeb:bauxite_ore.name=铝矿石
+tile.pokeb:amethyst_ore.name=紫水晶矿石
 tile.pokeb:silver_ore.name=Silver Ore
 tile.pokeb:dawn_stone_ore.name=觉醒之石矿石
 tile.pokeb:dusk_stone_ore.name=暗之石矿石

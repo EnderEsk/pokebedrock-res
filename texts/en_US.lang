@@ -225,6 +225,7 @@ tile.pokeb:ruby_block.name=Ruby Block
 tile.pokeb:sapphire_block.name=Sapphire Block
 
 # ===== Ores =====
+tile.pokeb:amethyst_ore.name=Amethyst Ore
 tile.pokeb:bauxite_ore.name=Bauxite Ore
 tile.pokeb:platinum_ore.name=Platinum Ore
 tile.pokeb:silver_ore.name=Silver Ore
@@ -234,6 +235,7 @@ tile.pokeb:ruby_ore.name=Ruby Ore
 tile.pokeb:sapphire_ore.name=Sapphire Ore
 
 # ===== Deepslate Ores =====
+tile.pokeb:deepslate_amethyst_ore.name=Deepslate Amethyst Ore
 tile.pokeb:deepslate_bauxite_ore.name=Deepslate Bauxite Ore
 tile.pokeb:deepslate_platinum_ore.name=Deepslate Platinum Ore
 tile.pokeb:deepslate_silver_ore.name=Deepslate Silver Ore

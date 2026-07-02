@@ -191,6 +191,7 @@ item.pokeb:trade_panel=Painel de troca
 
 ## Ores
 tile.pokeb:bauxite_ore.name=MinÃ©rio de bauxita
+tile.pokeb:amethyst_ore.name=Minério de ametista
 tile.pokeb:silver_ore.name=Silver Ore
 tile.pokeb:dawn_stone_ore.name=MinÃ©rio de Pedra da Alvorada
 tile.pokeb:dusk_stone_ore.name=MinÃ©rio de Pedra do CrepÃºsculo
