@@ -32,5 +32,8 @@ jobs:
       - name: Validate format versions
         run: npm run validate:formatVersions
 
+      - name: Validate language file sync
+        run: npm run syncLangFiles -- --check
+
       - name: Run tests
         run: npm test
