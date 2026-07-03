@@ -25,7 +25,21 @@ export const KEY_VALUE_CATEGORIES = [
   "render_controllers",
 ] as const;
 
-const GEOMETRY_OUTPUT_PATH = "models/entity/pokebedrock_models.geo.json";
+/**
+ * Suffix appended to a subpack's combined file names so they don't collide with
+ * the root combined files once Bedrock overlays the subpack. Without this, e.g.
+ * `subpacks/3d/models/entity/pokebedrock_models.geo.json` resolves to the same
+ * path as the root file and *replaces* it wholesale, dropping every geometry the
+ * subpack doesn't redefine (shared armor/NPC geos and non-3d pokémon still on
+ * `geometry.substitute`) — producing "geometry not found" and invisible entities.
+ *
+ * @param baseDir - Pack-relative base directory (`""` for root or e.g. `"subpacks/3d"`).
+ * @returns Empty string for the root, or `_<subpackFolder>` (e.g. `_3d`) for a subpack.
+ */
+function getCombinedSuffix(baseDir: string): string {
+  if (!baseDir) return "";
+  return `_${baseDir.split("/").pop()}`;
+}
 
 /**
  * Builds a key-value asset config from a category name.
@@ -40,12 +54,13 @@ function getKeyValueConfig(
   baseDir: string = "",
 ): KeyValueAssetConfig {
   const prefix = baseDir ? `${baseDir}/` : "";
+  const suffix = getCombinedSuffix(baseDir);
   return {
     category,
     directory: `${prefix}${category}`,
     extensions: ["json"],
     rootKey: category,
-    outputPath: `${prefix}${category}/pokebedrock_${category}.json`,
+    outputPath: `${prefix}${category}/pokebedrock_${category}${suffix}.json`,
   };
 }
 
@@ -177,11 +192,12 @@ function compileGeometry(
   generated: GeneratedEntry[],
 ) {
   const prefix = baseDir ? `${baseDir}/` : "";
+  const suffix = getCombinedSuffix(baseDir);
   const config: GeometryAssetConfig = {
     category: "models",
     directory: `${prefix}models`,
     extensions: ["json"],
-    outputPath: `${prefix}${GEOMETRY_OUTPUT_PATH}`,
+    outputPath: `${prefix}models/entity/pokebedrock_models${suffix}.geo.json`,
   };
   const exceptions = new Set<string>(COMPILE_EXCEPTIONS.models);
   const foundExceptions = new Set<string>();

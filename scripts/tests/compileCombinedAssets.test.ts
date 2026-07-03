@@ -42,7 +42,9 @@ describe("compileCombinedAssets", () => {
     );
     expect(entry).toBeDefined();
     const data = JSON.parse(entry!.content);
-    expect(data.format_version).toBe(REQUIRED_FORMAT_VERSIONS.render_controllers);
+    expect(data.format_version).toBe(
+      REQUIRED_FORMAT_VERSIONS.render_controllers,
+    );
     expect(typeof data.render_controllers).toBe("object");
     expect(Object.keys(data.render_controllers).length).toBeGreaterThan(0);
   });
@@ -85,6 +87,27 @@ describe("compileCombinedAssets", () => {
     const keys = Object.keys(data.animations);
     const sorted = [...keys].sort();
     expect(keys).toEqual(sorted);
+  });
+
+  it("should suffix subpack combined files so they don't override the root ones", () => {
+    const paths = result.generatedEntries.map((e) => e.archivePath);
+    const expected = [
+      "subpacks/3d/animations/pokebedrock_animations_3d.json",
+      "subpacks/3d/animation_controllers/pokebedrock_animation_controllers_3d.json",
+      "subpacks/3d/render_controllers/pokebedrock_render_controllers_3d.json",
+      "subpacks/3d/models/entity/pokebedrock_models_3d.geo.json",
+    ];
+    for (const p of expected) expect(paths).toContain(p);
+
+    // The un-suffixed names must NOT appear under the subpack: once Bedrock
+    // overlays the subpack they'd collapse onto the root paths and wipe every
+    // geometry the subpack doesn't redefine (invisible-entity bug).
+    expect(paths).not.toContain(
+      "subpacks/3d/models/entity/pokebedrock_models.geo.json",
+    );
+    expect(paths).not.toContain(
+      "subpacks/3d/animations/pokebedrock_animations.json",
+    );
   });
 
   it("should sort geometry entries by identifier in combined output", () => {
