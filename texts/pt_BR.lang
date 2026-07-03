@@ -3726,6 +3726,7 @@ events.entityHit.error.pokemonNoMoves=Â§cSeu pokÃ©mon: %s nÃ£o tem movimen
 events.entityHit.error.spawnFailed=Â§cFalha ao gerar %s: %s
 events.entityHit.error.waitForBall=Â§cVocÃª deve esperar atÃ© que sua Ãºltima bola lanÃ§ada atinja antes de lanÃ§ar outra.
 events.entityHit.info.entityId=ID da entidade de ocorrÃªncia: "%s"
+events.gamemodeInsurance.error.noPermission=§cVocê não tem permissão para usar o modo criativo!
 events.lagClear.broadcast.cleared=[Â§fServerÂ§r]O servidor Â§a foi limpo de itens e PokÃ©mon un-tamed!
 events.lagClear.broadcast.starting=[Â§fServerÂ§r]Â§a Lag Clear Iniciando em %s!
 events.locationCheck.error.dimensionBorder=Â§cVocÃª atingiu a fronteira da dimensÃ£o %s!

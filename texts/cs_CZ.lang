@@ -3722,6 +3722,7 @@ events.entityHit.error.pokemonNoMoves=Â§cVÃ¡Å¡ pokÃ©mon: %s nemÃ¡ Å¾
 events.entityHit.error.spawnFailed=Â§cNepodaÅ™ilo se vytvoÅ™it %s: %s
 events.entityHit.error.waitForBall=Â§cPÅ™ed hodem dalÅ¡Ã­ho musÃ­te poÄkat, aÅ¾ zasÃ¡hne vÃ¡Å¡ poslednÃ­ hozenÃ½ mÃ­Ä.
 events.entityHit.info.entityId=ID entity poÅ¾adavku: "%s"
+events.gamemodeInsurance.error.noPermission=§cNemáte oprávnění používat režim tvoření!
 events.lagClear.broadcast.cleared=[Â§fServerÂ§r]Â§a Server byl zbaven pÅ™edmÄ›tÅ¯ a nezkrotnÃ½ch PokÃ©monÅ¯!
 events.lagClear.broadcast.starting=[Â§fServerÂ§r]Â§a Prodleva Clear ZaÄÃ­nÃ¡ v %s!
 events.locationCheck.error.dimensionBorder=Â§cDosÃ¡hli jste hranice dimenze %s!

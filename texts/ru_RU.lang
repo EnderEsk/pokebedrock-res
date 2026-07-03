@@ -3722,6 +3722,7 @@ events.entityHit.error.pokemonNoMoves=§cYour покемон: %s has no moves, a
 events.entityHit.error.spawnFailed=§cНе удалось spawn %s: %s
 events.entityHit.error.waitForBall=§cВы должны wait for your last thrown ball to hit before throwing another.
 events.entityHit.info.entityId=Hit Entity Id: "%s"
+events.gamemodeInsurance.error.noPermission=§cУ вас нет разрешения на использование творческого режима!
 events.lagClear.broadcast.cleared=[§fСервер§r]§a Сервер has been cleared of items and un-tamed покемон!
 events.lagClear.broadcast.starting=[§fСервер§r]§a Lag Clear Starting in %s!
 events.locationCheck.error.dimensionBorder=§cУ вас reached the %s Измерение Border!

@@ -3923,6 +3923,7 @@ events.entityHit.error.pokemonNoMoves=§cYour pokemon: %s has no moves, and you 
 events.entityHit.error.spawnFailed=§cFailed to spawn %s: %s
 events.entityHit.error.waitForBall=§cYou must wait for your last thrown ball to hit before throwing another.
 events.entityHit.info.entityId=Hit Entity Id: "%s"
+events.gamemodeInsurance.error.noPermission=§cYou do not have permission to use creative mode.
 events.lagClear.broadcast.cleared=[§fServer§r]§a Server has been cleared of items and un-tamed Pokemon!
 events.lagClear.broadcast.starting=[§fServer§r]§a Lag Clear Starting in %s!
 events.locationCheck.error.dimensionBorder=§cYou have reached the %s Dimension Border!

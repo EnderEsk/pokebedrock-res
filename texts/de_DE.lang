@@ -3852,6 +3852,7 @@ events.entityHit.error.pokemonNoMoves=§cDein Pokémon: %s hat keine Bewegungen 
 events.entityHit.error.spawnFailed=§cFehler beim Spawnen von %s: %s
 events.entityHit.error.waitForBall=§cDu musst warten, bis dein letzter geworfener Ball trifft, bevor du einen weiteren werfen kannst.
 events.entityHit.info.entityId=Treffer-Entitäts-ID: "%s"
+events.gamemodeInsurance.error.noPermission=§cDu hast keine Berechtigung, den Kreativmodus zu verwenden!
 events.lagClear.broadcast.cleared=[§fServer§r]§a Server wurde von Items und ungezähmten Pokémon befreit!
 events.lagClear.broadcast.starting=[§fServer§r]§a Lag Clear Ab %s!
 events.locationCheck.error.dimensionBorder=§cDu hast die Dimensionsgrenze %s erreicht!

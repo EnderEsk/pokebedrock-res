@@ -3722,6 +3722,7 @@ events.entityHit.error.pokemonNoMoves=§c你的宝可梦：%s 没有招式，无
 events.entityHit.error.spawnFailed=§c生成 %s 失败：%s
 events.entityHit.error.waitForBall=§c你必须等上一个投出的球命中后才能再投掷另一个。
 events.entityHit.info.entityId=命中实体 ID："%s"
+events.gamemodeInsurance.error.noPermission=§c你没有权限使用创造模式！
 events.lagClear.broadcast.cleared=[§f服务器§r]§a 已清除服务器上的物品和未驯服宝可梦！
 events.lagClear.broadcast.starting=[§f服务器§r]§a 清理掉落物将在 %s 后开始！
 events.locationCheck.error.dimensionBorder=§c你已到达 %s 维度边界！

@@ -3724,6 +3724,7 @@ events.entityHit.error.pokemonNoMoves=§cTu pokemon: %s has no movimientos, and 
 events.entityHit.error.spawnFailed=§cNo se ha podido generar %s: %s
 events.entityHit.error.waitForBall=§cYou must wait for tir last thrown ball to hit before throwing anoelr.
 events.entityHit.info.entityId=Id de entidad golpeada: "%s"
+events.gamemodeInsurance.error.noPermission=§c¡No tienes permiso para usar el modo creativo!
 events.lagClear.broadcast.cleared=[§fServer§r]§a El servidor ha sido limpiado de objetos y Pokémon no domesticados!
 events.lagClear.broadcast.starting=[§fServer§r]§a Lag Clear comienza en %s!
 events.locationCheck.error.dimensionBorder=§cTienes reached el %s Dimension Border!
