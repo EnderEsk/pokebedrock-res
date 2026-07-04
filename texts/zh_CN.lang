@@ -208,7 +208,7 @@ item.pokeb:trade_holder_right=右侧交换支架
 item.pokeb:trade_monitor=交换监视器
 item.pokeb:trade_panel=交换面板
 
-# ===== Crystal Geode Blocks =====
+## ===== Crystal Geode Blocks =====
 tile.pokeb:crystal_block.name=水晶块
 tile.pokeb:budding_crystal.name=芽生水晶
 tile.pokeb:small_crystal_bud.name=小型水晶芽
@@ -216,7 +216,7 @@ tile.pokeb:medium_crystal_bud.name=中型水晶芽
 tile.pokeb:large_crystal_bud.name=大型水晶芽
 tile.pokeb:crystal_cluster.name=水晶簇
 
-# ===== Blocks =====
+## ===== Blocks =====
 tile.pokeb:aluminum_block.name=铝块
 tile.pokeb:bauxite_block.name=铝土块
 tile.pokeb:platinum_block.name=铂金块
@@ -224,7 +224,7 @@ tile.pokeb:silver_block.name=银块
 tile.pokeb:ruby_block.name=红宝石块
 tile.pokeb:sapphire_block.name=蓝宝石块
 
-# ===== Ores =====
+## ===== Ores =====
 tile.pokeb:amethyst_ore.name=紫水晶矿石
 tile.pokeb:bauxite_ore.name=铝矿石
 tile.pokeb:platinum_ore.name=铂金矿石
@@ -234,7 +234,7 @@ tile.pokeb:crystal_ore.name=水晶矿石
 tile.pokeb:ruby_ore.name=红宝石矿石
 tile.pokeb:sapphire_ore.name=蓝宝石矿石
 
-# ===== Deepslate Ores =====
+## ===== Deepslate Ores =====
 tile.pokeb:deepslate_amethyst_ore.name=深板岩紫水晶矿石
 tile.pokeb:deepslate_bauxite_ore.name=深板岩铝土矿石
 tile.pokeb:deepslate_platinum_ore.name=深板岩铂金矿石
@@ -244,7 +244,7 @@ tile.pokeb:deepslate_crystal_ore.name=深板岩水晶矿石
 tile.pokeb:deepslate_ruby_ore.name=深板岩红宝石矿石
 tile.pokeb:deepslate_sapphire_ore.name=深板岩蓝宝石矿石
 
-# ===== Evolution Stones =====
+## ===== Evolution Stones =====
 tile.pokeb:dawn_stone_ore.name=觉醒之石矿石
 tile.pokeb:dusk_stone_ore.name=暗之石矿石
 tile.pokeb:fire_stone_ore.name=火之石矿石
@@ -11017,7 +11017,7 @@ forms.serverNpc.button.editScore=编辑分数
 forms.serverNpc.button.editSellableItems=编辑可出售物品
 forms.serverNpc.button.editShopNpc=编辑商店 NPC
 forms.serverNpc.button.getBoat=获取船！
-forms.serverNpc.button.itemPrice=§l%1§r
+forms.serverNpc.button.itemPrice=§l%1§r\n§2§o%2x %3
 forms.serverNpc.button.remainingLeft= §7（剩余 %1）
 forms.serverNpc.button.sellItems=§l出售物品§r\n-- §o§6赚取 %1§r --
 forms.serverNpc.button.soldOut=§l%1§r\n§c§o已售罄
@@ -11421,7 +11421,7 @@ commands.database.confirm.resetAll=确定要重置所有数据库数据吗！此
 commands.database.confirm.resetTable=确定要重置表 %1 的所有数据库数据吗！此操作无法撤销。
 commands.evolve.title=进化：%1
 commands.migrate.info.availableHeader=§a可用迁移：§r
-commands.migrate.info.line=§f- §b%1§r: %2
+commands.migrate.info.line=§f- §b%1§r: %2\n§f   §7%3§r
 commands.migrate.info.statusCompleted=已完成
 commands.migrate.info.statusFailed=失败
 database.player.body.partyAndPcFull=你的队伍和 PC 都已满。要如何处理 %1？

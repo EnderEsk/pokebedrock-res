@@ -208,7 +208,7 @@ item.pokeb:trade_holder_right=Suporte de troca direito
 item.pokeb:trade_monitor=Monitor de troca
 item.pokeb:trade_panel=Painel de troca
 
-# ===== Crystal Geode Blocks =====
+## ===== Crystal Geode Blocks =====
 tile.pokeb:crystal_block.name=Bloco de cristal
 tile.pokeb:budding_crystal.name=Cristal brotador
 tile.pokeb:small_crystal_bud.name=Broto de cristal pequeno
@@ -216,7 +216,7 @@ tile.pokeb:medium_crystal_bud.name=Broto de cristal médio
 tile.pokeb:large_crystal_bud.name=Broto de cristal grande
 tile.pokeb:crystal_cluster.name=Agregado de cristal
 
-# ===== Blocks =====
+## ===== Blocks =====
 tile.pokeb:aluminum_block.name=Bloco de alumínio
 tile.pokeb:bauxite_block.name=Bloco de bauxita
 tile.pokeb:platinum_block.name=Bloco de platina
@@ -224,7 +224,7 @@ tile.pokeb:silver_block.name=Bloco de prata
 tile.pokeb:ruby_block.name=Bloco de rubi
 tile.pokeb:sapphire_block.name=Bloco de safira
 
-# ===== Ores =====
+## ===== Ores =====
 tile.pokeb:amethyst_ore.name=Minério de ametista
 tile.pokeb:bauxite_ore.name=MinÃ©rio de bauxita
 tile.pokeb:platinum_ore.name=Minério de platina
@@ -234,7 +234,7 @@ tile.pokeb:crystal_ore.name=Minério de cristal
 tile.pokeb:ruby_ore.name=MinÃ©rio de rubi
 tile.pokeb:sapphire_ore.name=Minério de safira
 
-# ===== Deepslate Ores =====
+## ===== Deepslate Ores =====
 tile.pokeb:deepslate_amethyst_ore.name=Minério de ametista de ardósia
 tile.pokeb:deepslate_bauxite_ore.name=Minério de bauxita de ardósia
 tile.pokeb:deepslate_platinum_ore.name=Minério de platina de ardósia
@@ -244,7 +244,7 @@ tile.pokeb:deepslate_crystal_ore.name=Minério de cristal de ardósia
 tile.pokeb:deepslate_ruby_ore.name=Minério de rubi de ardósia
 tile.pokeb:deepslate_sapphire_ore.name=Minério de safira de ardósia
 
-# ===== Evolution Stones =====
+## ===== Evolution Stones =====
 tile.pokeb:dawn_stone_ore.name=MinÃ©rio de Pedra da Alvorada
 tile.pokeb:dusk_stone_ore.name=MinÃ©rio de Pedra do CrepÃºsculo
 tile.pokeb:fire_stone_ore.name=MinÃ©rio de Pedra do Fogo
@@ -5071,8 +5071,8 @@ showdown.abilities.shielddust.shortDesc=Este PokÃ©mon nÃ£o Ã© afetado pelo
 showdown.abilities.shieldsdown.name=Shields Down
 showdown.abilities.shieldsdown.desc=Se este PokÃ©mon for um Minior, ele muda para sua forma Core se tiver 1/2 ou menos de seu HP mÃ¡ximo, e muda para sua forma Meteor se tiver mais de 1/2 de seu HP mÃ¡ximo. Essa verificaÃ§Ã£o Ã© feita na troca e no final de cada turno. Enquanto estiver em sua Forma Meteoro, ele nÃ£o pode ser afetado por uma condiÃ§Ã£o de status nÃ£o volÃ¡til ou Bocejo.
 showdown.abilities.shieldsdown.shortDesc=Se for Minior, faÃ§a switch-in/final do turno e ele muda para Core com 1/2 HP mÃ¡ximo ou menos, caso contrÃ¡rio, Meteor.
-showdown.abilities.shieldsdown.transform=Escudos abatidos desativados!
-showdown.abilities.shieldsdown.transformEnd=Escudos abatidos ativados!
+showdown.abilities.shieldsdown.transform=Escudos abatidos desativados! (%s se protegeu.)
+showdown.abilities.shieldsdown.transformEnd=Escudos abatidos ativados! (%s parou de se proteger.)
 showdown.abilities.simple.name=Simple
 showdown.abilities.simple.shortDesc=Quando um dos estÃ¡gios de estatÃ­sticas deste PokÃ©mon Ã© aumentado ou diminuÃ­do, o valor Ã© duplicado.
 showdown.abilities.skilllink.name=Skill Link
@@ -8623,12 +8623,12 @@ showdown.moves.powershift.name=Power Shift
 showdown.moves.powershift.desc=O usuÃ¡rio troca suas estatÃ­sticas de Ataque e Defesa, e as mudanÃ§as no estÃ¡gio de estatÃ­sticas permanecem em suas respectivas estatÃ­sticas. Este movimento pode ser usado novamente para trocar as estatÃ­sticas de volta. Se o usuÃ¡rio usar Baton Pass, o substituto terÃ¡ suas estatÃ­sticas de Ataque e Defesa trocadas se o efeito estiver ativo. Se o usuÃ¡rio tiver suas estatÃ­sticas recalculadas mudando de forma enquanto suas estatÃ­sticas sÃ£o trocadas, este efeito serÃ¡ ignorado, mas ainda estarÃ¡ ativo para fins de Baton Pass.
 showdown.moves.powershift.shortDesc=Alterna as estatÃ­sticas de ataque e defesa do usuÃ¡rio.
 showdown.moves.powershift.start=%s trocou suas estatÃ­sticas ofensivas por suas estatÃ­sticas defensivas!
-showdown.moves.powershift.end=%s trocou suas estatÃ­sticas ofensivas por suas estatÃ­sticas defensivas!
+showdown.moves.powershift.end=(%s começou em %s!)
 showdown.moves.powertrick.name=Power Trick
 showdown.moves.powertrick.desc=O usuÃ¡rio troca suas estatÃ­sticas de Ataque e Defesa, e as mudanÃ§as no estÃ¡gio de estatÃ­sticas permanecem em suas respectivas estatÃ­sticas. Este movimento pode ser usado novamente para trocar as estatÃ­sticas de volta. Se o usuÃ¡rio usar Baton Pass, o substituto terÃ¡ suas estatÃ­sticas de Ataque e Defesa trocadas se o efeito estiver ativo. Se o usuÃ¡rio tiver suas estatÃ­sticas recalculadas mudando de forma enquanto suas estatÃ­sticas sÃ£o trocadas, este efeito serÃ¡ ignorado, mas ainda estarÃ¡ ativo para fins de Baton Pass.
 showdown.moves.powertrick.shortDesc=Alterna as estatÃ­sticas de ataque e defesa do usuÃ¡rio.
 showdown.moves.powertrick.start=%s trocou Ataque e Defesa!
-showdown.moves.powertrick.end=%s trocou Ataque e Defesa!
+showdown.moves.powertrick.end=(%s começou em %s!)
 showdown.moves.powertrip.name=Power Trip
 showdown.moves.powertrip.desc=O poder Ã© igual a 20+(X*20), onde X Ã© o total de alteraÃ§Ãµes no estÃ¡gio de estatÃ­sticas do usuÃ¡rio que sÃ£o maiores que 0.
 showdown.moves.powertrip.shortDesc=+ 20 de poder para cada um dos aumentos de estatÃ­sticas do usuÃ¡rio.
