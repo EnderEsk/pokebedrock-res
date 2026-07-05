@@ -11,6 +11,7 @@
     "generateFusedImages": "npx ts-node --project tsconfig.json scripts/generateFusedImages.ts",
     "removeUnusedFiles": "npx ts-node --project tsconfig.json scripts/removeUnusedFiles.ts",
     "translate": "npx ts-node --project tsconfig.json scripts/translate.ts",
+    "syncLangFiles": "npx ts-node --project tsconfig.json scripts/syncLangFiles.ts",
     "generateItemLang": "npx ts-node --project tsconfig.json scripts/generateItemLang.ts",
     "parseAndCreateIssues": "npx ts-node --project tsconfig.json scripts/parseAndCreateIssues.ts",
     "generatePokemonCries": "npx ts-node --project tsconfig.json scripts/generatePokemonCries.ts",
