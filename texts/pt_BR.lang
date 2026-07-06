@@ -3889,6 +3889,7 @@ events.autoServerRestart.info.queuePosition=Â§d- PosiÃ§Ã£o da fila: %s
 events.banBundles.error.banned=Â§cBundles foram banidos do servidor.
 events.banHoppers.error.banned=Â§cHoppers estÃ£o atualmente banidos de interaÃ§Ãµes devido a uma falha de duplicaÃ§Ã£o.
 events.bannedContent.error.banned=Â§cEste bloco estÃ¡ banido de interaÃ§Ãµes devido a uma falha de duplicaÃ§Ã£o.
+events.bannedContent.error.itemRefunded=Â§cEste item estÃ¡ banido devido a uma falha de duplicaÃ§Ã£o. Seus materiais de fabricaÃ§Ã£o foram devolvidos.
 events.beforeChat.error.duplicate=Â§cSua mensagem anterior parece ser idÃªntica Ã  mais recente. Modifique sua mensagem e tente novamente.
 events.beforeChat.error.muted=Â§cNÃ£o Ã© possÃ­vel enviar mensagens, vocÃª estÃ¡ silenciado no momento!
 events.beforeChat.error.parseFailed=Â§cFalha ao analisar seus dados!

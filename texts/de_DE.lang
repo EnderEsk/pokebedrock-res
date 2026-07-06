@@ -3889,6 +3889,7 @@ events.autoServerRestart.info.queuePosition=§d- Warteschlangenposition: %s
 events.banBundles.error.banned=§cBeutel wurden vom Server verbannt.
 events.banHoppers.error.banned=§cTrichter sind derzeit aufgrund eines Duplication-Bugs von Interaktionen ausgeschlossen.
 events.bannedContent.error.banned=§cDieser Block ist derzeit aufgrund eines Duplikationsfehlers von Interaktionen ausgeschlossen.
+events.bannedContent.error.itemRefunded=§cDieser Gegenstand ist aufgrund eines Duplikationsfehlers verboten. Deine Handwerksmaterialien wurden erstattet.
 events.beforeChat.error.duplicate=§cDeine vorherige Nachricht scheint mit Ihrer letzten identisch zu sein. Bitte ändere deine Nachricht und versuch es erneut.
 events.beforeChat.error.muted=§cKann keine Nachrichten senden, du bist derzeit stummgeschaltet!
 events.beforeChat.error.parseFailed=§cFehler beim Parsen deiner Daten!

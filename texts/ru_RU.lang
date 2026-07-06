@@ -3889,6 +3889,7 @@ events.autoServerRestart.info.queuePosition=§d- Позиция в очеред�
 events.banBundles.error.banned=§cBundles have been banned from the сервер.
 events.banHoppers.error.banned=§cHoppers Are сейчас banned from interactions due to a duplication glitch.
 events.bannedContent.error.banned=§cВзаимодействие с этим блоком запрещено из-за ошибки дублирования.
+events.bannedContent.error.itemRefunded=§cЭтот предмет запрещён из-за ошибки дублирования. Ваши материалы для крафта были возвращены.
 events.beforeChat.error.duplicate=§cYour previous message appears to be identical to your most recent one. Пожалуйста modify your message and попробуйте снова.
 events.beforeChat.error.muted=§cНельзя Send Messages, you are сейчас Muted!
 events.beforeChat.error.parseFailed=§cНе удалось parse your data!

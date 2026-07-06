@@ -3889,6 +3889,7 @@ events.autoServerRestart.info.queuePosition=§d- 队列位置：%s
 events.banBundles.error.banned=§c服务器已禁用收纳袋。
 events.banHoppers.error.banned=§c由于复制漏洞，漏斗当前禁止交互。
 events.bannedContent.error.banned=§c由于复制漏洞，此方块当前禁止交互。
+events.bannedContent.error.itemRefunded=§c由于复制漏洞，此物品已被禁用。你的合成材料已退还。
 events.beforeChat.error.duplicate=§c你的上一条消息似乎与最近一条完全相同。请修改消息后重试。
 events.beforeChat.error.muted=§c无法发送消息，你当前已被禁言！
 events.beforeChat.error.parseFailed=§c解析你的数据失败！

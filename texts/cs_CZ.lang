@@ -3889,6 +3889,7 @@ events.autoServerRestart.info.queuePosition=§d- Pozice ve frontě: %s
 events.banBundles.error.banned=§cBalíčky byly na serveru zakázány.
 events.banHoppers.error.banned=§cHapperům je v současné době zakázána interakce kvůli závadě duplikace.
 events.bannedContent.error.banned=§cS tímto blokem momentálně nelze interagovat kvůli závadě duplikace.
+events.bannedContent.error.itemRefunded=§cTento předmět je zakázán kvůli závadě duplikace. Tvé materiály na výrobu byly vráceny.
 events.beforeChat.error.duplicate=§cVaše předchozí zpráva se zdá být totožná s vaší nejnovější. Upravte prosím svou zprávu a zkuste to znovu.
 events.beforeChat.error.muted=§cNelze odesílat zprávy, momentálně jste ztlumeni!
 events.beforeChat.error.parseFailed=§cNepodařilo se analyzovat vaše data!
