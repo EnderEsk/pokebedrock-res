@@ -1,7 +1,9 @@
-**Update v2.18.2**
+**Update v2.18.3**
 
-- Rebuilt all cosmetic hat and accessory geometry models to the current format and updated model versions across the pack.
-- Fixed cosmetic attachable rendering by switching cookie jar and safety goggles to alpha-blend materials for proper transparency.
-- Fixed contained Mewtwo cloning animation controller resyncing to the correct development stage after chunk reload.
-- Cleaned up Pokédex UI textures with consistent button naming, a new grid background, and removed unused source art.
-- Added the deferred-restart broadcast string for database migrations across all locales.
+- Added subpack support with a 2D Sprites (Low Memory) and Full 3D Models split so players can choose lighter sprites or full models.
+- Synced and expanded translations across all seven locales, including new `syncLangFiles` tooling and a large pass on Czech, Russian, Portuguese, and Spanish strings.
+- Updated and fixed German translations; standardized Claims and Crates wording; corrected Hidden Power move names.
+- Added missing item textures for Link Cable, cloning-machine cooling parts, amethyst tools, healing items, feathers/wings, and held incenses.
+- Added localized strings for egg-move grants, banned-content interactions, crafting refunds, and creative-mode permission errors.
+- Fixed Arceus Flying and Poison omega sprite filenames so 2D skins resolve correctly.
+- Fixed contained Mewtwo cloning animation with a new eyelash idle loop.
