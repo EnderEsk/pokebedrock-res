@@ -18,6 +18,9 @@
 				"christmas": "textures/entity/pokemon/golurk/golurk_christmas.png",
 				"shiny_christmas": "textures/entity/pokemon/golurk/shiny_golurk_christmas.png"
 			},
+			"particle_effects": {
+				"landing_puff": "pokeb:landing_puff"
+			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
 				"initialize": [
@@ -31,7 +34,8 @@
 					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
-					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_gliding = query.has_rider && q.can_fly && query.modified_move_speed >= v.move_threshold && !query.is_on_ground && !query.is_in_water;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping && !v.is_gliding;",
 					"v.is_sleeping = q.is_sleeping;",
 					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
 				],
@@ -39,6 +43,9 @@
 					"controller",
 					{
 						"blink": "v.should_blink"
+					},
+					{
+						"landing": "q.has_rider"
 					}
 				]
 			},
@@ -49,10 +56,12 @@
 				"default_water_idle": "animation.golurk.water_idle",
 				"default_walking": "animation.golurk.walking",
 				"default_flying": "animation.golurk.flying",
+				"default_ride_flying": "animation.golurk.flying",
 				"default_swimming": "animation.golurk.swimming",
 				"default_sleeping": "animation.golurk.sleeping",
 				"default_attack": "animation.golurk.attack",
 				"halloween_flying": "animation.golurk_halloween.flying",
+				"halloween_ride_flying": "animation.golurk_halloween.ride_flying",
 				"halloween_air_idle": "animation.golurk_halloween.air_idle",
 				"halloween_swimming": "animation.golurk_halloween.swimming",
 				"halloween_water_idle": "animation.golurk_halloween.water_idle",
@@ -63,6 +72,7 @@
 				"halloween_attack": "animation.golurk_halloween.attack",
 				"halloween_faint": "animation.golurk_halloween.faint",
 				"fullmetal_flying": "animation.golurk_fullmetal.flying",
+				"fullmetal_ride_flying": "animation.golurk_fullmetal.ride_flying",
 				"fullmetal_air_idle": "animation.golurk_fullmetal.air_idle",
 				"fullmetal_swimming": "animation.golurk_fullmetal.swimming",
 				"fullmetal_water_idle": "animation.golurk_fullmetal.water_idle",
@@ -73,6 +83,7 @@
 				"fullmetal_attack": "animation.golurk_fullmetal.attack",
 				"fullmetal_faint": "animation.golurk_fullmetal.faint",
 				"christmas_flying": "animation.golurk_christmas.flying",
+				"christmas_ride_flying": "animation.golurk_christmas.ride_flying",
 				"christmas_air_idle": "animation.golurk_christmas.air_idle",
 				"christmas_swimming": "animation.golurk_christmas.swimming",
 				"christmas_water_idle": "animation.golurk_christmas.water_idle",
@@ -83,6 +94,7 @@
 				"christmas_attack": "animation.golurk_christmas.attack",
 				"christmas_faint": "animation.golurk_christmas.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
+				"landing": "controller.animation.pokemon_landing",
 				"attack": "controller.animation.pokemon.golurk_attack",
 				"blink": "controller.animation.pokemon.golurk_blink",
 				"controller": "controller.animation.pokemon.golurk"

@@ -14,6 +14,9 @@
 				"pbranni": "textures/entity/pokemon/gardevoirmega/gardevoirmega_pbranni.png",
 				"shiny_pbranni": "textures/entity/pokemon/gardevoirmega/shiny_gardevoirmega_pbranni.png"
 			},
+			"particle_effects": {
+				"landing_puff": "pokeb:landing_puff"
+			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
 				"initialize": [
@@ -27,7 +30,8 @@
 					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
-					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_gliding = query.has_rider && q.can_fly && query.modified_move_speed >= v.move_threshold && !query.is_on_ground && !query.is_in_water;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping && !v.is_gliding;",
 					"v.is_sleeping = q.is_sleeping;",
 					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
 				],
@@ -35,6 +39,9 @@
 					"controller",
 					{
 						"blink": "v.should_blink"
+					},
+					{
+						"landing": "q.has_rider"
 					}
 				]
 			},
@@ -45,10 +52,12 @@
 				"default_water_idle": "animation.gardevoirmega.water_idle",
 				"default_walking": "animation.gardevoirmega.walking",
 				"default_flying": "animation.gardevoirmega.ground_idle",
+				"default_ride_flying": "animation.gardevoirmega.ground_idle",
 				"default_swimming": "animation.gardevoirmega.swimming",
 				"default_sleeping": "animation.gardevoirmega.sleeping",
 				"default_attack": "animation.gardevoirmega.attack",
 				"pbranni_flying": "animation.gardevoirmega_pbranni.flying",
+				"pbranni_ride_flying": "animation.gardevoirmega_pbranni.ride_flying",
 				"pbranni_air_idle": "animation.gardevoirmega_pbranni.air_idle",
 				"pbranni_swimming": "animation.gardevoirmega_pbranni.swimming",
 				"pbranni_water_idle": "animation.gardevoirmega_pbranni.water_idle",
@@ -59,6 +68,7 @@
 				"pbranni_attack": "animation.gardevoirmega_pbranni.attack",
 				"pbranni_faint": "animation.gardevoirmega_pbranni.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
+				"landing": "controller.animation.pokemon_landing",
 				"attack": "controller.animation.pokemon.gardevoirmega_attack",
 				"blink": "controller.animation.pokemon.gardevoirmega_blink",
 				"controller": "controller.animation.pokemon.gardevoirmega"

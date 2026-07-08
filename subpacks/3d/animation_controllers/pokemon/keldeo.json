@@ -22,6 +22,9 @@
               "swimming": "v.is_swimming"
             },
             {
+              "ride_flying": "v.is_gliding"
+            },
+            {
               "flying": "v.is_flying"
             },
             {
@@ -106,6 +109,22 @@
           "transitions": [
             {
               "default": "!v.is_flying"
+            }
+          ],
+          "blend_transition": 0.3
+        },
+        "ride_flying": {
+          "animations": [
+            {
+              "default_ride_flying": "v.skin_index == 0"
+            },
+            {
+              "pbranni_ride_flying": "v.skin_index == 1"
+            }
+          ],
+          "transitions": [
+            {
+              "default": "!v.is_gliding"
             }
           ],
           "blend_transition": 0.3

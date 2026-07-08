@@ -13,6 +13,9 @@
 				"shiny_default": "textures/entity/pokemon/armarouge/shiny_armarouge.png",
 				"christmas": "textures/entity/pokemon/armarouge/armarouge_christmas.png"
 			},
+			"particle_effects": {
+				"landing_puff": "pokeb:landing_puff"
+			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
 				"initialize": [
@@ -26,7 +29,8 @@
 					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
-					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_gliding = query.has_rider && q.can_fly && query.modified_move_speed >= v.move_threshold && !query.is_on_ground && !query.is_in_water;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping && !v.is_gliding;",
 					"v.is_sleeping = q.is_sleeping;",
 					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
 				],
@@ -34,6 +38,9 @@
 					"controller",
 					{
 						"blink": "v.should_blink"
+					},
+					{
+						"landing": "q.has_rider"
 					}
 				]
 			},
@@ -43,9 +50,11 @@
 				"default_water_idle": "animation.armarouge.water_idle",
 				"default_walking": "animation.armarouge.walking",
 				"default_flying": "animation.armarouge.ground_idle",
+				"default_ride_flying": "animation.armarouge.ground_idle",
 				"default_swimming": "animation.armarouge.swimming",
 				"default_sleeping": "animation.armarouge.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
+				"landing": "controller.animation.pokemon_landing",
 				"attack": "animation.armarouge.attack",
 				"blink": "animation.armarouge.blink",
 				"controller": "controller.animation.pokemon"

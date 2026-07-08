@@ -13,11 +13,7 @@
       "geometry": {
         "default": "geometry.crate"
       },
-      "scripts": {
-        "animate": ["rotates"]
-      },
       "animations": {
-        "rotates": "controller.animation.crate",
         "stay": "animation.crate.stay",
         "rotate": "animation.crate.rotate",
         "short": "animation.crate.short",
@@ -27,11 +23,7 @@
         "halo0": "animation.crate.halo0",
         "halo1": "animation.crate.halo1",
         "halo2": "animation.crate.halo2",
-        "halo3": "animation.crate.halo3",
-        "rotate_0": "animation.crate.rotate_0",
-        "rotate_90": "animation.crate.rotate_90",
-        "rotate_180": "animation.crate.rotate_180",
-        "rotate_270": "animation.crate.rotate_270"
+        "halo3": "animation.crate.halo3"
       },
       "particle_effects": {
         "falling_dust": "je:updraft",

@@ -173,6 +173,7 @@ interface AnimationFileAnimation {
 
 export const PokemonAnimationTypes = [
   "flying",
+  "ride_flying",
   "air_idle",
   "swimming",
   "water_idle",

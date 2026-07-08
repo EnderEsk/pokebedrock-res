@@ -16,6 +16,9 @@
 				"teamplasma": "textures/entity/pokemon/genesectchill/genesectchill_teamplasma.png",
 				"shiny_teamplasma": "textures/entity/pokemon/genesectchill/shiny_genesectchill_teamplasma.png"
 			},
+			"particle_effects": {
+				"landing_puff": "pokeb:landing_puff"
+			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
 				"initialize": [
@@ -29,7 +32,8 @@
 					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
-					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_gliding = query.has_rider && q.can_fly && query.modified_move_speed >= v.move_threshold && !query.is_on_ground && !query.is_in_water;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping && !v.is_gliding;",
 					"v.is_sleeping = q.is_sleeping;",
 					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
 				],
@@ -37,6 +41,9 @@
 					"controller",
 					{
 						"blink": "v.should_blink"
+					},
+					{
+						"landing": "q.has_rider"
 					}
 				]
 			},
@@ -47,10 +54,12 @@
 				"default_water_idle": "animation.genesectchill.water_idle",
 				"default_walking": "animation.genesectchill.walking",
 				"default_flying": "animation.genesectchill.flying",
+				"default_ride_flying": "animation.genesectchill.flying",
 				"default_swimming": "animation.genesectchill.swimming",
 				"default_sleeping": "animation.genesectchill.sleeping",
 				"default_attack": "animation.genesectchill.attack",
 				"beru_flying": "animation.genesectchill_beru.flying",
+				"beru_ride_flying": "animation.genesectchill_beru.ride_flying",
 				"beru_air_idle": "animation.genesectchill_beru.air_idle",
 				"beru_swimming": "animation.genesectchill_beru.swimming",
 				"beru_water_idle": "animation.genesectchill_beru.water_idle",
@@ -61,6 +70,7 @@
 				"beru_attack": "animation.genesectchill_beru.attack",
 				"beru_faint": "animation.genesectchill_beru.faint",
 				"teamplasma_flying": "animation.genesectchill_teamplasma.flying",
+				"teamplasma_ride_flying": "animation.genesectchill_teamplasma.ride_flying",
 				"teamplasma_air_idle": "animation.genesectchill_teamplasma.air_idle",
 				"teamplasma_swimming": "animation.genesectchill_teamplasma.swimming",
 				"teamplasma_water_idle": "animation.genesectchill_teamplasma.water_idle",
@@ -71,6 +81,7 @@
 				"teamplasma_attack": "animation.genesectchill_teamplasma.attack",
 				"teamplasma_faint": "animation.genesectchill_teamplasma.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
+				"landing": "controller.animation.pokemon_landing",
 				"attack": "controller.animation.pokemon.genesectchill_attack",
 				"blink": "controller.animation.pokemon.genesectchill_blink",
 				"controller": "controller.animation.pokemon.genesectchill"

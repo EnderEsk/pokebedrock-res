@@ -17,6 +17,9 @@
 				"princess": "textures/entity/pokemon/mew/mew_princess.png",
 				"shiny_princess": "textures/entity/pokemon/mew/shiny_mew_princess.png"
 			},
+			"particle_effects": {
+				"landing_puff": "pokeb:landing_puff"
+			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
 				"initialize": [
@@ -30,7 +33,8 @@
 					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
-					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_gliding = query.has_rider && q.can_fly && query.modified_move_speed >= v.move_threshold && !query.is_on_ground && !query.is_in_water;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping && !v.is_gliding;",
 					"v.is_sleeping = q.is_sleeping;",
 					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
 				],
@@ -38,6 +42,9 @@
 					"controller",
 					{
 						"blink": "v.should_blink"
+					},
+					{
+						"landing": "q.has_rider"
 					}
 				]
 			},
@@ -48,10 +55,12 @@
 				"default_water_idle": "animation.mew.water_idle",
 				"default_walking": "animation.mew.walking",
 				"default_flying": "animation.mew.flying",
+				"default_ride_flying": "animation.mew.flying",
 				"default_swimming": "animation.mew.swimming",
 				"default_sleeping": "animation.mew.sleeping",
 				"default_attack": "animation.mew.attack",
 				"christmas_flying": "animation.mew_christmas.flying",
+				"christmas_ride_flying": "animation.mew_christmas.ride_flying",
 				"christmas_air_idle": "animation.mew_christmas.air_idle",
 				"christmas_swimming": "animation.mew_christmas.swimming",
 				"christmas_water_idle": "animation.mew_christmas.water_idle",
@@ -62,6 +71,7 @@
 				"christmas_attack": "animation.mew_christmas.attack",
 				"christmas_faint": "animation.mew_christmas.faint",
 				"shadow_flying": "animation.mew_shadow.flying",
+				"shadow_ride_flying": "animation.mew_shadow.ride_flying",
 				"shadow_air_idle": "animation.mew_shadow.air_idle",
 				"shadow_swimming": "animation.mew_shadow.swimming",
 				"shadow_water_idle": "animation.mew_shadow.water_idle",
@@ -72,6 +82,7 @@
 				"shadow_attack": "animation.mew_shadow.attack",
 				"shadow_faint": "animation.mew_shadow.faint",
 				"princess_flying": "animation.mew_princess.flying",
+				"princess_ride_flying": "animation.mew_princess.ride_flying",
 				"princess_air_idle": "animation.mew_princess.air_idle",
 				"princess_swimming": "animation.mew_princess.swimming",
 				"princess_water_idle": "animation.mew_princess.water_idle",
@@ -82,6 +93,7 @@
 				"princess_attack": "animation.mew_princess.attack",
 				"princess_faint": "animation.mew_princess.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
+				"landing": "controller.animation.pokemon_landing",
 				"attack": "controller.animation.pokemon.mew_attack",
 				"blink": "controller.animation.pokemon.mew_blink",
 				"controller": "controller.animation.pokemon.mew"

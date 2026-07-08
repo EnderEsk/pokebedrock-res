@@ -14,6 +14,9 @@
 				"pbranni": "textures/entity/pokemon/rayquazamega/rayquazamega_pbranni.png",
 				"shiny_pbranni": "textures/entity/pokemon/rayquazamega/shiny_rayquazamega_pbranni.png"
 			},
+			"particle_effects": {
+				"landing_puff": "pokeb:landing_puff"
+			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
 				"initialize": [
@@ -27,7 +30,8 @@
 					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
-					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_gliding = query.has_rider && q.can_fly && query.modified_move_speed >= v.move_threshold && !query.is_on_ground && !query.is_in_water;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping && !v.is_gliding;",
 					"v.is_sleeping = q.is_sleeping;",
 					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
 				],
@@ -35,6 +39,9 @@
 					"controller",
 					{
 						"blink": "v.should_blink"
+					},
+					{
+						"landing": "q.has_rider"
 					}
 				]
 			},
@@ -45,10 +52,12 @@
 				"default_water_idle": "animation.rayquazamega.water_idle",
 				"default_walking": "animation.rayquazamega.walking",
 				"default_flying": "animation.rayquazamega.flying",
+				"default_ride_flying": "animation.rayquazamega.flying",
 				"default_swimming": "animation.rayquazamega.swimming",
 				"default_sleeping": "animation.rayquazamega.sleeping",
 				"default_attack": "animation.rayquazamega.attack",
 				"pbranni_flying": "animation.rayquazamega_pbranni.flying",
+				"pbranni_ride_flying": "animation.rayquazamega_pbranni.ride_flying",
 				"pbranni_air_idle": "animation.rayquazamega_pbranni.air_idle",
 				"pbranni_swimming": "animation.rayquazamega_pbranni.swimming",
 				"pbranni_water_idle": "animation.rayquazamega_pbranni.water_idle",
@@ -59,6 +68,7 @@
 				"pbranni_attack": "animation.rayquazamega_pbranni.attack",
 				"pbranni_faint": "animation.rayquazamega_pbranni.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
+				"landing": "controller.animation.pokemon_landing",
 				"attack": "controller.animation.pokemon.rayquazamega_attack",
 				"blink": "controller.animation.pokemon.rayquazamega_blink",
 				"controller": "controller.animation.pokemon.rayquazamega"

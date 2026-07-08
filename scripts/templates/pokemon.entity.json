@@ -10,6 +10,9 @@
       "textures": {
         "evo_aura": "textures/entity/evolving"
       },
+      "particle_effects": {
+        "landing_puff": "pokeb:landing_puff"
+      },
       "scripts": {
         "scale": "q.property('pokeb:scale')",
         "initialize": ["v.blink_chance = 0.01;", "v.move_threshold = 0.01;"],
@@ -20,7 +23,8 @@
           "v.is_water_idling = query.is_in_water && !query.is_swimming;",
           "v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
           "v.is_swimming = query.is_swimming;",
-          "v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+          "v.is_gliding = query.has_rider && q.can_fly && query.modified_move_speed >= v.move_threshold && !query.is_on_ground && !query.is_in_water;",
+          "v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping && !v.is_gliding;",
           "v.is_sleeping = q.is_sleeping;",
           "v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
         ],
@@ -28,6 +32,9 @@
           "controller",
           {
             "blink": "v.should_blink"
+          },
+          {
+            "landing": "q.has_rider"
           }
         ]
       },
@@ -38,10 +45,12 @@
         "default_water_idle": "animation.{speciesId}.water_idle",
         "default_walking": "animation.{speciesId}.walking",
         "default_flying": "animation.{speciesId}.flying",
+        "default_ride_flying": "animation.{speciesId}.ride_flying",
         "default_swimming": "animation.{speciesId}.swimming",
         "default_sleeping": "animation.{speciesId}.sleeping",
         "default_attack": "animation.{speciesId}.attack",
         "look_at_target": "animation.pokemon.look_at_target",
+        "landing": "controller.animation.pokemon_landing",
         "attack": "controller.animation.pokemon.{speciesId}_attack",
         "blink": "controller.animation.pokemon.{speciesId}_blink",
         "controller": "controller.animation.pokemon.{speciesId}"

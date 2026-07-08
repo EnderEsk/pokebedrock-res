@@ -7887,6 +7887,12 @@
     },
     "unown_block_exclaim": {
       "textures": "textures/items/gui"
+    },
+    "arceusflying_omega": {
+      "textures": "textures/sprites/default/arceusflying_omega.png"
+    },
+    "arceuspoison_omega": {
+      "textures": "textures/sprites/default/arceuspoison_omega.png"
     }
   }
 }

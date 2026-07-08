@@ -13,6 +13,9 @@
 				"shiny_default": "textures/entity/pokemon/darkrai/shiny_darkrai.png",
 				"halloween": "textures/entity/pokemon/darkrai/darkrai_halloween.png"
 			},
+			"particle_effects": {
+				"landing_puff": "pokeb:landing_puff"
+			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
 				"initialize": [
@@ -26,7 +29,8 @@
 					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
-					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_gliding = query.has_rider && q.can_fly && query.modified_move_speed >= v.move_threshold && !query.is_on_ground && !query.is_in_water;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping && !v.is_gliding;",
 					"v.is_sleeping = q.is_sleeping;",
 					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
 				],
@@ -34,6 +38,9 @@
 					"controller",
 					{
 						"blink": "v.should_blink"
+					},
+					{
+						"landing": "q.has_rider"
 					}
 				]
 			},
@@ -43,9 +50,11 @@
 				"default_water_idle": "animation.darkrai.water_idle",
 				"default_walking": "animation.darkrai.walking",
 				"default_flying": "animation.darkrai.flying",
+				"default_ride_flying": "animation.darkrai.flying",
 				"default_swimming": "animation.darkrai.swimming",
 				"default_sleeping": "animation.darkrai.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
+				"landing": "controller.animation.pokemon_landing",
 				"attack": "animation.darkrai.attack",
 				"blink": "animation.darkrai.blink",
 				"controller": "controller.animation.pokemon"

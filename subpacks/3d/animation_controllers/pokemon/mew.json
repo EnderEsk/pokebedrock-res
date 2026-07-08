@@ -22,6 +22,9 @@
               "swimming": "v.is_swimming"
             },
             {
+              "ride_flying": "v.is_gliding"
+            },
+            {
               "flying": "v.is_flying"
             },
             {
@@ -136,6 +139,28 @@
           "transitions": [
             {
               "default": "!v.is_flying"
+            }
+          ],
+          "blend_transition": 0.3
+        },
+        "ride_flying": {
+          "animations": [
+            {
+              "default_ride_flying": "v.skin_index == 0"
+            },
+            {
+              "christmas_ride_flying": "v.skin_index == 1"
+            },
+            {
+              "shadow_ride_flying": "v.skin_index == 2"
+            },
+            {
+              "princess_ride_flying": "v.skin_index == 3"
+            }
+          ],
+          "transitions": [
+            {
+              "default": "!v.is_gliding"
             }
           ],
           "blend_transition": 0.3

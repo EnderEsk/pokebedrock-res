@@ -335,6 +335,7 @@ function updateEntityFileWithAnimations(
   type AnimationKey = (typeof PokemonAnimationTypes)[number];
   const requirementMap: Record<AnimationKey, keyof typeof behavior | null> = {
     flying: "canFly",
+    ride_flying: "canFly",
     air_idle: "canFly",
     swimming: "canSwim",
     water_idle: "canSwim",
@@ -344,6 +345,17 @@ function updateEntityFileWithAnimations(
     blink: "canLook",
     attack: null,
     faint: null,
+  };
+
+  /**
+   * When a species lacks one of these animations, prefer a same-medium
+   * substitute over ground_idle (a hovering flyer should keep flapping,
+   * not freeze in its ground idle).
+   */
+  const fallbackMap: Partial<Record<AnimationKey, AnimationKey>> = {
+    air_idle: "flying",
+    ride_flying: "flying",
+    water_idle: "swimming",
   };
 
   // Get the animations that this pokemon inherits.
@@ -374,7 +386,11 @@ function updateEntityFileWithAnimations(
     missingReport.push(animKey);
     report.missingPokemonAnimations.set(pokemonTypeId, missingReport);
     if (animKey === "blink") continue;
-    description.animations[`default_${animKey}`] = defaultAnimation;
+    const fallback = fallbackMap[animKey as AnimationKey];
+    description.animations[`default_${animKey}`] =
+      fallback && behavior[requirement] && animations.includes(fallback)
+        ? `animation.${pokemonTypeId}.${fallback}`
+        : defaultAnimation;
   }
 
   // Helper function to insert a key before a target key (so it looks neat in the entity file).
@@ -466,7 +482,8 @@ function updateEntityFileWithAnimations(
     ...new Set([...customizationEffects, ...skinParticleEffects]),
   ];
   if (allParticleEffects && effects.size > 0) {
-    description.particle_effects = {};
+    // Keep template-level effects (e.g. landing_puff) and add species ones.
+    description.particle_effects = description.particle_effects ?? {};
     for (const effectTypeId of allParticleEffects) {
       const effectName = effectTypeId.split(":")[1];
       if (!effectName || !effects.has(effectName)) {

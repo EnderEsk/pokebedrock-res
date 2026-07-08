@@ -30,6 +30,7 @@
     "$text_anchor_location|default": "center",
     "$image_size|default": ["0%", "0%"],
     "$image_offset|default": ["0%", "0%"],
+    "$font_scale_factor|default": 0.6,
 
     "controls": [
       {
@@ -71,7 +72,7 @@
           "anchor_from": "$text_anchor_location",
           "anchor_to": "$text_anchor_location",
           "text": "#text",
-          "font_scale_factor": 0.6,
+          "font_scale_factor": "$font_scale_factor",
           "color": "white",
           "bindings": [
             {
@@ -234,14 +235,18 @@
     ]
   },
 
-  "caught_pokemon_button@pokedex.button": {
+  "stat_button@pokedex.button": {
+    "$text_anchor_location": "left_middle",
+    "$text_offset": ["22%", "27%"],
+    "$font_scale_factor": 0.45
+  },
+
+  "caught_pokemon_button@pokedex.stat_button": {
     "$default_button_texture": "textures/ui/pokedex/button_caught",
     "$hover_button_texture": "textures/ui/pokedex/button_caught_hover",
     "$pressed_button_texture": "textures/ui/pokedex/button_caught",
     "$locked_button_texture": "textures/ui/pokedex/button_caught_disabled",
     "$button_image_fill": true,
-    "$text_anchor_location": "right_middle",
-    "$text_offset": ["25%", "27%"],
 
     "bindings": [
       {
@@ -259,14 +264,12 @@
     ]
   },
 
-  "seen_pokemon_button@pokedex.button": {
+  "seen_pokemon_button@pokedex.stat_button": {
     "$default_button_texture": "textures/ui/pokedex/button_seen",
     "$hover_button_texture": "textures/ui/pokedex/button_seen_hover",
     "$pressed_button_texture": "textures/ui/pokedex/button_seen",
     "$locked_button_texture": "textures/ui/pokedex/button_seen_disabled",
     "$button_image_fill": true,
-    "$text_anchor_location": "right_middle",
-    "$text_offset": ["25%", "27%"],
 
     "bindings": [
       {
@@ -284,14 +287,12 @@
     ]
   },
 
-  "completion_button@pokedex.button": {
+  "completion_button@pokedex.stat_button": {
     "$default_button_texture": "textures/ui/pokedex/button_completion",
     "$hover_button_texture": "textures/ui/pokedex/button_completion_hover",
     "$pressed_button_texture": "textures/ui/pokedex/button_completion",
     "$locked_button_texture": "textures/ui/pokedex/button_completion_disabled",
     "$button_image_fill": true,
-    "$text_anchor_location": "right_middle",
-    "$text_offset": ["25%", "27%"],
 
     "bindings": [
       {

@@ -14,6 +14,9 @@
 				"christmas": "textures/entity/pokemon/ninetalesalola/ninetalesalola_christmas.png",
 				"shiny_christmas": "textures/entity/pokemon/ninetalesalola/shiny_ninetalesalola_christmas.png"
 			},
+			"particle_effects": {
+				"landing_puff": "pokeb:landing_puff"
+			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
 				"initialize": [
@@ -27,7 +30,8 @@
 					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
 					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
 					"v.is_swimming = query.is_swimming;",
-					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping;",
+					"v.is_gliding = query.has_rider && q.can_fly && query.modified_move_speed >= v.move_threshold && !query.is_on_ground && !query.is_in_water;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping && !v.is_gliding;",
 					"v.is_sleeping = q.is_sleeping;",
 					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
 				],
@@ -35,6 +39,9 @@
 					"controller",
 					{
 						"blink": "v.should_blink"
+					},
+					{
+						"landing": "q.has_rider"
 					}
 				]
 			},
@@ -45,10 +52,12 @@
 				"default_water_idle": "animation.ninetalesalola.water_idle",
 				"default_walking": "animation.ninetalesalola.walking",
 				"default_flying": "animation.ninetalesalola.ground_idle",
+				"default_ride_flying": "animation.ninetalesalola.ground_idle",
 				"default_swimming": "animation.ninetalesalola.swimming",
 				"default_sleeping": "animation.ninetalesalola.sleeping",
 				"default_attack": "animation.ninetalesalola.attack",
 				"christmas_flying": "animation.ninetalesalola_christmas.flying",
+				"christmas_ride_flying": "animation.ninetalesalola_christmas.ride_flying",
 				"christmas_air_idle": "animation.ninetalesalola_christmas.air_idle",
 				"christmas_swimming": "animation.ninetalesalola_christmas.swimming",
 				"christmas_water_idle": "animation.ninetalesalola_christmas.water_idle",
@@ -59,6 +68,7 @@
 				"christmas_attack": "animation.ninetalesalola_christmas.attack",
 				"christmas_faint": "animation.ninetalesalola_christmas.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
+				"landing": "controller.animation.pokemon_landing",
 				"attack": "controller.animation.pokemon.ninetalesalola_attack",
 				"blink": "controller.animation.pokemon.ninetalesalola_blink",
 				"controller": "controller.animation.pokemon.ninetalesalola"
