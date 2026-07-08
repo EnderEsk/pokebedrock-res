@@ -1,9 +1,9 @@
-**Update v2.18.3**
+**Update v2.18.4**
 
-- Added subpack support with a 2D Sprites (Low Memory) and Full 3D Models split so players can choose lighter sprites or full models.
-- Synced and expanded translations across all seven locales, including new `syncLangFiles` tooling and a large pass on Czech, Russian, Portuguese, and Spanish strings.
-- Updated and fixed German translations; standardized Claims and Crates wording; corrected Hidden Power move names.
-- Added missing item textures for Link Cable, cloning-machine cooling parts, amethyst tools, healing items, feathers/wings, and held incenses.
-- Added localized strings for egg-move grants, banned-content interactions, crafting refunds, and creative-mode permission errors.
-- Fixed Arceus Flying and Poison omega sprite filenames so 2D skins resolve correctly.
-- Fixed contained Mewtwo cloning animation with a new eyelash idle loop.
+- Added animated XP progress bars to the party sidebar PHUD, including per-slot clip bindings, tighter stack spacing, and status tags beside each Pokémon's level.
+- Localized the ping indicator with a static `phud.playerPing.label` prefix beside the dynamic colored ping value, and wired the HUD background alpha binding.
+- Rebuilt fly-mount visuals: new `ride_flying` animation-controller states, `v.is_gliding` Molang, landing-puff particles on rider touchdown, and per-species 3D animation controllers for flyable Pokémon (Arceus plates, Ditto, Flygon, Golurk, Lugia, Mew, Rayquaza, Yveltal, and more).
+- Added a `pokeb:landing_puff` gust particle and Charizard `ride_flying` wing-flap animation with speed-scaled playback.
+- Cleaned up crate rendering: removed the old rotate animation controller and variant-based facing animations; crates now face via entity body yaw from the behavior pack.
+- Synced a large localization pass across all seven locales: PC action buttons and headers, full Pokémon summary strings, Showdown type/egg-group/color names, and split `/playerinfo` body/footer keys to fix long rank-list overflow.
+- Tweaked Pokédex chest-form layout bindings for the updated localization flow.
