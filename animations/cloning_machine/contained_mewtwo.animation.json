@@ -51,6 +51,7 @@
 			}
 		},
 		"animation.contained_mewtwo.eyelash_transition": {
+			"loop": "hold_on_last_frame",
 			"animation_length": 6,
 			"bones": {
 				"eyelash": {
@@ -191,6 +192,7 @@
 			}
 		},
 		"animation.contained_mewtwo.blastocsyt_transition": {
+			"loop": "hold_on_last_frame",
 			"animation_length": 4,
 			"bones": {
 				"eyelash": {
@@ -536,6 +538,7 @@
 			}
 		},
 		"animation.contained_mewtwo.fetus_transition": {
+			"loop": "hold_on_last_frame",
 			"animation_length": 2,
 			"bones": {
 				"eyelash": {
@@ -1633,6 +1636,7 @@
 			}
 		},
 		"animation.contained_mewtwo.mew_transition": {
+			"loop": "hold_on_last_frame",
 			"animation_length": 3,
 			"bones": {
 				"mew": {
@@ -2667,6 +2671,7 @@
 			}
 		},
 		"animation.contained_mewtwo.mewt_transition": {
+			"loop": "hold_on_last_frame",
 			"animation_length": 2,
 			"bones": {
 				"mew": {
@@ -3802,6 +3807,7 @@
 			}
 		},
 		"animation.contained_mewtwo.mewtw_transition": {
+			"loop": "hold_on_last_frame",
 			"animation_length": 3,
 			"bones": {
 				"mew": {

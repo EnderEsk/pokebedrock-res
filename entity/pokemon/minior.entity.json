@@ -12,13 +12,19 @@
 				"default_male": "textures/sprites/default/minior",
 				"default_female": "textures/sprites/default/minior",
 				"shiny_male": "textures/sprites/default/minior",
-				"shiny_female": "textures/sprites/default/minior"
+				"shiny_female": "textures/sprites/default/minior",
+				"orange": "textures/sprites/default/minior_orange",
+				"yellow": "textures/sprites/default/minior_yellow",
+				"green": "textures/sprites/default/minior_green",
+				"blue": "textures/sprites/default/minior_blue",
+				"indigo": "textures/sprites/default/minior_indigo",
+				"violet": "textures/sprites/default/minior_violet"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:minior"
 			],
 			"spawn_egg": {
 				"texture": "minior",

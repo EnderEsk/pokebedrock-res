@@ -12,13 +12,17 @@
 				"default_male": "textures/sprites/default/flabebe",
 				"default_female": "textures/sprites/default/flabebe",
 				"shiny_male": "textures/sprites/default/flabebe",
-				"shiny_female": "textures/sprites/default/flabebe"
+				"shiny_female": "textures/sprites/default/flabebe",
+				"blue": "textures/sprites/default/flabebe_blue",
+				"orange": "textures/sprites/default/flabebe_orange",
+				"white": "textures/sprites/default/flabebe_white",
+				"yellow": "textures/sprites/default/flabebe_yellow"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:flabebe"
 			],
 			"spawn_egg": {
 				"texture": "flabebe",

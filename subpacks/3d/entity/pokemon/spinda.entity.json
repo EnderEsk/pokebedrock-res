@@ -1,0 +1,94 @@
+{
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:spinda",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/spinda/spinda.png",
+				"shiny_default": "textures/entity/pokemon/spinda/shiny_spinda.png",
+				"bow_ties": "textures/entity/pokemon/spinda/spinda_bow_ties.png",
+				"shiny_bow_ties": "textures/entity/pokemon/spinda/shiny_spinda_bow_ties.png",
+				"face_scar": "textures/entity/pokemon/spinda/spinda_face_scar.png",
+				"shiny_face_scar": "textures/entity/pokemon/spinda/shiny_spinda_face_scar.png",
+				"doublegangar": "textures/entity/pokemon/spinda/spinda_doublegangar.png",
+				"shiny_doublegangar": "textures/entity/pokemon/spinda/shiny_spinda_doublegangar.png",
+				"dots": "textures/entity/pokemon/spinda/spinda_dots.png",
+				"shiny_dots": "textures/entity/pokemon/spinda/shiny_spinda_dots.png",
+				"glasses": "textures/entity/pokemon/spinda/spinda_glasses.png",
+				"shiny_glasses": "textures/entity/pokemon/spinda/shiny_spinda_glasses.png",
+				"eyebrows": "textures/entity/pokemon/spinda/spinda_eyebrows.png",
+				"shiny_eyebrows": "textures/entity/pokemon/spinda/shiny_spinda_eyebrows.png",
+				"small_king": "textures/entity/pokemon/spinda/spinda_small_king.png",
+				"shiny_small_king": "textures/entity/pokemon/spinda/shiny_spinda_small_king.png",
+				"heart": "textures/entity/pokemon/spinda/spinda_heart.png",
+				"shiny_heart": "textures/entity/pokemon/spinda/shiny_spinda_heart.png"
+			},
+			"particle_effects": {
+				"landing_puff": "pokeb:landing_puff"
+			},
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_gliding = query.has_rider && q.can_fly && query.modified_move_speed >= v.move_threshold && !query.is_on_ground && !query.is_in_water;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping && !v.is_gliding;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					},
+					{
+						"landing": "q.has_rider"
+					}
+				]
+			},
+			"animations": {
+				"default_ground_idle": "animation.spinda.ground_idle",
+				"default_air_idle": "animation.spinda.ground_idle",
+				"default_water_idle": "animation.spinda.water_idle",
+				"default_walking": "animation.spinda.walking",
+				"default_flying": "animation.spinda.ground_idle",
+				"default_ride_flying": "animation.spinda.ground_idle",
+				"default_swimming": "animation.spinda.swimming",
+				"default_sleeping": "animation.spinda.sleeping",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"landing": "controller.animation.pokemon_landing",
+				"attack": "animation.spinda.attack",
+				"blink": "animation.spinda.blink",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:spinda": "query.variant==0"
+				},
+				{
+					"controller.render.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "spinda",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.spinda"
+			}
+		}
+	}
+}

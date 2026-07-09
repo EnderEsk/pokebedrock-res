@@ -1,6 +1,40 @@
 {
   "format_version": "1.18.20",
   "animation_controllers": {
+    "controller.animation.pokemon_landing": {
+      "initial_state": "grounded",
+      "states": {
+        "grounded": {
+          "transitions": [
+            {
+              "airborne": "!q.is_on_ground && !q.is_in_water"
+            }
+          ]
+        },
+        "airborne": {
+          "transitions": [
+            {
+              "landing": "q.is_on_ground && q.has_rider"
+            },
+            {
+              "grounded": "q.is_on_ground || q.is_in_water"
+            }
+          ]
+        },
+        "landing": {
+          "particle_effects": [
+            {
+              "effect": "landing_puff"
+            }
+          ],
+          "transitions": [
+            {
+              "grounded": "(1.0)"
+            }
+          ]
+        }
+      }
+    },
     "controller.animation.pokemon": {
       "initial_state": "default",
       "states": {
@@ -20,6 +54,9 @@
             },
             {
               "swimming": "v.is_swimming"
+            },
+            {
+              "ride_flying": "v.is_gliding"
             },
             {
               "flying": "v.is_flying"
@@ -80,7 +117,18 @@
           ],
           "transitions": [
             {
-              "walking": "!v.is_flying"
+              "default": "!v.is_flying"
+            }
+          ],
+          "blend_transition": 0.3
+        },
+        "ride_flying": {
+          "animations": [
+            "default_ride_flying"
+          ],
+          "transitions": [
+            {
+              "default": "!v.is_gliding"
             }
           ],
           "blend_transition": 0.3
@@ -91,7 +139,7 @@
           ],
           "transitions": [
             {
-              "swimming": "!v.is_swimming"
+              "default": "!v.is_swimming"
             }
           ],
           "blend_transition": 0.3

@@ -1,7 +1,7 @@
 {
   "name": "pokebedrock-res",
   "description": "Welcome to the PokeBedrock Resource Pack repository! This resource pack is designed for the Minecraft Bedrock server, PokeBedrock. It allows users to easily download, fix bugs, change textures, and modify the server's appearance.",
-  "version": "2.18.2",
+  "version": "2.18.4",
   "main": "scripts/build.ts",
   "scripts": {
     "test": "jest",
@@ -11,6 +11,7 @@
     "generateFusedImages": "npx ts-node --project tsconfig.json scripts/generateFusedImages.ts",
     "removeUnusedFiles": "npx ts-node --project tsconfig.json scripts/removeUnusedFiles.ts",
     "translate": "npx ts-node --project tsconfig.json scripts/translate.ts",
+    "syncLangFiles": "npx ts-node --project tsconfig.json scripts/syncLangFiles.ts",
     "generateItemLang": "npx ts-node --project tsconfig.json scripts/generateItemLang.ts",
     "parseAndCreateIssues": "npx ts-node --project tsconfig.json scripts/parseAndCreateIssues.ts",
     "generatePokemonCries": "npx ts-node --project tsconfig.json scripts/generatePokemonCries.ts",

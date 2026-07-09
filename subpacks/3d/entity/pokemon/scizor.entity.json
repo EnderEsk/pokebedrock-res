@@ -1,0 +1,100 @@
+{
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:scizor",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"male_default": "textures/entity/pokemon/scizor/male_scizor.png",
+				"shiny_male_default": "textures/entity/pokemon/scizor/male_shiny_scizor.png",
+				"female_default": "textures/entity/pokemon/scizor/female_scizor.png",
+				"shiny_female_default": "textures/entity/pokemon/scizor/female_shiny_scizor.png",
+				"male_ranger": "textures/entity/pokemon/scizor/male_scizor_ranger.png",
+				"shiny_male_ranger": "textures/entity/pokemon/scizor/shiny_male_scizor_ranger.png",
+				"female_ranger": "textures/entity/pokemon/scizor/female_scizor_ranger.png",
+				"shiny_female_ranger": "textures/entity/pokemon/scizor/shiny_female_scizor_ranger.png"
+			},
+			"particle_effects": {
+				"landing_puff": "pokeb:landing_puff"
+			},
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_gliding = query.has_rider && q.can_fly && query.modified_move_speed >= v.move_threshold && !query.is_on_ground && !query.is_in_water;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping && !v.is_gliding;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					},
+					{
+						"landing": "q.has_rider"
+					}
+				]
+			},
+			"animations": {
+				"default_blink": "animation.scizor.blink",
+				"default_ground_idle": "animation.scizor.ground_idle",
+				"default_air_idle": "animation.scizor.air_idle",
+				"default_water_idle": "animation.scizor.water_idle",
+				"default_walking": "animation.scizor.walking",
+				"default_flying": "animation.scizor.flying",
+				"default_ride_flying": "animation.scizor.flying",
+				"default_swimming": "animation.scizor.swimming",
+				"default_sleeping": "animation.scizor.sleeping",
+				"default_attack": "animation.scizor.attack",
+				"ranger_flying": "animation.scizor_ranger.flying",
+				"ranger_ride_flying": "animation.scizor_ranger.ride_flying",
+				"ranger_air_idle": "animation.scizor_ranger.air_idle",
+				"ranger_swimming": "animation.scizor_ranger.swimming",
+				"ranger_water_idle": "animation.scizor_ranger.water_idle",
+				"ranger_walking": "animation.scizor_ranger.walking",
+				"ranger_ground_idle": "animation.scizor_ranger.ground_idle",
+				"ranger_sleeping": "animation.scizor_ranger.sleeping",
+				"ranger_blink": "animation.scizor_ranger.blink",
+				"ranger_attack": "animation.scizor_ranger.attack",
+				"ranger_faint": "animation.scizor_ranger.faint",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"landing": "controller.animation.pokemon_landing",
+				"attack": "controller.animation.pokemon.scizor_attack",
+				"blink": "controller.animation.pokemon.scizor_blink",
+				"controller": "controller.animation.pokemon.scizor"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:scizor": "query.variant==0"
+				},
+				{
+					"controller.render.pokemon:scizor.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "scizor",
+				"texture_index": 0
+			},
+			"geometry": {
+				"male_default": "geometry.male_scizor",
+				"female_default": "geometry.female_scizor",
+				"male_ranger": "geometry.male_scizor_ranger",
+				"female_ranger": "geometry.female_scizor_ranger"
+			}
+		}
+	}
+}

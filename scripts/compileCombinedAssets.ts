@@ -25,24 +25,42 @@ export const KEY_VALUE_CATEGORIES = [
   "render_controllers",
 ] as const;
 
-const GEOMETRY_OUTPUT_PATH = "models/entity/pokebedrock_models.geo.json";
+/**
+ * Suffix appended to a subpack's combined file names so they don't collide with
+ * the root combined files once Bedrock overlays the subpack. Without this, e.g.
+ * `subpacks/3d/models/entity/pokebedrock_models.geo.json` resolves to the same
+ * path as the root file and *replaces* it wholesale, dropping every geometry the
+ * subpack doesn't redefine (shared armor/NPC geos and non-3d pokémon still on
+ * `geometry.substitute`) — producing "geometry not found" and invisible entities.
+ *
+ * @param baseDir - Pack-relative base directory (`""` for root or e.g. `"subpacks/3d"`).
+ * @returns Empty string for the root, or `_<subpackFolder>` (e.g. `_3d`) for a subpack.
+ */
+function getCombinedSuffix(baseDir: string): string {
+  if (!baseDir) return "";
+  return `_${baseDir.split("/").pop()}`;
+}
 
 /**
  * Builds a key-value asset config from a category name.
- * Directory, rootKey, extensions and output path are derived from the category.
+ * Directory, rootKey, extensions and output path are derived from the category and base dir.
  *
  * @param category - One of the key-value asset categories (animations, animation_controllers, render_controllers).
+ * @param baseDir - Pack-relative base directory (e.g. `""` for root or `"subpacks/3d"` for a subpack).
  * @returns Full config used by the key-value merge logic.
  */
 function getKeyValueConfig(
   category: (typeof KEY_VALUE_CATEGORIES)[number],
+  baseDir: string = "",
 ): KeyValueAssetConfig {
+  const prefix = baseDir ? `${baseDir}/` : "";
+  const suffix = getCombinedSuffix(baseDir);
   return {
     category,
-    directory: category,
+    directory: `${prefix}${category}`,
     extensions: ["json"],
     rootKey: category,
-    outputPath: `${category}/pokebedrock_${category}.json`,
+    outputPath: `${prefix}${category}/pokebedrock_${category}${suffix}.json`,
   };
 }
 
@@ -164,15 +182,22 @@ function compileKeyValueAssets(
  * Geometry identifiers listed in {@link COMPILE_EXCEPTIONS}.models remain in filtered per-source files.
  * Merged geometries are sorted by identifier (case-insensitive).
  *
+ * @param baseDir - Pack-relative base directory (e.g. `""` for root or `"subpacks/3d"` for a subpack).
  * @param skipPaths - Set to which original file paths are added so the archiver skips them.
  * @param generated - Array to which combined and exception-file entries are pushed.
  */
-function compileGeometry(skipPaths: Set<string>, generated: GeneratedEntry[]) {
+function compileGeometry(
+  baseDir: string,
+  skipPaths: Set<string>,
+  generated: GeneratedEntry[],
+) {
+  const prefix = baseDir ? `${baseDir}/` : "";
+  const suffix = getCombinedSuffix(baseDir);
   const config: GeometryAssetConfig = {
     category: "models",
-    directory: "models",
+    directory: `${prefix}models`,
     extensions: ["json"],
-    outputPath: GEOMETRY_OUTPUT_PATH,
+    outputPath: `${prefix}models/entity/pokebedrock_models${suffix}.geo.json`,
   };
   const exceptions = new Set<string>(COMPILE_EXCEPTIONS.models);
   const foundExceptions = new Set<string>();
@@ -302,14 +327,22 @@ export function compileCombinedAssets(): CombineResult {
 
   Logger.info("[combine] Compiling combined assets...");
 
-  for (const category of KEY_VALUE_CATEGORIES) {
-    const config = getKeyValueConfig(category);
-    compileKeyValueAssets(config, skipPaths, generatedEntries);
-    Logger.info(`[combine]  ✓ ${config.category}`);
-  }
+  // Pack root plus each subpack that ships its own heavy asset stack. Each base
+  // is merged independently so its combined files (and skipped source files)
+  // stay within that base's directory tree.
+  const baseDirs = ["", "subpacks/3d"];
 
-  compileGeometry(skipPaths, generatedEntries);
-  Logger.info("[combine]  ✓ models (geometry)");
+  for (const baseDir of baseDirs) {
+    const label = baseDir || "root";
+    for (const category of KEY_VALUE_CATEGORIES) {
+      const config = getKeyValueConfig(category, baseDir);
+      compileKeyValueAssets(config, skipPaths, generatedEntries);
+      Logger.info(`[combine]  ✓ ${label}/${config.category}`);
+    }
+
+    compileGeometry(baseDir, skipPaths, generatedEntries);
+    Logger.info(`[combine]  ✓ ${label}/models (geometry)`);
+  }
 
   const combinedCount = generatedEntries.filter(
     (e) =>

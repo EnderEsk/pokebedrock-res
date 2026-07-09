@@ -173,6 +173,7 @@ interface AnimationFileAnimation {
 
 export const PokemonAnimationTypes = [
   "flying",
+  "ride_flying",
   "air_idle",
   "swimming",
   "water_idle",
@@ -273,7 +274,7 @@ export interface IItemsJson {
  * - texture: The texture of the pokemon is different.
  *      @example: Butterfree has a different texture in which
  *               the Female has black (purple in Generation V) spots on her lower wings.
- *      File Names (in `./textures/entity/pokemon/pokemon_name/`):
+ *      File Names (in `./subpacks/3d/textures/entity/pokemon/pokemon_name/`):
  *          - `male_{pokemonId}.png`
  *          - `male_shiny_{pokemonId}.png`
  *          - `female_{pokemonId}.png`
@@ -284,13 +285,13 @@ export interface IItemsJson {
  *  - model: The model of the pokemon is different.
  *      @example: Venusaur has a different model in which the
  *                Female's flower has a visible gynoecium (seed-producing organ).
- *      File Names (in `./models/pokemon/`):
+ *      File Names (in `./subpacks/3d/models/entity/pokemon/`):
  *         - `male_{pokemonId}.geo.json`
  *         - `female_{pokemonId}.geo.json`
  * - animation_{id}: The animation `animation.{pokemonID}.{id}` for the pokemon is different for this model.
  *     @example: Female Kirlia has a different `walking` animation that is more delicate compared to males.
  *               In which `animation_walking` should be added.
- *      Animation ID Names (in `./animations/pokemon/{pokemonId}.animation.json`):
+ *      Animation ID Names (in `./subpacks/3d/animations/pokemon/{pokemonId}.animation.json`):
  *          - `animation.{pokemonID}.male_{id}`
  *          - `animation.{pokemonID}.female_{id}`
  * - sound: The sound of the pokemon is different. This is usually for pokemon with a cry difference.

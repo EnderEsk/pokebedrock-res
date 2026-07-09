@@ -1,0 +1,84 @@
+{
+	"format_version": "1.18.3",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "pokemon:meloetta",
+			"materials": {
+				"default": "entity_emissive_alpha",
+				"aura": "charged_creeper"
+			},
+			"textures": {
+				"evo_aura": "textures/entity/evolving",
+				"default": "textures/entity/pokemon/meloetta/meloetta.png",
+				"shiny_default": "textures/entity/pokemon/meloetta/shiny_meloetta.png",
+				"diva": "textures/entity/pokemon/meloetta/meloetta_diva.png",
+				"shiny_diva": "textures/entity/pokemon/meloetta/shiny_meloetta_diva.png",
+				"christmas": "textures/entity/pokemon/meloetta/meloetta_christmas.png",
+				"shiny_christmas": "textures/entity/pokemon/meloetta/shiny_meloetta_christmas.png"
+			},
+			"particle_effects": {
+				"landing_puff": "pokeb:landing_puff"
+			},
+			"scripts": {
+				"scale": "q.property('pokeb:scale')",
+				"initialize": [
+					"v.blink_chance = 0.01;",
+					"v.move_threshold = 0.01;"
+				],
+				"pre_animation": [
+					"v.skin_index = query.property('pokeb:skin_index');",
+					"v.is_ground_idling = query.is_on_ground && query.modified_move_speed < v.move_threshold;",
+					"v.is_air_idling = !query.is_on_ground && !query.is_in_water && !query.is_jumping && query.modified_move_speed < v.move_threshold;",
+					"v.is_water_idling = query.is_in_water && !query.is_swimming;",
+					"v.is_walking = query.modified_move_speed >= v.move_threshold && query.is_on_ground && !query.is_in_water;",
+					"v.is_swimming = query.is_swimming;",
+					"v.is_gliding = query.has_rider && q.can_fly && query.modified_move_speed >= v.move_threshold && !query.is_on_ground && !query.is_in_water;",
+					"v.is_flying = query.modified_move_speed >= v.move_threshold && q.can_fly && !query.is_on_ground && !query.is_in_water && !query.is_jumping && !v.is_gliding;",
+					"v.is_sleeping = q.is_sleeping;",
+					"v.should_blink = math.random(0.0, 1.0) <= v.blink_chance;"
+				],
+				"animate": [
+					"controller",
+					{
+						"blink": "v.should_blink"
+					},
+					{
+						"landing": "q.has_rider"
+					}
+				]
+			},
+			"animations": {
+				"default_ground_idle": "animation.meloetta.ground_idle",
+				"default_air_idle": "animation.meloetta.air_idle",
+				"default_water_idle": "animation.meloetta.water_idle",
+				"default_walking": "animation.meloetta.walking",
+				"default_flying": "animation.meloetta.flying",
+				"default_ride_flying": "animation.meloetta.flying",
+				"default_swimming": "animation.meloetta.swimming",
+				"default_sleeping": "animation.meloetta.sleeping",
+				"look_at_target": "animation.pokemon.look_at_target",
+				"landing": "controller.animation.pokemon_landing",
+				"attack": "animation.meloetta.attack",
+				"blink": "animation.meloetta.blink",
+				"controller": "controller.animation.pokemon"
+			},
+			"render_controllers": [
+				{
+					"controller.render.pokemon:meloetta": "query.variant==0"
+				},
+				{
+					"controller.render.pokemon:meloetta.evolve": "query.variant==1"
+				}
+			],
+			"spawn_egg": {
+				"texture": "meloetta",
+				"texture_index": 0
+			},
+			"geometry": {
+				"default": "geometry.meloetta",
+				"diva": "geometry.meloetta_diva",
+				"christmas": "geometry.meloetta_christmas"
+			}
+		}
+	}
+}

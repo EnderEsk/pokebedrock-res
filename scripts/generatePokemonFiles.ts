@@ -43,26 +43,60 @@ const pokemonSubstituteEntityTemplatePath = path.join(
   "pokemonSubstitute.entity.json"
 );
 const pokemonRCTemplatePath = path.join(templatesPath, "pokemon.rc.json");
+const pokemonSubstituteRCTemplatePath = path.join(
+  templatesPath,
+  "pokemonSubstitute.rc.json"
+);
 const pokemonACTemplatePath = path.join(
   templatesPath,
   "pokemon.animation_controller.json"
 );
+// High-tier subpack root. The 3D asset stack (geometry, animations, model
+// textures, per-species controllers, and modeled entity files) lives here so
+// low-memory devices (which load only the pack root) never pay for it.
+// Internal references (geometry ids, texture paths, controller ids) stay
+// root-relative because Bedrock merges subpack files onto the pack root.
+const SUBPACK_3D = path.join("subpacks", "3d");
 const pokemonEntityFilesDir = path.join(cwd, "entity", "pokemon");
+const modeledEntityFilesDir = path.join(cwd, SUBPACK_3D, "entity", "pokemon");
 const markdownLogPath = path.join(cwd, "missing_info.md");
-const renderControllersPath = path.join(cwd, "render_controllers", "pokemon");
+const renderControllersPath = path.join(
+  cwd,
+  SUBPACK_3D,
+  "render_controllers",
+  "pokemon"
+);
+// Per-species substitute render controllers stay in the pack root (the 2D
+// sprite entities they drive load on every device).
+const substituteRenderControllersPath = path.join(
+  cwd,
+  "render_controllers",
+  "pokemon_substitute"
+);
 const animationControllersPath = path.join(
   cwd,
+  SUBPACK_3D,
   "animation_controllers",
   "pokemon"
 );
 const itemTexturesPath = path.join(cwd, "textures", "item_texture.json");
 
+// Physical source dirs for the moved 3D assets (used only for existence/validity
+// reads; the paths written into entity files remain root-relative).
+const modelsSourceDir = path.join(SUBPACK_3D, "models", "entity", "pokemon");
+const animationsSourceDir = path.join(SUBPACK_3D, "animations", "pokemon");
+const texturesSourceDir = path.join(SUBPACK_3D, "textures", "entity", "pokemon");
+
 // Ensure directories exist and are clean
 fsExtra.ensureDirSync(pokemonEntityFilesDir);
+fsExtra.ensureDirSync(modeledEntityFilesDir);
 fsExtra.ensureDirSync(renderControllersPath);
+fsExtra.ensureDirSync(substituteRenderControllersPath);
 fsExtra.ensureDirSync(animationControllersPath);
 fsExtra.emptyDirSync(pokemonEntityFilesDir);
+fsExtra.emptyDirSync(modeledEntityFilesDir);
 fsExtra.emptyDirSync(renderControllersPath);
+fsExtra.emptyDirSync(substituteRenderControllersPath);
 fsExtra.emptyDirSync(animationControllersPath);
 
 // --- Global Report State ---
@@ -96,6 +130,9 @@ const pokemonSubstituteEntityTemplate = safeReadJSON<EntityFile>(
 const pokemonRCTemplate = safeReadJSON<RenderControllerFile>(
   pokemonRCTemplatePath
 );
+const pokemonSubstituteRCTemplate = safeReadJSON<RenderControllerFile>(
+  pokemonSubstituteRCTemplatePath
+);
 const pokemonACTemplate = safeReadJSON<AnimationControllerFile>(
   pokemonACTemplatePath
 );
@@ -104,6 +141,7 @@ if (
   !pokemonEntityFileTemplate ||
   !pokemonSubstituteEntityTemplate ||
   !pokemonRCTemplate ||
+  !pokemonSubstituteRCTemplate ||
   !pokemonACTemplate ||
   !itemTexturesFile
 ) {
@@ -117,12 +155,7 @@ if (
  * Checks if a valid geometry file exists for the given Pokémon type.
  */
 function isValidGeometryFile(pokemonTypeId: GeometryFileName): boolean {
-  const filePath = path.join(
-    "models",
-    "entity",
-    "pokemon",
-    `${pokemonTypeId}.geo.json`
-  );
+  const filePath = path.join(modelsSourceDir, `${pokemonTypeId}.geo.json`);
   if (!fs.existsSync(filePath)) {
     report.missingGeometryFiles.add(pokemonTypeId);
     Logger.error(`Missing geometry file for ${pokemonTypeId}!`);
@@ -229,8 +262,7 @@ function getDefinedAnimations(
   pokemonTypeId: PokemonTypeId
 ): string[] | undefined {
   const filePath = path.join(
-    "animations",
-    "pokemon",
+    animationsSourceDir,
     `${pokemonTypeId}.animation.json`
   );
   if (!fs.existsSync(filePath)) {
@@ -261,8 +293,7 @@ function getDefinedAnimations(
  */
 function getAnimationUsedEffects(pokemonTypeId: PokemonTypeId): Set<string> {
   const filePath = path.join(
-    "animations",
-    "pokemon",
+    animationsSourceDir,
     `${pokemonTypeId}.animation.json`
   );
   if (!fs.existsSync(filePath))
@@ -304,6 +335,7 @@ function updateEntityFileWithAnimations(
   type AnimationKey = (typeof PokemonAnimationTypes)[number];
   const requirementMap: Record<AnimationKey, keyof typeof behavior | null> = {
     flying: "canFly",
+    ride_flying: "canFly",
     air_idle: "canFly",
     swimming: "canSwim",
     water_idle: "canSwim",
@@ -313,6 +345,17 @@ function updateEntityFileWithAnimations(
     blink: "canLook",
     attack: null,
     faint: null,
+  };
+
+  /**
+   * When a species lacks one of these animations, prefer a same-medium
+   * substitute over ground_idle (a hovering flyer should keep flapping,
+   * not freeze in its ground idle).
+   */
+  const fallbackMap: Partial<Record<AnimationKey, AnimationKey>> = {
+    air_idle: "flying",
+    ride_flying: "flying",
+    water_idle: "swimming",
   };
 
   // Get the animations that this pokemon inherits.
@@ -343,7 +386,11 @@ function updateEntityFileWithAnimations(
     missingReport.push(animKey);
     report.missingPokemonAnimations.set(pokemonTypeId, missingReport);
     if (animKey === "blink") continue;
-    description.animations[`default_${animKey}`] = defaultAnimation;
+    const fallback = fallbackMap[animKey as AnimationKey];
+    description.animations[`default_${animKey}`] =
+      fallback && behavior[requirement] && animations.includes(fallback)
+        ? `animation.${pokemonTypeId}.${fallback}`
+        : defaultAnimation;
   }
 
   // Helper function to insert a key before a target key (so it looks neat in the entity file).
@@ -435,7 +482,8 @@ function updateEntityFileWithAnimations(
     ...new Set([...customizationEffects, ...skinParticleEffects]),
   ];
   if (allParticleEffects && effects.size > 0) {
-    description.particle_effects = {};
+    // Keep template-level effects (e.g. landing_puff) and add species ones.
+    description.particle_effects = description.particle_effects ?? {};
     for (const effectTypeId of allParticleEffects) {
       const effectName = effectTypeId.split(":")[1];
       if (!effectName || !effects.has(effectName)) {
@@ -467,11 +515,13 @@ function verifyAndUpdateTextures(
   pokemonTypeId: PokemonTypeId,
   entityFile: EntityFile
 ): EntityFile {
-  // Read all textures from the directory.
+  // Read all textures from the physical (subpack) directory. The path stored in
+  // the entity file stays root-relative (`texturesDir`) since subpack files
+  // merge onto the pack root.
   const texturesDir = path.join("textures", "entity", "pokemon");
   let textures: string[] = [];
   try {
-    textures = fs.readdirSync(path.join(texturesDir, pokemonTypeId));
+    textures = fs.readdirSync(path.join(texturesSourceDir, pokemonTypeId));
   } catch (error) {
     Logger.error(`Error reading textures for ${pokemonTypeId}: ${error}`);
   }
@@ -895,6 +945,45 @@ function makeAnimationController(pokemonTypeId: PokemonTypeId): void {
       `Error writing animation controller for ${pokemonTypeId}: ${error}`
     );
   }
+}
+
+/**
+ * Creates the 2D substitute render controller for a Pokémon that has skins, so
+ * its flat sprite billboard shows the active skin's sprite (selected by the
+ * `pokeb:skin_index` property) instead of always the default sprite.
+ *
+ * Sprites have no shiny/gender variants, so a single sprite per skin is indexed
+ * directly: index 0 is the default sprite and each skin follows in declaration
+ * order — matching the `pokeb:skin_index` values used by the 3D controller.
+ *
+ * @param pokemonTypeId The Pokémon whose substitute render controller to generate.
+ * @throws if the cloned template is missing its controller entry.
+ */
+function makeSubstituteRenderController(pokemonTypeId: PokemonTypeId): void {
+  const customizations = PokemonCustomizations[pokemonTypeId];
+  const skinKeys = Object.keys(customizations?.skins ?? {});
+  if (skinKeys.length === 0) return;
+
+  const rcFile = cloneTemplate(pokemonSubstituteRCTemplate!, pokemonTypeId);
+  const controller =
+    rcFile.render_controllers[
+      `controller.render.pokemon_substitute:${pokemonTypeId}`
+    ];
+  if (!controller)
+    throw new Error(
+      `No controller found in substitute render controller for ${pokemonTypeId}`
+    );
+
+  controller.arrays.textures["Array.skins"] = [
+    "Texture.default",
+    ...skinKeys.map((skin) => `Texture.${skin}`),
+  ];
+
+  writeJsonFileSync(
+    path.join(substituteRenderControllersPath, `${pokemonTypeId}.rc.json`),
+    rcFile,
+    { detectIndent: true }
+  );
 }
 
 /**
@@ -1365,8 +1454,7 @@ async function checkAndEnsureSprites(pokemonTypeId: PokemonTypeId) {
  */
 function checkBlinkAnimation(pokemonTypeId: PokemonTypeId): string[] | null {
   const filePath = path.join(
-    "animations",
-    "pokemon",
+    animationsSourceDir,
     `${pokemonTypeId}.animation.json`
   );
   if (!fs.existsSync(filePath)) {
@@ -1479,41 +1567,80 @@ async function processPokemon() {
     try {
       const typeId = pokemonTypeId as PokemonTypeId;
       const hasModel = pokemonJson!.pokemonWithModels.includes(typeId);
-      const template = hasModel
-        ? pokemonEntityFileTemplate
-        : pokemonSubstituteEntityTemplate;
-      let entityFile: EntityFile = cloneTemplate(template!, typeId);
       const customizations = PokemonCustomizations[typeId];
 
-      if (hasModel) {
-        entityFile = verifyAndUpdateGeometries(typeId, entityFile);
-        const animations = getDefinedAnimations(typeId);
+      // Root (loaded on every device): every species renders as a flat 2D
+      // sprite billboard. This is the complete low-memory pack.
+      const substituteFile: EntityFile = cloneTemplate(
+        pokemonSubstituteEntityTemplate!,
+        typeId
+      );
 
-        // Check blink animation
-        const invalidBlinkBones = checkBlinkAnimation(typeId);
-        if (invalidBlinkBones) {
-          Logger.warn(
-            `WARNING: Pokemon ${typeId} has a blink animation that modifies non-eye bones: ${invalidBlinkBones.join(
-              ", "
-            )}`
-          );
-          Logger.warn(
-            `This can cause visible twitching during idle animations. Please fix the animation file.`
-          );
-          report.invalidBlinkAnimations.set(typeId, invalidBlinkBones);
+      // Skinned Pokémon: drive the 2D sprite from a per-species substitute
+      // render controller so the active skin's sprite shows (indexed by
+      // pokeb:skin_index) instead of always the default sprite.
+      const substituteSkinKeys = Object.keys(customizations?.skins ?? {});
+      if (substituteSkinKeys.length > 0) {
+        const description =
+          substituteFile["minecraft:client_entity"].description;
+        for (const skin of substituteSkinKeys) {
+          description.textures[skin] =
+            `textures/sprites/default/${typeId}_${skin}`;
         }
-
-        if (animations) {
-          entityFile = updateEntityFileWithAnimations(
-            typeId,
-            entityFile,
-            animations
-          );
-        } else {
-          Logger.error(`Pokémon ${typeId} has no defined animations.`);
-        }
-        entityFile = verifyAndUpdateTextures(typeId, entityFile);
+        // Bare-string reference (always render), matching the base substitute
+        // template; the EntityFile type only models the conditional object form.
+        description.render_controllers = [
+          `controller.render.pokemon_substitute:${typeId}`,
+        ] as unknown as { [key: string]: string }[];
+        makeSubstituteRenderController(typeId);
       }
+
+      writeJsonFileSync(
+        path.join(pokemonEntityFilesDir, `${typeId}.entity.json`),
+        substituteFile,
+        { detectIndent: true }
+      );
+
+      // High-tier subpack: modeled species get a full 3D entity file that
+      // overrides the root sprite entity (same relative path) when the 3D
+      // subpack is active. Non-modeled species have no override and keep the
+      // root sprite on all tiers.
+      if (!hasModel) {
+        await checkAndEnsureSprites(typeId);
+        continue;
+      }
+
+      let entityFile: EntityFile = cloneTemplate(
+        pokemonEntityFileTemplate!,
+        typeId
+      );
+      entityFile = verifyAndUpdateGeometries(typeId, entityFile);
+      const animations = getDefinedAnimations(typeId);
+
+      // Check blink animation
+      const invalidBlinkBones = checkBlinkAnimation(typeId);
+      if (invalidBlinkBones) {
+        Logger.warn(
+          `WARNING: Pokemon ${typeId} has a blink animation that modifies non-eye bones: ${invalidBlinkBones.join(
+            ", "
+          )}`
+        );
+        Logger.warn(
+          `This can cause visible twitching during idle animations. Please fix the animation file.`
+        );
+        report.invalidBlinkAnimations.set(typeId, invalidBlinkBones);
+      }
+
+      if (animations) {
+        entityFile = updateEntityFileWithAnimations(
+          typeId,
+          entityFile,
+          animations
+        );
+      } else {
+        Logger.error(`Pokémon ${typeId} has no defined animations.`);
+      }
+      entityFile = verifyAndUpdateTextures(typeId, entityFile);
 
       if (
         customizations?.animatedTextureConfig ||
@@ -1521,14 +1648,14 @@ async function processPokemon() {
         customizations?.skins
       ) {
         makeRenderController(typeId);
-        if (hasModel && !needsCustomEvoController(customizations)) {
+        if (!needsCustomEvoController(customizations)) {
           entityFile[
             "minecraft:client_entity"
           ].description.render_controllers[1] = {
             "controller.render.evolve": "query.variant==1",
           };
         }
-      } else if (hasModel) {
+      } else {
         // Fallback render controllers
         entityFile[
           "minecraft:client_entity"
@@ -1545,11 +1672,11 @@ async function processPokemon() {
       // Create animation controller if needed
       if (hasSkinSpecificAnimations(typeId)) makeAnimationController(typeId);
 
-      const entityFilePath = path.join(
-        pokemonEntityFilesDir,
-        `${typeId}.entity.json`
+      writeJsonFileSync(
+        path.join(modeledEntityFilesDir, `${typeId}.entity.json`),
+        entityFile,
+        { detectIndent: true }
       );
-      writeJsonFileSync(entityFilePath, entityFile, { detectIndent: true });
       await checkAndEnsureSprites(typeId);
     } catch (error) {
       Logger.error(`Error processing Pokémon ${pokemonTypeId}: ${error}`);
@@ -1576,7 +1703,7 @@ async function processPokemon() {
     markdownContent += `## Pokémon Missing Geometry Files\n`;
     if (report.missingGeometryFiles.size > 0) {
       report.missingGeometryFiles.forEach((id) => {
-        markdownContent += `- [${id}](models/entity/pokemon/${id}.geo.json)\n`;
+        markdownContent += `- [${id}](subpacks/3d/models/entity/pokemon/${id}.geo.json)\n`;
       });
     } else {
       markdownContent += "No Pokémon missing geometry files found!\n";
@@ -1584,7 +1711,7 @@ async function processPokemon() {
     markdownContent += `\n## Pokémon With Invalid Geometry Files\n`;
     if (report.invalidGeometryFiles.size > 0) {
       report.invalidGeometryFiles.forEach((id) => {
-        markdownContent += `- [${id}](models/entity/pokemon/${id}.geo.json)\n`;
+        markdownContent += `- [${id}](subpacks/3d/models/entity/pokemon/${id}.geo.json)\n`;
       });
     } else {
       markdownContent += "No Pokémon have invalid geometry files!\n";
@@ -1600,7 +1727,7 @@ async function processPokemon() {
     markdownContent += `\n## Missing Pokémon Textures\n`;
     if (report.missingPokemonTextures.size > 0) {
       report.missingPokemonTextures.forEach((textures, id) => {
-        markdownContent += `- [${id}](textures/entity/pokemon/${id}/): ${textures.join(
+        markdownContent += `- [${id}](subpacks/3d/textures/entity/pokemon/${id}/): ${textures.join(
           ", "
         )}\n`;
       });
@@ -1618,7 +1745,7 @@ async function processPokemon() {
     markdownContent += `\n## Pokémon with Invalid Animation Names\n`;
     if (report.hasInvalidAnimationNames.size > 0) {
       report.hasInvalidAnimationNames.forEach((id) => {
-        markdownContent += `- [${id}](animations/pokemon/${id}.animation.json)\n`;
+        markdownContent += `- [${id}](subpacks/3d/animations/pokemon/${id}.animation.json)\n`;
       });
     } else {
       markdownContent += "No Pokémon have invalid animation names!\n";
@@ -1626,7 +1753,7 @@ async function processPokemon() {
     markdownContent += `\n## Pokémon With Invalid Animation Files\n`;
     if (report.hasInvalidAnimationFiles.size > 0) {
       report.hasInvalidAnimationFiles.forEach((id) => {
-        markdownContent += `- [${id}](animations/pokemon/${id}.animation.json)\n`;
+        markdownContent += `- [${id}](subpacks/3d/animations/pokemon/${id}.animation.json)\n`;
       });
     } else {
       markdownContent += "No Pokémon have invalid animation files!\n";
@@ -1634,7 +1761,7 @@ async function processPokemon() {
     markdownContent += `\n## Missing Particle Customizations\n`;
     if (report.missingParticleCustomizations.size > 0) {
       report.missingParticleCustomizations.forEach((effects, id) => {
-        markdownContent += `- [${id}](animations/pokemon/${id}.animation.json): ${[
+        markdownContent += `- [${id}](subpacks/3d/animations/pokemon/${id}.animation.json): ${[
           ...effects,
         ].join(", ")}\n`;
       });
@@ -1644,7 +1771,7 @@ async function processPokemon() {
     markdownContent += `\n## Invalid Particle Customizations\n`;
     if (report.invalidParticleCustomization.size > 0) {
       report.invalidParticleCustomization.forEach((effects, id) => {
-        markdownContent += `- [${id}](animations/pokemon/${id}.animation.json): ${effects.join(
+        markdownContent += `- [${id}](subpacks/3d/animations/pokemon/${id}.animation.json): ${effects.join(
           ", "
         )}\n`;
       });
@@ -1655,7 +1782,7 @@ async function processPokemon() {
     markdownContent += `\n> [!NOTE]\n> Some of these could be a result of missing [behavior sets](https://github.com/pokebedrock/pokemonComponents).\n\n`;
     if (report.missingPokemonAnimations.size > 0) {
       report.missingPokemonAnimations.forEach((anims, id) => {
-        markdownContent += `- [${id}](animations/pokemon/${id}.animation.json): ${anims.join(
+        markdownContent += `- [${id}](subpacks/3d/animations/pokemon/${id}.animation.json): ${anims.join(
           ", "
         )}\n`;
       });
@@ -1666,7 +1793,7 @@ async function processPokemon() {
     if (report.invalidBlinkAnimations.size > 0) {
       markdownContent += `These Pokémon have blink animations that modify bones other than "eyes" or bones with "eye" in their name.\nThis can cause visible twitching when Pokémon are idle or when blink animation is triggered.\n\n`;
       report.invalidBlinkAnimations.forEach((bones, id) => {
-        markdownContent += `- [${id}](animations/pokemon/${id}.animation.json): Modifies non-eye bones: ${bones.join(
+        markdownContent += `- [${id}](subpacks/3d/animations/pokemon/${id}.animation.json): Modifies non-eye bones: ${bones.join(
           ", "
         )}\n`;
       });

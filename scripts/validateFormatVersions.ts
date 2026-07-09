@@ -30,7 +30,20 @@ const SCAN_DIRS = [
   "entity",
   "particles",
   "attachables",
+  "subpacks",
 ] as const;
+
+/**
+ * Strips a leading `subpacks/<name>/` segment so subpack assets validate against
+ * the same rules as their root-relative counterparts (subpack files are merged
+ * onto the pack root at load time).
+ *
+ * @param rel Pack-relative path with forward slashes.
+ * @returns The path with any `subpacks/<name>/` prefix removed.
+ */
+function stripSubpackPrefix(rel: string): string {
+  return rel.replace(/^subpacks\/[^/]+\//, "");
+}
 
 /** Attachable basenames that require {@link REQUIRED_FORMAT_VERSIONS.attachableClient}. */
 const ATTACHABLE_CLIENT_FILES = new Set([
@@ -81,7 +94,7 @@ function isAtLeast(version: string, minimum: string): boolean {
  * @returns Required minimum version, or `null` when this path is not validated.
  */
 function getRequired(relPath: string, raw: string): string | null {
-  const rel = relPath.replace(/\\/g, "/");
+  const rel = stripSubpackPrefix(relPath.replace(/\\/g, "/"));
   if (rel.startsWith("models/")) return REQUIRED_FORMAT_VERSIONS.geometry;
   if (rel.startsWith("animations/")) return REQUIRED_FORMAT_VERSIONS.animations;
   if (rel.startsWith("animation_controllers/"))
@@ -125,7 +138,7 @@ function validateFile(relPath: string, raw: string): string[] {
   if (!data || typeof data !== "object") return [];
 
   const errors: string[] = [];
-  const rel = relPath.replace(/\\/g, "/");
+  const rel = stripSubpackPrefix(relPath.replace(/\\/g, "/"));
 
   if (rel.startsWith("models/")) {
     const legacyKey = Object.keys(data).find((k) => k.startsWith("geometry."));

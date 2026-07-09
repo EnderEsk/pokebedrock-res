@@ -923,54 +923,6 @@
           "effect": "firework"
         }
       }
-    },
-    "animation.crate.rotate_0": {
-      "loop": "hold_on_last_frame",
-      "bones": {
-        "chest": {
-          "rotation": [
-            0,
-            0,
-            0
-          ]
-        }
-      }
-    },
-    "animation.crate.rotate_90": {
-      "loop": "hold_on_last_frame",
-      "bones": {
-        "chest": {
-          "rotation": [
-            0,
-            90,
-            0
-          ]
-        }
-      }
-    },
-    "animation.crate.rotate_180": {
-      "loop": "hold_on_last_frame",
-      "bones": {
-        "chest": {
-          "rotation": [
-            0,
-            180,
-            0
-          ]
-        }
-      }
-    },
-    "animation.crate.rotate_270": {
-      "loop": "hold_on_last_frame",
-      "bones": {
-        "chest": {
-          "rotation": [
-            0,
-            270,
-            0
-          ]
-        }
-      }
     }
   }
 }

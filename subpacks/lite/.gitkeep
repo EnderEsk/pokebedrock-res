@@ -1,0 +1,3 @@
+# Intentionally empty. Low-memory (Nintendo Switch) tier loads the pack root,
+# which is the complete 2D-sprite pack. This folder only exists so the manifest
+# has an explicit tier-1 subpack entry for deterministic auto-selection.

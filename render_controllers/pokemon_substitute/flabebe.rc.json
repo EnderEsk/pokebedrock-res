@@ -1,0 +1,27 @@
+{
+	"format_version": "1.10.0",
+	"render_controllers": {
+		"controller.render.pokemon_substitute:flabebe": {
+			"arrays": {
+				"textures": {
+					"Array.skins": [
+						"Texture.default",
+						"Texture.blue",
+						"Texture.orange",
+						"Texture.white",
+						"Texture.yellow"
+					]
+				}
+			},
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "Material.default"
+				}
+			],
+			"textures": [
+				"Array.skins[query.property('pokeb:skin_index')]"
+			]
+		}
+	}
+}

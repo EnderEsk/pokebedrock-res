@@ -12,13 +12,14 @@
 				"default_male": "textures/sprites/default/shellos",
 				"default_female": "textures/sprites/default/shellos",
 				"shiny_male": "textures/sprites/default/shellos",
-				"shiny_female": "textures/sprites/default/shellos"
+				"shiny_female": "textures/sprites/default/shellos",
+				"east": "textures/sprites/default/shellos_east"
 			},
 			"geometry": {
 				"default": "geometry.substitute"
 			},
 			"render_controllers": [
-				"controller.render.pokemon"
+				"controller.render.pokemon_substitute:shellos"
 			],
 			"spawn_egg": {
 				"texture": "shellos",
