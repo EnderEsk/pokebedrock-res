@@ -414,6 +414,57 @@
     },
     "wiki_berry_plant_stage_5": {
       "textures": "textures/blocks/berries/wiki/stage_5"
+    },
+    "findable_block": {
+      "textures": "textures/blocks/findable_blocks/block"
+    },
+    "findable_blocks_present_red": {
+      "textures": "textures/blocks/findable_blocks/presents/red"
+    },
+    "findable_blocks_present_green": {
+      "textures": "textures/blocks/findable_blocks/presents/green"
+    },
+    "findable_blocks_present_blue": {
+      "textures": "textures/blocks/findable_blocks/presents/blue"
+    },
+    "findable_blocks_present_yellow": {
+      "textures": "textures/blocks/findable_blocks/presents/yellow"
+    },
+    "findable_blocks_present_purple": {
+      "textures": "textures/blocks/findable_blocks/presents/purple"
+    },
+    "findable_blocks_present_cyan": {
+      "textures": "textures/blocks/findable_blocks/presents/cyan"
+    },
+    "findable_blocks_present_orange": {
+      "textures": "textures/blocks/findable_blocks/presents/orange"
+    },
+    "findable_blocks_present_pink": {
+      "textures": "textures/blocks/findable_blocks/presents/pink"
+    },
+    "findable_blocks_present_white": {
+      "textures": "textures/blocks/findable_blocks/presents/white"
+    },
+    "findable_blocks_present_black": {
+      "textures": "textures/blocks/findable_blocks/presents/black"
+    },
+    "findable_blocks_present_brown": {
+      "textures": "textures/blocks/findable_blocks/presents/brown"
+    },
+    "findable_blocks_present_lime": {
+      "textures": "textures/blocks/findable_blocks/presents/lime"
+    },
+    "findable_blocks_present_light_blue": {
+      "textures": "textures/blocks/findable_blocks/presents/light_blue"
+    },
+    "findable_blocks_present_light_grey": {
+      "textures": "textures/blocks/findable_blocks/presents/light_grey"
+    },
+    "findable_blocks_present_magenta": {
+      "textures": "textures/blocks/findable_blocks/presents/magenta"
+    },
+    "findable_blocks_present_grey": {
+      "textures": "textures/blocks/findable_blocks/presents/grey"
     }
   }
 }
