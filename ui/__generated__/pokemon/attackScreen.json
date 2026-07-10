@@ -1059,7 +1059,7 @@
     ]
   },
   "ally_actor_details_button_check_id@ally_actor_button": {
-    "$button_id|default": "b:opponent_1_",
+    "$button_id|default": "b:ally_1_",
     "bindings": [
       {
         "binding_name": "#form_button_text",

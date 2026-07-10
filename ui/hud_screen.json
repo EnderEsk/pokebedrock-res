@@ -113,7 +113,7 @@
       {
         "binding_name": "#null",
         "binding_type": "view",
-        "source_property_name": "(not ((%.1s * #hud_title_text_string ) = '&_'))",
+        "source_property_name": "(not ((%.2s * #hud_title_text_string ) = '&_'))",
         "target_property_name": "#visible"
       }
     ]
@@ -132,7 +132,7 @@
       {
         "binding_name": "#null",
         "binding_type": "view",
-        "source_property_name": "(not ((%.1s * #hud_title_text_string ) = '&_'))",
+        "source_property_name": "(not ((%.2s * #hud_title_text_string ) = '&_'))",
         "target_property_name": "#visible"
       }
     ]

@@ -31,8 +31,10 @@ export {
   pressedStateVars,
   lockedStateVars,
   type ButtonTextureConfig,
+  buttonStack,
 } from "../shared";
 
+// Local bindings needed — `export { X } from` does not create locals in this module.
 import { buttonStack, formButtonsDetailsBinding } from "../shared";
 
 /** Namespace constant for battle UI */

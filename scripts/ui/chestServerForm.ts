@@ -518,7 +518,7 @@ export default defineUI("chest_ui", (ns) => {
       { "chest_label@chest_ui.chest_label": {} },
       { "close_button@common.close_button": { $close_button_offset: [-2, 2] } },
       {
-        small_chest_grid: {
+        tiny_chest_grid: {
           type: "grid",
           grid_dimensions: [9, 1],
           size: ["100% - 14px", "100% - 112px"],
@@ -717,7 +717,7 @@ export default defineUI("chest_ui", (ns) => {
         "close_button@common.close_button": { $close_button_offset: [-20, 10] },
       },
       {
-        quest_chest_grid: {
+        backpack_chest_grid: {
           type: "grid",
           grid_dimensions: [10, 9],
           size: [180, 162],
@@ -745,7 +745,7 @@ export default defineUI("chest_ui", (ns) => {
         "close_button@common.close_button": { $close_button_offset: [-20, 40] },
       },
       {
-        quest_chest_grid: {
+        auction_house_chest_grid: {
           type: "grid",
           grid_dimensions: [9, 6],
           size: [162, "100% - 78px"],

@@ -200,7 +200,7 @@ export function registerActorElements(
     "ally_actor_details_button_check_id"
   )
     .extendsFrom(allyActorButtonNs)
-    .variableDefault("button_id", "b:opponent_1_")
+    .variableDefault("button_id", "b:ally_1_")
     .bindings(...visibilityForId("$button_id"))
     .addToNamespace(ns);
 
