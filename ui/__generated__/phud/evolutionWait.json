@@ -20,9 +20,9 @@
           "type": "label",
           "text": "#text",
           "color": [
-            0.5,
-            0.5,
-            0.5
+            0.501,
+            0.501,
+            0.501
           ],
           "layer": 1002,
           "localize": true,

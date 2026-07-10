@@ -114,7 +114,6 @@
             {
               "entry_description_label": {
                 "type": "image",
-                "texture": "#texture",
                 "color": "$color",
                 "bindings": [
                   {
@@ -268,7 +267,6 @@
             {
               "image": {
                 "type": "image",
-                "texture": "#texture",
                 "anchor_from": "top_middle",
                 "anchor_to": "top_middle",
                 "layer": 5,
@@ -556,7 +554,7 @@
       }
     ]
   },
-  "pokemon_panel_grid@button_stack": {
+  "pokemon_panel_grid@pokemon.button_stack": {
     "size": [
       "98%",
       "100%c"
@@ -665,8 +663,8 @@
           "type": "image",
           "texture": "textures/ui/pokemon/background",
           "color": "black",
-          "anchor_from": "bottom",
-          "anchor_to": "bottom",
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
           "size": [
             "80%",
             "60%"

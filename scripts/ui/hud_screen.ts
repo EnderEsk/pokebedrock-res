@@ -31,7 +31,7 @@ export default redefineUI("hud_screen", (ns) => {
           binding_name: "#null",
           binding_type: "view",
           source_property_name:
-            "(not ((%.2s * #hud_title_text_string ) = '&_'))",
+            "(not ((%.1s * #hud_title_text_string ) = '&_'))",
           target_property_name: "#visible",
         },
       ],
@@ -51,7 +51,7 @@ export default redefineUI("hud_screen", (ns) => {
           binding_name: "#null",
           binding_type: "view",
           source_property_name:
-            "(not ((%.2s * #hud_title_text_string ) = '&_'))",
+            "(not ((%.1s * #hud_title_text_string ) = '&_'))",
           target_property_name: "#visible",
         },
       ],

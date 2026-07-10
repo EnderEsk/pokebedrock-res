@@ -8,6 +8,7 @@ import {
   element,
   panel,
   image,
+  boundImage,
   label,
   stackPanel,
   collectionBinding,
@@ -23,15 +24,16 @@ import {
 } from "mcbe-ts-ui";
 
 import { visibilityForId, formButtonsDetailsBinding } from "./shared";
-import { createDynamicProgressBar, type ProgressElements } from "./progress";
+import type { ProgressElements } from "./progress";
 
 // =============================================================================
 // Actor Entity Icon
 // =============================================================================
 
 /** Entity icon inside the overlay */
-const entityIcon = image("entity_icon", "#texture")
+const entityIcon = boundImage("entity_icon")
   .size(40, 40)
+  .anchor("center")
   .layer(25)
   .bindings(
     formButtonsDetailsBinding(),
@@ -63,14 +65,14 @@ const battleActorEntityIconOverlay = image(
 
 /** Spacer panel for layout */
 const spacerPanel = (height: SizeValue) =>
-  panel("spacer").size("default", height);
+  panel("spacer").size("100%", height);
 
 /** Details text label */
 const detailsTextLabel = label("details_text", "#text")
   .color([0.768, 0.768, 0.768])
   .fontScale(1)
   .rawProp("offset", "$text_offset")
-  .size("default", "65%")
+  .size("100%", "65%")
   .rawProp("text_alignment", "$text_alignment")
   .bindings(
     collectionBinding("#form_button_text"),
@@ -84,6 +86,7 @@ const healthTextLabel = label("health_text", "#text")
   .offset("0%", "0%")
   .fontType("smooth")
   .textAlignment("center")
+  .fullSize()
   .layer(32)
   .bindings(
     collectionBinding("#form_button_text"),
@@ -93,18 +96,19 @@ const healthTextLabel = label("health_text", "#text")
 /** Creates HP bar panel with dynamic progress bar */
 function createHpBarPanel(progressElements: ProgressElements) {
   return panel("hp_bar")
-    .size("default", "21%")
+    .size("100%", "21%")
+    .anchor("center")
     .layer(30)
     .controls(
       healthTextLabel,
-      createDynamicProgressBar(progressElements.variableProgressBar)
+      extend("health_bar", progressElements.dynamicProgressBar)
     );
 }
 
 /** Creates battle actor description - shows name and HP bar */
 function createBattleActorDescription(progressElements: ProgressElements) {
   return stackPanel("battle_actor_description", "vertical")
-    .size("default", 40)
+    .size("100%", 40)
     .variableDefault("text_alignment", "left")
     .variableDefault("text_offset", [0, 0])
     .controls(
@@ -159,20 +163,22 @@ export function registerActorElements(
     .addToNamespace(ns);
 
   // Spacing panel for horizontal layout
-  const spacingPanel = panel("spacing").size("5%");
+  const spacingPanel = panel("spacing").size("5%", "100%");
 
   // Ally actor details overlay
   const allyDetailsOverlay = stackPanel(
     "details_overlay",
     "horizontal"
-  ).controls(
-    extend("description", battleActorDescriptionNs),
-    spacingPanel,
-    extend("entity_icon_overlay", battleActorEntityIconOverlayNs).variable(
-      "actor_icon_overlay_texture",
-      "textures/ui/battle/pokemon_healthy"
-    )
-  );
+  )
+    .fullSize()
+    .controls(
+      extend("actor_description", battleActorDescriptionNs),
+      spacingPanel,
+      extend("entity_icon_overlay", battleActorEntityIconOverlayNs).variable(
+        "actor_icon_overlay_texture",
+        "textures/ui/battle/pokemon_healthy"
+      )
+    );
 
   // Ally actor button
   const allyActorButtonNs = element("ally_actor_button")
@@ -184,10 +190,12 @@ export function registerActorElements(
   const opponentDetailsOverlay = stackPanel(
     "details_overlay",
     "horizontal"
-  ).controls(
-    extend("icon", battleActorEntityIconOverlayNs),
-    extend("description", battleActorDescriptionNs)
-  );
+  )
+    .fullSize()
+    .controls(
+      extend("entity_icon_overlay", battleActorEntityIconOverlayNs),
+      extend("actor_description", battleActorDescriptionNs)
+    );
 
   // Opponent actor button
   const opponentActorButtonNs = element("opponent_actor_button")
@@ -227,7 +235,7 @@ export function registerActorElements(
     "opponent_actor_details_button",
     "vertical"
   )
-    .size("default", "100%c")
+    .size("100%", "100%c")
     .offset("-50%", "10%")
     .controls(...opponentControls)
     .addToNamespace(ns);
@@ -245,7 +253,7 @@ export function registerActorElements(
     "ally_actor_details_button",
     "vertical"
   )
-    .size("default", "100%c")
+    .size("100%", "100%c")
     .offset("50%", "10%")
     .controls(...allyControls)
     .addToNamespace(ns);

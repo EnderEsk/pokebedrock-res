@@ -15,6 +15,7 @@ import {
   extend,
   type NamespaceElement,
   type SizeValue,
+  type ElementBuilder,
   ImageBuilder,
   PanelBuilder,
   NamespaceBuilder,
@@ -73,6 +74,8 @@ export function registerProgressElements(
 
   // Dynamic progress bar with color variants (green/yellow/red)
   const dynamicProgressBarNs = panel("dynamic_progress_bar")
+    .fullSize()
+    .anchor("center")
     .controls(
       extendRaw("empty_progress_bar", "common.empty_progress_bar", {
         layer: 1,
@@ -97,45 +100,23 @@ export function registerProgressElements(
 }
 
 /**
- * Generates PP bar variant elements (0-20 + null)
- * @param ns - The namespace builder to add elements to
- * @param ppBarNs - The registered ppBar namespace element
+ * Creates PP bar controls for every supported PP value.
+ *
+ * @param ppBarNs The registered PP bar template.
+ * @returns PP bar controls for null and values 0 through 20.
  */
-export function registerPpBarVariants(
-  ns: NamespaceBuilder,
+export function createPpBarVariants(
   ppBarNs: NamespaceElement
-): void {
-  ["null", ...Array.from({ length: 21 }, (_, i) => i)].forEach((i) => {
+): ElementBuilder<string>[] {
+  return ["null", ...Array.from({ length: 21 }, (_, i) => i)].map((i) => {
     const barVal = i === "null" ? "_null" : `_${i}`;
     const sizePercent: SizeValue =
       i === "null" || i === 0
         ? "0%"
-        : (`${(Number(i) * 1.965).toFixed(3)}%` as SizeValue);
+        : (`${Number((Number(i) * 1.965).toFixed(3))}%` as SizeValue);
 
-    extend(String(i), ppBarNs)
+    return extend(String(i), ppBarNs)
       .variable("bar", barVal)
-      .size(sizePercent, "29%")
-      .addToNamespace(ns);
+      .size(sizePercent, "29%");
   });
-}
-
-/**
- * Get the dynamic progress bar builder for use in other modules.
- * Note: Must be called after registerProgressElements to get the registered version.
- */
-export function createDynamicProgressBar(
-  variableProgressBarNs: NamespaceElement<ImageBuilder<string>>
-) {
-  return panel("dynamic_progress_bar").controls(
-    extendRaw("empty_progress_bar", "common.empty_progress_bar", { layer: 1 }),
-    extend("green", variableProgressBarNs)
-      .variable("color_id", "G")
-      .color([0.5, 1.0, 0.5, 1.0]),
-    extend("yellow", variableProgressBarNs)
-      .variable("color_id", "Y")
-      .color([1, 0.9, 0, 1.0]),
-    extend("red", variableProgressBarNs)
-      .variable("color_id", "R")
-      .color([1, 0, 0, 1.0])
-  );
 }

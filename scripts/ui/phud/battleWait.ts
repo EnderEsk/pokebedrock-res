@@ -14,6 +14,8 @@ const battleLogText = boundLabel("text")
   .anchor("top_middle")
   .layer(1002)
   .localize()
+  .fontSize("normal")
+  .offset(0, 0)
   .textAlignment("center")
   .bindings(
     phudRead("#battleLog", "#log_text"),
@@ -22,22 +24,27 @@ const battleLogText = boundLabel("text")
 
 const menuExtra = image("menu_extra", "textures/ui/battle/white_transparency")
   .color(fromRGB(35, 32, 32))
+  .rawProp("keep_ratio", true)
   .layer(2)
   .fill()
   .anchor("bottom_left")
-  .size("85%")
+  .size("85%", "100%")
   .controls(battleLogText);
 
 const infoLabel = boundLabel("info_label")
   .color("default")
   .alpha(1)
+  .rawProp("localize", false)
+  .fontScaleFactor(1)
   .textAlignment("center")
-  .size("fill")
+  .size("fill", "100%")
+  .anchor("center")
+  .rawProp("shadow", false)
   .layer(3)
   .bindings(hudSubtitleBinding());
 
 const mainHolder = stackPanel("main_holder", "horizontal")
-  .size("default", "95%")
+  .size("100%", "95%")
   .anchor("bottom_left")
   .controls(menuExtra, infoLabel);
 
@@ -45,10 +52,11 @@ export default defineUI(
   "phud_battleWait",
   image("main", "textures/ui/battle/white_transparency")
     .color(fromRGB(191, 43, 54))
+    .rawProp("keep_ratio", true)
     .layer(1000)
     .fill()
     .anchor("bottom_left")
-    .size("default", "30%")
+    .size("100%", "30%")
     .controls(mainHolder)
     .bindings(...phudVisibility("#battleLog"))
 );

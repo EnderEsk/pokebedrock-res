@@ -77,7 +77,7 @@ export const createButtonStack = (
   defaultButton = "default_form.button"
 ): ElementBuilder<string> =>
   stackPanel(name, "vertical")
-    .size("default", "100%c")
+    .size("100%", "100%c")
     .anchor("top_left")
     .variableDefault("button", defaultButton)
     .factory("buttons", "$button")

@@ -119,7 +119,7 @@ export default defineUI("phud_sidebar", (ns) => {
 
   const pokemonIcon = boundImage("pokemon_icon")
     .offset("0%", "-15%")
-    .size("100%y")
+    .size("100%y", "100%")
     .variable("var_index", varRef("pokemon_icon_index"))
     .layer(4);
   pokemonIcon.bindings(
@@ -133,7 +133,8 @@ export default defineUI("phud_sidebar", (ns) => {
   );
 
   const ballIcon = boundImage("ball_icon")
-    .size("100%y")
+    .texture("#texture")
+    .size("100%y", "100%")
     .layer(3)
     .controls(pokemonIcon);
   ballIcon.bindings(
@@ -151,7 +152,7 @@ export default defineUI("phud_sidebar", (ns) => {
 
   const activeIcon = image("active_icon", "textures/ui/sidebar/ring")
     .extendsFrom(variableParser)
-    .size("100%y")
+    .size("100%y", "100%")
     .layer(5)
     .variable("visible", "#var");
 

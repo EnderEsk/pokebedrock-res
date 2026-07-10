@@ -4,7 +4,7 @@
     "type": "stack_panel",
     "orientation": "vertical",
     "size": [
-      "default",
+      "100%",
       "100%c"
     ],
     "anchor_from": "top_left",
@@ -110,7 +110,6 @@
       {
         "image": {
           "type": "image",
-          "texture": "#texture",
           "size": "$image_size",
           "offset": "$image_offset",
           "layer": 11,
@@ -132,7 +131,7 @@
       }
     ]
   },
-  "search_button@button": {
+  "search_button@pokedex.button": {
     "$default_button_texture": "textures/ui/pokedex/button_search",
     "$hover_button_texture": "textures/ui/pokedex/button_search_hover",
     "$pressed_button_texture": "textures/ui/pokedex/button_search",
@@ -153,12 +152,12 @@
       {
         "binding_name": "#null",
         "binding_type": "view",
-        "source_property_name": "(not ((#form_button_text - 'btn:search') = #form_button_text))",
+        "source_property_name": "(not ((#form_button_text - 'btn:search_button') = #form_button_text))",
         "target_property_name": "#visible"
       }
     ]
   },
-  "back_button@button": {
+  "back_button@pokedex.button": {
     "$default_button_texture": "textures/ui/pokedex/button_back",
     "$hover_button_texture": "textures/ui/pokedex/button_back_hover",
     "$pressed_button_texture": "textures/ui/pokedex/button_back",
@@ -174,12 +173,12 @@
       {
         "binding_name": "#null",
         "binding_type": "view",
-        "source_property_name": "(not ((#form_button_text - 'btn:back') = #form_button_text))",
+        "source_property_name": "(not ((#form_button_text - 'btn:back_button') = #form_button_text))",
         "target_property_name": "#visible"
       }
     ]
   },
-  "previous_page_button@button": {
+  "previous_page_button@pokedex.button": {
     "$default_button_texture": "textures/ui/pokedex/button_prev_page",
     "$hover_button_texture": "textures/ui/pokedex/button_prev_page_hover",
     "$pressed_button_texture": "textures/ui/pokedex/button_prev_page",
@@ -200,7 +199,7 @@
       }
     ]
   },
-  "next_page_button@button": {
+  "next_page_button@pokedex.button": {
     "$default_button_texture": "textures/ui/pokedex/button_next_page",
     "$hover_button_texture": "textures/ui/pokedex/button_next_page_hover",
     "$pressed_button_texture": "textures/ui/pokedex/button_next_page",
@@ -225,7 +224,7 @@
       }
     ]
   },
-  "stat_button@button": {
+  "stat_button@pokedex.button": {
     "$button_image_fill": true,
     "$text_anchor_location": "left_middle",
     "$text_offset": [
@@ -234,7 +233,7 @@
     ],
     "$font_scale_factor": 0.45
   },
-  "caught_pokemon_button@stat_button": {
+  "caught_pokemon_button@pokedex.stat_button": {
     "type": "panel",
     "$default_button_texture": "textures/ui/pokedex/button_caught",
     "$hover_button_texture": "textures/ui/pokedex/button_caught_hover",
@@ -255,7 +254,7 @@
       }
     ]
   },
-  "seen_pokemon_button@stat_button": {
+  "seen_pokemon_button@pokedex.stat_button": {
     "type": "panel",
     "$default_button_texture": "textures/ui/pokedex/button_seen",
     "$hover_button_texture": "textures/ui/pokedex/button_seen_hover",
@@ -276,7 +275,7 @@
       }
     ]
   },
-  "completion_button@stat_button": {
+  "completion_button@pokedex.stat_button": {
     "type": "panel",
     "$default_button_texture": "textures/ui/pokedex/button_completion",
     "$hover_button_texture": "textures/ui/pokedex/button_completion_hover",
@@ -292,12 +291,12 @@
       {
         "binding_name": "#null",
         "binding_type": "view",
-        "source_property_name": "(not ((#form_button_text - 'btn:completion') = #form_button_text))",
+        "source_property_name": "(not ((#form_button_text - 'btn:completion_count') = #form_button_text))",
         "target_property_name": "#visible"
       }
     ]
   },
-  "icon@button": {
+  "icon@pokedex.button": {
     "$default_button_texture": "textures/ui/battle/white_transparency",
     "$hover_button_texture": "textures/ui/battle/white_transparency",
     "$pressed_button_texture": "textures/ui/battle/white_transparency",
@@ -377,7 +376,7 @@
                 ],
                 "controls": [
                   {
-                    "back_button@button_stack": {
+                    "back_button@pokedex.button_stack": {
                       "size": [
                         22,
                         12
@@ -396,7 +395,7 @@
                     }
                   },
                   {
-                    "search_button@button_stack": {
+                    "search_button@pokedex.button_stack": {
                       "size": [
                         146,
                         12
@@ -443,7 +442,7 @@
                         {
                           "binding_name": "#null",
                           "binding_type": "view",
-                          "source_property_name": "(%.40s * #form_text - '_')",
+                          "source_property_name": "((%.40s * #form_text) - '_')",
                           "target_property_name": "#text"
                         }
                       ]
@@ -471,7 +470,7 @@
                         {
                           "binding_name": "#null",
                           "binding_type": "view",
-                          "source_property_name": "((%.80s * #form_text - %.40s * #form_text) - '_')",
+                          "source_property_name": "(((%.80s * #form_text) - (%.40s * #form_text)) - '_')",
                           "target_property_name": "#text"
                         }
                       ]
@@ -508,14 +507,14 @@
                               {
                                 "binding_name": "#null",
                                 "binding_type": "view",
-                                "source_property_name": "((%.400s * #form_text - %.80s * #form_text) - '_')",
+                                "source_property_name": "(((%.400s * #form_text) - (%.80s * #form_text)) - '_')",
                                 "target_property_name": "#text"
                               }
                             ]
                           }
                         },
                         {
-                          "icon@button_stack": {
+                          "icon@pokedex.button_stack": {
                             "size": [
                               55,
                               55
@@ -581,7 +580,7 @@
               }
             },
             {
-              "search_button@button_stack": {
+              "search_button@pokedex.button_stack": {
                 "size": [
                   163,
                   12
@@ -608,7 +607,7 @@
                 ],
                 "controls": [
                   {
-                    "page_management@button_stack": {
+                    "page_management@pokedex.button_stack": {
                       "size": [
                         11,
                         26
@@ -618,7 +617,7 @@
                     }
                   },
                   {
-                    "page_management@button_stack": {
+                    "page_management@pokedex.button_stack": {
                       "size": [
                         11,
                         26
@@ -644,7 +643,7 @@
                 ],
                 "controls": [
                   {
-                    "caught_pokemon@button_stack": {
+                    "caught_pokemon@pokedex.button_stack": {
                       "size": [
                         54,
                         17
@@ -663,7 +662,7 @@
                     }
                   },
                   {
-                    "seen_pokemon@button_stack": {
+                    "seen_pokemon@pokedex.button_stack": {
                       "size": [
                         54,
                         17
@@ -682,7 +681,7 @@
                     }
                   },
                   {
-                    "completion@button_stack": {
+                    "completion@pokedex.button_stack": {
                       "size": [
                         54,
                         17

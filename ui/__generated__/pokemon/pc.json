@@ -4,7 +4,7 @@
     "type": "stack_panel",
     "orientation": "vertical",
     "size": [
-      "default",
+      "100%",
       "100%c"
     ],
     "anchor_from": "top_left",
@@ -24,6 +24,10 @@
   },
   "button": {
     "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
     "$offset|default": [
       "0%",
       "0%"
@@ -47,6 +51,12 @@
     "controls": [
       {
         "form_button@common_buttons.light_text_button": {
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "anchor_from": "center",
+          "anchor_to": "center",
           "$pressed_button_name": "button.form_button_click",
           "offset": "$offset",
           "bindings": [
@@ -74,6 +84,10 @@
         "text": {
           "type": "label",
           "text": "#text",
+          "size": [
+            "100%",
+            "100%"
+          ],
           "layer": 10,
           "offset": "$text_offset",
           "anchor_from": "$text_anchor_location",
@@ -101,7 +115,6 @@
       {
         "image": {
           "type": "image",
-          "texture": "#texture",
           "size": "$image_size",
           "offset": "$image_offset",
           "layer": 11,
@@ -123,7 +136,7 @@
       }
     ]
   },
-  "left_arrow_button@button": {
+  "left_arrow_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/buttons/left_arrow",
     "$hover_button_texture": "textures/ui/pc/buttons/left_arrow_hover",
     "$pressed_button_texture": "textures/ui/pc/buttons/left_arrow",
@@ -145,7 +158,7 @@
       }
     ]
   },
-  "right_arrow_button@button": {
+  "right_arrow_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/buttons/right_arrow",
     "$hover_button_texture": "textures/ui/pc/buttons/right_arrow_hover",
     "$pressed_button_texture": "textures/ui/pc/buttons/right_arrow",
@@ -167,7 +180,7 @@
       }
     ]
   },
-  "filter_button@button": {
+  "filter_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/buttons/filter_button",
     "$hover_button_texture": "textures/ui/pc/buttons/filter_button_hover",
     "$pressed_button_texture": "textures/ui/pc/buttons/filter_button",
@@ -189,7 +202,7 @@
       }
     ]
   },
-  "search_button@button": {
+  "search_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/buttons/search_button",
     "$hover_button_texture": "textures/ui/pc/buttons/search_button_hover",
     "$pressed_button_texture": "textures/ui/pc/buttons/search_button",
@@ -211,7 +224,7 @@
       }
     ]
   },
-  "settings_button@button": {
+  "settings_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/buttons/settings_button",
     "$hover_button_texture": "textures/ui/pc/buttons/settings_button_hover",
     "$pressed_button_texture": "textures/ui/pc/buttons/settings_button",
@@ -233,7 +246,7 @@
       }
     ]
   },
-  "trash_button@button": {
+  "trash_button@pc.button": {
     "$default_button_texture": "textures/ui/icon_trash",
     "$hover_button_texture": "textures/ui/icon_trash",
     "$pressed_button_texture": "textures/ui/icon_trash",
@@ -262,7 +275,7 @@
       }
     ]
   },
-  "icon_button@button": {
+  "icon_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/icon_box",
     "$hover_button_texture": "textures/ui/pc/icon_box",
     "$pressed_button_texture": "textures/ui/pc/icon_box",
@@ -288,7 +301,7 @@
       }
     ]
   },
-  "action_button@button": {
+  "action_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/buttons/action_button",
     "$hover_button_texture": "textures/ui/pc/buttons/action_button_hover",
     "$pressed_button_texture": "textures/ui/pc/buttons/action_button",
@@ -374,6 +387,10 @@
                     "content_stack": {
                       "type": "stack_panel",
                       "orientation": "vertical",
+                      "size": [
+                        "100%",
+                        "100%"
+                      ],
                       "offset": [
                         5,
                         4
@@ -406,7 +423,7 @@
                               {
                                 "binding_name": "#null",
                                 "binding_type": "view",
-                                "source_property_name": "(%.40s * #form_text - '_')",
+                                "source_property_name": "((%.40s * #form_text) - '_')",
                                 "target_property_name": "#text"
                               }
                             ]
@@ -481,11 +498,11 @@
                 ],
                 "controls": [
                   {
-                    "details_bar": {
+                    "filter_box": {
                       "type": "image",
-                      "texture": "textures/ui/pc/details_bar",
+                      "texture": "textures/ui/pc/filter_box",
                       "size": [
-                        "default",
+                        "100%",
                         17
                       ],
                       "controls": [
@@ -493,21 +510,25 @@
                           "box_details": {
                             "type": "stack_panel",
                             "orientation": "horizontal",
+                            "size": [
+                              "100%",
+                              "100%"
+                            ],
                             "controls": [
                               {
                                 "start_padding": {
                                   "type": "panel",
                                   "size": [
                                     5,
-                                    "default"
+                                    "100%"
                                   ]
                                 }
                               },
                               {
-                                "filter_button@button_stack": {
+                                "filter_button@pc.button_stack": {
                                   "size": [
                                     14,
-                                    "default"
+                                    "100%"
                                   ],
                                   "layer": 3,
                                   "anchor_from": "center",
@@ -516,10 +537,10 @@
                                 }
                               },
                               {
-                                "search_button@button_stack": {
+                                "search_button@pc.button_stack": {
                                   "size": [
                                     14,
-                                    "default"
+                                    "100%"
                                   ],
                                   "layer": 3,
                                   "anchor_from": "center",
@@ -532,7 +553,7 @@
                                   "type": "panel",
                                   "size": [
                                     66,
-                                    "default"
+                                    "100%"
                                   ],
                                   "offset": [
                                     0,
@@ -560,7 +581,7 @@
                                           {
                                             "binding_name": "#null",
                                             "binding_type": "view",
-                                            "source_property_name": "(%.22s * #title_text - '_')",
+                                            "source_property_name": "((%.22s * #title_text) - '_')",
                                             "target_property_name": "#text"
                                           }
                                         ]
@@ -570,10 +591,10 @@
                                 }
                               },
                               {
-                                "settings_button@button_stack": {
+                                "settings_button@pc.button_stack": {
                                   "size": [
                                     14,
-                                    "default"
+                                    "100%"
                                   ],
                                   "offset": [
                                     0,
@@ -590,7 +611,7 @@
                                   "type": "panel",
                                   "size": [
                                     5,
-                                    "default"
+                                    "100%"
                                   ]
                                 }
                               }
@@ -604,7 +625,7 @@
                     "spacer1": {
                       "type": "panel",
                       "size": [
-                        "default",
+                        "100%",
                         1
                       ]
                     }
@@ -614,7 +635,7 @@
                       "type": "image",
                       "texture": "textures/ui/pc/title_box",
                       "size": [
-                        "default",
+                        "100%",
                         17
                       ],
                       "controls": [
@@ -622,21 +643,25 @@
                           "box_details": {
                             "type": "stack_panel",
                             "orientation": "horizontal",
+                            "size": [
+                              "100%",
+                              "100%"
+                            ],
                             "controls": [
                               {
                                 "start_padding": {
                                   "type": "panel",
                                   "size": [
                                     5,
-                                    "default"
+                                    "100%"
                                   ]
                                 }
                               },
                               {
-                                "left_button@button_stack": {
+                                "left_button@pc.button_stack": {
                                   "size": [
                                     11,
-                                    "default"
+                                    "100%"
                                   ],
                                   "layer": 3,
                                   "anchor_from": "center",
@@ -649,7 +674,7 @@
                                   "type": "panel",
                                   "size": [
                                     84,
-                                    "default"
+                                    "100%"
                                   ],
                                   "offset": [
                                     0,
@@ -673,7 +698,7 @@
                                           {
                                             "binding_name": "#null",
                                             "binding_type": "view",
-                                            "source_property_name": "(%.22s * (#title_text - (%.22s * #title_text)) - '_')",
+                                            "source_property_name": "((%.22s * (#title_text - (%.22s * #title_text))) - '_')",
                                             "target_property_name": "#text"
                                           }
                                         ]
@@ -683,10 +708,10 @@
                                 }
                               },
                               {
-                                "right_button@button_stack": {
+                                "right_button@pc.button_stack": {
                                   "size": [
                                     11,
-                                    "default"
+                                    "100%"
                                   ],
                                   "layer": 3,
                                   "anchor_from": "center",
@@ -699,7 +724,7 @@
                                   "type": "panel",
                                   "size": [
                                     5,
-                                    "default"
+                                    "100%"
                                   ]
                                 }
                               }
@@ -713,7 +738,7 @@
                     "spacer2": {
                       "type": "panel",
                       "size": [
-                        "default",
+                        "100%",
                         1
                       ]
                     }
@@ -723,7 +748,7 @@
                       "type": "image",
                       "texture": "#texture",
                       "size": [
-                        "default",
+                        "100%",
                         105
                       ],
                       "controls": [
@@ -770,7 +795,7 @@
                     "spacer3": {
                       "type": "panel",
                       "size": [
-                        "default",
+                        "100%",
                         8
                       ]
                     }
@@ -780,7 +805,7 @@
                       "type": "image",
                       "texture": "textures/ui/pc/party_slots",
                       "size": [
-                        "default",
+                        "100%",
                         26
                       ]
                     }
@@ -807,9 +832,9 @@
                 ],
                 "controls": [
                   {
-                    "icon_box@button_stack": {
+                    "icon_box@pc.button_stack": {
                       "size": [
-                        "default",
+                        "100%",
                         70
                       ],
                       "layer": 3,
@@ -822,15 +847,15 @@
                     "spacer": {
                       "type": "panel",
                       "size": [
-                        "default",
+                        "100%",
                         0.5
                       ]
                     }
                   },
                   {
-                    "action_button@button_stack": {
+                    "action_button@pc.button_stack": {
                       "size": [
-                        "default",
+                        "100%",
                         18
                       ],
                       "layer": 3,

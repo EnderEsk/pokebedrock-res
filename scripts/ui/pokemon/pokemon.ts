@@ -321,7 +321,7 @@ export default defineUI("pokemon", (ns) => {
           ),
         image("button_panel", "textures/ui/pokemon/background")
           .color("black")
-          .anchor("bottom")
+          .anchor("bottom_middle")
           .size("80%", "60%")
           .alpha(0)
           .offset(0, 0)

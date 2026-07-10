@@ -32,11 +32,14 @@ import {
 // Base button template
 const formButton = panel("form_button")
   .extends("common_buttons.light_text_button")
+  .fullSize()
+  .anchor("center")
   .variable("pressed_button_name", "button.form_button_click")
   .rawProp("offset", "$offset")
   .bindings(...formButtonEnabledBindings());
 
 const buttonText = boundLabel("text")
+  .fullSize()
   .layer(10)
   .rawProp("offset", "$text_offset")
   .rawProp("anchor_from", "$text_anchor_location")
@@ -84,7 +87,7 @@ const smallChestGrid = grid("small_chest_grid")
   .layer(1);
 
 const partySlots = image("party_slots", "textures/ui/pc/party_slots").size(
-  "default",
+  "100%",
   26
 );
 
@@ -97,7 +100,7 @@ const titleLabel = boundLabel("text", "text")
   );
 
 const title = panel("title")
-  .size(84)
+  .size(84, "100%")
   .offset(0, 7)
   .layer(3)
   .controls(titleLabel);
@@ -109,11 +112,11 @@ const searchFieldText = boundLabel("text")
   .fontScaleFactor(0.85)
   .bindings(
     globalBinding("#title_text"),
-    viewBinding(strip("%.22s * #title_text"), "#text")
+    viewBinding(strip(first(22, "#title_text")), "#text")
   );
 
 const searchField = panel("search_field")
-  .size(66)
+  .size(66, "100%")
   .offset(0, 1)
   .layer(3)
   .controls(searchFieldText);
@@ -146,6 +149,7 @@ const closeButton = extendRaw("close_button", "common.light_close_button", {
 });
 
 const leftContentStack = stackPanel("content_stack", "vertical")
+  .fullSize()
   .offset(5, 4)
   .controls(leftContentBoxHeader, leftContentBoxBody);
 
@@ -168,6 +172,7 @@ export default defineUI("pc", (ns) => {
 
   // Register button and capture the namespace element for type-safe extension
   const buttonNs = panel("button")
+    .fullSize()
     .variableDefault("offset", ["0%", "0%"])
     .variableDefault("text_offset", ["0%", "0%"])
     .variableDefault("text_anchor_location", "center")
@@ -289,69 +294,74 @@ export default defineUI("pc", (ns) => {
   // Details bar buttons
   const filterButton = panel("filter_button")
     .extendsFrom(buttonStackNs)
-    .size(14)
+    .size(14, "100%")
     .layer(3)
     .anchor("center")
     .variable("button", filterButtonNs.getQualifiedName());
 
   const searchButton = panel("search_button")
     .extendsFrom(buttonStackNs)
-    .size(14)
+    .size(14, "100%")
     .layer(3)
     .anchor("center")
     .variable("button", searchButtonNs.getQualifiedName());
 
   const settingsButton = panel("settings_button")
     .extendsFrom(buttonStackNs)
-    .size(14)
+    .size(14, "100%")
     .offset(0, 3)
     .layer(3)
     .anchor("center")
     .variable("button", settingsButtonNs.getQualifiedName());
 
-  const detailsBarContent = stackPanel("box_details", "horizontal").controls(
-    panel("start_padding").size(5),
+  const detailsBarContent = stackPanel("box_details", "horizontal")
+    .fullSize()
+    .controls(
+    panel("start_padding").size(5, "100%"),
     filterButton,
     searchButton,
     searchField,
     settingsButton,
-    panel("end_padding").size(5)
+    panel("end_padding").size(5, "100%")
   );
 
-  const detailsBar = image("details_bar", "textures/ui/pc/details_bar")
-    .size("default", 17)
+  const detailsBar = image("filter_box", "textures/ui/pc/filter_box")
+    .size("100%", 17)
     .controls(detailsBarContent);
 
   // Title box with navigation arrows
   const leftButton = panel("left_button")
     .extendsFrom(buttonStackNs)
-    .size(11)
+    .size(11, "100%")
     .layer(3)
     .anchor("center")
     .variable("button", leftArrowButtonNs.getQualifiedName());
 
   const rightButton = panel("right_button")
     .extendsFrom(buttonStackNs)
-    .size(11)
+    .size(11, "100%")
     .layer(3)
     .anchor("center")
     .variable("button", rightArrowButtonNs.getQualifiedName());
 
-  const titleBoxContent = stackPanel("box_details", "horizontal").controls(
-    panel("start_padding").size(5),
+  const titleBoxContent = stackPanel("box_details", "horizontal")
+    .fullSize()
+    .controls(
+    panel("start_padding").size(5, "100%"),
     leftButton,
     title,
     rightButton,
-    panel("end_padding").size(5)
+    panel("end_padding").size(5, "100%")
   );
 
   const titleBox = image("title_box", "textures/ui/pc/title_box")
-    .size("default", 17)
+    .size("100%", 17)
     .controls(titleBoxContent);
 
   // Container slots with dynamic background texture
   const containerSlotsBackground = boundImage("container_slots")
-    .size("default", 105)
+    .texture("#texture")
+    .size("100%", 105)
     .controls(smallChestGrid)
     .bindings(
       globalBinding("#title_text"),
@@ -366,32 +376,32 @@ export default defineUI("pc", (ns) => {
     .size(116, "100%c")
     .controls(
       detailsBar,
-      panel("spacer1").size("default", 1),
+      panel("spacer1").size("100%", 1),
       titleBox,
-      panel("spacer2").size("default", 1),
+      panel("spacer2").size("100%", 1),
       containerSlotsBackground,
-      panel("spacer3").size("default", 8),
+      panel("spacer3").size("100%", 8),
       partySlots
     );
 
   // Right content (icon and action)
   const iconBox = panel("icon_box")
     .extendsFrom(buttonStackNs)
-    .size("default", 70)
+    .size("100%", 70)
     .layer(3)
     .anchor("center")
     .variable("button", iconButtonNs.getQualifiedName());
 
   const actionButtonBox = panel("action_button")
     .extendsFrom(buttonStackNs)
-    .size("default", 18)
+    .size("100%", 18)
     .layer(3)
     .anchor("center")
     .variable("button", actionButtonTemplateNs.getQualifiedName());
 
   const rightContent = stackPanel("right_content", "vertical")
     .size(71, "100%c")
-    .controls(iconBox, panel("spacer").size("default", 0.5), actionButtonBox);
+    .controls(iconBox, panel("spacer").size("100%", 0.5), actionButtonBox);
 
   const backgroundFade = image("background_fade", "textures/ui/Black")
     .alpha(0.5)

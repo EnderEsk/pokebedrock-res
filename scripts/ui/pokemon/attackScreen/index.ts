@@ -9,7 +9,7 @@ import { defineUI, panel, image, label, stackPanel, element } from "mcbe-ts-ui";
 
 import { NS, registerSharedElements } from "./shared";
 import { registerButtonElements } from "./buttons";
-import { registerProgressElements, registerPpBarVariants } from "./progress";
+import { createPpBarVariants, registerProgressElements } from "./progress";
 import { registerActorElements } from "./actors";
 
 export default defineUI(
@@ -18,26 +18,30 @@ export default defineUI(
     // Register all module elements in dependency order
     const shared = registerSharedElements(ns);
     const progress = registerProgressElements(ns);
-    registerPpBarVariants(ns, progress.ppBar);
-    const buttons = registerButtonElements(ns, shared);
+    const ppBarVariants = createPpBarVariants(progress.ppBar);
+    const buttons = registerButtonElements(ns, shared, ppBarVariants);
     const actors = registerActorElements(ns, progress);
 
     // Left button panel extending button_stack
     const leftButtonPanel = element("left_button_panel")
       .extendsFrom(shared.buttonStack)
+      .fullSize()
       .layer(3)
       .variable("button", buttons.battleActionButton.getQualifiedName());
 
     // Move selection panel extending button_stack
     const moveSelectionPanel = element("move_selection_button")
       .extendsFrom(shared.buttonStack)
+      .fullSize()
       .layer(3)
       .offset("55%", "20%")
+      .anchor("center")
       .variable("button", buttons.moveSelectionButton.getQualifiedName());
 
     // Grid panel extending button_stack
     const gridPanel = element("grid_panel")
       .extendsFrom(shared.buttonStack)
+      .fullSize()
       .layer(4)
       .variable("button", buttons.gridButton.getQualifiedName());
 
@@ -46,13 +50,14 @@ export default defineUI(
       "button_grid_middle",
       "textures/ui/battle/white_transparency"
     )
-      .color("black")
+      .rawProp("color", ["black"])
       .alpha(0)
       .layer(1)
       .rawProp("keep_ratio", true)
       .fill()
       .size("80%", "95%")
       .offset("9%", 0)
+      .anchor("center")
       .controls(gridPanel);
 
     // Menu extra container
@@ -64,21 +69,25 @@ export default defineUI(
       .layer(2)
       .rawProp("keep_ratio", true)
       .fill()
-      .anchor("bottom_middle")
-      .size("85%")
+      .anchor("bottom_left")
+      .size("85%", "100%")
       .controls(leftButtonPanel, moveSelectionPanel, buttonGridMiddle);
 
     // Info label for battle text
     const infoLabel = label("info_label", "#form_text")
       .color("default")
+      .alpha(1)
+      .rawProp("localize", false)
       .textAlignment("center")
       .fontScale(1)
-      .size("fill")
+      .size("fill", "100%")
+      .anchor("center")
+      .rawProp("shadow", false)
       .layer(3);
 
     // Main buttons holder
     const mainButtonsHolder = stackPanel("main_buttons_holder", "horizontal")
-      .size("default", "95%")
+      .size("100%", "95%")
       .anchor("bottom_left")
       .controls(menuExtra, infoLabel);
 
@@ -89,26 +98,27 @@ export default defineUI(
     )
       .color([0.749, 0.168, 0.211])
       .layer(1)
+      .rawProp("keep_ratio", true)
       .fill()
       .anchor("bottom_middle")
-      .size("default", "29%")
+      .size("100%", "29%")
       .maxSize("613%y", "29%")
       .controls(mainButtonsHolder);
 
     // Opponent actors panel extending button_stack
     const opponentActors = element("opponent_actors")
       .extendsFrom(shared.buttonStack)
-      .size("25%")
+      .size("25%", "100%")
       .layer(21)
       .variable("button", actors.opponentActorDetailsButton.getQualifiedName());
 
     // Spacing panel for actors
-    const actorsSpacing = panel("spacing").size("50%");
+    const actorsSpacing = panel("spacing").size("50%", "100%");
 
     // Ally actors panel extending button_stack
     const allyActors = element("ally_actors")
       .extendsFrom(shared.buttonStack)
-      .size("25%")
+      .size("25%", "100%")
       .layer(21)
       .variable("button", actors.allyActorDetailsButton.getQualifiedName());
 
@@ -117,7 +127,7 @@ export default defineUI(
       "actors_details_selection",
       "horizontal"
     )
-      .size("default", "71%")
+      .size("100%", "71%")
       .maxSize("250%y", "71%")
       .offset("0%", "25%")
       .anchor("top_middle")
@@ -125,7 +135,7 @@ export default defineUI(
 
     // Main battle UI panel
     const [, finalNs] = ns.add(
-      panel("main").controls(battleMenu, actorsDetailsSelection)
+      panel("main").fullSize().controls(battleMenu, actorsDetailsSelection)
     );
     return finalNs;
   },

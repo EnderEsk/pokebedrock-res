@@ -15,6 +15,7 @@ import {
   collectionDetailsBinding,
   imageTextureBindings,
   siblingImageVisibilityBinding,
+  buttonFlagVisibility,
   globalBinding,
   extendRaw,
   ref,
@@ -42,10 +43,7 @@ export const FLAGS = {
 export type FlagKey = keyof typeof FLAGS;
 
 // Button visibility binding helper
-export const buttonVisibilityBindings = (flag: string) => [
-  collectionBinding("#form_button_text"),
-  viewBinding(contains("#form_button_text", flag), "#visible"),
-];
+export const buttonVisibilityBindings = buttonFlagVisibility;
 
 // Image visibility bindings
 export const siblingImageBinding = () => siblingImageVisibilityBinding();
@@ -211,7 +209,7 @@ export function createButtonPanels(
 
       panelBuilder.controls(
         ref(`button@${namespace}.button`, {
-          $source_property_flag: contains("#form_button_text", "$flag"),
+          $source_property_flag: contains("#form_button_text", "$flag", false),
         })
       );
 

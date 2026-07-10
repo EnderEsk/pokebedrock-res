@@ -27,6 +27,7 @@ import {
   collectionDetailsBinding,
   viewBinding,
   type SizeValue,
+  type OffsetValue,
   type ElementBuilder,
 } from "mcbe-ts-ui";
 
@@ -70,12 +71,12 @@ type ChestGridOpts = {
   dims: [number, number];
   gridName: string;
   gridSize: [SizeValue, SizeValue];
-  gridOffset: [SizeValue, SizeValue];
+  gridOffset: [OffsetValue, OffsetValue];
   flag: string;
   closeBtn?: string;
   closeOffset?: [number, number];
-  offset?: [SizeValue, SizeValue];
-  labelOffset?: [SizeValue, SizeValue];
+  offset?: [OffsetValue, OffsetValue];
+  labelOffset?: [OffsetValue, OffsetValue];
   showLabel?: boolean;
   showInventoryText?: boolean;
 };
@@ -126,16 +127,15 @@ function chestGridImage(
 }
 
 export default defineUI("chest_ui", (ns) => {
-  label("chest_label")
+  label("chest_label", "#title_text")
     .offset(7, 10)
     .anchor("top_left")
-    .text("#title_text")
     .size("90%", "default")
     .color("$title_text_color")
     .layer(2)
     .addToNamespace(ns);
 
-  image("non_renderer_item")
+  boundImage("non_renderer_item")
     .size(16, 16)
     .bindings(...nonRendererItemBindings())
     .addToNamespace(ns);
@@ -143,14 +143,13 @@ export default defineUI("chest_ui", (ns) => {
   panel("inventory_button_amount")
     .rawProp("offset", "$offset")
     .controls(
-      label("item_amount")
+      label("item_amount", "#stack_size")
         .offset(0, 1)
         .shadow()
         .textAlignment("left")
         .anchor("bottom_right")
         .color("$tool_tip_text")
         .layer(4)
-        .text("#stack_size")
         .bindings(
           collectionBindingNone(),
           collectionDetailsBinding(),

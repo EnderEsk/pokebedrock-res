@@ -76,7 +76,7 @@ export default defineUI("pokedex", (ns) => {
     .variable("button_image_fill", true)
     .variable("text_anchor_location", "left_middle")
     .variable("text_offset", ["3%", "20%"])
-    .bindings(...visibilityForId("btn:search"))
+    .bindings(...visibilityForId("btn:search_button"))
     .addToNamespace(ns);
 
   const backButtonNs = panel("back_button")
@@ -89,7 +89,7 @@ export default defineUI("pokedex", (ns) => {
       "textures/ui/pokedex/button_back_disabled"
     )
     .variable("button_image_fill", true)
-    .bindings(...visibilityForId("btn:back"))
+    .bindings(...visibilityForId("btn:back_button"))
     .addToNamespace(ns);
 
   panel("previous_page_button")
@@ -187,7 +187,7 @@ export default defineUI("pokedex", (ns) => {
       "locked_button_texture",
       "textures/ui/pokedex/button_completion_disabled"
     )
-    .bindings(...visibilityForId("btn:completion"))
+    .bindings(...visibilityForId("btn:completion_count"))
     .addToNamespace(ns);
 
   panel("icon")

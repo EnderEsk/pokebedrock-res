@@ -55,7 +55,6 @@
             {
               "image": {
                 "type": "image",
-                "texture": "#texture",
                 "layer": 99,
                 "offset": "$offset_img",
                 "bindings": [
@@ -138,7 +137,7 @@
     "controls": [
       {
         "button@rotom_phone_second.button": {
-          "$source_property_flag": "(not ((#form_button_text - '$flag') = #form_button_text))"
+          "$source_property_flag": "(not ((#form_button_text - $flag) = #form_button_text))"
         }
       }
     ]
@@ -153,7 +152,7 @@
     "controls": [
       {
         "button@rotom_phone_second.button": {
-          "$source_property_flag": "(not ((#form_button_text - '$flag') = #form_button_text))"
+          "$source_property_flag": "(not ((#form_button_text - $flag) = #form_button_text))"
         }
       }
     ]
@@ -181,7 +180,7 @@
     "controls": [
       {
         "button@rotom_phone_second.button": {
-          "$source_property_flag": "(not ((#form_button_text - '$flag') = #form_button_text))"
+          "$source_property_flag": "(not ((#form_button_text - $flag) = #form_button_text))"
         }
       }
     ]
@@ -205,7 +204,7 @@
     "controls": [
       {
         "button@rotom_phone_second.button": {
-          "$source_property_flag": "(not ((#form_button_text - '$flag') = #form_button_text))"
+          "$source_property_flag": "(not ((#form_button_text - $flag) = #form_button_text))"
         }
       }
     ]
@@ -229,7 +228,7 @@
     "controls": [
       {
         "button@rotom_phone_second.button": {
-          "$source_property_flag": "(not ((#form_button_text - '$flag') = #form_button_text))"
+          "$source_property_flag": "(not ((#form_button_text - $flag) = #form_button_text))"
         }
       }
     ]
@@ -256,7 +255,7 @@
     "controls": [
       {
         "button@rotom_phone_second.button": {
-          "$source_property_flag": "(not ((#form_button_text - '$flag') = #form_button_text))"
+          "$source_property_flag": "(not ((#form_button_text - $flag) = #form_button_text))"
         }
       }
     ]
@@ -275,7 +274,7 @@
     "controls": [
       {
         "button@rotom_phone_second.button": {
-          "$source_property_flag": "(not ((#form_button_text - '$flag') = #form_button_text))"
+          "$source_property_flag": "(not ((#form_button_text - $flag) = #form_button_text))"
         }
       }
     ]
@@ -295,7 +294,7 @@
     "controls": [
       {
         "button@rotom_phone_second.button": {
-          "$source_property_flag": "(not ((#form_button_text - '$flag') = #form_button_text))"
+          "$source_property_flag": "(not ((#form_button_text - $flag) = #form_button_text))"
         }
       }
     ]

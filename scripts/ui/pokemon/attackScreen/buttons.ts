@@ -19,6 +19,7 @@ import {
   type NamespaceBuilder,
   type NamespaceElement,
   type Offset,
+  type ElementBuilder,
 } from "mcbe-ts-ui";
 
 import {
@@ -43,8 +44,10 @@ function createSimpleButton(buttonHoverControlNs: NamespaceElement) {
   return element("simple_button")
     .extends("common_buttons.light_text_button")
     .variable("pressed_button_name", "button.form_button_click")
-    .variableDefault("size", "default")
+    .variableDefault("size", ["100%", "100%"])
     .rawProp("size", "$size")
+    .anchor("center")
+    .offset(0, 0)
     .variable("border_visible", false)
     .variableDefault("hover_text_index", 53)
     .controls(
@@ -77,7 +80,7 @@ function createActionButton(
   simpleButtonNs: NamespaceElement
 ) {
   return panel(name)
-    .size("default", "7%x")
+    .size("100%", "7%x")
     .offset(...offset)
     .anchor("top_left")
     .controls(
@@ -100,6 +103,8 @@ function createActionButton(
 
 const moveSelectionFrontImage = image("front_image", "#texture")
   .size("85%", "85%")
+  .alpha(1)
+  .anchor("center")
   .layer(16)
   .bindings(
     formButtonsDetailsBinding(),
@@ -116,6 +121,7 @@ const moveSelectionFrontImage = image("front_image", "#texture")
 function createMoveSelectionButton(simpleButtonNs: NamespaceElement) {
   return panel("move_selection_button")
     .size("10%", "60%")
+    .anchor("center")
     .layer(15)
     .controls(
       extend("button", simpleButtonNs)
@@ -147,7 +153,9 @@ function createMoveSelectionButton(simpleButtonNs: NamespaceElement) {
 // =============================================================================
 
 const moveNameLabel = label("name", "#text")
+  .fullSize()
   .offset("40%", "20%")
+  .anchor("center")
   .layer(10)
   .localize()
   .color("black")
@@ -179,7 +187,9 @@ const moveIcon = image("icon", "#texture")
   );
 
 const ppTextLabel = label("pp_text", "#text")
+  .fullSize()
   .offset("45%", "92%")
+  .anchor("center")
   .layer(11)
   .fontScale(0.8)
   .color("white")
@@ -191,6 +201,7 @@ const ppTextLabel = label("pp_text", "#text")
 function createMoveButtonContainer(simpleButtonNs: NamespaceElement) {
   return panel("button")
     .size("40%", "150%")
+    .anchor("center")
     .controls(
       extend("form_button", simpleButtonNs)
         .variable("default_button_texture", "textures/ui/battle/moveSelection")
@@ -207,16 +218,20 @@ function createMoveButtonContainer(simpleButtonNs: NamespaceElement) {
     );
 }
 
-function createMoveButton(simpleButtonNs: NamespaceElement) {
+function createMoveButton(
+  simpleButtonNs: NamespaceElement,
+  ppBarVariants: ElementBuilder<string>[]
+) {
   return panel("move_button")
-    .size("default", "7%x")
+    .size("100%", "7%x")
     .rawProp("offset", "$offset")
     .anchor("top_left")
     .controls(
       createMoveButtonContainer(simpleButtonNs),
       moveNameLabel,
       moveIcon,
-      ppTextLabel
+      ppTextLabel,
+      ...ppBarVariants
     );
 }
 
@@ -237,11 +252,17 @@ export interface ButtonElements {
 }
 
 /**
- * Register all button elements to namespace and return references
+ * Registers all button elements in the battle namespace.
+ *
+ * @param ns The battle UI namespace.
+ * @param shared Shared battle element references.
+ * @param ppBarVariants PP bar controls embedded in each move button.
+ * @returns Registered button element references.
  */
 export function registerButtonElements(
   ns: NamespaceBuilder,
-  shared: SharedElements
+  shared: SharedElements,
+  ppBarVariants: ElementBuilder<string>[]
 ): ButtonElements {
   // Register simple button base
   const simpleButtonNs = createSimpleButton(
@@ -275,7 +296,7 @@ export function registerButtonElements(
 
   // Battle action button (combines bag, pokemon, run)
   const battleActionButtonNs = panel("battle_action_button")
-    .size("default", "100%c")
+    .size("100%", "100%c")
     .variable("bag_button_id", "battleButton:bag")
     .variable("pokemon_button_id", "battleButton:pokemon")
     .variable("run_button_id", "battleButton:run")
@@ -297,7 +318,10 @@ export function registerButtonElements(
     createMoveSelectionButton(simpleButtonNs).addToNamespace(ns);
 
   // Move button
-  const moveButtonNs = createMoveButton(simpleButtonNs).addToNamespace(ns);
+  const moveButtonNs = createMoveButton(
+    simpleButtonNs,
+    ppBarVariants
+  ).addToNamespace(ns);
 
   // Grid button check ID template
   const gridButtonCheckIdNs = element("grid_button_check_id")
@@ -315,7 +339,7 @@ export function registerButtonElements(
   ];
 
   const gridButtonControls = gridButtonOffsets.map((offset, index) =>
-    extend(`grid_button_${index + 1}`, gridButtonCheckIdNs)
+    extend(String(index + 1), gridButtonCheckIdNs)
       .variable("icon_offset", [
         `${index <= 1 ? "-" : ""}15%`, // First two buttons on left side (-)
         "-14%",
@@ -325,7 +349,7 @@ export function registerButtonElements(
   );
 
   const gridButtonNs = panel("grid_button")
-    .size("default", "100%c")
+    .size("100%", "100%c")
     .controls(...gridButtonControls)
     .addToNamespace(ns);
 

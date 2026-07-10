@@ -49,7 +49,7 @@
                           "binding_name": "#null",
                           "binding_type": "view",
                           "source_control_name": "elements",
-                          "source_property_name": "(%.80s * #level_number - '_')",
+                          "source_property_name": "((%.80s * #level_number) - '_')",
                           "target_property_name": "#text"
                         }
                       ]

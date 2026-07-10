@@ -47,7 +47,7 @@
     "fs-extra": "^11.3.5",
     "jimp": "^1.6.0",
     "lodash": "^4.18.1",
-    "mcbe-ts-ui": "github:smell-of-curry/mcbe-ts-ui#427ef4b",
+    "mcbe-ts-ui": "github:smell-of-curry/mcbe-ts-ui#48dc515",
     "pokebedrock-showdown": "0.1.18",
     "progress": "^2.0.3",
     "sharp": "^0.33.5",
