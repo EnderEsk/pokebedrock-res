@@ -29,7 +29,7 @@
     "$flag_pc": "§p§c",
     "controls": [
       {
-        "long_form@long_form": {
+        "long_form@server_form.long_form": {
           "enabled": false,
           "visible": false,
           "bindings": [

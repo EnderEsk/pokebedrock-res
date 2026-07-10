@@ -123,7 +123,7 @@
       }
     ]
   },
-  "left_arrow_button@button": {
+  "left_arrow_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/buttons/left_arrow",
     "$hover_button_texture": "textures/ui/pc/buttons/left_arrow_hover",
     "$pressed_button_texture": "textures/ui/pc/buttons/left_arrow",
@@ -145,7 +145,7 @@
       }
     ]
   },
-  "right_arrow_button@button": {
+  "right_arrow_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/buttons/right_arrow",
     "$hover_button_texture": "textures/ui/pc/buttons/right_arrow_hover",
     "$pressed_button_texture": "textures/ui/pc/buttons/right_arrow",
@@ -167,7 +167,7 @@
       }
     ]
   },
-  "filter_button@button": {
+  "filter_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/buttons/filter_button",
     "$hover_button_texture": "textures/ui/pc/buttons/filter_button_hover",
     "$pressed_button_texture": "textures/ui/pc/buttons/filter_button",
@@ -189,7 +189,7 @@
       }
     ]
   },
-  "search_button@button": {
+  "search_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/buttons/search_button",
     "$hover_button_texture": "textures/ui/pc/buttons/search_button_hover",
     "$pressed_button_texture": "textures/ui/pc/buttons/search_button",
@@ -211,7 +211,7 @@
       }
     ]
   },
-  "settings_button@button": {
+  "settings_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/buttons/settings_button",
     "$hover_button_texture": "textures/ui/pc/buttons/settings_button_hover",
     "$pressed_button_texture": "textures/ui/pc/buttons/settings_button",
@@ -233,7 +233,7 @@
       }
     ]
   },
-  "trash_button@button": {
+  "trash_button@pc.button": {
     "$default_button_texture": "textures/ui/icon_trash",
     "$hover_button_texture": "textures/ui/icon_trash",
     "$pressed_button_texture": "textures/ui/icon_trash",
@@ -262,7 +262,7 @@
       }
     ]
   },
-  "icon_button@button": {
+  "icon_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/icon_box",
     "$hover_button_texture": "textures/ui/pc/icon_box",
     "$pressed_button_texture": "textures/ui/pc/icon_box",
@@ -288,7 +288,7 @@
       }
     ]
   },
-  "action_button@button": {
+  "action_button@pc.button": {
     "$default_button_texture": "textures/ui/pc/buttons/action_button",
     "$hover_button_texture": "textures/ui/pc/buttons/action_button_hover",
     "$pressed_button_texture": "textures/ui/pc/buttons/action_button",
@@ -504,7 +504,7 @@
                                 }
                               },
                               {
-                                "filter_button@button_stack": {
+                                "filter_button@pc.button_stack": {
                                   "size": [
                                     14,
                                     "default"
@@ -516,7 +516,7 @@
                                 }
                               },
                               {
-                                "search_button@button_stack": {
+                                "search_button@pc.button_stack": {
                                   "size": [
                                     14,
                                     "default"
@@ -570,7 +570,7 @@
                                 }
                               },
                               {
-                                "settings_button@button_stack": {
+                                "settings_button@pc.button_stack": {
                                   "size": [
                                     14,
                                     "default"
@@ -633,7 +633,7 @@
                                 }
                               },
                               {
-                                "left_button@button_stack": {
+                                "left_button@pc.button_stack": {
                                   "size": [
                                     11,
                                     "default"
@@ -683,7 +683,7 @@
                                 }
                               },
                               {
-                                "right_button@button_stack": {
+                                "right_button@pc.button_stack": {
                                   "size": [
                                     11,
                                     "default"
@@ -807,7 +807,7 @@
                 ],
                 "controls": [
                   {
-                    "icon_box@button_stack": {
+                    "icon_box@pc.button_stack": {
                       "size": [
                         "default",
                         70
@@ -828,7 +828,7 @@
                     }
                   },
                   {
-                    "action_button@button_stack": {
+                    "action_button@pc.button_stack": {
                       "size": [
                         "default",
                         18

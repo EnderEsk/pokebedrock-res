@@ -556,7 +556,7 @@
       }
     ]
   },
-  "pokemon_panel_grid@button_stack": {
+  "pokemon_panel_grid@pokemon.button_stack": {
     "size": [
       "98%",
       "100%c"

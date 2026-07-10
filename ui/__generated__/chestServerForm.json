@@ -322,7 +322,7 @@
       }
     ]
   },
-  "ui_chest_item@inventory_button": {
+  "ui_chest_item@chest_ui.inventory_button": {
     "$offset": [
       -1,
       -1
@@ -353,7 +353,7 @@
       }
     ]
   },
-  "ui_inventory_item@inventory_button": {
+  "ui_inventory_item@chest_ui.inventory_button": {
     "$offset": [
       -1,
       10
@@ -384,7 +384,7 @@
       }
     ]
   },
-  "ui_hot_bar_item@inventory_button": {
+  "ui_hot_bar_item@chest_ui.inventory_button": {
     "$offset": [
       -1,
       13
