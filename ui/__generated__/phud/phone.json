@@ -91,15 +91,15 @@
       }
     ]
   },
-  "icon@phud_phone.abstract_phone_conditional": {
+  "icon@abstract_phone_conditional": {
     "texture": "('textures/ui/phud/' + $name)"
   },
-  "oak_talk@phud_phone.abstract_phone_conditional": {
+  "oak_talk@abstract_phone_conditional": {
     "type": "panel",
     "$condition": "((%.4s * #value) = 'loop')",
     "controls": [
       {
-        "start@phud_phone.oak_icon": {
+        "start@oak_icon": {
           "uv": "@phud_phone.anim__oak_start_flipbook",
           "anims": [
             "@phud_phone.anim__oak_start_destroy"
@@ -108,7 +108,7 @@
         }
       },
       {
-        "loop@phud_phone.oak_icon": {
+        "loop@oak_icon": {
           "uv": "@phud_phone.anim__oak_loop_flipbook",
           "anims": [
             "@phud_phone.anim__oak_loop_show__0"
@@ -128,7 +128,7 @@
           "layer": 1,
           "controls": [
             {
-              "ringing@phud_phone.icon": {
+              "ringing@icon": {
                 "uv": "@phud_phone.anim__ringing",
                 "uv_size": [
                   64,
@@ -139,7 +139,7 @@
               }
             },
             {
-              "standby@phud_phone.icon": {
+              "standby@icon": {
                 "$name": "standby",
                 "$condition": "(#value = 'standby')"
               }
@@ -155,13 +155,13 @@
           "type": "panel",
           "controls": [
             {
-              "phone_background@phud_phone.abstract_phone_conditional": {
+              "phone_background@abstract_phone_conditional": {
                 "texture": "textures/ui/phud/box_small",
                 "$condition": "((#value = 'ring') or (#value = 'standby'))"
               }
             },
             {
-              "oak_talk_bg@phud_phone.abstract_phone_conditional": {
+              "oak_talk_bg@abstract_phone_conditional": {
                 "texture": "textures/ui/phud/box_wide",
                 "alpha": 0,
                 "anims": [

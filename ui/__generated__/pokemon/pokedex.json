@@ -132,7 +132,7 @@
       }
     ]
   },
-  "search_button@pokedex.button": {
+  "search_button@button": {
     "$default_button_texture": "textures/ui/pokedex/button_search",
     "$hover_button_texture": "textures/ui/pokedex/button_search_hover",
     "$pressed_button_texture": "textures/ui/pokedex/button_search",
@@ -158,7 +158,7 @@
       }
     ]
   },
-  "back_button@pokedex.button": {
+  "back_button@button": {
     "$default_button_texture": "textures/ui/pokedex/button_back",
     "$hover_button_texture": "textures/ui/pokedex/button_back_hover",
     "$pressed_button_texture": "textures/ui/pokedex/button_back",
@@ -179,7 +179,7 @@
       }
     ]
   },
-  "previous_page_button@pokedex.button": {
+  "previous_page_button@button": {
     "$default_button_texture": "textures/ui/pokedex/button_prev_page",
     "$hover_button_texture": "textures/ui/pokedex/button_prev_page_hover",
     "$pressed_button_texture": "textures/ui/pokedex/button_prev_page",
@@ -200,7 +200,7 @@
       }
     ]
   },
-  "next_page_button@pokedex.button": {
+  "next_page_button@button": {
     "$default_button_texture": "textures/ui/pokedex/button_next_page",
     "$hover_button_texture": "textures/ui/pokedex/button_next_page_hover",
     "$pressed_button_texture": "textures/ui/pokedex/button_next_page",
@@ -225,7 +225,7 @@
       }
     ]
   },
-  "stat_button@pokedex.button": {
+  "stat_button@button": {
     "$button_image_fill": true,
     "$text_anchor_location": "left_middle",
     "$text_offset": [
@@ -234,7 +234,7 @@
     ],
     "$font_scale_factor": 0.45
   },
-  "caught_pokemon_button@pokedex.stat_button": {
+  "caught_pokemon_button@stat_button": {
     "type": "panel",
     "$default_button_texture": "textures/ui/pokedex/button_caught",
     "$hover_button_texture": "textures/ui/pokedex/button_caught_hover",
@@ -255,7 +255,7 @@
       }
     ]
   },
-  "seen_pokemon_button@pokedex.stat_button": {
+  "seen_pokemon_button@stat_button": {
     "type": "panel",
     "$default_button_texture": "textures/ui/pokedex/button_seen",
     "$hover_button_texture": "textures/ui/pokedex/button_seen_hover",
@@ -276,7 +276,7 @@
       }
     ]
   },
-  "completion_button@pokedex.stat_button": {
+  "completion_button@stat_button": {
     "type": "panel",
     "$default_button_texture": "textures/ui/pokedex/button_completion",
     "$hover_button_texture": "textures/ui/pokedex/button_completion_hover",
@@ -297,7 +297,7 @@
       }
     ]
   },
-  "icon@pokedex.button": {
+  "icon@button": {
     "$default_button_texture": "textures/ui/battle/white_transparency",
     "$hover_button_texture": "textures/ui/battle/white_transparency",
     "$pressed_button_texture": "textures/ui/battle/white_transparency",
@@ -377,7 +377,7 @@
                 ],
                 "controls": [
                   {
-                    "back_button@pokedex.button_stack": {
+                    "back_button@button_stack": {
                       "size": [
                         22,
                         12
@@ -396,7 +396,7 @@
                     }
                   },
                   {
-                    "search_button@pokedex.button_stack": {
+                    "search_button@button_stack": {
                       "size": [
                         146,
                         12
@@ -515,7 +515,7 @@
                           }
                         },
                         {
-                          "icon@pokedex.button_stack": {
+                          "icon@button_stack": {
                             "size": [
                               55,
                               55
@@ -581,7 +581,7 @@
               }
             },
             {
-              "search_button@pokedex.button_stack": {
+              "search_button@button_stack": {
                 "size": [
                   163,
                   12
@@ -608,7 +608,7 @@
                 ],
                 "controls": [
                   {
-                    "page_management@pokedex.button_stack": {
+                    "page_management@button_stack": {
                       "size": [
                         11,
                         26
@@ -618,7 +618,7 @@
                     }
                   },
                   {
-                    "page_management@pokedex.button_stack": {
+                    "page_management@button_stack": {
                       "size": [
                         11,
                         26
@@ -644,7 +644,7 @@
                 ],
                 "controls": [
                   {
-                    "caught_pokemon@pokedex.button_stack": {
+                    "caught_pokemon@button_stack": {
                       "size": [
                         54,
                         17
@@ -663,7 +663,7 @@
                     }
                   },
                   {
-                    "seen_pokemon@pokedex.button_stack": {
+                    "seen_pokemon@button_stack": {
                       "size": [
                         54,
                         17
@@ -682,7 +682,7 @@
                     }
                   },
                   {
-                    "completion@pokedex.button_stack": {
+                    "completion@button_stack": {
                       "size": [
                         54,
                         17

@@ -35,37 +35,37 @@
           "type": "panel",
           "controls": [
             {
-              "currency_data_control@phud.data_control": {
+              "currency_data_control@data_control": {
                 "$update_string": "&_currency:"
               }
             },
             {
-              "phone_data_control@phud.data_control": {
+              "phone_data_control@data_control": {
                 "$update_string": "&_phone:"
               }
             },
             {
-              "battle_wait_control@phud.data_control": {
+              "battle_wait_control@data_control": {
                 "$update_string": "&_battleWait:"
               }
             },
             {
-              "loading_screen_control@phud.data_control": {
+              "loading_screen_control@data_control": {
                 "$update_string": "&_loadingScreen:"
               }
             },
             {
-              "evolution_wait_control@phud.data_control": {
+              "evolution_wait_control@data_control": {
                 "$update_string": "&_evolutionWait:"
               }
             },
             {
-              "sidebar_control@phud.data_control": {
+              "sidebar_control@data_control": {
                 "$update_string": "&_sidebar:"
               }
             },
             {
-              "player_ping_control@phud.data_control": {
+              "player_ping_control@data_control": {
                 "$update_string": "&_playerPing:"
               }
             }
