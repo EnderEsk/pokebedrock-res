@@ -1,9 +1,3 @@
-/**
- * PHUD Phone UI
- *
- * Tutorial / phone portrait overlay (oak talk, ringing, standby).
- */
-
 import {
   defineUI,
   panel,
@@ -18,7 +12,12 @@ import {
   ref,
 } from "mcbe-ts-ui";
 
-const NAMESPACE = "phud_phone";
+export const NAMESPACE = "phud_phone";
+export const INSTANCE = "phone";
+
+/** Cross-namespace mount into `phud.elements`. */
+export const mainRef = (overrides: Record<string, unknown> = {}) =>
+  ref(`${INSTANCE}@${NAMESPACE}.main`, overrides);
 
 const animations = [
   animation("anim__ringing")
@@ -27,27 +26,22 @@ const animations = [
     .frameCount(11)
     .fps(11)
     .frameStep(64),
-
   animation("anim__oak_start_flipbook")
     .flipBook()
     .initialUV(0, 0)
     .frameCount(12)
     .fps(12)
     .frameStep(64),
-
   animation("anim__oak_start_destroy").wait(0.97).destroyAtEnd("start"),
-
   animation("anim__oak_loop_flipbook")
     .flipBook()
     .initialUV(0, 0)
     .frameCount(8)
     .fps(12)
     .frameStep(64),
-
   animation("anim__oak_loop_show__0")
     .wait(0.97)
     .next(animRef(NAMESPACE, "anim__oak_loop_show__1")),
-
   animation("anim__oak_loop_show__1").alpha(1, 1).duration(0),
 ];
 

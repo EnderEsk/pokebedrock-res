@@ -1,9 +1,3 @@
-/**
- * Battle UI - Progress Bar Elements
- *
- * HP bars, PP bars, and progress-related UI elements.
- */
-
 import {
   panel,
   image,
@@ -17,7 +11,6 @@ import {
 
 import { NS } from "./shared";
 
-/** Base PP bar for move display */
 export const ppBar = image("pp_bar", "textures/ui/battle/white_shaded")
   .color([0.1, 0.6, 1])
   .layer(10)
@@ -31,7 +24,6 @@ export const ppBar = image("pp_bar", "textures/ui/battle/white_shaded")
     viewBinding(`(${skip(2, "#form_button_texture")} = $bar)`, "#visible")
   );
 
-/** Variable progress bar for HP display */
 export const variableProgressBar = image(
   "variable_progress_bar",
   "textures/ui/filled_progress_bar"
@@ -52,7 +44,6 @@ export const variableProgressBar = image(
     )
   );
 
-/** Dynamic progress bar with color variants (green/yellow/red) */
 const dynamicProgressBar = panel("dynamic_progress_bar")
   .fullSize()
   .anchor("center")
@@ -74,11 +65,6 @@ const dynamicProgressBar = panel("dynamic_progress_bar")
     })
   );
 
-/**
- * Creates PP bar controls for every supported PP value.
- *
- * @returns PP bar controls for null and values 0 through 20.
- */
 export function createPpBarVariants() {
   return ["null", ...Array.from({ length: 21 }, (_, i) => i)].map((i) => {
     const barVal = i === "null" ? "_null" : `_${i}`;
@@ -94,11 +80,6 @@ export function createPpBarVariants() {
   });
 }
 
-/**
- * Register progress elements to the namespace.
- *
- * @param ns The battle UI namespace.
- */
 export function registerProgressElements(ns: NamespaceBuilder): void {
   ppBar.addToNamespace(ns);
   variableProgressBar.addToNamespace(ns);

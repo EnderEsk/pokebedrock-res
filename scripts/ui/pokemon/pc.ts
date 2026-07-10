@@ -416,7 +416,7 @@ const main = panel("main")
   .fullSize()
   .controls(backgroundFade, pcLayout);
 
-export default defineUI(NAMESPACE, (ns) => {
+const ui = defineUI(NAMESPACE, (ns) => {
   buttonStack.addToNamespace(ns);
   button.addToNamespace(ns);
   leftArrowButton.addToNamespace(ns);
@@ -430,3 +430,8 @@ export default defineUI(NAMESPACE, (ns) => {
 
   return ns.setMain(main);
 });
+
+export default ui;
+
+/** Element mounted by `server_form` via extendExternal. */
+export const mount = ui.elements.main!;

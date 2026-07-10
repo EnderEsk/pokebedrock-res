@@ -209,13 +209,17 @@ const buttonController = panel("button_controller").controls(
   createTopSection(NAMESPACE)
 );
 
-export default defineUI(NAMESPACE, (ns) => {
+const ui = defineUI(NAMESPACE, (ns) => {
   createButtonTemplate(ns, { textures: FORM_TEXTURES });
   createButtonPanels(ns, NAMESPACE, buttonPanels);
   createButtonStacks(ns, NAMESPACE, buttonStacks);
 
   buttonController.addToNamespace(ns);
 
-  const [, finalNs] = ns.add(createMainPanel(NAMESPACE, "second"));
-  return finalNs;
+  return ns.setMain(createMainPanel(NAMESPACE, "second"));
 });
+
+export default ui;
+
+/** Element mounted by `server_form` via extendExternal. */
+export const mount = ui.elements.blackbarbar_second!;

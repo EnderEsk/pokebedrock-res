@@ -8,8 +8,12 @@ import {
   phudRead,
   firstStripped,
   skipStripped,
-  ColorWithAlpha,
+  fromRGB,
+  ref,
 } from "mcbe-ts-ui";
+
+export const NAMESPACE = "phud_currency";
+export const INSTANCE = "currency";
 
 /**
  * The variable size of currency display.
@@ -19,8 +23,7 @@ import {
  */
 const VARIABLE_SIZE = 80;
 const FONT_SCALE = 1;
-// TODO: Convert to `fromRGB` helper
-const COLOR: ColorWithAlpha = [1, 1, 0.52, 1];
+const COLOR = fromRGB(255, 255, 133);
 
 const questLabel = boundLabel("quest_label")
   .layer(3)
@@ -52,12 +55,15 @@ const stackPanelElement = stackPanel("stack_panel", "horizontal")
   .wrapChildren()
   .controls(quest, panel("separator").size(3, 0), currency);
 
-export default defineUI(
-  "phud_currency",
-  panel("main")
-    .size("100%cm", "100%cm")
-    .anchor("top_middle")
-    .offset(0, 8)
-    .controls(stackPanelElement)
-    .bindings(...phudVisibility("#level_number"))
-);
+export const main = panel("main")
+  .size("100%cm", "100%cm")
+  .anchor("top_middle")
+  .offset(0, 8)
+  .controls(stackPanelElement)
+  .bindings(...phudVisibility("#level_number"));
+
+/** Cross-namespace mount into `phud.elements`. */
+export const mainRef = (overrides: Record<string, unknown> = {}) =>
+  ref(`${INSTANCE}@${NAMESPACE}.${main.getName()}`, overrides);
+
+export default defineUI(NAMESPACE, main);

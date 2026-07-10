@@ -14,11 +14,18 @@ import {
   boundLabel,
   boundImage,
   element,
+  ref,
 } from "mcbe-ts-ui";
+
+export const NAMESPACE = "phud_sidebar";
+export const INSTANCE = "sidebar";
+
+/** Cross-namespace mount into `phud.elements`. */
+export const mainRef = (overrides: Record<string, unknown> = {}) =>
+  ref(`${INSTANCE}@${NAMESPACE}.main`, overrides);
 
 // BEH sidebar packs 7 fields per slot: stats|name|id|active|ball|icon|xp
 const POKEMON_DATA_SIZE = 7;
-const NAMESPACE = "phud_sidebar";
 const VARIABLE_PARSER = `${NAMESPACE}.variable_parser`;
 
 const pokemonIndexMap = {

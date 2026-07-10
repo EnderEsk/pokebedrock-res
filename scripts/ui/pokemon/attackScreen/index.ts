@@ -1,10 +1,3 @@
-/**
- * Battle UI
- *
- * Pokemon battle interface with action buttons, move selection, and actor details.
- * Main entry point that combines all battle screen modules.
- */
-
 import { defineUI, panel, image, label, stackPanel, element } from "mcbe-ts-ui";
 
 import { NS, registerSharedElements } from "./shared";
@@ -109,7 +102,7 @@ const main = panel("main")
   .fullSize()
   .controls(battleMenu, actorsDetailsSelection);
 
-export default defineUI(
+const ui = defineUI(
   NS,
   (ns) => {
     registerSharedElements(ns);
@@ -123,3 +116,8 @@ export default defineUI(
     subdir: "pokemon",
   }
 );
+
+export default ui;
+
+/** Element mounted by `server_form` via extendExternal. */
+export const mount = ui.elements.main!;

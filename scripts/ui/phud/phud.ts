@@ -1,6 +1,5 @@
 import {
   Binding,
-  ControlReference,
   defineUI,
   extend,
   hudTitleBinding,
@@ -12,68 +11,51 @@ import {
   viewBinding,
 } from "mcbe-ts-ui";
 
-interface HudComponent {
+import { mainRef as currencyRef } from "./currency";
+import { mainRef as phoneRef } from "./phone";
+import { mainRef as battleWaitRef } from "./battleWait";
+import { mainRef as loadingScreenRef } from "./loadingScreen";
+import { mainRef as evolutionWaitRef } from "./evolutionWait";
+import { mainRef as sidebarRef } from "./sidebar";
+
+interface HudDataControl {
   updateString: string;
-  /** Data-control name under `renderers` (must be unique from elementName). */
+  /** Data-control name under `renderers` (must be unique). */
   controlName: string;
-  /** Visible element instance name under `elements`. */
-  elementName?: string;
   bindingTarget: string;
-  namespace?: string;
-  /** Overrides applied on the element instance in `elements`. */
-  elementOverrides?: Record<string, unknown>;
 }
 
 // Match main hand-authored phud.json naming: *_data_control vs short element names.
-const HUD_COMPONENTS: HudComponent[] = [
+const HUD_DATA_CONTROLS: HudDataControl[] = [
   {
     updateString: "&_currency:",
     controlName: "currency_data_control",
-    elementName: "currency",
     bindingTarget: "#level_number",
-    namespace: "phud_currency",
   },
   {
     updateString: "&_phone:",
     controlName: "phone_data_control",
-    elementName: "phone",
     bindingTarget: "#phone",
-    namespace: "phud_phone",
-    elementOverrides: {
-      size: [64, 64],
-      offset: [8, 0],
-      anchor_from: "left_middle",
-      anchor_to: "left_middle",
-    },
   },
   {
     updateString: "&_battleWait:",
     controlName: "battle_wait_control",
-    elementName: "battle_wait",
     bindingTarget: "#battleLog",
-    namespace: "phud_battleWait",
   },
   {
     updateString: "&_loadingScreen:",
     controlName: "loading_screen_control",
-    elementName: "loadingScreen",
     bindingTarget: "#loadingScreen",
-    namespace: "phud_loadingScreen",
   },
   {
     updateString: "&_evolutionWait:",
     controlName: "evolution_wait_control",
-    elementName: "evolutionWait",
     bindingTarget: "#evolutionWait",
-    namespace: "phud_evolutionWait",
   },
   {
     updateString: "&_sidebar:",
     controlName: "sidebar_control",
-    elementName: "sidebar",
     bindingTarget: "#sidebar",
-    namespace: "phud_sidebar",
-    elementOverrides: { $color: "white" },
   },
   {
     updateString: "&_playerPing:",
@@ -84,18 +66,12 @@ const HUD_COMPONENTS: HudComponent[] = [
 ];
 
 const siblingBindings = (): Binding[] =>
-  HUD_COMPONENTS.map(({ controlName, updateString, bindingTarget }) =>
+  HUD_DATA_CONTROLS.map(({ controlName, updateString, bindingTarget }) =>
     siblingViewBinding(
       controlName,
       strip("#preserved_text", updateString),
       bindingTarget
     )
-  );
-
-const elementRefs = (): ControlReference[] =>
-  HUD_COMPONENTS.filter((c) => c.namespace && c.elementName).map(
-    ({ elementName, namespace, elementOverrides }) =>
-      ref(`${elementName}@${namespace}.main`, elementOverrides)
   );
 
 const dataControl = panel("data_control")
@@ -114,13 +90,29 @@ const elements = panel("elements")
   .rawProp("offset", "$offset")
   .rawProp("variables", [{ requires: "$pocket_screen", $offset: [0, 10] }])
   .bindings(...siblingBindings())
-  .controls(...elementRefs());
+  .controls(
+    currencyRef(),
+    phoneRef({
+      size: [64, 64],
+      offset: [8, 0],
+      anchor_from: "left_middle",
+      anchor_to: "left_middle",
+    }),
+    battleWaitRef(),
+    loadingScreenRef(),
+    evolutionWaitRef(),
+    sidebarRef({ $color: "white" })
+  );
 
-export default defineUI("phud", (ns) => {
+export const NAMESPACE = "phud";
+
+/** Cross-namespace mount into `hud_screen` root_panel. */
+export const mainRef = ref(`${NAMESPACE}@${NAMESPACE}.main`);
+
+export default defineUI(NAMESPACE, (ns) => {
   const dataControlEl = dataControl.addToNamespace(ns);
-
   const renderers = panel("renderers").controls(
-    ...HUD_COMPONENTS.map(({ controlName, updateString }) =>
+    ...HUD_DATA_CONTROLS.map(({ controlName, updateString }) =>
       extend(controlName, dataControlEl).variable("update_string", updateString)
     )
   );

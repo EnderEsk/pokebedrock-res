@@ -1,9 +1,3 @@
-/**
- * Battle UI - Actor Elements
- *
- * Ally and opponent actor buttons, descriptions, and related elements.
- */
-
 import {
   element,
   panel,
@@ -24,7 +18,6 @@ import {
 
 import { NS, visibilityForId, formButtonsDetailsBinding } from "./shared";
 
-/** Entity icon inside the overlay */
 const entityIcon = boundImage("entity_icon")
   .size(40, 40)
   .anchor("center")
@@ -39,7 +32,6 @@ const entityIcon = boundImage("entity_icon")
     collectionBinding("#form_button_texture", "form_buttons", "#texture")
   );
 
-/** Battle actor entity icon overlay builder */
 const battleActorEntityIconOverlay = image(
   "battle_actor_entity_icon_overlay",
   "$actor_icon_overlay_texture"
@@ -53,11 +45,9 @@ const battleActorEntityIconOverlay = image(
   .rawProp("offset", "$actor_icon_offset")
   .controls(entityIcon);
 
-/** Spacer panel for layout */
 const spacerPanel = (height: SizeValue) =>
   panel("spacer").size("100%", height);
 
-/** Details text label */
 const detailsTextLabel = label("details_text", "#text")
   .color([0.768, 0.768, 0.768])
   .fontScale(1)
@@ -69,7 +59,6 @@ const detailsTextLabel = label("details_text", "#text")
     viewBinding(strip(first(58, "#form_button_text")), "#text")
   );
 
-/** Health text label */
 const healthTextLabel = label("health_text", "#text")
   .color("white")
   .fontScale(0.8)
@@ -168,11 +157,6 @@ const allyActorDetailsButton = stackPanel("ally_actor_details_button", "vertical
   .size("100%", "100%c")
   .offset("50%", "10%");
 
-/**
- * Register actor elements to the namespace.
- *
- * @param ns The battle UI namespace.
- */
 export function registerActorElements(ns: NamespaceBuilder): void {
   battleActorEntityIconOverlay.addToNamespace(ns);
   battleActorDescription.addToNamespace(ns);

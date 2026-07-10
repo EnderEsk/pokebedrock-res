@@ -22,14 +22,14 @@ import {
   viewBinding,
 } from "mcbe-ts-ui";
 
-import PokemonForm from "./pokemon/pokemon";
-import PokedexForm from "./pokemon/pokedex";
-import BattleForm from "./pokemon/attackScreen";
-import ChestForm from "./chestServerForm";
-import RotomPhoneFirst from "./rotomPhone/first";
-import RotomPhoneSecond from "./rotomPhone/second";
-import RotomPhoneThird from "./rotomPhone/third";
-import PcForm from "./pokemon/pc";
+import { mount as pokemonMount } from "./pokemon/pokemon";
+import { mount as pokedexMount } from "./pokemon/pokedex";
+import { mount as battleMount } from "./pokemon/attackScreen";
+import { mount as chestMount } from "./chestServerForm";
+import { mount as rotomPhoneFirstMount } from "./rotomPhone/first";
+import { mount as rotomPhoneSecondMount } from "./rotomPhone/second";
+import { mount as rotomPhoneThirdMount } from "./rotomPhone/third";
+import { mount as pcMount } from "./pokemon/pc";
 
 const POKEMON_FLAGS = ["§p§o§k§e§1", "§p§o§k§e§s"] as const;
 
@@ -226,46 +226,37 @@ export default redefineUI("server_form", (ns) => {
   ngLongForm
     .controls(
       longFormRoute,
-      extendExternal("pokemon_battle", BattleForm.elements["main"]!)
+      extendExternal("pokemon_battle", battleMount)
         .enabled(false)
         .visible(false)
         .bindings(...flagBindings(FLAGS.battle)),
-      extendExternal("pokemon", PokemonForm.elements["main_panel"]!)
+      extendExternal("pokemon", pokemonMount)
         .enabled(false)
         .visible(false)
         .bindings(...pokemonFlagBindings()),
-      extendExternal("pokedex", PokedexForm.elements["main_grid"]!)
+      extendExternal("pokedex", pokedexMount)
         .enabled(false)
         .visible(false)
         .bindings(...flagBindings(FLAGS.pokedex)),
-      extendExternal("pc", PcForm.elements["main"]!)
+      extendExternal("pc", pcMount)
         .enabled(false)
         .visible(false)
         .bindings(...flagBindings(FLAGS.pc)),
       pokedexDetailsPanel,
-      extendExternal("chest_ui", ChestForm.elements["chest_panel"]!)
+      extendExternal("chest_ui", chestMount)
         .enabled(false)
         .visible(false)
         .bindings(...flagBindings(FLAGS.chestGui)),
       searchUiPanel,
-      extendExternal(
-        "rotom_phone_first",
-        RotomPhoneFirst.elements["blackbarbar_first"]!
-      )
+      extendExternal("rotom_phone_first", rotomPhoneFirstMount)
         .enabled(false)
         .visible(false)
         .bindings(...flagBindings(FLAGS.rotomPhoneFirst)),
-      extendExternal(
-        "rotom_phone_second",
-        RotomPhoneSecond.elements["blackbarbar_second"]!
-      )
+      extendExternal("rotom_phone_second", rotomPhoneSecondMount)
         .enabled(false)
         .visible(false)
         .bindings(...flagBindings(FLAGS.rotomPhoneSecond)),
-      extendExternal(
-        "rotom_phone_third",
-        RotomPhoneThird.elements["blackbarbar_third"]!
-      )
+      extendExternal("rotom_phone_third", rotomPhoneThirdMount)
         .enabled(false)
         .visible(false)
         .bindings(...flagBindings(FLAGS.rotomPhoneThird))

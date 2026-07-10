@@ -8,7 +8,11 @@ import {
   phudVisibility,
   stackPanel,
   viewBinding,
+  ref,
 } from "mcbe-ts-ui";
+
+export const NAMESPACE = "phud_battleWait";
+export const INSTANCE = "battle_wait";
 
 const battleLogText = boundLabel("text")
   .anchor("top_middle")
@@ -48,15 +52,18 @@ const mainHolder = stackPanel("main_holder", "horizontal")
   .anchor("bottom_left")
   .controls(menuExtra, infoLabel);
 
-export default defineUI(
-  "phud_battleWait",
-  image("main", "textures/ui/battle/white_transparency")
-    .color(fromRGB(191, 43, 54))
-    .rawProp("keep_ratio", true)
-    .layer(1000)
-    .fill()
-    .anchor("bottom_left")
-    .size("100%", "30%")
-    .controls(mainHolder)
-    .bindings(...phudVisibility("#battleLog"))
-);
+export const main = image("main", "textures/ui/battle/white_transparency")
+  .color(fromRGB(191, 43, 54))
+  .rawProp("keep_ratio", true)
+  .layer(1000)
+  .fill()
+  .anchor("bottom_left")
+  .size("100%", "30%")
+  .controls(mainHolder)
+  .bindings(...phudVisibility("#battleLog"));
+
+/** Cross-namespace mount into `phud.elements`. */
+export const mainRef = (overrides: Record<string, unknown> = {}) =>
+  ref(`${INSTANCE}@${NAMESPACE}.${main.getName()}`, overrides);
+
+export default defineUI(NAMESPACE, main);

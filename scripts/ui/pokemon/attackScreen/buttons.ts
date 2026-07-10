@@ -1,9 +1,3 @@
-/**
- * Battle UI - Button Elements
- *
- * Action buttons, move buttons, and grid button elements.
- */
-
 import {
   element,
   panel,
@@ -52,7 +46,6 @@ const simpleButton = element("simple_button")
     viewBinding("(not((%.1s * #form_button_texture) = 'f'))", "#enabled")
   );
 
-/** Creates an action button panel */
 const actionButton = (
   name: string,
   texture: string,
@@ -204,11 +197,6 @@ const gridButtonOffsets = [
 
 const gridButton = panel("grid_button").size("100%", "100%c");
 
-/**
- * Register button elements to the namespace.
- *
- * @param ns The battle UI namespace.
- */
 export function registerButtonElements(ns: NamespaceBuilder): void {
   simpleButton.addToNamespace(ns);
   const bagButtonNs = bagButton.addToNamespace(ns);

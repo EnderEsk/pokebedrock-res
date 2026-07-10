@@ -301,7 +301,7 @@ const mainPanel = image("main_panel", "textures/ui/pokemon/background")
       .controls(ref(`common_panel@${NAMESPACE}.common_panel`))
   );
 
-export default defineUI(NAMESPACE, (ns) => {
+const ui = defineUI(NAMESPACE, (ns) => {
   buttonStack.addToNamespace(ns);
   pokemonText.addToNamespace(ns);
   buttonAction.addToNamespace(ns);
@@ -316,3 +316,8 @@ export default defineUI(NAMESPACE, (ns) => {
 
   return ns.setMain(mainPanel);
 });
+
+export default ui;
+
+/** Element mounted by `server_form` via extendExternal. */
+export const mount = ui.elements.main_panel!;

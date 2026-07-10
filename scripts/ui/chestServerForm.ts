@@ -1,9 +1,3 @@
-/**
- * Chest Server Form UI
- *
- * Custom chest-like form interfaces with multiple layout variants.
- */
-
 import {
   defineUI,
   panel,
@@ -428,7 +422,7 @@ const chestPanel = panel("chest_panel")
     ref("auction_house_grid@chest_ui.auction_house_grid")
   );
 
-export default defineUI("chest_ui", (ns) => {
+const ui = defineUI("chest_ui", (ns) => {
   chestLabel.addToNamespace(ns);
   nonRendererItem.addToNamespace(ns);
   inventoryButtonAmount.addToNamespace(ns);
@@ -461,6 +455,10 @@ export default defineUI("chest_ui", (ns) => {
   pokebuilderGridLargeImage.addToNamespace(ns);
   backpackGrid.addToNamespace(ns);
   auctionHouseGrid.addToNamespace(ns);
-  const [, finalNs] = ns.add(chestPanel);
-  return finalNs;
+  return ns.setMain(chestPanel);
 });
+
+export default ui;
+
+/** Element mounted by `server_form` via extendExternal. */
+export const mount = ui.elements.chest_panel!;
