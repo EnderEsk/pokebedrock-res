@@ -11559,4 +11559,4 @@ models.arena.error.prepareFailed=§cНе удалось подготовить �
 quests.geodex.confirm.resetFoundBiomes=Хотите сбросить найденные биомы, чтобы правильно выполнить это задание?
 
 ## PHUD
-phud.playerPing.label=Текущий пинг: 
+phud.playerPing.label=Текущий пинг:

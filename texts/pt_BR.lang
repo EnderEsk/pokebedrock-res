@@ -11559,4 +11559,4 @@ models.arena.error.prepareFailed=§cThe battle arena could not be prepared. Retu
 quests.geodex.confirm.resetFoundBiomes=Do you want to reset your found biomes so you can properly complete this quest?
 
 ## PHUD
-phud.playerPing.label=Ping atual: 
+phud.playerPing.label=Ping atual:

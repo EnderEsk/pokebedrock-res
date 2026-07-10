@@ -1,4 +1,4 @@
-﻿pack.name=§lPokeBedrock v2.18.3 RES
+pack.name=§lPokeBedrock v2.18.3 RES
 pack.description=§aEin High-Level-Pokémon-Addon von Smell of curry erstellt für Minecraft Bedrock
 
 ## Item Group Names
@@ -11559,4 +11559,4 @@ models.arena.error.prepareFailed=§cDie Kampfarena konnte nicht vorbereitet werd
 quests.geodex.confirm.resetFoundBiomes=Möchtest du deine gefundenen Biome zurücksetzen, um diese Quest richtig abschließen zu können?
 
 ## PHUD
-phud.playerPing.label=Aktueller Ping: 
+phud.playerPing.label=Aktueller Ping:

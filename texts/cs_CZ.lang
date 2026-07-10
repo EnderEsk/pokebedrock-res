@@ -11559,4 +11559,4 @@ models.arena.error.prepareFailed=§cBojovou arénu se nepodařilo připravit. Vr
 quests.geodex.confirm.resetFoundBiomes=Chceš resetovat nalezené biomy, abys mohl tento úkol správně dokončit?
 
 ## PHUD
-phud.playerPing.label=Aktuální ping: 
+phud.playerPing.label=Aktuální ping:

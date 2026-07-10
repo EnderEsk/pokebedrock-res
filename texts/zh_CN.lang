@@ -11559,4 +11559,4 @@ models.arena.error.prepareFailed=§c无法准备对战场地。正在将你送�
 quests.geodex.confirm.resetFoundBiomes=要重置你已发现的生物群系，以便正确完成此任务吗？
 
 ## PHUD
-phud.playerPing.label=当前延迟: 
+phud.playerPing.label=当前延迟:
