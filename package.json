@@ -5,6 +5,7 @@
   "main": "scripts/build.ts",
   "scripts": {
     "test": "jest",
+    "prepare": "npx husky",
     "validate:formatVersions": "npx ts-node --project tsconfig.json scripts/validateFormatVersions.ts",
     "build": "npx ts-node --project tsconfig.json scripts/build.ts",
     "generatePokemonFiles": "npx ts-node --project tsconfig.json scripts/generatePokemonFiles.ts",
@@ -12,13 +13,12 @@
     "removeUnusedFiles": "npx ts-node --project tsconfig.json scripts/removeUnusedFiles.ts",
     "translate": "npx ts-node --project tsconfig.json scripts/translate.ts",
     "syncLangFiles": "npx ts-node --project tsconfig.json scripts/syncLangFiles.ts",
-    "generateItemLang": "npx ts-node --project tsconfig.json scripts/generateItemLang.ts",
     "parseAndCreateIssues": "npx ts-node --project tsconfig.json scripts/parseAndCreateIssues.ts",
-    "generatePokemonCries": "npx ts-node --project tsconfig.json scripts/generatePokemonCries.ts",
-    "generateMaterialTypes": "npx ts-node --project tsconfig.json scripts/generateMaterialTypes.ts",
-    "generateShowdownMap": "npx ts-node --project tsconfig.json scripts/generateShowdownMap.ts",
-    "generateUi": "npx mcbe-ts-ui",
-    "prepare": "npx husky"
+    "generate:itemLang": "npx ts-node --project tsconfig.json scripts/generateItemLang.ts",
+    "generate:pokemonCries": "npx ts-node --project tsconfig.json scripts/generatePokemonCries.ts",
+    "generate:materialTypes": "npx ts-node --project tsconfig.json scripts/generateMaterialTypes.ts",
+    "generate:showdownMap": "npx ts-node --project tsconfig.json scripts/generateShowdownMap.ts",
+    "generate:ui": "npx mcbe-ts-ui"
   },
   "repository": {
     "type": "git",

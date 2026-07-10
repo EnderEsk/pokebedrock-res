@@ -136,88 +136,96 @@ const buttonStacks: ButtonStackConfig[] = [
   },
 ];
 
+const leftBigPanel = panel("left_big").controls(
+  createLabel({
+    name: "value1",
+    text: "§fValue 1",
+    size: [50, 20],
+    offset: [-69, -25],
+    fontScale: 0.55,
+  }),
+  createLabel({
+    name: "value2",
+    text: "§fValue 2",
+    size: [50, 20],
+    offset: [-69, -4],
+    fontScale: 0.55,
+  }),
+  createLabel({
+    name: "value3",
+    text: "§fValue 3",
+    size: [50, 20],
+    offset: [-69, 18],
+    fontScale: 0.55,
+  }),
+  createLabel({
+    name: "value4",
+    text: "§fValue 4",
+    size: [50, 20],
+    offset: [-71, 40],
+    fontScale: 0.55,
+  }),
+  ref(`left_big_buttons@${NAMESPACE}.left_big_buttons`)
+);
+
+const leftBigSpecialPanel = panel("left_big_special").controls(
+  createLabel({
+    name: "idk",
+    text: "§fIDKKKK",
+    size: [50, 20],
+    offset: [-65, 49],
+    fontScale: 0.7,
+  }),
+  ref(`left_big_special_buttons@${NAMESPACE}.left_big_special_buttons`)
+);
+
+const middleBigPanel = panel("middle_big").controls(
+  createLabel({
+    name: "nickname",
+    text: "§fNickname",
+    size: [50, 20],
+    offset: [40, -12],
+    fontScale: 0.65,
+  }),
+  createLabel({
+    name: "trainer",
+    text: "§fOriginal Trainer",
+    size: [60, 20],
+    offset: [39, 10],
+    fontScale: 0.55,
+  }),
+  ref(`middle_big_buttons@${NAMESPACE}.middle_big_buttons`)
+);
+
+const middleMiddlePanel = panel("middle_middle").controls(
+  createLabel({
+    name: "value7",
+    text: "§fValue 7",
+    size: [50, 20],
+    offset: [-16, 45],
+    fontScale: 0.65,
+  }),
+  ref(`middle_middle_buttons@${NAMESPACE}.middle_middle_buttons`)
+);
+
+const buttonController = panel("button_controller").controls(
+  createButtonWrapper("image", NAMESPACE, "image_button"),
+  leftBigPanel,
+  leftBigSpecialPanel,
+  createButtonWrapper("bottom", NAMESPACE, "bottom_buttons"),
+  createButtonWrapper("bottom_right", NAMESPACE, "bottom_right_buttons"),
+  middleBigPanel,
+  middleMiddlePanel,
+  createButtonWrapper("middle_small", NAMESPACE, "middle_small_buttons"),
+  createTopSection(NAMESPACE)
+);
+
 export default defineUI(NAMESPACE, (ns) => {
   createButtonTemplate(ns, { useSiblingImageBinding: true });
   createButtonPanels(ns, NAMESPACE, buttonPanels);
   createButtonStacks(ns, NAMESPACE, buttonStacks);
 
-  panel("button_controller")
-    .controls(
-      createButtonWrapper("image", NAMESPACE, "image_button"),
-      panel("left_big").controls(
-        createLabel({
-          name: "value1",
-          text: "§fValue 1",
-          size: [50, 20],
-          offset: [-69, -25],
-          fontScale: 0.55,
-        }),
-        createLabel({
-          name: "value2",
-          text: "§fValue 2",
-          size: [50, 20],
-          offset: [-69, -4],
-          fontScale: 0.55,
-        }),
-        createLabel({
-          name: "value3",
-          text: "§fValue 3",
-          size: [50, 20],
-          offset: [-69, 18],
-          fontScale: 0.55,
-        }),
-        createLabel({
-          name: "value4",
-          text: "§fValue 4",
-          size: [50, 20],
-          offset: [-71, 40],
-          fontScale: 0.55,
-        }),
-        ref(`left_big_buttons@${NAMESPACE}.left_big_buttons`)
-      ),
-      panel("left_big_special").controls(
-        createLabel({
-          name: "idk",
-          text: "§fIDKKKK",
-          size: [50, 20],
-          offset: [-65, 49],
-          fontScale: 0.7,
-        }),
-        ref(`left_big_special_buttons@${NAMESPACE}.left_big_special_buttons`)
-      ),
-      createButtonWrapper("bottom", NAMESPACE, "bottom_buttons"),
-      createButtonWrapper("bottom_right", NAMESPACE, "bottom_right_buttons"),
-      panel("middle_big").controls(
-        createLabel({
-          name: "nickname",
-          text: "§fNickname",
-          size: [50, 20],
-          offset: [40, -12],
-          fontScale: 0.65,
-        }),
-        createLabel({
-          name: "trainer",
-          text: "§fOriginal Trainer",
-          size: [60, 20],
-          offset: [39, 10],
-          fontScale: 0.55,
-        }),
-        ref(`middle_big_buttons@${NAMESPACE}.middle_big_buttons`)
-      ),
-      panel("middle_middle").controls(
-        createLabel({
-          name: "value7",
-          text: "§fValue 7",
-          size: [50, 20],
-          offset: [-16, 45],
-          fontScale: 0.65,
-        }),
-        ref(`middle_middle_buttons@${NAMESPACE}.middle_middle_buttons`)
-      ),
-      createButtonWrapper("middle_small", NAMESPACE, "middle_small_buttons"),
-      createTopSection(NAMESPACE)
-    )
-    .addToNamespace(ns);
+  buttonController.addToNamespace(ns);
 
   const [, finalNs] = ns.add(createMainPanel(NAMESPACE, "third"));
   return finalNs;

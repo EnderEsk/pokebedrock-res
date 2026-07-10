@@ -17,20 +17,12 @@ import {
   type ElementBuilder,
 } from "mcbe-ts-ui";
 
-// =============================================================================
-// Visibility Helpers
-// =============================================================================
-
 /**
  * Creates visibility bindings for a button by ID.
  * Checks if the button ID matches in the form_buttons collection.
  */
 export const visibilityForId = (id: string): Binding[] =>
   buttonFlagVisibility(id, "form_buttons");
-
-// =============================================================================
-// Collection Bindings
-// =============================================================================
 
 /**
  * Collection details binding for form_buttons.
@@ -61,10 +53,6 @@ export const formButtonTextureFileSystemBinding = (): Binding =>
     "#texture_file_system"
   );
 
-// =============================================================================
-// Button Stack Factory
-// =============================================================================
-
 /**
  * Creates a button stack panel factory for dynamic button generation.
  * This is the standard pattern used across pokemon UIs for form buttons.
@@ -88,10 +76,6 @@ export const createButtonStack = (
  * Standard button stack factory with default settings.
  */
 export const buttonStack = createButtonStack();
-
-// =============================================================================
-// Base Button Bindings
-// =============================================================================
 
 /**
  * Creates bindings for a form button that checks enabled state.
@@ -123,10 +107,6 @@ export const formButtonImageBindings = (): Binding[] => [
   formButtonTextureBinding("#texture"),
   formButtonTextureFileSystemBinding(),
 ];
-
-// =============================================================================
-// Button Texture Configuration
-// =============================================================================
 
 /**
  * Button texture configuration interface.
@@ -161,10 +141,6 @@ export const simpleButtonTextures = (
   pressed: `${basePath}/${name}`,
   locked: `${basePath}/${name}_disabled`,
 });
-
-// =============================================================================
-// Button State Variables
-// =============================================================================
 
 /** Default button state panel configuration */
 export const defaultStateVars = {
@@ -218,10 +194,6 @@ export const lockedStateVars = {
   $locked_state: true,
   layer: 1,
 };
-
-// =============================================================================
-// Shared Elements Registration
-// =============================================================================
 
 /**
  * Helper to add all shared elements to a namespace.

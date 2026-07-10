@@ -11,7 +11,6 @@ import {
   collectionBinding,
   viewBinding,
   type NamespaceBuilder,
-  type NamespaceElement,
 } from "mcbe-ts-ui";
 
 // Re-export common utilities from parent shared module
@@ -66,18 +65,12 @@ export const buttonHoverControl = image(
   .variableDefault("hover_text_index", 0)
   .controls(hoverTextTooltip);
 
-// Store registered namespace elements for cross-module access
-export interface SharedElements {
-  buttonStack: NamespaceElement;
-  buttonHoverControl: NamespaceElement;
-}
-
 /**
- * Register all shared elements to namespace and return references
+ * Register shared battle elements to the namespace.
+ *
+ * @param ns The battle UI namespace.
  */
-export function registerSharedElements(ns: NamespaceBuilder): SharedElements {
-  return {
-    buttonStack: buttonStack.addToNamespace(ns),
-    buttonHoverControl: buttonHoverControl.addToNamespace(ns),
-  };
+export function registerSharedElements(ns: NamespaceBuilder): void {
+  buttonStack.addToNamespace(ns);
+  buttonHoverControl.addToNamespace(ns);
 }

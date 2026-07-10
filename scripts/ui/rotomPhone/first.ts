@@ -142,37 +142,35 @@ const buttonStacks: ButtonStackConfig[] = [
   },
 ];
 
+const middleBigPanel = panel("middle_big").controls(
+  label("nickname", "§fNickname")
+    .size(50, 20)
+    .offset(33, -12)
+    .fontScaleFactor(0.65),
+  label("trainer", "§fOriginal Trainer")
+    .size(60, 20)
+    .offset(39, 10)
+    .fontScaleFactor(0.55),
+  ref(`middle_big_buttons@${NAMESPACE}.middle_big_buttons`)
+);
+
+const buttonController = panel("button_controller").controls(
+  createButtonWrapper("image", NAMESPACE, "image_button"),
+  createButtonWrapper("left_big", NAMESPACE, "left_big_buttons"),
+  createButtonWrapper("left_big_image", NAMESPACE, "left_big_image_buttons"),
+  createButtonWrapper("bottom", NAMESPACE, "bottom_buttons"),
+  createButtonWrapper("bottom_right", NAMESPACE, "bottom_right_buttons"),
+  middleBigPanel,
+  createButtonWrapper("middle_small", NAMESPACE, "middle_small_buttons"),
+  createTopSection(NAMESPACE)
+);
+
 export default defineUI(NAMESPACE, (ns) => {
   createButtonTemplate(ns, { useSiblingImageBinding: true });
   createButtonPanels(ns, NAMESPACE, buttonPanels);
   createButtonStacks(ns, NAMESPACE, buttonStacks);
 
-  panel("button_controller")
-    .controls(
-      createButtonWrapper("image", NAMESPACE, "image_button"),
-      createButtonWrapper("left_big", NAMESPACE, "left_big_buttons"),
-      createButtonWrapper(
-        "left_big_image",
-        NAMESPACE,
-        "left_big_image_buttons"
-      ),
-      createButtonWrapper("bottom", NAMESPACE, "bottom_buttons"),
-      createButtonWrapper("bottom_right", NAMESPACE, "bottom_right_buttons"),
-      panel("middle_big").controls(
-        label("nickname", "§fNickname")
-          .size(50, 20)
-          .offset(33, -12)
-          .fontScaleFactor(0.65),
-        label("trainer", "§fOriginal Trainer")
-          .size(60, 20)
-          .offset(39, 10)
-          .fontScaleFactor(0.55),
-        ref(`middle_big_buttons@${NAMESPACE}.middle_big_buttons`)
-      ),
-      createButtonWrapper("middle_small", NAMESPACE, "middle_small_buttons"),
-      createTopSection(NAMESPACE)
-    )
-    .addToNamespace(ns);
+  buttonController.addToNamespace(ns);
 
   const [, finalNs] = ns.add(createMainPanel(NAMESPACE, "first"));
   return finalNs;

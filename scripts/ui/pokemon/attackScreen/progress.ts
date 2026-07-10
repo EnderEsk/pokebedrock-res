@@ -12,14 +12,10 @@ import {
   viewBinding,
   skip,
   first,
-  extend,
-  type NamespaceElement,
-  type SizeValue,
-  type ElementBuilder,
-  ImageBuilder,
-  PanelBuilder,
-  NamespaceBuilder,
+  type NamespaceBuilder,
 } from "mcbe-ts-ui";
+
+import { NS } from "./shared";
 
 /** Base PP bar for move display */
 export const ppBar = image("pp_bar", "textures/ui/battle/white_shaded")
@@ -56,67 +52,55 @@ export const variableProgressBar = image(
     )
   );
 
-// Store registered namespace elements for cross-module access
-export interface ProgressElements {
-  ppBar: NamespaceElement<ImageBuilder<string>>;
-  variableProgressBar: NamespaceElement<ImageBuilder<string>>;
-  dynamicProgressBar: NamespaceElement<PanelBuilder<string>>;
-}
-
-/**
- * Register all progress elements to namespace and return references
- */
-export function registerProgressElements(
-  ns: NamespaceBuilder
-): ProgressElements {
-  const ppBarNs = ppBar.addToNamespace(ns);
-  const variableProgressBarNs = variableProgressBar.addToNamespace(ns);
-
-  // Dynamic progress bar with color variants (green/yellow/red)
-  const dynamicProgressBarNs = panel("dynamic_progress_bar")
-    .fullSize()
-    .anchor("center")
-    .controls(
-      extendRaw("empty_progress_bar", "common.empty_progress_bar", {
-        layer: 1,
-      }),
-      extend("green", variableProgressBarNs)
-        .variable("color_id", "G")
-        .color([0.5, 1.0, 0.5, 1.0]),
-      extend("yellow", variableProgressBarNs)
-        .variable("color_id", "Y")
-        .color([1, 0.9, 0, 1.0]),
-      extend("red", variableProgressBarNs)
-        .variable("color_id", "R")
-        .color([1, 0, 0, 1.0])
-    )
-    .addToNamespace(ns);
-
-  return {
-    ppBar: ppBarNs,
-    variableProgressBar: variableProgressBarNs,
-    dynamicProgressBar: dynamicProgressBarNs,
-  };
-}
+/** Dynamic progress bar with color variants (green/yellow/red) */
+const dynamicProgressBar = panel("dynamic_progress_bar")
+  .fullSize()
+  .anchor("center")
+  .controls(
+    extendRaw("empty_progress_bar", "common.empty_progress_bar", {
+      layer: 1,
+    }),
+    extendRaw("green", `${NS}.variable_progress_bar`, {
+      $color_id: "G",
+      color: [0.5, 1.0, 0.5, 1.0],
+    }),
+    extendRaw("yellow", `${NS}.variable_progress_bar`, {
+      $color_id: "Y",
+      color: [1, 0.9, 0, 1.0],
+    }),
+    extendRaw("red", `${NS}.variable_progress_bar`, {
+      $color_id: "R",
+      color: [1, 0, 0, 1.0],
+    })
+  );
 
 /**
  * Creates PP bar controls for every supported PP value.
  *
- * @param ppBarNs The registered PP bar template.
  * @returns PP bar controls for null and values 0 through 20.
  */
-export function createPpBarVariants(
-  ppBarNs: NamespaceElement
-): ElementBuilder<string>[] {
+export function createPpBarVariants() {
   return ["null", ...Array.from({ length: 21 }, (_, i) => i)].map((i) => {
     const barVal = i === "null" ? "_null" : `_${i}`;
-    const sizePercent: SizeValue =
+    const sizePercent =
       i === "null" || i === 0
         ? "0%"
-        : (`${Number((Number(i) * 1.965).toFixed(3))}%` as SizeValue);
+        : `${Number((Number(i) * 1.965).toFixed(3))}%`;
 
-    return extend(String(i), ppBarNs)
-      .variable("bar", barVal)
-      .size(sizePercent, "29%");
+    return extendRaw(String(i), `${NS}.pp_bar`, {
+      $bar: barVal,
+      size: [sizePercent, "29%"],
+    });
   });
+}
+
+/**
+ * Register progress elements to the namespace.
+ *
+ * @param ns The battle UI namespace.
+ */
+export function registerProgressElements(ns: NamespaceBuilder): void {
+  ppBar.addToNamespace(ns);
+  variableProgressBar.addToNamespace(ns);
+  dynamicProgressBar.addToNamespace(ns);
 }

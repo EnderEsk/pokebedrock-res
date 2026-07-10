@@ -83,47 +83,47 @@ const HUD_COMPONENTS: HudComponent[] = [
   },
 ];
 
-export default defineUI("phud", (ns) => {
-  const [dataControl, ns1] = ns.add(
-    panel("data_control")
-      .size(0, 0)
-      .bindings(
-        hudTitleBinding(),
-        preservedTextBinding(),
-        viewBinding(
-          "(not (#hud_title_text_string = #preserved_text) and not ((#hud_title_text_string - $update_string) = #hud_title_text_string))",
-          "#visible"
-        )
-      )
-  );
-
-  const siblingBindings = (): Binding[] =>
-    HUD_COMPONENTS.map(({ controlName, updateString, bindingTarget }) =>
-      siblingViewBinding(
-        controlName,
-        strip("#preserved_text", updateString),
-        bindingTarget
-      )
-    );
-
-  const elementRefs = (): ControlReference[] =>
-    HUD_COMPONENTS.filter((c) => c.namespace && c.elementName).map(
-      ({ elementName, namespace, elementOverrides }) =>
-        ref(`${elementName}@${namespace}.main`, elementOverrides)
-    );
-
-  const renderers = panel("renderers").controls(
-    ...HUD_COMPONENTS.map(({ controlName, updateString }) =>
-      extend(controlName, dataControl).variable("update_string", updateString)
+const siblingBindings = (): Binding[] =>
+  HUD_COMPONENTS.map(({ controlName, updateString, bindingTarget }) =>
+    siblingViewBinding(
+      controlName,
+      strip("#preserved_text", updateString),
+      bindingTarget
     )
   );
 
-  const elements = panel("elements")
-    .variable("offset", [0, 0])
-    .rawProp("offset", "$offset")
-    .rawProp("variables", [{ requires: "$pocket_screen", $offset: [0, 10] }])
-    .bindings(...siblingBindings())
-    .controls(...elementRefs());
+const elementRefs = (): ControlReference[] =>
+  HUD_COMPONENTS.filter((c) => c.namespace && c.elementName).map(
+    ({ elementName, namespace, elementOverrides }) =>
+      ref(`${elementName}@${namespace}.main`, elementOverrides)
+  );
 
-  return ns1.setMain(panel("main").fullSize().controls(renderers, elements));
+const dataControl = panel("data_control")
+  .size(0, 0)
+  .bindings(
+    hudTitleBinding(),
+    preservedTextBinding(),
+    viewBinding(
+      "(not (#hud_title_text_string = #preserved_text) and not ((#hud_title_text_string - $update_string) = #hud_title_text_string))",
+      "#visible"
+    )
+  );
+
+const elements = panel("elements")
+  .variable("offset", [0, 0])
+  .rawProp("offset", "$offset")
+  .rawProp("variables", [{ requires: "$pocket_screen", $offset: [0, 10] }])
+  .bindings(...siblingBindings())
+  .controls(...elementRefs());
+
+export default defineUI("phud", (ns) => {
+  const dataControlEl = dataControl.addToNamespace(ns);
+
+  const renderers = panel("renderers").controls(
+    ...HUD_COMPONENTS.map(({ controlName, updateString }) =>
+      extend(controlName, dataControlEl).variable("update_string", updateString)
+    )
+  );
+
+  return ns.setMain(panel("main").fullSize().controls(renderers, elements));
 });

@@ -28,9 +28,7 @@ import {
   ref,
 } from "mcbe-ts-ui";
 
-// =============================================================================
-// Builder Elements
-// =============================================================================
+const NAMESPACE = "pokemon";
 
 // Button action template (hover overlay + tooltip)
 const buttonAction = stackPanel("button_action", "vertical")
@@ -69,7 +67,6 @@ const buttonAction = stackPanel("button_action", "vertical")
       )
   );
 
-// Button stack factory
 const buttonStack = stackPanel("button_stack", "vertical")
   .size("100%", "100%c")
   .anchor("top_left")
@@ -81,7 +78,6 @@ const buttonStack = stackPanel("button_stack", "vertical")
     viewBinding(contains("#title_text", "§s"), "#visible")
   );
 
-// Pokemon text display
 const pokemonText = label("pokemon_text", "#title_text")
   .fontType("MinecraftTen")
   .textAlignment("left")
@@ -107,7 +103,6 @@ const pokemonText = label("pokemon_text", "#title_text")
       .shadow()
   );
 
-// Picker button
 const button = panel("button")
   .size("15%", 30)
   .controls(
@@ -118,8 +113,8 @@ const button = panel("button")
       .layer(1)
       .variable("pressed_button_name", "button.form_button_click")
       .controls(
-        extendRaw("default", "pokemon.button_action", { $state: "default" }),
-        extendRaw("hover", "pokemon.button_action", { $state: "hover" })
+        extendRaw("default", `${NAMESPACE}.button_action`, { $state: "default" }),
+        extendRaw("hover", `${NAMESPACE}.button_action`, { $state: "hover" })
       )
       .bindings(
         collectionDetailsBinding(),
@@ -132,7 +127,6 @@ const button = panel("button")
   )
   .bindings(collectionBinding("#form_button_text"));
 
-// Icon (large pokemon display)
 const icon = panel("icon")
   .size("100%", "8%x")
   .controls(
@@ -154,7 +148,6 @@ const icon = panel("icon")
       .bindings(collectionDetailsBinding())
   );
 
-// Back button
 const backButton = panel("back_button")
   .size("100%", "8%x")
   .controls(
@@ -188,7 +181,6 @@ const acceptLabel = () =>
     .offset(0, 5)
     .layer(10000);
 
-// Accept button
 const acceptButton = panel("accept_button")
   .size("100%", "8%x")
   .controls(
@@ -213,120 +205,114 @@ const acceptButton = panel("accept_button")
       .bindings(collectionDetailsBinding())
   );
 
-export default defineUI("pokemon", (ns) => {
-  const buttonStackNs = buttonStack.addToNamespace(ns);
+const selectButton = panel("select_button")
+  .size("100%", "100%c")
+  .controls(
+    ref(`back_button@${NAMESPACE}.back_button`, {
+      bindings: [
+        siblingViewBinding("image", equals("#texture", "back"), "#visible"),
+      ],
+    }),
+    ref(`accept_button@${NAMESPACE}.accept_button`, {
+      bindings: [
+        siblingViewBinding(
+          "image",
+          equals("#texture", "accept"),
+          "#visible"
+        ),
+      ],
+    }),
+    ref(`pokemon_icon@${NAMESPACE}.icon`, {
+      bindings: [
+        collectionBinding("#form_button_text"),
+        viewBinding(equals("#form_button_text", "§i§m§g"), "#visible"),
+      ],
+    })
+  );
+
+const pickerPanelGrid = grid("picker_panel_grid")
+  .size("100%", "100%c")
+  .offset(0, 10)
+  .anchor("top_middle")
+  .gridItemTemplate(`${NAMESPACE}.button`)
+  .gridRescaling("horizontal")
+  .collectionName("form_buttons")
+  .bindings(
+    {
+      binding_name: "#form_button_length",
+      binding_name_override: "#maximum_grid_items",
+    },
+    viewBinding(contains("#title_text", "§1"), "#visible")
+  );
+
+const pokemonPanelGrid = panel("pokemon_panel_grid")
+  .extends(`${NAMESPACE}.button_stack`)
+  .size("98%", "100%c")
+  .variable("button", `${NAMESPACE}.select_button`);
+
+const commonPanel = panel("common_panel")
+  .anchor("center")
+  .offset(0, 5)
+  .size("100% - 5px", "100%c")
+  .controls(
+    ref(`picker_panel_grid@${NAMESPACE}.picker_panel_grid`),
+    ref(`pokemon_panel_grid@${NAMESPACE}.pokemon_panel_grid`),
+    ref(`pokemon_text@${NAMESPACE}.pokemon_text`)
+  );
+
+const mainPanel = image("main_panel", "textures/ui/pokemon/background")
+  .rawProp("keep_ratio", true)
+  .layer(1)
+  .fullSize()
+  .fill()
+  .anchor("center")
+  .controls(
+    panel("text_common")
+      .anchor("top_middle")
+      .size("60%", "30%")
+      .offset(0, "15%")
+      .layer(2)
+      .controls(
+        label("hello", "Welcome to PokéBedrock !")
+          .fontType("default")
+          .rawProp("localize", false)
+          .color("white")
+          .textAlignment("center")
+          .fontScaleFactor(1)
+          .anchor("top_middle")
+          .size("90%", 20)
+          .offset(0, 0),
+        label("pick", "Now, please pick your desired starter Pokémon !")
+          .fontType("default")
+          .rawProp("localize", false)
+          .color("white")
+          .textAlignment("center")
+          .fontScaleFactor(1)
+          .anchor("top_middle")
+          .size("90%", 20)
+          .offset(0, 10)
+      ),
+    image("button_panel", "textures/ui/pokemon/background")
+      .color("black")
+      .anchor("bottom_middle")
+      .size("80%", "60%")
+      .alpha(0)
+      .offset(0, 0)
+      .controls(ref(`common_panel@${NAMESPACE}.common_panel`))
+  );
+
+export default defineUI(NAMESPACE, (ns) => {
+  buttonStack.addToNamespace(ns);
   pokemonText.addToNamespace(ns);
   buttonAction.addToNamespace(ns);
-
   button.addToNamespace(ns);
   icon.addToNamespace(ns);
   backButton.addToNamespace(ns);
   acceptButton.addToNamespace(ns);
+  selectButton.addToNamespace(ns);
+  pickerPanelGrid.addToNamespace(ns);
+  pokemonPanelGrid.addToNamespace(ns);
+  commonPanel.addToNamespace(ns);
 
-  // Select button (switches between back, accept, icon)
-  panel("select_button")
-    .size("100%", "100%c")
-    .controls(
-      ref("back_button@pokemon.back_button", {
-        bindings: [
-          siblingViewBinding("image", equals("#texture", "back"), "#visible"),
-        ],
-      }),
-      ref("accept_button@pokemon.accept_button", {
-        bindings: [
-          siblingViewBinding(
-            "image",
-            equals("#texture", "accept"),
-            "#visible"
-          ),
-        ],
-      }),
-      ref("pokemon_icon@pokemon.icon", {
-        bindings: [
-          collectionBinding("#form_button_text"),
-          viewBinding(equals("#form_button_text", "§i§m§g"), "#visible"),
-        ],
-      })
-    )
-    .addToNamespace(ns);
-
-  // Picker panel grid
-  grid("picker_panel_grid")
-    .size("100%", "100%c")
-    .offset(0, 10)
-    .anchor("top_middle")
-    .gridItemTemplate("pokemon.button")
-    .gridRescaling("horizontal")
-    .collectionName("form_buttons")
-    .bindings(
-      {
-        binding_name: "#form_button_length",
-        binding_name_override: "#maximum_grid_items",
-      },
-      viewBinding(contains("#title_text", "§1"), "#visible")
-    )
-    .addToNamespace(ns);
-
-  panel("pokemon_panel_grid")
-    .extendsFrom(buttonStackNs)
-    .size("98%", "100%c")
-    .variable("button", "pokemon.select_button")
-    .addToNamespace(ns);
-
-  // Common panel
-  panel("common_panel")
-    .anchor("center")
-    .offset(0, 5)
-    .size("100% - 5px", "100%c")
-    .controls(
-      ref("picker_panel_grid@pokemon.picker_panel_grid"),
-      ref("pokemon_panel_grid@pokemon.pokemon_panel_grid"),
-      ref("pokemon_text@pokemon.pokemon_text")
-    )
-    .addToNamespace(ns);
-
-  // Main panel
-  const [, finalNs] = ns.add(
-    image("main_panel", "textures/ui/pokemon/background")
-      .rawProp("keep_ratio", true)
-      .layer(1)
-      .fullSize()
-      .fill()
-      .anchor("center")
-      .controls(
-        panel("text_common")
-          .anchor("top_middle")
-          .size("60%", "30%")
-          .offset(0, "15%")
-          .layer(2)
-          .controls(
-            label("hello", "Welcome to PokéBedrock !")
-              .fontType("default")
-              .rawProp("localize", false)
-              .color("white")
-              .textAlignment("center")
-              .fontScaleFactor(1)
-              .anchor("top_middle")
-              .size("90%", 20)
-              .offset(0, 0),
-            label("pick", "Now, please pick your desired starter Pokémon !")
-              .fontType("default")
-              .rawProp("localize", false)
-              .color("white")
-              .textAlignment("center")
-              .fontScaleFactor(1)
-              .anchor("top_middle")
-              .size("90%", 20)
-              .offset(0, 10)
-          ),
-        image("button_panel", "textures/ui/pokemon/background")
-          .color("black")
-          .anchor("bottom_middle")
-          .size("80%", "60%")
-          .alpha(0)
-          .offset(0, 0)
-          .controls(ref("common_panel@pokemon.common_panel"))
-      )
-  );
-  return finalNs;
+  return ns.setMain(mainPanel);
 });

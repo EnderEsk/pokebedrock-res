@@ -15,7 +15,6 @@ import {
   screen,
   extendExternal,
   extendRaw,
-  extend,
   siblingViewBinding,
   imageTextureBindings,
   collectionDetailsBinding,
@@ -101,50 +100,132 @@ const flagBindings = (flag: string, flip = false) => [
   },
 ];
 
-export default redefineUI("server_form", (ns) => {
-  const [, ns1] = ns.add(
-    panel("long_form").extends("common_dialogs.main_panel_no_buttons").size(260, 210)
+const longFormPanel = panel("long_form")
+  .extends("common_dialogs.main_panel_no_buttons")
+  .size(260, 210);
+
+const customFormPanel = panel("custom_form")
+  .extends("common_dialogs.main_panel_no_buttons")
+  .size(260, 210);
+
+const defaultLongFormRouteBindings = [
+  {
+    binding_type: "global" as const,
+    binding_condition: "none" as const,
+    binding_name: "#title_text",
+    binding_name_override: "#title_text",
+  },
+  {
+    binding_name: "#null",
+    source_property_name: `((#title_text - ${ALL_FLAGS_EXPR}) = #title_text)`,
+    binding_type: "view" as const,
+    target_property_name: "#visible",
+  },
+  {
+    binding_name: "#null",
+    source_property_name: `((#title_text - ${ALL_FLAGS_EXPR}) = #title_text)`,
+    binding_type: "view" as const,
+    target_property_name: "#enabled",
+  },
+];
+
+const longFormRoute = panel("long_form")
+  .extends("server_form.long_form")
+  .enabled(false)
+  .visible(false)
+  .bindings(...defaultLongFormRouteBindings);
+
+const pokedexDetailsPanel = panel("pokedex_details")
+  .extends("pokedex.pokemon_details")
+  .enabled(false)
+  .visible(false)
+  .bindings(...flagBindings(FLAGS.pokedexDetails));
+
+const searchUiPanel = panel("search_ui")
+  .extends("search_server_form.long_form")
+  .enabled(false)
+  .visible(false)
+  .bindings(...flagBindings(FLAGS.searchUi));
+
+const ngLongForm = panel("ng_long_form")
+  .fullSize()
+  .variable("flag_pokedex", FLAGS.pokedex)
+  .variable("flag_pokedex_details", FLAGS.pokedexDetails)
+  .variable("flag_battle", FLAGS.battle)
+  .variable("flag_chestGui", FLAGS.chestGui)
+  .variable("flag_searchUi", FLAGS.searchUi)
+  .variable("flag_rotom_phone_first", FLAGS.rotomPhoneFirst)
+  .variable("flag_rotom_phone_second", FLAGS.rotomPhoneSecond)
+  .variable("flag_rotom_phone_third", FLAGS.rotomPhoneThird)
+  .variable("flag_pc", FLAGS.pc);
+
+const dynamicButtonNamePanel = panel("panel_name")
+  .size(34, "100%c")
+  .bindings(siblingViewBinding("image", "(not (#texture = ''))", "#visible"))
+  .controls(
+    boundImage("image")
+      .layer(2)
+      .size(32, 32)
+      .offset(-2, 0)
+      .bindings(...imageTextureBindings()),
+    extendRaw("progress", "progress.progress_loading_bars", {
+      size: [30, 4],
+      offset: [-2, 16],
+      bindings: [
+        siblingViewBinding("image", "(#texture = 'loading')", "#visible"),
+      ],
+    })
   );
 
-  const [, ns2] = ns1.add(
-    panel("custom_form")
-      .extends("common_dialogs.main_panel_no_buttons")
-      .size(260, 210)
-  );
-
-  const longFormPanel = panel("ng_long_form")
-    .fullSize()
-    .variable("flag_pokedex", FLAGS.pokedex)
-    .variable("flag_pokedex_details", FLAGS.pokedexDetails)
-    .variable("flag_battle", FLAGS.battle)
-    .variable("flag_chestGui", FLAGS.chestGui)
-    .variable("flag_searchUi", FLAGS.searchUi)
-    .variable("flag_rotom_phone_first", FLAGS.rotomPhoneFirst)
-    .variable("flag_rotom_phone_second", FLAGS.rotomPhoneSecond)
-    .variable("flag_rotom_phone_third", FLAGS.rotomPhoneThird)
-    .variable("flag_pc", FLAGS.pc)
-    .controls(
-      extend("long_form", ns1.elements["long_form"]!)
-        .enabled(false)
-        .visible(false)
-        .bindings({
-          binding_type: "global",
+const dynamicButton = stackPanel("dynamic_button", "horizontal")
+  .size("100%", 32)
+  .controls(
+    dynamicButtonNamePanel,
+    extendRaw("form_button", "common_buttons.light_text_button", {
+      $pressed_button_name: "button.form_button_click",
+      anchor_from: "top_left",
+      anchor_to: "top_left",
+      size: ["fill", 32],
+      $button_text: "#form_button_text",
+      $button_text_binding_type: "collection",
+      $button_text_grid_collection_name: "form_buttons",
+      $button_text_max_size: ["100%", 20],
+      bindings: [
+        collectionDetailsBinding(),
+        {
+          ...collectionBinding("#form_button_text"),
           binding_condition: "none",
-          binding_name: "#title_text",
-          binding_name_override: "#title_text",
-        })
-        .bindings({
-          binding_name: "#null",
-          source_property_name: `((#title_text - ${ALL_FLAGS_EXPR}) = #title_text)`,
-          binding_type: "view",
-          target_property_name: "#visible",
-        })
-        .bindings({
-          binding_name: "#null",
-          source_property_name: `((#title_text - ${ALL_FLAGS_EXPR}) = #title_text)`,
-          binding_type: "view",
-          target_property_name: "#enabled",
-        }),
+        },
+        viewBinding("(not((%.1s * #form_button_text) = ' '))", "#enabled"),
+      ],
+    })
+  );
+
+const serverFormFactory = factory("server_form_factory").controlIds({
+  long_form: "@server_form.ng_long_form",
+  custom_form: "@server_form.custom_form",
+});
+
+const ngMainScreenContent = panel("ng_main_screen_content")
+  .fullSize()
+  .controls(serverFormFactory);
+
+const thirdPartyServerScreen = screen("third_party_server_screen")
+  .extends("common.base_screen")
+  .variable("screen_content", "server_form.ng_main_screen_content")
+  .buttonMappings({
+    from_button_id: "button.menu_cancel",
+    to_button_id: "button.menu_exit",
+    mapping_type: "global",
+  });
+
+export default redefineUI("server_form", (ns) => {
+  longFormPanel.addToNamespace(ns);
+  customFormPanel.addToNamespace(ns);
+
+  ngLongForm
+    .controls(
+      longFormRoute,
       extendExternal("pokemon_battle", BattleForm.elements["main"]!)
         .enabled(false)
         .visible(false)
@@ -161,20 +242,12 @@ export default redefineUI("server_form", (ns) => {
         .enabled(false)
         .visible(false)
         .bindings(...flagBindings(FLAGS.pc)),
-      panel("pokedex_details")
-        .extends("pokedex.pokemon_details")
-        .enabled(false)
-        .visible(false)
-        .bindings(...flagBindings(FLAGS.pokedexDetails)),
+      pokedexDetailsPanel,
       extendExternal("chest_ui", ChestForm.elements["chest_panel"]!)
         .enabled(false)
         .visible(false)
         .bindings(...flagBindings(FLAGS.chestGui)),
-      panel("search_ui")
-        .extends("search_server_form.long_form")
-        .enabled(false)
-        .visible(false)
-        .bindings(...flagBindings(FLAGS.searchUi)),
+      searchUiPanel,
       extendExternal(
         "rotom_phone_first",
         RotomPhoneFirst.elements["blackbarbar_first"]!
@@ -196,71 +269,12 @@ export default redefineUI("server_form", (ns) => {
         .enabled(false)
         .visible(false)
         .bindings(...flagBindings(FLAGS.rotomPhoneThird))
-    );
-
-  const [, ns3] = ns2.add(longFormPanel);
-
-  stackPanel("dynamic_button", "horizontal")
-    .size("100%", 32)
-    .controls(
-      panel("panel_name")
-        .size(34, "100%c")
-        .bindings(
-          siblingViewBinding("image", "(not (#texture = ''))", "#visible")
-        )
-        .controls(
-          boundImage("image")
-            .layer(2)
-            .size(32, 32)
-            .offset(-2, 0)
-            .bindings(...imageTextureBindings()),
-          extendRaw("progress", "progress.progress_loading_bars", {
-            size: [30, 4],
-            offset: [-2, 16],
-            bindings: [
-              siblingViewBinding("image", "(#texture = 'loading')", "#visible"),
-            ],
-          })
-        ),
-      extendRaw("form_button", "common_buttons.light_text_button", {
-        $pressed_button_name: "button.form_button_click",
-        anchor_from: "top_left",
-        anchor_to: "top_left",
-        size: ["fill", 32],
-        $button_text: "#form_button_text",
-        $button_text_binding_type: "collection",
-        $button_text_grid_collection_name: "form_buttons",
-        $button_text_max_size: ["100%", 20],
-        bindings: [
-          collectionDetailsBinding(),
-          {
-            ...collectionBinding("#form_button_text"),
-            binding_condition: "none",
-          },
-          viewBinding("(not((%.1s * #form_button_text) = ' '))", "#enabled"),
-        ],
-      })
     )
-    .addToNamespace(ns3);
+    .addToNamespace(ns);
 
-  const serverFormFactory = factory("server_form_factory").controlIds({
-    long_form: "@server_form.ng_long_form",
-    custom_form: "@server_form.custom_form",
-  });
+  dynamicButton.addToNamespace(ns);
+  ngMainScreenContent.addToNamespace(ns);
+  thirdPartyServerScreen.addToNamespace(ns);
 
-  const [screenContent, ns4] = ns3.add(
-    panel("ng_main_screen_content").fullSize().controls(serverFormFactory)
-  );
-
-  const [, finalNs] = ns4.add(
-    screen("third_party_server_screen")
-      .extends("common.base_screen")
-      .variable("screen_content", "server_form." + screenContent.getName())
-      .buttonMappings({
-        from_button_id: "button.menu_cancel",
-        to_button_id: "button.menu_exit",
-        mapping_type: "global",
-      })
-  );
-  return finalNs;
+  return ns;
 });

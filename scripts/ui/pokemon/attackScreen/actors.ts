@@ -17,18 +17,12 @@ import {
   first,
   strip,
   extend,
-  type NamespaceElement,
+  extendRaw,
   type SizeValue,
-  type ElementBuilder,
-  NamespaceBuilder,
+  type NamespaceBuilder,
 } from "mcbe-ts-ui";
 
-import { visibilityForId, formButtonsDetailsBinding } from "./shared";
-import type { ProgressElements } from "./progress";
-
-// =============================================================================
-// Actor Entity Icon
-// =============================================================================
+import { NS, visibilityForId, formButtonsDetailsBinding } from "./shared";
 
 /** Entity icon inside the overlay */
 const entityIcon = boundImage("entity_icon")
@@ -58,10 +52,6 @@ const battleActorEntityIconOverlay = image(
   .variableDefault("actor_icon_offset", [0, 0])
   .rawProp("offset", "$actor_icon_offset")
   .controls(entityIcon);
-
-// =============================================================================
-// Actor Description
-// =============================================================================
 
 /** Spacer panel for layout */
 const spacerPanel = (height: SizeValue) =>
@@ -93,180 +83,126 @@ const healthTextLabel = label("health_text", "#text")
     viewBinding(skip(62, "#form_button_text"), "#text")
   );
 
-/** Creates HP bar panel with dynamic progress bar */
-function createHpBarPanel(progressElements: ProgressElements) {
-  return panel("hp_bar")
-    .size("100%", "21%")
-    .anchor("center")
-    .layer(30)
-    .controls(
-      healthTextLabel,
-      extend("health_bar", progressElements.dynamicProgressBar)
-    );
-}
+const hpBarPanel = panel("hp_bar")
+  .size("100%", "21%")
+  .anchor("center")
+  .layer(30)
+  .controls(
+    healthTextLabel,
+    extendRaw("health_bar", `${NS}.dynamic_progress_bar`)
+  );
 
-/** Creates battle actor description - shows name and HP bar */
-function createBattleActorDescription(progressElements: ProgressElements) {
-  return stackPanel("battle_actor_description", "vertical")
-    .size("100%", 40)
-    .variableDefault("text_alignment", "left")
-    .variableDefault("text_offset", [0, 0])
-    .controls(
-      spacerPanel("3%"),
-      detailsTextLabel,
-      spacerPanel("3%"),
-      createHpBarPanel(progressElements)
-    );
-}
+const battleActorDescription = stackPanel("battle_actor_description", "vertical")
+  .size("100%", 40)
+  .variableDefault("text_alignment", "left")
+  .variableDefault("text_offset", [0, 0])
+  .controls(
+    spacerPanel("3%"),
+    detailsTextLabel,
+    spacerPanel("3%"),
+    hpBarPanel
+  );
 
-// =============================================================================
-// Actor Elements Interface and Registration
-// =============================================================================
+const battleActorButton = element("battle_actor_button")
+  .extends("common.button")
+  .variable("pressed_button_name", "button.form_button_click")
+  .variable("default_button_texture", "textures/ui/battle/opponent")
+  .variable("hover_button_texture", "textures/ui/battle/opponent")
+  .variable("pressed_button_texture", "textures/ui/battle/opponent")
+  .variable("locked_button_texture", "textures/ui/battle/opponent")
+  .enabled(false)
+  .size(90, 42);
 
-export interface ActorElements {
-  battleActorEntityIconOverlay: NamespaceElement;
-  battleActorDescription: NamespaceElement;
-  battleActorButton: NamespaceElement;
-  allyActorButton: NamespaceElement;
-  opponentActorButton: NamespaceElement;
-  allyActorDetailsButtonCheckId: NamespaceElement;
-  opponentActorDetailsButtonCheckId: NamespaceElement;
-  opponentActorDetailsButton: NamespaceElement;
-  allyActorDetailsButton: NamespaceElement;
-}
+const spacingPanel = panel("spacing").size("5%", "100%");
+
+const allyDetailsOverlay = stackPanel("details_overlay", "horizontal")
+  .fullSize()
+  .controls(
+    extendRaw("actor_description", `${NS}.battle_actor_description`),
+    spacingPanel,
+    extendRaw("entity_icon_overlay", `${NS}.battle_actor_entity_icon_overlay`, {
+      $actor_icon_overlay_texture: "textures/ui/battle/pokemon_healthy",
+    })
+  );
+
+const allyActorButton = element("ally_actor_button")
+  .extends(`${NS}.battle_actor_button`)
+  .controls(allyDetailsOverlay);
+
+const opponentDetailsOverlay = stackPanel("details_overlay", "horizontal")
+  .fullSize()
+  .controls(
+    extendRaw("entity_icon_overlay", `${NS}.battle_actor_entity_icon_overlay`),
+    extendRaw("actor_description", `${NS}.battle_actor_description`)
+  );
+
+const opponentActorButton = element("opponent_actor_button")
+  .extends(`${NS}.battle_actor_button`)
+  .controls(opponentDetailsOverlay);
+
+const allyActorDetailsButtonCheckId = element(
+  "ally_actor_details_button_check_id"
+)
+  .extends(`${NS}.ally_actor_button`)
+  .variableDefault("button_id", "b:ally_1_")
+  .bindings(...visibilityForId("$button_id"));
+
+const opponentActorDetailsButtonCheckId = element(
+  "opponent_actor_details_button_check_id"
+)
+  .extends(`${NS}.opponent_actor_button`)
+  .variableDefault("button_id", "b:opponent_1_")
+  .bindings(...visibilityForId("$button_id"));
+
+const opponentIds = ["§0§0§1", "§0§0§2", "§0§0§3", "§0§0§4"];
+const allyIds = ["§0§a§1", "§0§a§2", "§0§a§3", "§0§a§4"];
+
+const opponentActorDetailsButton = stackPanel(
+  "opponent_actor_details_button",
+  "vertical"
+)
+  .size("100%", "100%c")
+  .offset("-50%", "10%");
+
+const allyActorDetailsButton = stackPanel("ally_actor_details_button", "vertical")
+  .size("100%", "100%c")
+  .offset("50%", "10%");
 
 /**
- * Register all actor elements to namespace and return references
+ * Register actor elements to the namespace.
+ *
+ * @param ns The battle UI namespace.
  */
-export function registerActorElements(
-  ns: NamespaceBuilder,
-  progressElements: ProgressElements
-): ActorElements {
-  // Register entity icon overlay
-  const battleActorEntityIconOverlayNs =
-    battleActorEntityIconOverlay.addToNamespace(ns);
+export function registerActorElements(ns: NamespaceBuilder): void {
+  battleActorEntityIconOverlay.addToNamespace(ns);
+  battleActorDescription.addToNamespace(ns);
+  battleActorButton.addToNamespace(ns);
+  allyActorButton.addToNamespace(ns);
+  opponentActorButton.addToNamespace(ns);
+  const allyActorDetailsButtonCheckIdNs =
+    allyActorDetailsButtonCheckId.addToNamespace(ns);
+  const opponentActorDetailsButtonCheckIdNs =
+    opponentActorDetailsButtonCheckId.addToNamespace(ns);
 
-  // Register actor description
-  const battleActorDescriptionNs =
-    createBattleActorDescription(progressElements).addToNamespace(ns);
-
-  // Battle actor button base - extends common.button
-  const battleActorButtonNs = element("battle_actor_button")
-    .extends("common.button")
-    .variable("pressed_button_name", "button.form_button_click")
-    .variable("default_button_texture", "textures/ui/battle/opponent")
-    .variable("hover_button_texture", "textures/ui/battle/opponent")
-    .variable("pressed_button_texture", "textures/ui/battle/opponent")
-    .variable("locked_button_texture", "textures/ui/battle/opponent")
-    .enabled(false)
-    .size(90, 42)
-    .addToNamespace(ns);
-
-  // Spacing panel for horizontal layout
-  const spacingPanel = panel("spacing").size("5%", "100%");
-
-  // Ally actor details overlay
-  const allyDetailsOverlay = stackPanel(
-    "details_overlay",
-    "horizontal"
-  )
-    .fullSize()
+  opponentActorDetailsButton
     .controls(
-      extend("actor_description", battleActorDescriptionNs),
-      spacingPanel,
-      extend("entity_icon_overlay", battleActorEntityIconOverlayNs).variable(
-        "actor_icon_overlay_texture",
-        "textures/ui/battle/pokemon_healthy"
+      ...opponentIds.map((id, index) =>
+        extend(String(index + 1), opponentActorDetailsButtonCheckIdNs).variable(
+          "button_id",
+          id
+        )
       )
-    );
-
-  // Ally actor button
-  const allyActorButtonNs = element("ally_actor_button")
-    .extendsFrom(battleActorButtonNs)
-    .controls(allyDetailsOverlay)
-    .addToNamespace(ns);
-
-  // Opponent actor details overlay
-  const opponentDetailsOverlay = stackPanel(
-    "details_overlay",
-    "horizontal"
-  )
-    .fullSize()
-    .controls(
-      extend("entity_icon_overlay", battleActorEntityIconOverlayNs),
-      extend("actor_description", battleActorDescriptionNs)
-    );
-
-  // Opponent actor button
-  const opponentActorButtonNs = element("opponent_actor_button")
-    .extendsFrom(battleActorButtonNs)
-    .controls(opponentDetailsOverlay)
-    .addToNamespace(ns);
-
-  // Ally actor button with visibility check
-  const allyActorDetailsButtonCheckIdNs = element(
-    "ally_actor_details_button_check_id"
-  )
-    .extendsFrom(allyActorButtonNs)
-    .variableDefault("button_id", "b:ally_1_")
-    .bindings(...visibilityForId("$button_id"))
-    .addToNamespace(ns);
-
-  // Opponent actor button with visibility check
-  const opponentActorDetailsButtonCheckIdNs = element(
-    "opponent_actor_details_button_check_id"
-  )
-    .extendsFrom(opponentActorButtonNs)
-    .variableDefault("button_id", "b:opponent_1_")
-    .bindings(...visibilityForId("$button_id"))
-    .addToNamespace(ns);
-
-  // Opponent displays
-  const opponentIds = ["§0§0§1", "§0§0§2", "§0§0§3", "§0§0§4"];
-  const opponentControls: ElementBuilder<string>[] = opponentIds.map(
-    (id, index) =>
-      extend(String(index + 1), opponentActorDetailsButtonCheckIdNs).variable(
-        "button_id",
-        id
-      )
-  );
-
-  const opponentActorDetailsButtonNs = stackPanel(
-    "opponent_actor_details_button",
-    "vertical"
-  )
-    .size("100%", "100%c")
-    .offset("-50%", "10%")
-    .controls(...opponentControls)
-    .addToNamespace(ns);
-
-  // Ally displays
-  const allyIds = ["§0§a§1", "§0§a§2", "§0§a§3", "§0§a§4"];
-  const allyControls: ElementBuilder<string>[] = allyIds.map((id, index) =>
-    extend(String(index + 1), allyActorDetailsButtonCheckIdNs).variable(
-      "button_id",
-      id
     )
-  );
-
-  const allyActorDetailsButtonNs = stackPanel(
-    "ally_actor_details_button",
-    "vertical"
-  )
-    .size("100%", "100%c")
-    .offset("50%", "10%")
-    .controls(...allyControls)
     .addToNamespace(ns);
 
-  return {
-    battleActorEntityIconOverlay: battleActorEntityIconOverlayNs,
-    battleActorDescription: battleActorDescriptionNs,
-    battleActorButton: battleActorButtonNs,
-    allyActorButton: allyActorButtonNs,
-    opponentActorButton: opponentActorButtonNs,
-    allyActorDetailsButtonCheckId: allyActorDetailsButtonCheckIdNs,
-    opponentActorDetailsButtonCheckId: opponentActorDetailsButtonCheckIdNs,
-    opponentActorDetailsButton: opponentActorDetailsButtonNs,
-    allyActorDetailsButton: allyActorDetailsButtonNs,
-  };
+  allyActorDetailsButton
+    .controls(
+      ...allyIds.map((id, index) =>
+        extend(String(index + 1), allyActorDetailsButtonCheckIdNs).variable(
+          "button_id",
+          id
+        )
+      )
+    )
+    .addToNamespace(ns);
 }
