@@ -4,7 +4,7 @@
  * First page of the Rotom Phone interface with various button groups.
  */
 
-import { defineUI } from "mcbe-ts-ui";
+import { defineUI, panel, label, ref } from "mcbe-ts-ui";
 import {
   FLAGS,
   createButtonTemplate,
@@ -147,9 +147,8 @@ export default defineUI(NAMESPACE, (ns) => {
   createButtonPanels(ns, NAMESPACE, buttonPanels);
   createButtonStacks(ns, NAMESPACE, buttonStacks);
 
-  ns.addRaw("button_controller", {
-    type: "panel",
-    controls: [
+  panel("button_controller")
+    .controls(
       createButtonWrapper("image", NAMESPACE, "image_button"),
       createButtonWrapper("left_big", NAMESPACE, "left_big_buttons"),
       createButtonWrapper(
@@ -159,36 +158,21 @@ export default defineUI(NAMESPACE, (ns) => {
       ),
       createButtonWrapper("bottom", NAMESPACE, "bottom_buttons"),
       createButtonWrapper("bottom_right", NAMESPACE, "bottom_right_buttons"),
-      {
-        middle_big: {
-          type: "panel",
-          controls: [
-            {
-              nickname: {
-                type: "label",
-                text: "§fNickname",
-                size: [50, 20],
-                offset: [33, -12],
-                font_scale_factor: 0.65,
-              },
-            },
-            {
-              trainer: {
-                type: "label",
-                text: "§fOriginal Trainer",
-                size: [60, 20],
-                offset: [39, 10],
-                font_scale_factor: 0.55,
-              },
-            },
-            { [`middle_big_buttons@${NAMESPACE}.middle_big_buttons`]: {} },
-          ],
-        },
-      },
+      panel("middle_big").controls(
+        label("nickname", "§fNickname")
+          .size(50, 20)
+          .offset(33, -12)
+          .fontScaleFactor(0.65),
+        label("trainer", "§fOriginal Trainer")
+          .size(60, 20)
+          .offset(39, 10)
+          .fontScaleFactor(0.55),
+        ref(`middle_big_buttons@${NAMESPACE}.middle_big_buttons`)
+      ),
       createButtonWrapper("middle_small", NAMESPACE, "middle_small_buttons"),
-      createTopSection(NAMESPACE),
-    ],
-  });
+      createTopSection(NAMESPACE)
+    )
+    .addToNamespace(ns);
 
   const [, finalNs] = ns.add(createMainPanel(NAMESPACE, "first"));
   return finalNs;

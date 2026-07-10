@@ -1,77 +1,14 @@
 {
   "namespace": "chest_ui",
-  "chest_item": {
-    "type": "stack_panel",
-    "orientation": "vertical",
-    "$item_size|default": [
-      18,
-      18
-    ],
-    "size": "$item_size",
-    "layer": 2,
-    "controls": [
-      {
-        "chest_item@chest_ui.ui_chest_item": {}
-      },
-      {
-        "inventory_item@chest_ui.ui_inventory_item": {}
-      },
-      {
-        "hot_bar_item@chest_ui.ui_hot_bar_item": {}
-      }
-    ]
-  },
-  "chest_panel": {
-    "type": "panel",
-    "size": [
-      "100%c",
-      "100%c"
-    ],
-    "controls": [
-      {
-        "inventory_chest_grid_image@chest_ui.inventory_chest_grid_image": {}
-      },
-      {
-        "single_chest_grid_image@chest_ui.single_chest_grid_image": {}
-      },
-      {
-        "tiny_chest_grid_image@chest_ui.tiny_chest_grid_image": {}
-      },
-      {
-        "small_chest_grid_image@chest_ui.small_chest_grid_image": {}
-      },
-      {
-        "large_chest_grid_image@chest_ui.large_chest_grid_image": {}
-      },
-      {
-        "quests_grid_image@chest_ui.quests_grid_image": {}
-      },
-      {
-        "quests_grid_large_image@chest_ui.quests_grid_large_image": {}
-      },
-      {
-        "pokebuilder_grid_image@chest_ui.pokebuilder_grid_image": {}
-      },
-      {
-        "pokebuilder_grid_large_image@chest_ui.pokebuilder_grid_large_image": {}
-      },
-      {
-        "backpack_grid@chest_ui.backpack_grid": {}
-      },
-      {
-        "auction_house_grid@chest_ui.auction_house_grid": {}
-      }
-    ]
-  },
   "chest_label": {
     "type": "label",
+    "text": "#title_text",
     "offset": [
       7,
       10
     ],
     "anchor_from": "top_left",
     "anchor_to": "top_left",
-    "text": "#title_text",
     "size": [
       "90%",
       "default"
@@ -113,6 +50,7 @@
       {
         "item_amount": {
           "type": "label",
+          "text": "#stack_size",
           "offset": [
             0,
             1
@@ -123,7 +61,6 @@
           "anchor_to": "bottom_right",
           "color": "$tool_tip_text",
           "layer": 4,
-          "text": "#stack_size",
           "bindings": [
             {
               "binding_name": "#null",
@@ -138,6 +75,7 @@
             },
             {
               "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text",
               "binding_type": "collection",
               "binding_collection_name": "form_buttons"
             },
@@ -208,6 +146,7 @@
                 "bindings": [
                   {
                     "binding_name": "#form_button_text",
+                    "binding_name_override": "#form_button_text",
                     "binding_type": "collection",
                     "binding_collection_name": "form_buttons"
                   },
@@ -247,15 +186,16 @@
             {
               "highlight_slot": {
                 "type": "image",
+                "texture": "textures/ui/highlight_slot",
                 "size": [
                   18,
                   18
                 ],
-                "texture": "textures/ui/highlight_slot",
                 "layer": 0,
                 "bindings": [
                   {
                     "binding_name": "#form_button_text",
+                    "binding_name_override": "#form_button_text",
                     "binding_type": "collection",
                     "binding_collection_name": "form_buttons"
                   },
@@ -276,15 +216,16 @@
             {
               "focus_border": {
                 "type": "image",
+                "texture": "textures/ui/focus_border_white",
                 "size": [
                   18,
                   18
                 ],
-                "texture": "textures/ui/focus_border_white",
                 "layer": 1,
                 "bindings": [
                   {
                     "binding_name": "#form_button_text",
+                    "binding_name_override": "#form_button_text",
                     "binding_type": "collection",
                     "binding_collection_name": "form_buttons"
                   },
@@ -340,20 +281,24 @@
     "$texture_bindings": [
       {
         "binding_name": "#form_button_texture",
+        "binding_name_override": "#form_button_texture",
         "binding_type": "collection",
         "binding_collection_name": "form_buttons"
       },
       {
+        "binding_name": "#null",
         "binding_type": "view",
         "source_property_name": "(not (('%.8s' * #form_button_texture) = 'textures'))",
         "target_property_name": "#visible"
       },
       {
+        "binding_name": "#null",
         "binding_type": "view",
         "source_property_name": "(not ((#form_button_texture = '') or (#form_button_texture = 'loading')))",
         "target_property_name": "#visible"
       },
       {
+        "binding_name": "#null",
         "binding_type": "view",
         "source_property_name": "(1 * (#form_button_texture - ']'))",
         "target_property_name": "#item_id_aux"
@@ -377,7 +322,7 @@
       }
     ]
   },
-  "ui_chest_item@chest_ui.inventory_button": {
+  "ui_chest_item@inventory_button": {
     "$offset": [
       -1,
       -1
@@ -396,6 +341,7 @@
       },
       {
         "binding_name": "#form_button_text",
+        "binding_name_override": "#form_button_text",
         "binding_type": "collection",
         "binding_collection_name": "form_buttons"
       },
@@ -407,7 +353,7 @@
       }
     ]
   },
-  "ui_inventory_item@chest_ui.inventory_button": {
+  "ui_inventory_item@inventory_button": {
     "$offset": [
       -1,
       10
@@ -426,6 +372,7 @@
       },
       {
         "binding_name": "#form_button_text",
+        "binding_name_override": "#form_button_text",
         "binding_type": "collection",
         "binding_collection_name": "form_buttons"
       },
@@ -437,7 +384,7 @@
       }
     ]
   },
-  "ui_hot_bar_item@chest_ui.inventory_button": {
+  "ui_hot_bar_item@inventory_button": {
     "$offset": [
       -1,
       13
@@ -456,6 +403,7 @@
       },
       {
         "binding_name": "#form_button_text",
+        "binding_name_override": "#form_button_text",
         "binding_type": "collection",
         "binding_collection_name": "form_buttons"
       },
@@ -474,6 +422,7 @@
       {
         "badge_image": {
           "type": "image",
+          "texture": "#texture",
           "size": [
             8,
             8
@@ -499,6 +448,7 @@
             },
             {
               "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text",
               "binding_type": "collection",
               "binding_collection_name": "form_buttons"
             },
@@ -519,13 +469,34 @@
       }
     ]
   },
+  "chest_item": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "$item_size|default": [
+      18,
+      18
+    ],
+    "size": "$item_size",
+    "layer": 2,
+    "controls": [
+      {
+        "chest_item@chest_ui.ui_chest_item": {}
+      },
+      {
+        "inventory_item@chest_ui.ui_inventory_item": {}
+      },
+      {
+        "hot_bar_item@chest_ui.ui_hot_bar_item": {}
+      }
+    ]
+  },
   "inventory_chest_grid_image": {
     "type": "image",
+    "texture": "textures/ui/gui/inventory",
     "size": [
       176,
       96
     ],
-    "texture": "textures/ui/gui/inventory",
     "layer": 0,
     "controls": [
       {
@@ -581,11 +552,11 @@
   },
   "single_chest_grid_image": {
     "type": "image",
+    "texture": "textures/ui/gui/generic_1",
     "size": [
       176,
       130
     ],
-    "texture": "textures/ui/gui/generic_1",
     "layer": 0,
     "controls": [
       {
@@ -624,6 +595,7 @@
       {
         "inventory_text": {
           "type": "label",
+          "text": "container.inventory",
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [
@@ -635,8 +607,7 @@
             "default"
           ],
           "layer": 2,
-          "color": "$title_text_color",
-          "text": "container.inventory"
+          "color": "$title_text_color"
         }
       }
     ],
@@ -654,11 +625,11 @@
   },
   "tiny_chest_grid_image": {
     "type": "image",
+    "texture": "textures/ui/gui/generic_9",
     "size": [
       176,
       130
     ],
-    "texture": "textures/ui/gui/generic_9",
     "layer": 0,
     "controls": [
       {
@@ -697,6 +668,7 @@
       {
         "inventory_text": {
           "type": "label",
+          "text": "container.inventory",
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [
@@ -708,8 +680,7 @@
             "default"
           ],
           "layer": 2,
-          "color": "$title_text_color",
-          "text": "container.inventory"
+          "color": "$title_text_color"
         }
       }
     ],
@@ -727,11 +698,11 @@
   },
   "small_chest_grid_image": {
     "type": "image",
+    "texture": "textures/ui/gui/generic_27",
     "size": [
       176,
       166
     ],
-    "texture": "textures/ui/gui/generic_27",
     "layer": 0,
     "controls": [
       {
@@ -770,6 +741,7 @@
       {
         "inventory_text": {
           "type": "label",
+          "text": "container.inventory",
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [
@@ -781,8 +753,7 @@
             "default"
           ],
           "layer": 2,
-          "color": "$title_text_color",
-          "text": "container.inventory"
+          "color": "$title_text_color"
         }
       }
     ],
@@ -800,11 +771,11 @@
   },
   "large_chest_grid_image": {
     "type": "image",
+    "texture": "textures/ui/gui/generic_54",
     "size": [
       176,
       220
     ],
-    "texture": "textures/ui/gui/generic_54",
     "layer": 0,
     "controls": [
       {
@@ -843,6 +814,7 @@
       {
         "inventory_text": {
           "type": "label",
+          "text": "container.inventory",
           "anchor_from": "top_left",
           "anchor_to": "top_left",
           "offset": [
@@ -854,8 +826,7 @@
             "default"
           ],
           "layer": 2,
-          "color": "$title_text_color",
-          "text": "container.inventory"
+          "color": "$title_text_color"
         }
       }
     ],
@@ -873,16 +844,16 @@
   },
   "quests_grid_image": {
     "type": "image",
+    "texture": "textures/ui/quests/chest_screen",
     "size": [
       194,
       128
     ],
+    "layer": 0,
     "offset": [
       0,
       -5
     ],
-    "texture": "textures/ui/quests/chest_screen",
-    "layer": 0,
     "controls": [
       {
         "close_button@common.close_button": {
@@ -929,16 +900,16 @@
   },
   "quests_grid_large_image": {
     "type": "image",
+    "texture": "textures/ui/quests/chest_screen_large",
     "size": [
       194,
       179
     ],
+    "layer": 0,
     "offset": [
       0,
       -5
     ],
-    "texture": "textures/ui/quests/chest_screen_large",
-    "layer": 0,
     "controls": [
       {
         "close_button@common.close_button": {
@@ -985,16 +956,16 @@
   },
   "pokebuilder_grid_image": {
     "type": "image",
+    "texture": "textures/ui/pokebuilder/27_slot_pokebuilder",
     "size": [
       200,
       200
     ],
+    "layer": 0,
     "offset": [
       0,
       -5
     ],
-    "texture": "textures/ui/pokebuilder/27_slot_pokebuilder",
-    "layer": 0,
     "controls": [
       {
         "close_button@common.close_button": {
@@ -1041,16 +1012,16 @@
   },
   "pokebuilder_grid_large_image": {
     "type": "image",
+    "texture": "textures/ui/pokebuilder/45_slot_pokebuilder",
     "size": [
       200,
       200
     ],
+    "layer": 0,
     "offset": [
       0,
       -5
     ],
-    "texture": "textures/ui/pokebuilder/45_slot_pokebuilder",
-    "layer": 0,
     "controls": [
       {
         "close_button@common.close_button": {
@@ -1097,16 +1068,16 @@
   },
   "backpack_grid": {
     "type": "image",
+    "texture": "textures/ui/gui/backpack",
     "size": [
       245,
       216
     ],
+    "layer": 0,
     "offset": [
       0,
       -5
     ],
-    "texture": "textures/ui/gui/backpack",
-    "layer": 0,
     "controls": [
       {
         "close_button@common.close_button": {
@@ -1153,16 +1124,16 @@
   },
   "auction_house_grid": {
     "type": "image",
+    "texture": "textures/ui/gui/auction",
     "size": [
       206,
       186
     ],
+    "layer": 0,
     "offset": [
       0,
       -5
     ],
-    "texture": "textures/ui/gui/auction",
-    "layer": 0,
     "controls": [
       {
         "close_button@common.close_button": {
@@ -1204,6 +1175,48 @@
         "binding_type": "view",
         "source_property_name": "(not ((#title_text - '§c§h§e§s§t§a§u§c§t§i§o§n') = #title_text))",
         "target_property_name": "#visible"
+      }
+    ]
+  },
+  "chest_panel": {
+    "type": "panel",
+    "size": [
+      "100%c",
+      "100%c"
+    ],
+    "controls": [
+      {
+        "inventory_chest_grid_image@chest_ui.inventory_chest_grid_image": {}
+      },
+      {
+        "single_chest_grid_image@chest_ui.single_chest_grid_image": {}
+      },
+      {
+        "tiny_chest_grid_image@chest_ui.tiny_chest_grid_image": {}
+      },
+      {
+        "small_chest_grid_image@chest_ui.small_chest_grid_image": {}
+      },
+      {
+        "large_chest_grid_image@chest_ui.large_chest_grid_image": {}
+      },
+      {
+        "quests_grid_image@chest_ui.quests_grid_image": {}
+      },
+      {
+        "quests_grid_large_image@chest_ui.quests_grid_large_image": {}
+      },
+      {
+        "pokebuilder_grid_image@chest_ui.pokebuilder_grid_image": {}
+      },
+      {
+        "pokebuilder_grid_large_image@chest_ui.pokebuilder_grid_large_image": {}
+      },
+      {
+        "backpack_grid@chest_ui.backpack_grid": {}
+      },
+      {
+        "auction_house_grid@chest_ui.auction_house_grid": {}
       }
     ]
   }

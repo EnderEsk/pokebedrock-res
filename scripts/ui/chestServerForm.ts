@@ -8,10 +8,28 @@ import {
   defineUI,
   panel,
   stackPanel,
-  contains,
+  image,
+  label,
+  grid,
+  button,
+  custom,
+  boundImage,
+  ref,
+  extendRaw,
+  extend,
+  chestVisibility,
+  itemTextureBindings,
+  nonRendererItemBindings,
+  formButtonPrefixVisibility,
+  hoverTextBindings,
+  collectionBinding,
+  collectionBindingNone,
+  collectionDetailsBinding,
+  viewBinding,
+  type SizeValue,
+  type ElementBuilder,
 } from "mcbe-ts-ui";
 
-// Flag constants for chest type detection
 const FLAGS = {
   inventoryChest: "§c§h§e§s§t§s§i§n§v§e§n§t",
   singleChest: "§c§h§e§s§t§s§i§n§g§l§e§r",
@@ -26,762 +44,409 @@ const FLAGS = {
   auctionHouse: "§c§h§e§s§t§a§u§c§t§i§o§n",
 } as const;
 
-const inventoryTextLabel = {
-  inventory_text: {
-    type: "label",
-    anchor_from: "top_left",
-    anchor_to: "top_left",
-    offset: [7, "100% - 90px"],
-    size: ["90%", "default"],
-    layer: 2,
-    color: "$title_text_color",
-    text: "container.inventory",
-  },
-} as const;
+const textureBindings = itemTextureBindings("form_buttons", {
+  stripBracketSuffix: true,
+});
 
-// Texture bindings for item renderer
-const textureBindings = [
-  {
-    binding_name: "#form_button_texture",
-    binding_type: "collection",
-    binding_collection_name: "form_buttons",
-  },
-  {
-    binding_type: "view",
-    source_property_name:
-      "(not (('%.8s' * #form_button_texture) = 'textures'))",
-    target_property_name: "#visible",
-  },
-  {
-    binding_type: "view",
-    source_property_name:
-      "(not ((#form_button_texture = '') or (#form_button_texture = 'loading')))",
-    target_property_name: "#visible",
-  },
-  {
-    binding_type: "view",
-    source_property_name: "(1 * (#form_button_texture - ']'))",
-    target_property_name: "#item_id_aux",
-  },
+const tPrefixVisible = [
+  collectionBinding("#form_button_text"),
+  collectionDetailsBinding(),
+  viewBinding(
+    "((('%.6s' * #form_button_text) - ('%.4s' * #form_button_text)) = 't:')",
+    "#visible"
+  ),
 ];
 
-// Helper to create visibility bindings for chest type
-const chestVisibilityBindings = (flag: string) => [
-  { binding_name: "#title_text" },
-  {
-    binding_name: "#null",
-    binding_type: "view" as const,
-    source_property_name: contains("#title_text", flag),
-    target_property_name: "#visible",
-  },
-];
+const inventoryText = label("inventory_text", "container.inventory")
+  .anchor("top_left")
+  .offset(7, "100% - 90px")
+  .size("90%", "default")
+  .layer(2)
+  .color("$title_text_color");
+
+type ChestGridOpts = {
+  texture: string;
+  size: [SizeValue, SizeValue];
+  dims: [number, number];
+  gridName: string;
+  gridSize: [SizeValue, SizeValue];
+  gridOffset: [SizeValue, SizeValue];
+  flag: string;
+  closeBtn?: string;
+  closeOffset?: [number, number];
+  offset?: [SizeValue, SizeValue];
+  labelOffset?: [SizeValue, SizeValue];
+  showLabel?: boolean;
+  showInventoryText?: boolean;
+};
+
+/**
+ * Image shell + nested form_buttons grid + chest-type visibility.
+ *
+ * @param name - Namespace element name.
+ * @param opts - Texture, grid, close button, and flag options.
+ * @returns Image builder ready for `addToNamespace`.
+ */
+function chestGridImage(
+  name: string,
+  opts: ChestGridOpts
+): ElementBuilder<string> {
+  const closeBtn = opts.closeBtn ?? "common.close_button";
+  const closeOffset = opts.closeOffset ?? [-2, 2];
+  const showLabel = opts.showLabel !== false;
+  const controls: Array<ReturnType<typeof ref> | ElementBuilder<string>> = [];
+
+  if (showLabel) {
+    controls.push(
+      opts.labelOffset
+        ? ref("chest_label@chest_ui.chest_label", { offset: opts.labelOffset })
+        : ref("chest_label@chest_ui.chest_label")
+    );
+  }
+
+  controls.push(
+    extendRaw("close_button", closeBtn, {
+      $close_button_offset: closeOffset,
+    }),
+    grid(opts.gridName)
+      .gridDimensions(...opts.dims)
+      .size(...opts.gridSize)
+      .offset(...opts.gridOffset)
+      .anchor("top_left")
+      .gridItemTemplate("chest_ui.chest_item")
+      .collectionName("form_buttons")
+      .layer(1)
+  );
+
+  if (opts.showInventoryText) controls.push(inventoryText);
+
+  let img = image(name, opts.texture).size(...opts.size).layer(0);
+  if (opts.offset) img = img.offset(...opts.offset);
+  return img.controls(...controls).bindings(...chestVisibility(opts.flag));
+}
 
 export default defineUI("chest_ui", (ns) => {
-  // Chest label
-  ns.addRaw("chest_label", {
-    type: "label",
-    offset: [7, 10],
-    anchor_from: "top_left",
-    anchor_to: "top_left",
-    text: "#title_text",
-    size: ["90%", "default"],
-    color: "$title_text_color",
-    layer: 2,
-  });
-
-  // Custom texture icons (no static texture — bound from collection → #texture)
-  ns.addRaw("non_renderer_item", {
-    type: "image",
-    size: [16, 16],
-    bindings: [
-      {
-        binding_name: "#form_button_texture",
-        binding_name_override: "#texture",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name:
-          "(not ((#texture = '') or (#texture = 'loading')))",
-        target_property_name: "#visible",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: "(('%.8s' * #texture) = 'textures')",
-        target_property_name: "#visible",
-      },
-    ],
-  });
-
-  // Inventory button amount display
-  ns.addRaw("inventory_button_amount", {
-    type: "panel",
-    offset: "$offset",
-    controls: [
-      {
-        item_amount: {
-          type: "label",
-          offset: [0, 1],
-          shadow: true,
-          text_alignment: "left",
-          anchor_from: "bottom_right",
-          anchor_to: "bottom_right",
-          color: "$tool_tip_text",
-          layer: 4,
-          text: "#stack_size",
-          bindings: [
-            {
-              binding_name: "#null",
-              binding_type: "collection",
-              binding_condition: "none",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "collection_details",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#form_button_text",
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name:
-                "((#form_button_text - 'stack#01') = #form_button_text)",
-              target_property_name: "#visible",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name:
-                "(('§z') + (('%.14s' * #form_button_text) - ('%.12s' * #form_button_text)))",
-              target_property_name: "#stack_size",
-            },
-          ],
-        },
-      },
-    ],
-  });
-
-  // Default control state
-  ns.addRaw("default_control", {
-    type: "panel",
-    size: ["100%c", "100%c"],
-    layer: 3,
-    controls: [
-      {
-        "item_block@beacon.item_renderer": {
-          size: [16, 16],
-          offset: "$offset",
-          bindings: "$texture_bindings",
-        },
-      },
-      { "non_renderer_item@chest_ui.non_renderer_item": { offset: "$offset" } },
-    ],
-  });
-
-  // Hover control with tooltip (58-char strip matches BEH chest form payload)
-  const tPrefixVisible = [
-    {
-      binding_name: "#form_button_text",
-      binding_type: "collection",
-      binding_collection_name: "form_buttons",
-    },
-    {
-      binding_name: "#null",
-      binding_type: "collection_details",
-      binding_collection_name: "form_buttons",
-    },
-    {
-      binding_name: "#null",
-      binding_type: "view",
-      source_property_name:
-        "((('%.6s' * #form_button_text) - ('%.4s' * #form_button_text)) = 't:')",
-      target_property_name: "#visible",
-    },
-  ];
-
-  ns.addRaw("hover_control", {
-    type: "panel",
-    size: ["100%c", "100%c"],
-    offset: "$offset",
-    controls: [
-      {
-        hovering_image: {
-          type: "panel",
-          size: [18, 18],
-          controls: [
-            {
-              item_details: {
-                type: "custom",
-                renderer: "hover_text_renderer",
-                allow_clipping: false,
-                layer: 30,
-                bindings: [
-                  {
-                    binding_name: "#form_button_text",
-                    binding_type: "collection",
-                    binding_collection_name: "form_buttons",
-                  },
-                  {
-                    binding_name: "#null",
-                    binding_type: "collection_details",
-                    binding_collection_name: "form_buttons",
-                  },
-                  {
-                    binding_name: "#null",
-                    binding_type: "view",
-                    source_property_name:
-                      "(#form_button_text - ('%.58s' * #form_button_text))",
-                    target_property_name: "#hover_text",
-                  },
-                ],
-              },
-            },
-            {
-              "item_block@beacon.item_renderer": {
-                size: [16, 16],
-                bindings: "$texture_bindings",
-                layer: 3,
-                offset: [1, 1],
-              },
-            },
-            { "non_renderer_item@chest_ui.non_renderer_item": { layer: 3 } },
-            {
-              highlight_slot: {
-                type: "image",
-                size: [18, 18],
-                texture: "textures/ui/highlight_slot",
-                layer: 0,
-                bindings: tPrefixVisible,
-              },
-            },
-            {
-              focus_border: {
-                type: "image",
-                size: [18, 18],
-                texture: "textures/ui/focus_border_white",
-                layer: 1,
-                bindings: tPrefixVisible,
-              },
-            },
-          ],
-        },
-      },
-    ],
-  });
-
-  // Pressed control
-  ns.addRaw("pressed_control", {
-    type: "panel",
-    size: ["100%c", "100%c"],
-    controls: [
-      {
-        "item_block@beacon.item_renderer": {
-          size: [16, 16],
-          offset: "$offset",
-          bindings: "$texture_bindings",
-        },
-      },
-      { "non_renderer_item@chest_ui.non_renderer_item": { offset: "$offset" } },
-    ],
-  });
-
-  // Inventory button base
-  ns.addRaw("inventory_button@common.button", {
-    $pressed_button_name: "button.form_button_click",
-    default_control: "default",
-    hover_control: "hover",
-    pressed_control: "pressed",
-    offset: "$offset",
-    $texture_bindings: textureBindings,
-    controls: [
-      { "inventory_button_amount@chest_ui.inventory_button_amount": {} },
-      { "slot_badge@chest_ui.slot_badge": {} },
-      { "default@chest_ui.default_control": {} },
-      { "hover@chest_ui.hover_control": {} },
-      { "pressed@chest_ui.pressed_control": {} },
-    ],
-  });
-
-  // UI item buttons with visibility filters
-  ns.addRaw("ui_chest_item@chest_ui.inventory_button", {
-    $offset: [-1, -1],
-    bindings: [
-      {
-        binding_name: "#null",
-        binding_type: "collection",
-        binding_condition: "none",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "collection_details",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#form_button_text",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: "(('%.4s' * #form_button_text) = 'cht:')",
-        target_property_name: "#visible",
-      },
-    ],
-  });
-
-  ns.addRaw("ui_inventory_item@chest_ui.inventory_button", {
-    $offset: [-1, 10],
-    bindings: [
-      {
-        binding_name: "#null",
-        binding_type: "collection",
-        binding_condition: "none",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "collection_details",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#form_button_text",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: "(('%.4s' * #form_button_text) = 'inv:')",
-        target_property_name: "#visible",
-      },
-    ],
-  });
-
-  ns.addRaw("ui_hot_bar_item@chest_ui.inventory_button", {
-    $offset: [-1, 13],
-    bindings: [
-      {
-        binding_name: "#null",
-        binding_type: "collection",
-        binding_condition: "none",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "collection_details",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#form_button_text",
-        binding_type: "collection",
-        binding_collection_name: "form_buttons",
-      },
-      {
-        binding_name: "#null",
-        binding_type: "view",
-        source_property_name: "(('%.4s' * #form_button_text) = 'hot:')",
-        target_property_name: "#visible",
-      },
-    ],
-  });
-
-  ns.addRaw("slot_badge", {
-    type: "panel",
-    offset: "$offset",
-    controls: [
-      {
-        badge_image: {
-          type: "image",
-          size: [8, 8],
-          offset: [1, 1],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          layer: 5,
-          bindings: [
-            {
-              binding_name: "#null",
-              binding_type: "collection",
-              binding_condition: "none",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "collection_details",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#form_button_text",
-              binding_type: "collection",
-              binding_collection_name: "form_buttons",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name:
-                "((('%.18s' * #form_button_text) - ('%.14s' * #form_button_text)) = 'bdg#')",
-              target_property_name: "#visible",
-            },
-            {
-              binding_name: "#null",
-              binding_type: "view",
-              source_property_name:
-                "((('%.58s' * #form_button_text) - ('%.18s' * #form_button_text)) - ' ')",
-              target_property_name: "#texture",
-            },
-          ],
-        },
-      },
-    ],
-  });
-
-  stackPanel("chest_item", "vertical")
-    .rawProp("$item_size|default", [18, 18])
-    .rawProp("size", "$item_size")
+  label("chest_label")
+    .offset(7, 10)
+    .anchor("top_left")
+    .text("#title_text")
+    .size("90%", "default")
+    .color("$title_text_color")
     .layer(2)
+    .addToNamespace(ns);
+
+  image("non_renderer_item")
+    .size(16, 16)
+    .bindings(...nonRendererItemBindings())
+    .addToNamespace(ns);
+
+  panel("inventory_button_amount")
+    .rawProp("offset", "$offset")
     .controls(
-      { "chest_item@chest_ui.ui_chest_item": {} },
-      { "inventory_item@chest_ui.ui_inventory_item": {} },
-      { "hot_bar_item@chest_ui.ui_hot_bar_item": {} }
+      label("item_amount")
+        .offset(0, 1)
+        .shadow()
+        .textAlignment("left")
+        .anchor("bottom_right")
+        .color("$tool_tip_text")
+        .layer(4)
+        .text("#stack_size")
+        .bindings(
+          collectionBindingNone(),
+          collectionDetailsBinding(),
+          collectionBinding("#form_button_text"),
+          viewBinding(
+            "((#form_button_text - 'stack#01') = #form_button_text)",
+            "#visible"
+          ),
+          viewBinding(
+            "(('§z') + (('%.14s' * #form_button_text) - ('%.12s' * #form_button_text)))",
+            "#stack_size"
+          )
+        )
     )
     .addToNamespace(ns);
 
-  // Inventory chest grid (4 rows)
-  ns.addRaw("inventory_chest_grid_image", {
-    type: "image",
-    size: [176, 96],
+  panel("default_control")
+    .wrapChildren()
+    .layer(3)
+    .controls(
+      extendRaw("item_block", "beacon.item_renderer", {
+        size: [16, 16],
+        offset: "$offset",
+        bindings: "$texture_bindings",
+      }),
+      ref("non_renderer_item@chest_ui.non_renderer_item", {
+        offset: "$offset",
+      })
+    )
+    .addToNamespace(ns);
+
+  panel("hover_control")
+    .wrapChildren()
+    .rawProp("offset", "$offset")
+    .controls(
+      panel("hovering_image")
+        .size(18, 18)
+        .controls(
+          custom("item_details")
+            .renderer("hover_text_renderer")
+            .allowClipping(false)
+            .layer(30)
+            .bindings(...hoverTextBindings(58)),
+          extendRaw("item_block", "beacon.item_renderer", {
+            size: [16, 16],
+            bindings: "$texture_bindings",
+            layer: 3,
+            offset: [1, 1],
+          }),
+          ref("non_renderer_item@chest_ui.non_renderer_item", { layer: 3 }),
+          image("highlight_slot", "textures/ui/highlight_slot")
+            .size(18, 18)
+            .layer(0)
+            .bindings(...tPrefixVisible),
+          image("focus_border", "textures/ui/focus_border_white")
+            .size(18, 18)
+            .layer(1)
+            .bindings(...tPrefixVisible)
+        )
+    )
+    .addToNamespace(ns);
+
+  panel("pressed_control")
+    .wrapChildren()
+    .controls(
+      extendRaw("item_block", "beacon.item_renderer", {
+        size: [16, 16],
+        offset: "$offset",
+        bindings: "$texture_bindings",
+      }),
+      ref("non_renderer_item@chest_ui.non_renderer_item", {
+        offset: "$offset",
+      })
+    )
+    .addToNamespace(ns);
+
+  const inventoryButton = button("inventory_button")
+    .extends("common.button")
+    .variable("pressed_button_name", "button.form_button_click")
+    .defaultControl("default")
+    .hoverControl("hover")
+    .pressedControl("pressed")
+    .rawProp("offset", "$offset")
+    .variable("texture_bindings", textureBindings)
+    .controls(
+      ref("inventory_button_amount@chest_ui.inventory_button_amount"),
+      ref("slot_badge@chest_ui.slot_badge"),
+      ref("default@chest_ui.default_control"),
+      ref("hover@chest_ui.hover_control"),
+      ref("pressed@chest_ui.pressed_control")
+    )
+    .addToNamespace(ns);
+
+  extend("ui_chest_item", inventoryButton)
+    .variable("offset", [-1, -1])
+    .bindings(...formButtonPrefixVisibility("cht:"))
+    .addToNamespace(ns);
+
+  extend("ui_inventory_item", inventoryButton)
+    .variable("offset", [-1, 10])
+    .bindings(...formButtonPrefixVisibility("inv:"))
+    .addToNamespace(ns);
+
+  extend("ui_hot_bar_item", inventoryButton)
+    .variable("offset", [-1, 13])
+    .bindings(...formButtonPrefixVisibility("hot:"))
+    .addToNamespace(ns);
+
+  panel("slot_badge")
+    .rawProp("offset", "$offset")
+    .controls(
+      boundImage("badge_image")
+        .size(8, 8)
+        .offset(1, 1)
+        .anchor("top_left")
+        .layer(5)
+        .bindings(
+          collectionBindingNone(),
+          collectionDetailsBinding(),
+          collectionBinding("#form_button_text"),
+          viewBinding(
+            "((('%.18s' * #form_button_text) - ('%.14s' * #form_button_text)) = 'bdg#')",
+            "#visible"
+          ),
+          viewBinding(
+            "((('%.58s' * #form_button_text) - ('%.18s' * #form_button_text)) - ' ')",
+            "#texture"
+          )
+        )
+    )
+    .addToNamespace(ns);
+
+  stackPanel("chest_item", "vertical")
+    .variableDefault("item_size", [18, 18])
+    .rawProp("size", "$item_size")
+    .layer(2)
+    .controls(
+      ref("chest_item@chest_ui.ui_chest_item"),
+      ref("inventory_item@chest_ui.ui_inventory_item"),
+      ref("hot_bar_item@chest_ui.ui_hot_bar_item")
+    )
+    .addToNamespace(ns);
+
+  chestGridImage("inventory_chest_grid_image", {
     texture: "textures/ui/gui/inventory",
-    layer: 0,
-    controls: [
-      { "chest_label@chest_ui.chest_label": { offset: [7, 5] } },
-      { "close_button@common.close_button": { $close_button_offset: [-2, 1] } },
-      {
-        inventory_grid: {
-          type: "grid",
-          grid_dimensions: [9, 4],
-          size: [162, 72],
-          offset: [8, 6],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          grid_item_template: "chest_ui.chest_item",
-          collection_name: "form_buttons",
-          layer: 1,
-        },
-      },
-    ],
-    bindings: chestVisibilityBindings(FLAGS.inventoryChest),
-  });
+    size: [176, 96],
+    dims: [9, 4],
+    gridName: "inventory_grid",
+    gridSize: [162, 72],
+    gridOffset: [8, 6],
+    flag: FLAGS.inventoryChest,
+    closeOffset: [-2, 1],
+    labelOffset: [7, 5],
+  }).addToNamespace(ns);
 
-  // Single chest grid (5 rows)
-  ns.addRaw("single_chest_grid_image", {
-    type: "image",
-    size: [176, 130],
+  chestGridImage("single_chest_grid_image", {
     texture: "textures/ui/gui/generic_1",
-    layer: 0,
-    controls: [
-      { "chest_label@chest_ui.chest_label": {} },
-      { "close_button@common.close_button": { $close_button_offset: [-2, 2] } },
-      {
-        single_chest_grid: {
-          type: "grid",
-          grid_dimensions: [9, 5],
-          size: [162, 90],
-          offset: [8, 22],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          grid_item_template: "chest_ui.chest_item",
-          collection_name: "form_buttons",
-          layer: 1,
-        },
-      },
-      inventoryTextLabel,
-    ],
-    bindings: chestVisibilityBindings(FLAGS.singleChest),
-  });
-
-  // Tiny chest grid (1 row)
-  ns.addRaw("tiny_chest_grid_image", {
-    type: "image",
     size: [176, 130],
+    dims: [9, 5],
+    gridName: "single_chest_grid",
+    gridSize: [162, 90],
+    gridOffset: [8, 22],
+    flag: FLAGS.singleChest,
+    showInventoryText: true,
+  }).addToNamespace(ns);
+
+  chestGridImage("tiny_chest_grid_image", {
     texture: "textures/ui/gui/generic_9",
-    layer: 0,
-    controls: [
-      { "chest_label@chest_ui.chest_label": {} },
-      { "close_button@common.close_button": { $close_button_offset: [-2, 2] } },
-      {
-        tiny_chest_grid: {
-          type: "grid",
-          grid_dimensions: [9, 1],
-          size: ["100% - 14px", "100% - 112px"],
-          offset: [8, 22],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          grid_item_template: "chest_ui.chest_item",
-          collection_name: "form_buttons",
-          layer: 1,
-        },
-      },
-      inventoryTextLabel,
-    ],
-    bindings: chestVisibilityBindings(FLAGS.tinyChest),
-  });
+    size: [176, 130],
+    dims: [9, 1],
+    gridName: "tiny_chest_grid",
+    gridSize: ["100% - 14px", "100% - 112px"],
+    gridOffset: [8, 22],
+    flag: FLAGS.tinyChest,
+    showInventoryText: true,
+  }).addToNamespace(ns);
 
-  // Small chest grid (8 rows)
-  ns.addRaw("small_chest_grid_image", {
-    type: "image",
-    size: [176, 166],
+  chestGridImage("small_chest_grid_image", {
     texture: "textures/ui/gui/generic_27",
-    layer: 0,
-    controls: [
-      { "chest_label@chest_ui.chest_label": {} },
-      { "close_button@common.close_button": { $close_button_offset: [-2, 2] } },
-      {
-        small_chest_grid: {
-          type: "grid",
-          grid_dimensions: [9, 8],
-          size: ["100% - 14px", 144],
-          offset: [8, 22],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          grid_item_template: "chest_ui.chest_item",
-          collection_name: "form_buttons",
-          layer: 1,
-        },
-      },
-      inventoryTextLabel,
-    ],
-    bindings: chestVisibilityBindings(FLAGS.smallChest),
-  });
+    size: [176, 166],
+    dims: [9, 8],
+    gridName: "small_chest_grid",
+    gridSize: ["100% - 14px", 144],
+    gridOffset: [8, 22],
+    flag: FLAGS.smallChest,
+    showInventoryText: true,
+  }).addToNamespace(ns);
 
-  // Large chest grid (6 rows)
-  ns.addRaw("large_chest_grid_image", {
-    type: "image",
-    size: [176, 220],
+  chestGridImage("large_chest_grid_image", {
     texture: "textures/ui/gui/generic_54",
-    layer: 0,
-    controls: [
-      { "chest_label@chest_ui.chest_label": {} },
-      {
-        "close_button@common.light_close_button": {
-          $close_button_offset: [-2, 2],
-        },
-      },
-      {
-        large_chest_grid: {
-          type: "grid",
-          grid_dimensions: [9, 6],
-          size: [162, "100% - 112px"],
-          offset: [8, 22],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          grid_item_template: "chest_ui.chest_item",
-          collection_name: "form_buttons",
-          layer: 1,
-        },
-      },
-      inventoryTextLabel,
-    ],
-    bindings: chestVisibilityBindings(FLAGS.largeChest),
-  });
+    size: [176, 220],
+    dims: [9, 6],
+    gridName: "large_chest_grid",
+    gridSize: [162, "100% - 112px"],
+    gridOffset: [8, 22],
+    flag: FLAGS.largeChest,
+    closeBtn: "common.light_close_button",
+    showInventoryText: true,
+  }).addToNamespace(ns);
 
-  // Quest chest grid
-  ns.addRaw("quests_grid_image", {
-    type: "image",
+  chestGridImage("quests_grid_image", {
+    texture: "textures/ui/quests/chest_screen",
     size: [194, 128],
     offset: [0, -5],
-    texture: "textures/ui/quests/chest_screen",
-    layer: 0,
-    controls: [
-      {
-        "close_button@common.close_button": { $close_button_offset: [-10, 52] },
-      },
-      {
-        quest_chest_grid: {
-          type: "grid",
-          grid_dimensions: [9, 3],
-          size: [162, 54],
-          offset: [18, 65],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          grid_item_template: "chest_ui.chest_item",
-          collection_name: "form_buttons",
-          layer: 1,
-        },
-      },
-    ],
-    bindings: chestVisibilityBindings(FLAGS.questChest),
-  });
+    dims: [9, 3],
+    gridName: "quest_chest_grid",
+    gridSize: [162, 54],
+    gridOffset: [18, 65],
+    flag: FLAGS.questChest,
+    closeOffset: [-10, 52],
+    showLabel: false,
+  }).addToNamespace(ns);
 
-  // Quest chest grid large
-  ns.addRaw("quests_grid_large_image", {
-    type: "image",
+  chestGridImage("quests_grid_large_image", {
+    texture: "textures/ui/quests/chest_screen_large",
     size: [194, 179],
     offset: [0, -5],
-    texture: "textures/ui/quests/chest_screen_large",
-    layer: 0,
-    controls: [
-      {
-        "close_button@common.close_button": { $close_button_offset: [-10, 52] },
-      },
-      {
-        quest_chest_grid: {
-          type: "grid",
-          grid_dimensions: [9, 6],
-          size: [162, 108],
-          offset: [19, 62],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          grid_item_template: "chest_ui.chest_item",
-          collection_name: "form_buttons",
-          layer: 1,
-        },
-      },
-    ],
-    bindings: chestVisibilityBindings(FLAGS.questChestLarge),
-  });
+    dims: [9, 6],
+    gridName: "quest_chest_grid",
+    gridSize: [162, 108],
+    gridOffset: [19, 62],
+    flag: FLAGS.questChestLarge,
+    closeOffset: [-10, 52],
+    showLabel: false,
+  }).addToNamespace(ns);
 
-  // Pokebuilder grid
-  ns.addRaw("pokebuilder_grid_image", {
-    type: "image",
-    size: [200, 200],
-    offset: [0, -5],
+  chestGridImage("pokebuilder_grid_image", {
     texture: "textures/ui/pokebuilder/27_slot_pokebuilder",
-    layer: 0,
-    controls: [
-      {
-        "close_button@common.close_button": { $close_button_offset: [-4, 94] },
-      },
-      {
-        pokebuilder_chest_grid: {
-          type: "grid",
-          grid_dimensions: [9, 3],
-          size: [162, "100% - 146px"],
-          offset: [20, 114],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          grid_item_template: "chest_ui.chest_item",
-          collection_name: "form_buttons",
-          layer: 1,
-        },
-      },
-    ],
-    bindings: chestVisibilityBindings(FLAGS.pokebuilder),
-  });
-
-  // Pokebuilder grid large
-  ns.addRaw("pokebuilder_grid_large_image", {
-    type: "image",
     size: [200, 200],
     offset: [0, -5],
-    texture: "textures/ui/pokebuilder/45_slot_pokebuilder",
-    layer: 0,
-    controls: [
-      {
-        "close_button@common.close_button": { $close_button_offset: [-10, 52] },
-      },
-      {
-        pokebuilder_chest_grid: {
-          type: "grid",
-          grid_dimensions: [9, 6],
-          size: [162, 108],
-          offset: [17, 67],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          grid_item_template: "chest_ui.chest_item",
-          collection_name: "form_buttons",
-          layer: 1,
-        },
-      },
-    ],
-    bindings: chestVisibilityBindings(FLAGS.pokebuilderLarge),
-  });
+    dims: [9, 3],
+    gridName: "pokebuilder_chest_grid",
+    gridSize: [162, "100% - 146px"],
+    gridOffset: [20, 114],
+    flag: FLAGS.pokebuilder,
+    closeOffset: [-4, 94],
+    showLabel: false,
+  }).addToNamespace(ns);
 
-  // Backpack grid
-  ns.addRaw("backpack_grid", {
-    type: "image",
+  chestGridImage("pokebuilder_grid_large_image", {
+    texture: "textures/ui/pokebuilder/45_slot_pokebuilder",
+    size: [200, 200],
+    offset: [0, -5],
+    dims: [9, 6],
+    gridName: "pokebuilder_chest_grid",
+    gridSize: [162, 108],
+    gridOffset: [17, 67],
+    flag: FLAGS.pokebuilderLarge,
+    closeOffset: [-10, 52],
+    showLabel: false,
+  }).addToNamespace(ns);
+
+  chestGridImage("backpack_grid", {
+    texture: "textures/ui/gui/backpack",
     size: [245, 216],
     offset: [0, -5],
-    texture: "textures/ui/gui/backpack",
-    layer: 0,
-    controls: [
-      {
-        "close_button@common.close_button": { $close_button_offset: [-20, 10] },
-      },
-      {
-        backpack_chest_grid: {
-          type: "grid",
-          grid_dimensions: [10, 9],
-          size: [180, 162],
-          offset: [33, 41],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          grid_item_template: "chest_ui.chest_item",
-          collection_name: "form_buttons",
-          layer: 1,
-        },
-      },
-    ],
-    bindings: chestVisibilityBindings(FLAGS.backpack),
-  });
+    dims: [10, 9],
+    gridName: "backpack_chest_grid",
+    gridSize: [180, 162],
+    gridOffset: [33, 41],
+    flag: FLAGS.backpack,
+    closeOffset: [-20, 10],
+    showLabel: false,
+  }).addToNamespace(ns);
 
-  // Auction house grid
-  ns.addRaw("auction_house_grid", {
-    type: "image",
+  chestGridImage("auction_house_grid", {
+    texture: "textures/ui/gui/auction",
     size: [206, 186],
     offset: [0, -5],
-    texture: "textures/ui/gui/auction",
-    layer: 0,
-    controls: [
-      {
-        "close_button@common.close_button": { $close_button_offset: [-20, 40] },
-      },
-      {
-        auction_house_chest_grid: {
-          type: "grid",
-          grid_dimensions: [9, 6],
-          size: [162, "100% - 78px"],
-          offset: [20, 58],
-          anchor_from: "top_left",
-          anchor_to: "top_left",
-          grid_item_template: "chest_ui.chest_item",
-          collection_name: "form_buttons",
-          layer: 1,
-        },
-      },
-    ],
-    bindings: chestVisibilityBindings(FLAGS.auctionHouse),
-  });
-
-  // Main chest panel containing all variants
+    dims: [9, 6],
+    gridName: "auction_house_chest_grid",
+    gridSize: [162, "100% - 78px"],
+    gridOffset: [20, 58],
+    flag: FLAGS.auctionHouse,
+    closeOffset: [-20, 40],
+    showLabel: false,
+  }).addToNamespace(ns);
 
   const [, finalNs] = ns.add(
-    panel("chest_panel").size("100%c", "100%c").controls(
-      {
-        "inventory_chest_grid_image@chest_ui.inventory_chest_grid_image": {},
-      },
-      { "single_chest_grid_image@chest_ui.single_chest_grid_image": {} },
-      { "tiny_chest_grid_image@chest_ui.tiny_chest_grid_image": {} },
-      { "small_chest_grid_image@chest_ui.small_chest_grid_image": {} },
-      { "large_chest_grid_image@chest_ui.large_chest_grid_image": {} },
-      { "quests_grid_image@chest_ui.quests_grid_image": {} },
-      { "quests_grid_large_image@chest_ui.quests_grid_large_image": {} },
-      { "pokebuilder_grid_image@chest_ui.pokebuilder_grid_image": {} },
-      {
-        "pokebuilder_grid_large_image@chest_ui.pokebuilder_grid_large_image":
-          {},
-      },
-      { "backpack_grid@chest_ui.backpack_grid": {} },
-      { "auction_house_grid@chest_ui.auction_house_grid": {} }
-    )
+    panel("chest_panel")
+      .wrapChildren()
+      .controls(
+        ref("inventory_chest_grid_image@chest_ui.inventory_chest_grid_image"),
+        ref("single_chest_grid_image@chest_ui.single_chest_grid_image"),
+        ref("tiny_chest_grid_image@chest_ui.tiny_chest_grid_image"),
+        ref("small_chest_grid_image@chest_ui.small_chest_grid_image"),
+        ref("large_chest_grid_image@chest_ui.large_chest_grid_image"),
+        ref("quests_grid_image@chest_ui.quests_grid_image"),
+        ref("quests_grid_large_image@chest_ui.quests_grid_large_image"),
+        ref("pokebuilder_grid_image@chest_ui.pokebuilder_grid_image"),
+        ref(
+          "pokebuilder_grid_large_image@chest_ui.pokebuilder_grid_large_image"
+        ),
+        ref("backpack_grid@chest_ui.backpack_grid"),
+        ref("auction_house_grid@chest_ui.auction_house_grid")
+      )
   );
   return finalNs;
 });

@@ -316,41 +316,13 @@
       }
     ]
   },
-  "ng_main_screen_content": {
-    "type": "panel",
-    "size": [
-      "100%",
-      "100%"
-    ],
-    "controls": [
-      {
-        "server_form_factory": {
-          "type": "factory",
-          "control_ids": {
-            "long_form": "@server_form.ng_long_form",
-            "custom_form": "@server_form.custom_form"
-          }
-        }
-      }
-    ]
-  },
-  "third_party_server_screen@common.base_screen": {
-    "$screen_content": "server_form.ng_main_screen_content",
-    "button_mappings": [
-      {
-        "from_button_id": "button.menu_cancel",
-        "to_button_id": "button.menu_exit",
-        "mapping_type": "global"
-      }
-    ]
-  },
   "dynamic_button": {
     "type": "stack_panel",
+    "orientation": "horizontal",
     "size": [
       "100%",
       32
     ],
-    "orientation": "horizontal",
     "controls": [
       {
         "panel_name": {
@@ -373,6 +345,7 @@
             {
               "image": {
                 "type": "image",
+                "texture": "#texture",
                 "layer": 2,
                 "size": [
                   32,
@@ -452,11 +425,11 @@
               "binding_collection_name": "form_buttons"
             },
             {
+              "binding_name": "#form_button_text",
+              "binding_name_override": "#form_button_text",
               "binding_type": "collection",
               "binding_collection_name": "form_buttons",
-              "binding_condition": "none",
-              "binding_name": "#form_button_text",
-              "binding_name_override": "#form_button_text"
+              "binding_condition": "none"
             },
             {
               "binding_name": "#null",
@@ -466,6 +439,34 @@
             }
           ]
         }
+      }
+    ]
+  },
+  "ng_main_screen_content": {
+    "type": "panel",
+    "size": [
+      "100%",
+      "100%"
+    ],
+    "controls": [
+      {
+        "server_form_factory": {
+          "type": "factory",
+          "control_ids": {
+            "long_form": "@server_form.ng_long_form",
+            "custom_form": "@server_form.custom_form"
+          }
+        }
+      }
+    ]
+  },
+  "third_party_server_screen@common.base_screen": {
+    "$screen_content": "server_form.ng_main_screen_content",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_cancel",
+        "to_button_id": "button.menu_exit",
+        "mapping_type": "global"
       }
     ]
   }

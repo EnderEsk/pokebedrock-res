@@ -5,6 +5,9 @@
 import {
   panel,
   stackPanel,
+  label,
+  image,
+  boundImage,
   contains,
   collectionBinding,
   factoryBindings,
@@ -13,10 +16,13 @@ import {
   imageTextureBindings,
   siblingImageVisibilityBinding,
   globalBinding,
+  extendRaw,
+  ref,
   NamespaceBuilder,
   SizeValue,
   Size,
   PanelBuilder,
+  LabelBuilder,
 } from "mcbe-ts-ui";
 
 // Common button flag prefixes
@@ -107,66 +113,56 @@ export function createButtonTemplate(
   const { useSiblingImageBinding = false, textures = DEFAULT_TEXTURES } =
     options;
 
-  ns.addRaw("button", {
-    type: "stack_panel",
-    orientation: "vertical",
-    size: "$size",
-    "$size|default": [14, 8],
-    "$size_img|default": [8, 8],
-    "$offset_img|default": [0, 0],
-    "$anchor_value|default": "bottom_middle",
-    "$button_font_scale_factor_value|default": 1,
-    "$new_ui_label_offset_value|default": [0, 0],
-    "$source_property_flag|default": "",
-    bindings: useSiblingImageBinding
-      ? buttonVisibilityBindings("$flag")
-      : [
-          collectionBinding("#form_button_text"),
-          viewBinding("$source_property_flag", "#visible"),
-        ],
-    controls: [
-      {
-        image_panel: {
-          type: "panel",
-          size: "$size_img",
-          bindings: [
-            useSiblingImageBinding
-              ? siblingImageBinding()
-              : conditionalImageBinding(),
-          ],
-          controls: [
-            {
-              image: {
-                type: "image",
-                layer: 99,
-                offset: "$offset_img",
-                bindings: imageTextureBindings(),
-              },
-            },
-          ],
-        },
-      },
-      {
-        "form_button@common_buttons.light_text_button": {
-          $pressed_button_name: "button.form_button_click",
-          $default_button_texture: textures.default,
-          $hover_button_texture: textures.hover,
-          $pressed_button_texture: textures.pressed,
-          $border_visible: false,
-          focus_enabled: false,
-          $button_text: "#form_button_text",
-          $button_text_binding_type: "collection",
-          $button_text_grid_collection_name: "form_buttons",
-          $button_text_size: ["100%", "100%"],
-          $button_text_max_size: ["100%", "100%"],
-          $anchor: "$anchor_value",
-          $button_font_scale_factor: "$button_font_scale_factor_value",
-          $new_ui_label_offset: "$new_ui_label_offset_value",
-          bindings: [collectionDetailsBinding()],
-        },
-      },
-    ],
-  });
+  stackPanel("button", "vertical")
+    .rawProp("size", "$size")
+    .variableDefault("size", [14, 8])
+    .variableDefault("size_img", [8, 8])
+    .variableDefault("offset_img", [0, 0])
+    .variableDefault("anchor_value", "bottom_middle")
+    .variableDefault("button_font_scale_factor_value", 1)
+    .variableDefault("new_ui_label_offset_value", [0, 0])
+    .variableDefault("source_property_flag", "")
+    .bindings(
+      ...(useSiblingImageBinding
+        ? buttonVisibilityBindings("$flag")
+        : [
+            collectionBinding("#form_button_text"),
+            viewBinding("$source_property_flag", "#visible"),
+          ])
+    )
+    .controls(
+      panel("image_panel")
+        .rawProp("size", "$size_img")
+        .bindings(
+          useSiblingImageBinding
+            ? siblingImageBinding()
+            : conditionalImageBinding()
+        )
+        .controls(
+          boundImage("image")
+            .layer(99)
+            .rawProp("offset", "$offset_img")
+            .bindings(...imageTextureBindings())
+        ),
+      extendRaw("form_button", "common_buttons.light_text_button", {
+        $pressed_button_name: "button.form_button_click",
+        $default_button_texture: textures.default,
+        $hover_button_texture: textures.hover,
+        $pressed_button_texture: textures.pressed,
+        $border_visible: false,
+        focus_enabled: false,
+        $button_text: "#form_button_text",
+        $button_text_binding_type: "collection",
+        $button_text_grid_collection_name: "form_buttons",
+        $button_text_size: ["100%", "100%"],
+        $button_text_max_size: ["100%", "100%"],
+        $anchor: "$anchor_value",
+        $button_font_scale_factor: "$button_font_scale_factor_value",
+        $new_ui_label_offset: "$new_ui_label_offset_value",
+        bindings: [collectionDetailsBinding()],
+      })
+    )
+    .addToNamespace(ns);
 }
 
 // Process button panels configuration
@@ -213,11 +209,11 @@ export function createButtonPanels(
       if (fontScale)
         panelBuilder.rawProp("$button_font_scale_factor_value", fontScale);
 
-      panelBuilder.controls({
-        [`button@${namespace}.button`]: {
+      panelBuilder.controls(
+        ref(`button@${namespace}.button`, {
           $source_property_flag: contains("#form_button_text", "$flag"),
-        },
-      });
+        })
+      );
 
       panelBuilder.addToNamespace(ns);
     }
@@ -235,64 +231,39 @@ export function createButtonStacks(
       .rawProp("orientation", orientation)
       .size(size?.[0] ?? "100%c", size?.[1] ?? "20%")
       .offset(...offset)
-      .rawProp("factory", {
-        name: "buttons",
-        control_name: `${namespace}.${panelName}`,
-      })
-      .rawProp("collection_name", "form_buttons")
+      .factory("buttons", `${namespace}.${panelName}`)
+      .collectionName("form_buttons")
       .bindings(...factoryBindings())
       .addToNamespace(ns);
   });
 }
 
-// Create a label configuration object
-export function createLabel(config: LabelConfig): Record<string, unknown> {
-  return {
-    [config.name]: {
-      type: "label",
-      text: config.text,
-      size: config.size,
-      offset: config.offset,
-      font_scale_factor: config.fontScale,
-    },
-  };
+// Create a label builder
+export function createLabel(config: LabelConfig): LabelBuilder<string> {
+  return label(config.name, config.text)
+    .size(config.size[0], config.size[1])
+    .offset(...config.offset)
+    .fontScaleFactor(config.fontScale);
 }
 
 // Create the top section (title + label + buttons) - common across all pages
-export function createTopSection(namespace: string): Record<string, unknown> {
-  return {
-    top: {
-      type: "panel",
-      controls: [
-        {
-          title: {
-            type: "label",
-            layer: 99,
-            size: [30, 15],
-            anchor_from: "top_middle",
-            anchor_to: "top_middle",
-            offset: [47, "39%"],
-            text: "#title_text",
-            font_scale_factor: 0.55,
-            bindings: [globalBinding("#title_text")],
-          },
-        },
-        {
-          label: {
-            type: "label",
-            layer: 99,
-            size: [70, 20],
-            anchor_from: "top_middle",
-            anchor_to: "top_middle",
-            offset: [93, "39.5%"],
-            font_scale_factor: 0.8,
-            text: "#form_text",
-          },
-        },
-        { [`top_buttons@${namespace}.top_buttons`]: {} },
-      ],
-    },
-  };
+export function createTopSection(namespace: string): PanelBuilder<"top"> {
+  return panel("top").controls(
+    label("title", "#title_text")
+      .layer(99)
+      .size(30, 15)
+      .anchor("top_middle")
+      .offset(47, "39%")
+      .fontScaleFactor(0.55)
+      .bindings(globalBinding("#title_text")),
+    label("label", "#form_text")
+      .layer(99)
+      .size(70, 20)
+      .anchor("top_middle")
+      .offset(93, "39.5%")
+      .fontScaleFactor(0.8),
+    ref(`top_buttons@${namespace}.top_buttons`)
+  );
 }
 
 // Create a simple panel wrapping buttons
@@ -300,13 +271,10 @@ export function createButtonWrapper(
   name: string,
   namespace: string,
   buttonsName: string
-): Record<string, unknown> {
-  return {
-    [name]: {
-      type: "panel",
-      controls: [{ [`${buttonsName}@${namespace}.${buttonsName}`]: {} }],
-    },
-  };
+): PanelBuilder<string> {
+  return panel(name).controls(
+    ref(`${buttonsName}@${namespace}.${buttonsName}`)
+  );
 }
 
 // Create main panel with close button and content
@@ -315,22 +283,12 @@ export function createMainPanel(
   page: "first" | "second" | "third"
 ): PanelBuilder<`blackbarbar_${typeof page}`> {
   return panel(`blackbarbar_${page}`).controls(
-    {
-      "close_button@common.light_close_button": {
-        $close_button_offset: [-10, 111],
-      },
-    },
-    {
-      content: {
-        type: "image",
-        texture: `textures/ui/gui/rotom_phone/${page}`,
-        // @ts-ignore
-        keep_ratio: true,
-        controls: [
-          { [`button_controller@${namespace}.button_controller`]: {} },
-        ],
-      },
-    }
+    extendRaw("close_button", "common.light_close_button", {
+      $close_button_offset: [-10, 111],
+    }),
+    image("content", `textures/ui/gui/rotom_phone/${page}`)
+      .rawProp("keep_ratio", true)
+      .controls(ref(`button_controller@${namespace}.button_controller`))
   );
 }
 

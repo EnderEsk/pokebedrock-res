@@ -1,5 +1,121 @@
 {
   "namespace": "rotom_phone_second",
+  "button": {
+    "type": "stack_panel",
+    "orientation": "vertical",
+    "size": "$size",
+    "$size|default": [
+      14,
+      8
+    ],
+    "$size_img|default": [
+      8,
+      8
+    ],
+    "$offset_img|default": [
+      0,
+      0
+    ],
+    "$anchor_value|default": "bottom_middle",
+    "$button_font_scale_factor_value|default": 1,
+    "$new_ui_label_offset_value|default": [
+      0,
+      0
+    ],
+    "$source_property_flag|default": "",
+    "bindings": [
+      {
+        "binding_name": "#form_button_text",
+        "binding_name_override": "#form_button_text",
+        "binding_type": "collection",
+        "binding_collection_name": "form_buttons"
+      },
+      {
+        "binding_name": "#null",
+        "binding_type": "view",
+        "source_property_name": "$source_property_flag",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "image_panel": {
+          "type": "panel",
+          "size": "$size_img",
+          "bindings": [
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_property_name": "(not (#texture = ''))",
+              "target_property_name": "#visible",
+              "source_control_name": "image"
+            }
+          ],
+          "controls": [
+            {
+              "image": {
+                "type": "image",
+                "texture": "#texture",
+                "layer": 99,
+                "offset": "$offset_img",
+                "bindings": [
+                  {
+                    "binding_name": "#form_button_texture",
+                    "binding_name_override": "#texture",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#form_button_texture_file_system",
+                    "binding_name_override": "#texture_file_system",
+                    "binding_type": "collection",
+                    "binding_collection_name": "form_buttons"
+                  },
+                  {
+                    "binding_name": "#null",
+                    "binding_type": "view",
+                    "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))",
+                    "target_property_name": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "form_button@common_buttons.light_text_button": {
+          "$pressed_button_name": "button.form_button_click",
+          "$default_button_texture": "textures/ui/form_btn_background",
+          "$hover_button_texture": "textures/ui/form_btn_background_interact",
+          "$pressed_button_texture": "textures/ui/form_btn_background_interact",
+          "$border_visible": false,
+          "focus_enabled": false,
+          "$button_text": "#form_button_text",
+          "$button_text_binding_type": "collection",
+          "$button_text_grid_collection_name": "form_buttons",
+          "$button_text_size": [
+            "100%",
+            "100%"
+          ],
+          "$button_text_max_size": [
+            "100%",
+            "100%"
+          ],
+          "$anchor": "$anchor_value",
+          "$button_font_scale_factor": "$button_font_scale_factor_value",
+          "$new_ui_label_offset": "$new_ui_label_offset_value",
+          "bindings": [
+            {
+              "binding_name": "#null",
+              "binding_type": "collection_details",
+              "binding_collection_name": "form_buttons"
+            }
+          ]
+        }
+      }
+    ]
+  },
   "image_button_panel": {
     "type": "panel",
     "size": [
@@ -368,146 +484,6 @@
       }
     ]
   },
-  "blackbarbar_second": {
-    "type": "panel",
-    "controls": [
-      {
-        "close_button@common.light_close_button": {
-          "$close_button_offset": [
-            -10,
-            111
-          ]
-        }
-      },
-      {
-        "content": {
-          "type": "image",
-          "texture": "textures/ui/gui/rotom_phone/second",
-          "keep_ratio": true,
-          "controls": [
-            {
-              "button_controller@rotom_phone_second.button_controller": {}
-            }
-          ]
-        }
-      }
-    ]
-  },
-  "button": {
-    "type": "stack_panel",
-    "orientation": "vertical",
-    "size": "$size",
-    "$size|default": [
-      14,
-      8
-    ],
-    "$size_img|default": [
-      8,
-      8
-    ],
-    "$offset_img|default": [
-      0,
-      0
-    ],
-    "$anchor_value|default": "bottom_middle",
-    "$button_font_scale_factor_value|default": 1,
-    "$new_ui_label_offset_value|default": [
-      0,
-      0
-    ],
-    "$source_property_flag|default": "",
-    "bindings": [
-      {
-        "binding_name": "#form_button_text",
-        "binding_name_override": "#form_button_text",
-        "binding_type": "collection",
-        "binding_collection_name": "form_buttons"
-      },
-      {
-        "binding_name": "#null",
-        "binding_type": "view",
-        "source_property_name": "$source_property_flag",
-        "target_property_name": "#visible"
-      }
-    ],
-    "controls": [
-      {
-        "image_panel": {
-          "type": "panel",
-          "size": "$size_img",
-          "bindings": [
-            {
-              "binding_name": "#null",
-              "binding_type": "view",
-              "source_property_name": "(not (#texture = ''))",
-              "target_property_name": "#visible",
-              "source_control_name": "image"
-            }
-          ],
-          "controls": [
-            {
-              "image": {
-                "type": "image",
-                "layer": 99,
-                "offset": "$offset_img",
-                "bindings": [
-                  {
-                    "binding_name": "#form_button_texture",
-                    "binding_name_override": "#texture",
-                    "binding_type": "collection",
-                    "binding_collection_name": "form_buttons"
-                  },
-                  {
-                    "binding_name": "#form_button_texture_file_system",
-                    "binding_name_override": "#texture_file_system",
-                    "binding_type": "collection",
-                    "binding_collection_name": "form_buttons"
-                  },
-                  {
-                    "binding_name": "#null",
-                    "binding_type": "view",
-                    "source_property_name": "(not ((#texture = '') or (#texture = 'loading')))",
-                    "target_property_name": "#visible"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      },
-      {
-        "form_button@common_buttons.light_text_button": {
-          "$pressed_button_name": "button.form_button_click",
-          "$default_button_texture": "textures/ui/form_btn_background",
-          "$hover_button_texture": "textures/ui/form_btn_background_interact",
-          "$pressed_button_texture": "textures/ui/form_btn_background_interact",
-          "$border_visible": false,
-          "focus_enabled": false,
-          "$button_text": "#form_button_text",
-          "$button_text_binding_type": "collection",
-          "$button_text_grid_collection_name": "form_buttons",
-          "$button_text_size": [
-            "100%",
-            "100%"
-          ],
-          "$button_text_max_size": [
-            "100%",
-            "100%"
-          ],
-          "$anchor": "$anchor_value",
-          "$button_font_scale_factor": "$button_font_scale_factor_value",
-          "$new_ui_label_offset": "$new_ui_label_offset_value",
-          "bindings": [
-            {
-              "binding_name": "#null",
-              "binding_type": "collection_details",
-              "binding_collection_name": "form_buttons"
-            }
-          ]
-        }
-      }
-    ]
-  },
   "button_controller": {
     "type": "panel",
     "controls": [
@@ -723,6 +699,7 @@
             {
               "title": {
                 "type": "label",
+                "text": "#title_text",
                 "layer": 99,
                 "size": [
                   30,
@@ -734,7 +711,6 @@
                   47,
                   "39%"
                 ],
-                "text": "#title_text",
                 "font_scale_factor": 0.55,
                 "bindings": [
                   {
@@ -749,6 +725,7 @@
             {
               "label": {
                 "type": "label",
+                "text": "#form_text",
                 "layer": 99,
                 "size": [
                   70,
@@ -760,12 +737,36 @@
                   93,
                   "39.5%"
                 ],
-                "font_scale_factor": 0.8,
-                "text": "#form_text"
+                "font_scale_factor": 0.8
               }
             },
             {
               "top_buttons@rotom_phone_second.top_buttons": {}
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "blackbarbar_second": {
+    "type": "panel",
+    "controls": [
+      {
+        "close_button@common.light_close_button": {
+          "$close_button_offset": [
+            -10,
+            111
+          ]
+        }
+      },
+      {
+        "content": {
+          "type": "image",
+          "texture": "textures/ui/gui/rotom_phone/second",
+          "keep_ratio": true,
+          "controls": [
+            {
+              "button_controller@rotom_phone_second.button_controller": {}
             }
           ]
         }

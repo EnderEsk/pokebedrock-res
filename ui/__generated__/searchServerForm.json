@@ -1,5 +1,37 @@
 {
   "namespace": "search_server_form",
+  "long_form_panel@server_form.long_form_panel": {
+    "controls": [
+      {
+        "scrolling_panel@common.scrolling_panel": {
+          "anchor_to": "top_left",
+          "anchor_from": "top_left",
+          "$show_background": false,
+          "size": [
+            "100%",
+            "100%"
+          ],
+          "$scrolling_content": "search_server_form.long_form_scrolling_content",
+          "$scroll_size": [
+            5,
+            "100% - 4px"
+          ],
+          "$scrolling_pane_size": [
+            "100% - 4px",
+            "100% - 2px"
+          ],
+          "$scrolling_pane_offset": [
+            2,
+            0
+          ],
+          "$scroll_bar_right_padding_size": [
+            0,
+            0
+          ]
+        }
+      }
+    ]
+  },
   "long_form_scrolling_content": {
     "type": "stack_panel",
     "orientation": "vertical",
@@ -21,6 +53,7 @@
             {
               "main_label": {
                 "type": "label",
+                "text": "#form_text",
                 "offset": [
                   2,
                   2
@@ -31,8 +64,7 @@
                   "default"
                 ],
                 "anchor_from": "top_left",
-                "anchor_to": "top_left",
-                "text": "#form_text"
+                "anchor_to": "top_left"
               }
             }
           ]
@@ -104,38 +136,6 @@
       }
     ]
   },
-  "long_form_panel@server_form.long_form_panel": {
-    "controls": [
-      {
-        "scrolling_panel@common.scrolling_panel": {
-          "anchor_to": "top_left",
-          "anchor_from": "top_left",
-          "$show_background": false,
-          "size": [
-            "100%",
-            "100%"
-          ],
-          "$scrolling_content": "search_server_form.long_form_scrolling_content",
-          "$scroll_size": [
-            5,
-            "100% - 4px"
-          ],
-          "$scrolling_pane_size": [
-            "100% - 4px",
-            "100% - 2px"
-          ],
-          "$scrolling_pane_offset": [
-            2,
-            0
-          ],
-          "$scroll_bar_right_padding_size": [
-            0,
-            0
-          ]
-        }
-      }
-    ]
-  },
   "search_template@common_buttons.light_text_button": {
     "$pressed_button_name": "button.form_button_click",
     "size": [
@@ -156,18 +156,18 @@
         "binding_collection_name": "form_buttons"
       },
       {
+        "binding_name": "#form_button_text",
+        "binding_name_override": "#form_button_text",
         "binding_type": "collection",
         "binding_collection_name": "form_buttons",
-        "binding_condition": "none",
-        "binding_name": "#form_button_text",
-        "binding_name_override": "#form_button_text"
+        "binding_condition": "none"
       },
       {
         "binding_name": "#null",
         "binding_type": "view",
-        "source_control_name": "search_buttons",
         "source_property_name": "#item_name",
-        "target_property_name": "#search_em"
+        "target_property_name": "#search_em",
+        "source_control_name": "search_buttons"
       },
       {
         "binding_name": "#null",
