@@ -7879,9 +7879,6 @@
     "red_flower": {
       "textures": "textures/items/berries/cheri"
     },
-    "glowstone_dust": {
-      "textures": "textures/items/materials/crystal"
-    },
     "mower": {
       "textures": "textures/items/gui"
     },

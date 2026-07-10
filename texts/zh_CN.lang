@@ -10727,7 +10727,7 @@ forms.pc.gender.genderless=无性别
 forms.pc.gender.male=雄性
 forms.pc.hover.clickToMarkForRelease=点击标记放生
 forms.pc.hover.currentlySentOut=§7当前已派出
-forms.pc.hover.locked=
+forms.pc.hover.locked=§c已锁定
 forms.pc.hover.markedForRelease=已标记放生
 forms.pc.hover.moveHere=§l§e<=§r 移到这里
 forms.pc.hover.swapWith=§l§e<=§r 与 %1 交换

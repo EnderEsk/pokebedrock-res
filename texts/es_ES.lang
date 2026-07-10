@@ -10727,7 +10727,7 @@ forms.pc.gender.genderless=Sin género
 forms.pc.gender.male=Macho
 forms.pc.hover.clickToMarkForRelease=Haz clic para marcar para liberación
 forms.pc.hover.currentlySentOut=§7Actualmente fuera
-forms.pc.hover.locked=
+forms.pc.hover.locked=§cBloqueado
 forms.pc.hover.markedForRelease=Marcado para liberación
 forms.pc.hover.moveHere=§l§e<=§r Mover aquí
 forms.pc.hover.swapWith=§l§e<=§r Intercambiar con %1

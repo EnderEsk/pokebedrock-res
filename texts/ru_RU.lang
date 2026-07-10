@@ -10727,7 +10727,7 @@ forms.pc.gender.genderless=Бесполый
 forms.pc.gender.male=Мужской
 forms.pc.hover.clickToMarkForRelease=Нажмите, чтобы отметить для выпуска
 forms.pc.hover.currentlySentOut=§7Сейчас отправлен
-forms.pc.hover.locked=
+forms.pc.hover.locked=§cЗаблокировано
 forms.pc.hover.markedForRelease=Отмечен для выпуска
 forms.pc.hover.moveHere=§l§e<=§r Переместить сюда
 forms.pc.hover.swapWith=§l§e<=§r Обменять с %1
