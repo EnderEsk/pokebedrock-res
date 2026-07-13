@@ -50,6 +50,9 @@ item.pokeb:booster_ivs_short=Potenciador IVs (corto)
 item.pokeb:booster_shiny_default=Potenciador variocolor (normal)
 item.pokeb:booster_shiny_long=Potenciador variocolor (largo)
 item.pokeb:booster_shiny_short=Potenciador variocolor (corto)
+item.pokeb:booster_spawn_rate_default=Potenciador de aparición (30 minutos)
+item.pokeb:booster_spawn_rate_long=Potenciador de aparición (1 hora)
+item.pokeb:booster_spawn_rate_short=Potenciador de aparición (15 minutos)
 item.pokeb:booster_xp_default=Potenciador EXP (normal)
 item.pokeb:booster_xp_long=Potenciador EXP (largo)
 item.pokeb:booster_xp_short=Potenciador EXP (corto)
@@ -11557,6 +11560,13 @@ forms.moderate.button.inflictionLine=%1 - %2
 models.arena.error.battleFailed=§cError de combate: %1\n\n§e¡Por favor, repórtalo de inmediato!
 models.arena.error.prepareFailed=§cNo se pudo preparar la arena de combate. Te devolvemos a casa.
 quests.geodex.confirm.resetFoundBiomes=¿Quieres restablecer tus biomas encontrados para poder completar correctamente esta misión?
+
+commands.spawnrate.title=Configuración de aparición
+commands.spawnrate.label.enabled=Activar encuentros por pasos
+commands.spawnrate.label.stepsPerRoll=Pasos por intento de encuentro
+commands.spawnrate.label.baseChance=Probabilidad base de encuentro (%)
+commands.spawnrate.label.multiplier=Multiplicador global de aparición
+commands.spawnrate.success=Configuración de aparición actualizada.
 
 ## PHUD
 phud.playerPing.label=Ping actual: 

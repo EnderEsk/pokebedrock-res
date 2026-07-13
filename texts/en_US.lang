@@ -50,6 +50,9 @@ item.pokeb:booster_ivs_short=Booster Ivs Short
 item.pokeb:booster_shiny_default=Booster Shiny Default
 item.pokeb:booster_shiny_long=Booster Shiny Long
 item.pokeb:booster_shiny_short=Booster Shiny Short
+item.pokeb:booster_spawn_rate_default=Spawn Rate Booster (30 Minutes)
+item.pokeb:booster_spawn_rate_long=Spawn Rate Booster (1 Hour)
+item.pokeb:booster_spawn_rate_short=Spawn Rate Booster (15 Minutes)
 item.pokeb:booster_xp_default=Booster Xp Default
 item.pokeb:booster_xp_long=Booster Xp Long
 item.pokeb:booster_xp_short=Booster Xp Short
@@ -11557,6 +11560,13 @@ forms.moderate.button.inflictionLine=%1 - %2
 models.arena.error.battleFailed=§cBattle Error: %1\n\n§ePlease report this immediately!
 models.arena.error.prepareFailed=§cThe battle arena could not be prepared. Returning you home.
 quests.geodex.confirm.resetFoundBiomes=Do you want to reset your found biomes so you can properly complete this quest?
+
+commands.spawnrate.title=Spawn Rate Settings
+commands.spawnrate.label.enabled=Enable step encounters
+commands.spawnrate.label.stepsPerRoll=Steps per encounter roll
+commands.spawnrate.label.baseChance=Base encounter chance (%)
+commands.spawnrate.label.multiplier=Global spawn multiplier
+commands.spawnrate.success=Spawn rate settings updated.
 
 ## PHUD
 phud.playerPing.label=Current Ping: 

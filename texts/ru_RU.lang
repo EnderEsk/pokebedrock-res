@@ -50,6 +50,9 @@ item.pokeb:booster_ivs_short=Бустер IV (короткий)
 item.pokeb:booster_shiny_default=Бустер блестящих (стандартный)
 item.pokeb:booster_shiny_long=Бустер блестящих (долгий)
 item.pokeb:booster_shiny_short=Бустер блестящих (короткий)
+item.pokeb:booster_spawn_rate_default=Бустер появления (30 минут)
+item.pokeb:booster_spawn_rate_long=Бустер появления (1 час)
+item.pokeb:booster_spawn_rate_short=Бустер появления (15 минут)
 item.pokeb:booster_xp_default=Бустер опыта (стандартный)
 item.pokeb:booster_xp_long=Бустер опыта (долгий)
 item.pokeb:booster_xp_short=Бустер опыта (короткий)
@@ -11557,6 +11560,13 @@ forms.moderate.button.inflictionLine=%1 - %2
 models.arena.error.battleFailed=§cОшибка боя: %1\n\n§eПожалуйста, немедленно сообщите об этом!
 models.arena.error.prepareFailed=§cНе удалось подготовить боевую арену. Возвращаем вас домой.
 quests.geodex.confirm.resetFoundBiomes=Хотите сбросить найденные биомы, чтобы правильно выполнить это задание?
+
+commands.spawnrate.title=Настройки появления
+commands.spawnrate.label.enabled=Включить встречи за шаги
+commands.spawnrate.label.stepsPerRoll=Шагов на попытку встречи
+commands.spawnrate.label.baseChance=Базовый шанс встречи (%)
+commands.spawnrate.label.multiplier=Глобальный множитель появления
+commands.spawnrate.success=Настройки появления обновлены.
 
 ## PHUD
 phud.playerPing.label=Текущий пинг: 

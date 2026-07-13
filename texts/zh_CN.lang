@@ -50,6 +50,9 @@ item.pokeb:booster_ivs_short=个体值短时加成器
 item.pokeb:booster_shiny_default=异色默认加成器
 item.pokeb:booster_shiny_long=异色长时加成器
 item.pokeb:booster_shiny_short=异色短时加成器
+item.pokeb:booster_spawn_rate_default=生成率默认加成器
+item.pokeb:booster_spawn_rate_long=生成率长时加成器
+item.pokeb:booster_spawn_rate_short=生成率短时加成器
 item.pokeb:booster_xp_default=经验默认加成器
 item.pokeb:booster_xp_long=经验长时加成器
 item.pokeb:booster_xp_short=经验短时加成器
@@ -11557,6 +11560,13 @@ forms.moderate.button.inflictionLine=%1 - %2
 models.arena.error.battleFailed=§c对战错误：%1\n\n§e请立即报告此问题！
 models.arena.error.prepareFailed=§c无法准备对战场地。正在将你送回家。
 quests.geodex.confirm.resetFoundBiomes=要重置你已发现的生物群系，以便正确完成此任务吗？
+
+commands.spawnrate.title=生成率设置
+commands.spawnrate.label.enabled=启用步数遭遇
+commands.spawnrate.label.stepsPerRoll=每次遭遇判定所需步数
+commands.spawnrate.label.baseChance=基础遭遇概率（%）
+commands.spawnrate.label.multiplier=全局生成率倍率
+commands.spawnrate.success=生成率设置已更新。
 
 ## PHUD
 phud.playerPing.label=当前延迟: 
