@@ -6,6 +6,7 @@ import {
   toRelativePath,
   maxVersion,
   sortObjectKeys,
+  isPathIncludedForEnvironment,
 } from "./utils";
 import { COMPILE_EXCEPTIONS } from "./data/compileExceptions";
 import { REQUIRED_FORMAT_VERSIONS } from "./validateFormatVersions";
@@ -74,6 +75,7 @@ function getKeyValueConfig(
  */
 function compileKeyValueAssets(
   config: KeyValueAssetConfig,
+  environment: string,
   skipPaths: Set<string>,
   generated: GeneratedEntry[],
 ) {
@@ -89,6 +91,8 @@ function compileKeyValueAssets(
 
   for (const filePath of files) {
     const relPath = toRelativePath(filePath);
+    if (!isPathIncludedForEnvironment(relPath, environment)) continue;
+
     const data = readJsonFileStrippingComments(filePath) as Record<
       string,
       unknown
@@ -188,6 +192,7 @@ function compileKeyValueAssets(
  */
 function compileGeometry(
   baseDir: string,
+  environment: string,
   skipPaths: Set<string>,
   generated: GeneratedEntry[],
 ) {
@@ -211,6 +216,8 @@ function compileGeometry(
 
   for (const filePath of files) {
     const relPath = toRelativePath(filePath);
+    if (!isPathIncludedForEnvironment(relPath, environment)) continue;
+
     const data = readJsonFileStrippingComments(
       filePath,
     ) as CombineGeometryFile | null;
@@ -321,11 +328,11 @@ function compileGeometry(
  *
  * @returns Object with `generatedEntries` (combined + exception files to inject) and `skipPaths` (original paths the archiver must not include).
  */
-export function compileCombinedAssets(): CombineResult {
+export function compileCombinedAssets(environment: string): CombineResult {
   const skipPaths = new Set<string>();
   const generatedEntries: GeneratedEntry[] = [];
 
-  Logger.info("[combine] Compiling combined assets...");
+  Logger.info(`[combine] Compiling combined assets for "${environment}"...`);
 
   // Pack root plus each subpack that ships its own heavy asset stack. Each base
   // is merged independently so its combined files (and skipped source files)
@@ -333,14 +340,16 @@ export function compileCombinedAssets(): CombineResult {
   const baseDirs = ["", "subpacks/3d"];
 
   for (const baseDir of baseDirs) {
+    if (baseDir && !isPathIncludedForEnvironment(baseDir, environment)) continue;
+
     const label = baseDir || "root";
     for (const category of KEY_VALUE_CATEGORIES) {
       const config = getKeyValueConfig(category, baseDir);
-      compileKeyValueAssets(config, skipPaths, generatedEntries);
+      compileKeyValueAssets(config, environment, skipPaths, generatedEntries);
       Logger.info(`[combine]  ✓ ${label}/${config.category}`);
     }
 
-    compileGeometry(baseDir, skipPaths, generatedEntries);
+    compileGeometry(baseDir, environment, skipPaths, generatedEntries);
     Logger.info(`[combine]  ✓ ${label}/models (geometry)`);
   }
 

@@ -5,7 +5,7 @@ describe("compileCombinedAssets", () => {
   let result: ReturnType<typeof compileCombinedAssets>;
 
   beforeAll(() => {
-    result = compileCombinedAssets();
+    result = compileCombinedAssets("adventure");
   });
 
   it("should produce combined animation file", () => {

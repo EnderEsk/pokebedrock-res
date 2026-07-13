@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import fsExtra from "fs-extra";
 import { PokemonSkinOption } from "./data/customizations";
+import { RES_PATH_ENVIRONMENTS } from "./data/pathEnvironments";
+import picomatch from "picomatch";
 
 export class Logger {
   private static readonly COLORS: Record<LogType, string> = {
@@ -11,7 +13,7 @@ export class Logger {
     debug: "\x1b[34m", // Blue
     critical: "\x1b[35m", // Magenta
     trace: "\x1b[36m", // Cyan
-    fatal: "\x1b[41m", // Red background
+    fatal: "\x1b[41m" // Red background
   };
 
   /**
@@ -355,7 +357,9 @@ export function collectFiles(dir: string, extensions: string[]): string[] {
  * @param filePath - Path to the JSON file.
  * @returns Parsed value or `null` on error.
  */
-export function readJsonFileStrippingComments(filePath: string): unknown | null {
+export function readJsonFileStrippingComments(
+  filePath: string
+): unknown | null {
   try {
     const raw = fs.readFileSync(filePath, "utf-8");
     const cleaned = removeCommentsFromJSON(raw);
@@ -409,4 +413,56 @@ export function sortObjectKeys(
     sorted[key] = obj[key];
   }
   return sorted;
+}
+
+/**
+ * Capitalizes the first letter of a string.
+ * @param str - Input string.
+ * @returns String with the first letter capitalized.
+ */
+export function capitalizeFirstLetter(str: string): string {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+const pathMatchers = Object.entries(RES_PATH_ENVIRONMENTS).map(
+  ([pattern, environments]) => ({
+    pattern,
+    match: picomatch(pattern),
+    environments
+  })
+);
+
+/**
+ * Returns the environments for a given file path.
+ * If the file path matches a specific pattern in RES_PATH_ENVIRONMENTS, it returns
+ * the corresponding environments. If no match is found, it returns ["all"] as the default.
+ *
+ * @param filePath - The file path to check.
+ * @returns An array of environments for the given file path.
+ */
+export function getEnvironmentsForPath(filePath: string): string[] {
+  // Exact match first
+  if (filePath in RES_PATH_ENVIRONMENTS)
+    return RES_PATH_ENVIRONMENTS[filePath]!;
+  // Then glob patterns
+  for (const { pattern, match, environments } of pathMatchers) {
+    if (pattern === filePath) continue;
+
+    if (match(filePath)) return environments;
+  }
+  // If no match is found, return "all" as the default environment
+  return ["all"];
+}
+
+/**
+ * Returns whether a pack-relative path should be included in a build for the
+ * given environment, using the same rules as root-level path filtering.
+ */
+export function isPathIncludedForEnvironment(
+  filePath: string,
+  environment: string
+): boolean {
+  const environments = getEnvironmentsForPath(filePath);
+  return environments.includes("all") || environments.includes(environment);
 }
