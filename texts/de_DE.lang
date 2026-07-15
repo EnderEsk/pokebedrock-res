@@ -50,6 +50,9 @@ item.pokeb:booster_ivs_short=Booster IVs (Kurz)
 item.pokeb:booster_shiny_default=Booster Schillernd (Standard)
 item.pokeb:booster_shiny_long=Booster Schillernd (Lang)
 item.pokeb:booster_shiny_short=Booster Schillernd (Kurz)
+item.pokeb:booster_spawn_rate_default=Spawnraten-Booster (30 Minuten)
+item.pokeb:booster_spawn_rate_long=Spawnraten-Booster (1 Stunde)
+item.pokeb:booster_spawn_rate_short=Spawnraten-Booster (15 Minuten)
 item.pokeb:booster_xp_default=Booster EP (Standard)
 item.pokeb:booster_xp_long=Booster EP (Lang)
 item.pokeb:booster_xp_short=Booster EP (Kurz)
@@ -11557,6 +11560,13 @@ forms.moderate.button.inflictionLine=%1 - %2
 models.arena.error.battleFailed=§cKampf-Fehler: %1\n\n§eBitte melde dies sofort!
 models.arena.error.prepareFailed=§cDie Kampfarena konnte nicht vorbereitet werden. Du wirst nach Hause gebracht.
 quests.geodex.confirm.resetFoundBiomes=Möchtest du deine gefundenen Biome zurücksetzen, um diese Quest richtig abschließen zu können?
+
+commands.spawnrate.title=Spawnraten-Einstellungen
+commands.spawnrate.label.enabled=Schrittbegegnungen aktivieren
+commands.spawnrate.label.stepsPerRoll=Schritte pro Begegnungswurf
+commands.spawnrate.label.baseChance=Basis-Begegnungschance (%)
+commands.spawnrate.label.multiplier=Globaler Spawn-Multiplikator
+commands.spawnrate.success=Spawnraten-Einstellungen aktualisiert.
 
 ## PHUD
 phud.playerPing.label=Aktueller Ping: 

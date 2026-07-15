@@ -50,6 +50,9 @@ item.pokeb:booster_ivs_short=Impulsionador IVs (curto)
 item.pokeb:booster_shiny_default=Impulsionador shiny (padrÃ£o)
 item.pokeb:booster_shiny_long=Impulsionador shiny (longo)
 item.pokeb:booster_shiny_short=Impulsionador shiny (curto)
+item.pokeb:booster_spawn_rate_default=Impulsionador de aparição (30 minutos)
+item.pokeb:booster_spawn_rate_long=Impulsionador de aparição (1 hora)
+item.pokeb:booster_spawn_rate_short=Impulsionador de aparição (15 minutos)
 item.pokeb:booster_xp_default=Impulsionador EXP (padrÃ£o)
 item.pokeb:booster_xp_long=Impulsionador EXP (longo)
 item.pokeb:booster_xp_short=Impulsionador EXP (curto)
@@ -11557,6 +11560,13 @@ forms.moderate.button.inflictionLine=%1 - %2
 models.arena.error.battleFailed=§cBattle Error: %1\n\n§ePlease report this immediately!
 models.arena.error.prepareFailed=§cThe battle arena could not be prepared. Returning you home.
 quests.geodex.confirm.resetFoundBiomes=Do you want to reset your found biomes so you can properly complete this quest?
+
+commands.spawnrate.title=Configurações de aparição
+commands.spawnrate.label.enabled=Ativar encontros por passos
+commands.spawnrate.label.stepsPerRoll=Passos por tentativa de encontro
+commands.spawnrate.label.baseChance=Chance base de encontro (%)
+commands.spawnrate.label.multiplier=Multiplicador global de aparição
+commands.spawnrate.success=Configurações de aparição atualizadas.
 
 ## PHUD
 phud.playerPing.label=Ping atual: 

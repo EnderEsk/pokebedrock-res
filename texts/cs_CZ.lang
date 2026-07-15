@@ -50,6 +50,9 @@ item.pokeb:booster_ivs_short=Posilovač IV (krátký)
 item.pokeb:booster_shiny_default=Posilovač shiny (standardní)
 item.pokeb:booster_shiny_long=Posilovač shiny (dlouhý)
 item.pokeb:booster_shiny_short=Posilovač shiny (krátký)
+item.pokeb:booster_spawn_rate_default=Posilovač výskytu (30 minut)
+item.pokeb:booster_spawn_rate_long=Posilovač výskytu (1 hodina)
+item.pokeb:booster_spawn_rate_short=Posilovač výskytu (15 minut)
 item.pokeb:booster_xp_default=Posilovač XP (standardní)
 item.pokeb:booster_xp_long=Posilovač XP (dlouhý)
 item.pokeb:booster_xp_short=Posilovač XP (krátký)
@@ -11557,6 +11560,13 @@ forms.moderate.button.inflictionLine=%1 - %2
 models.arena.error.battleFailed=§cChyba souboje: %1\n\n§eProsím, okamžitě to nahlas!
 models.arena.error.prepareFailed=§cBojovou arénu se nepodařilo připravit. Vracíme tě domů.
 quests.geodex.confirm.resetFoundBiomes=Chceš resetovat nalezené biomy, abys mohl tento úkol správně dokončit?
+
+commands.spawnrate.title=Nastavení výskytu
+commands.spawnrate.label.enabled=Povolit setkání podle kroků
+commands.spawnrate.label.stepsPerRoll=Kroky na pokus o setkání
+commands.spawnrate.label.baseChance=Základní šance na setkání (%)
+commands.spawnrate.label.multiplier=Globální násobitel výskytu
+commands.spawnrate.success=Nastavení výskytu aktualizováno.
 
 ## PHUD
 phud.playerPing.label=Aktuální ping: 

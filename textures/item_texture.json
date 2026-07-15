@@ -65,6 +65,15 @@
     "booster_shiny_short": {
       "textures": "textures/items/boosters/shiny_short"
     },
+    "booster_spawn_rate_default": {
+      "textures": "textures/items/boosters/ha_spawn_default"
+    },
+    "booster_spawn_rate_long": {
+      "textures": "textures/items/boosters/ha_spawn_long"
+    },
+    "booster_spawn_rate_short": {
+      "textures": "textures/items/boosters/ha_spawn_short"
+    },
     "booster_xp_default": {
       "textures": "textures/items/boosters/xp_default"
     },
