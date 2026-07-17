@@ -1,4 +1,4 @@
-﻿pack.name=§lPokeBedrock v2.18.3 RES
+pack.name=§lPokeBedrock v2.18.3 RES
 pack.description=§aEin High-Level-Pokémon-Addon von Smell of curry erstellt für Minecraft Bedrock
 
 ## Item Group Names
@@ -11364,6 +11364,7 @@ forms.tutorial.button.thanksFindMarla=Danke, ich suche Marla
 forms.tutorial.button.yeahGreat=Ja, die waren toll!
 forms.tutorial.button.yeahHeDid=Ja, hat er.
 forms.tutorial.button.yeahYeah=Ja. Ja
+forms.tutorial.error.marlaMustFinish=§cYou still need to finish your battle with Marla!
 forms.tutorial.error.marlaNotReady=§cMarla ist noch nicht bereit. Versuche es erneut.
 forms.tutorial.success.completionBanner=§6§l═══════════════════════\n§e§l        TUTORIAL ABGESCHLOSSEN!\n\n§fWillkommen bei §a%1§f — deine echte Reise beginnt jetzt.\n§7Du hast jetzt §fvollen Chat-Zugang§7\n§7Auffrischung? Nutze §f/quests§7, §f/pb§7 oder §f/help§7 jederzeit.\n§6§l═══════════════════════
 forms.tutorial.title.nurseJoy=Schwester Joy
@@ -11559,6 +11560,7 @@ forms.claims.button.claimBounds=§9From (%1,%2) to (%3,%4)
 forms.moderate.button.inflictionLine=%1 - %2
 models.arena.error.battleFailed=§cKampf-Fehler: %1\n\n§eBitte melde dies sofort!
 models.arena.error.prepareFailed=§cDie Kampfarena konnte nicht vorbereitet werden. Du wirst nach Hause gebracht.
+models.arena.error.protected=§cYou can't modify blocks in a battle arena!
 quests.geodex.confirm.resetFoundBiomes=Möchtest du deine gefundenen Biome zurücksetzen, um diese Quest richtig abschließen zu können?
 
 commands.spawnrate.title=Spawnraten-Einstellungen
@@ -11569,4 +11571,4 @@ commands.spawnrate.label.multiplier=Globaler Spawn-Multiplikator
 commands.spawnrate.success=Spawnraten-Einstellungen aktualisiert.
 
 ## PHUD
-phud.playerPing.label=Aktueller Ping: 
+phud.playerPing.label=Aktueller Ping:

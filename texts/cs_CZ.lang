@@ -11364,6 +11364,7 @@ forms.tutorial.button.thanksFindMarla=Díky, najdu Marlu
 forms.tutorial.button.yeahGreat=Jo, byli skvělí!
 forms.tutorial.button.yeahHeDid=Jo, řekl.
 forms.tutorial.button.yeahYeah=Jo. Jo
+forms.tutorial.error.marlaMustFinish=§cYou still need to finish your battle with Marla!
 forms.tutorial.error.marlaNotReady=§cMarla ještě není připravena. Zkus to znovu.
 forms.tutorial.success.completionBanner=§6§l═══════════════════════\n§e§l        TUTORIAL DOKONČEN!\n\n§fVítej v §a%1§f - tvá opravdová cesta právě začíná.\n§7Teď máš §fplný chat přístup§7\n§7Potřebuješ refresh? Použij §f/quests§7, §f/pb§7 nebo §f/help§7 kdykoli.\n§6§l═══════════════════════
 forms.tutorial.title.nurseJoy=Nurse Joy
@@ -11559,6 +11560,7 @@ forms.claims.button.claimBounds=§9Od (%1,%2) do (%3,%4)
 forms.moderate.button.inflictionLine=%1 - %2
 models.arena.error.battleFailed=§cChyba souboje: %1\n\n§eProsím, okamžitě to nahlas!
 models.arena.error.prepareFailed=§cBojovou arénu se nepodařilo připravit. Vracíme tě domů.
+models.arena.error.protected=§cYou can't modify blocks in a battle arena!
 quests.geodex.confirm.resetFoundBiomes=Chceš resetovat nalezené biomy, abys mohl tento úkol správně dokončit?
 
 commands.spawnrate.title=Nastavení výskytu
@@ -11569,4 +11571,4 @@ commands.spawnrate.label.multiplier=Globální násobitel výskytu
 commands.spawnrate.success=Nastavení výskytu aktualizováno.
 
 ## PHUD
-phud.playerPing.label=Aktuální ping: 
+phud.playerPing.label=Aktuální ping:

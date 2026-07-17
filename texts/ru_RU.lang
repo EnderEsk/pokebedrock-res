@@ -11364,6 +11364,7 @@ forms.tutorial.button.thanksFindMarla=Спасибо, пойду искать Ma
 forms.tutorial.button.yeahGreat=Да, было здорово!
 forms.tutorial.button.yeahHeDid=Да, рассказал.
 forms.tutorial.button.yeahYeah=Да. Да
+forms.tutorial.error.marlaMustFinish=§cYou still need to finish your battle with Marla!
 forms.tutorial.error.marlaNotReady=§cMarla ещё не готова. Попробуйте снова.
 forms.tutorial.success.completionBanner=§6§l═══════════════════════\n§e§l        ОБУЧЕНИЕ ЗАВЕРШЕНО!\n\n§fДобро пожаловать в §a%1§f — ваше настоящее путешествие начинается сейчас.\n§7Теперь у вас §fполный доступ к чату§7\n§7Нужно освежить память? Используйте §f/quests§7, §f/pb§7 или §f/help§7 в любое время.\n§6§l═══════════════════════
 forms.tutorial.title.nurseJoy=Nurse Joy
@@ -11559,6 +11560,7 @@ forms.claims.button.claimBounds=§9От (%1,%2) до (%3,%4)
 forms.moderate.button.inflictionLine=%1 - %2
 models.arena.error.battleFailed=§cОшибка боя: %1\n\n§eПожалуйста, немедленно сообщите об этом!
 models.arena.error.prepareFailed=§cНе удалось подготовить боевую арену. Возвращаем вас домой.
+models.arena.error.protected=§cYou can't modify blocks in a battle arena!
 quests.geodex.confirm.resetFoundBiomes=Хотите сбросить найденные биомы, чтобы правильно выполнить это задание?
 
 commands.spawnrate.title=Настройки появления
@@ -11569,4 +11571,4 @@ commands.spawnrate.label.multiplier=Глобальный множитель по
 commands.spawnrate.success=Настройки появления обновлены.
 
 ## PHUD
-phud.playerPing.label=Текущий пинг: 
+phud.playerPing.label=Текущий пинг:

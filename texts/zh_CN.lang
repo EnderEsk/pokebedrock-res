@@ -11364,6 +11364,7 @@ forms.tutorial.button.thanksFindMarla=谢谢，我去找 Marla
 forms.tutorial.button.yeahGreat=是啊，很棒！
 forms.tutorial.button.yeahHeDid=是啊，他说了。
 forms.tutorial.button.yeahYeah=嗯，嗯
+forms.tutorial.error.marlaMustFinish=§cYou still need to finish your battle with Marla!
 forms.tutorial.error.marlaNotReady=§cMarla 还没准备好。请重试。
 forms.tutorial.success.completionBanner=§6§l═══════════════════════\n§e§l        教程完成！\n\n§f欢迎来到 §a%1§f——你的真正旅程现在开始。\n§7你现在拥有 §f完整聊天权限§7\n§7需要复习？随时使用 §f/quests§7、§f/pb§7 或 §f/help§7。\n§6§l═══════════════════════
 forms.tutorial.title.nurseJoy=乔伊小姐
@@ -11559,6 +11560,7 @@ forms.claims.button.claimBounds=§9从 (%1,%2) 到 (%3,%4)
 forms.moderate.button.inflictionLine=%1 - %2
 models.arena.error.battleFailed=§c对战错误：%1\n\n§e请立即报告此问题！
 models.arena.error.prepareFailed=§c无法准备对战场地。正在将你送回家。
+models.arena.error.protected=§cYou can't modify blocks in a battle arena!
 quests.geodex.confirm.resetFoundBiomes=要重置你已发现的生物群系，以便正确完成此任务吗？
 
 commands.spawnrate.title=生成率设置
@@ -11569,4 +11571,4 @@ commands.spawnrate.label.multiplier=全局生成率倍率
 commands.spawnrate.success=生成率设置已更新。
 
 ## PHUD
-phud.playerPing.label=当前延迟: 
+phud.playerPing.label=当前延迟:
