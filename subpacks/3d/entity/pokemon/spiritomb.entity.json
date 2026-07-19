@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/spiritomb/shiny_spiritomb.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.spiritomb.ground_idle",
 				"default_air_idle": "animation.spiritomb.ground_idle",
-				"default_water_idle": "animation.spiritomb.water_idle",
+				"default_water_idle": "animation.spiritomb.ground_idle",
 				"default_walking": "animation.spiritomb.walking",
 				"default_flying": "animation.spiritomb.ground_idle",
 				"default_ride_flying": "animation.spiritomb.ground_idle",
-				"default_swimming": "animation.spiritomb.swimming",
-				"default_sleeping": "animation.spiritomb.sleeping",
+				"default_swimming": "animation.spiritomb.ground_idle",
+				"default_sleeping": "animation.spiritomb.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.spiritomb.attack",
 				"blink": "animation.spiritomb.blink",
 				"controller": "controller.animation.pokemon"

@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/chandelure/shiny_chandelure.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.chandelure.ground_idle",
 				"default_air_idle": "animation.chandelure.ground_idle",
-				"default_water_idle": "animation.chandelure.water_idle",
+				"default_water_idle": "animation.chandelure.ground_idle",
 				"default_walking": "animation.chandelure.walking",
 				"default_flying": "animation.chandelure.ground_idle",
 				"default_ride_flying": "animation.chandelure.ground_idle",
-				"default_swimming": "animation.chandelure.swimming",
+				"default_swimming": "animation.chandelure.ground_idle",
 				"default_sleeping": "animation.chandelure.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.chandelure.attack",
 				"blink": "animation.chandelure.blink",
 				"controller": "controller.animation.pokemon"

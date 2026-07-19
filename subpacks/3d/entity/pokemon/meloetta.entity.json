@@ -17,7 +17,8 @@
 				"shiny_christmas": "textures/entity/pokemon/meloetta/shiny_meloetta_christmas.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -44,20 +45,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.meloetta.ground_idle",
 				"default_air_idle": "animation.meloetta.air_idle",
-				"default_water_idle": "animation.meloetta.water_idle",
-				"default_walking": "animation.meloetta.walking",
+				"default_water_idle": "animation.meloetta.ground_idle",
+				"default_walking": "animation.meloetta.ground_idle",
 				"default_flying": "animation.meloetta.flying",
 				"default_ride_flying": "animation.meloetta.flying",
-				"default_swimming": "animation.meloetta.swimming",
-				"default_sleeping": "animation.meloetta.sleeping",
+				"default_swimming": "animation.meloetta.ground_idle",
+				"default_sleeping": "animation.meloetta.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.meloetta.attack",
 				"blink": "animation.meloetta.blink",
 				"controller": "controller.animation.pokemon"

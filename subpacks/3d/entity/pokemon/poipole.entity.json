@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/poipole/shiny_poipole.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.poipole.ground_idle",
 				"default_air_idle": "animation.poipole.air_idle",
-				"default_water_idle": "animation.poipole.water_idle",
+				"default_water_idle": "animation.poipole.ground_idle",
 				"default_walking": "animation.poipole.walking",
 				"default_flying": "animation.poipole.flying",
 				"default_ride_flying": "animation.poipole.flying",
-				"default_swimming": "animation.poipole.swimming",
-				"default_sleeping": "animation.poipole.sleeping",
+				"default_swimming": "animation.poipole.ground_idle",
+				"default_sleeping": "animation.poipole.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.poipole.attack",
 				"blink": "animation.poipole.blink",
 				"controller": "controller.animation.pokemon"

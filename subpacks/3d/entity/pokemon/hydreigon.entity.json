@@ -15,7 +15,8 @@
 				"shiny_christmas": "textures/entity/pokemon/hydreigon/shiny_hydreigon_christmas.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,20 +43,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.hydreigon.ground_idle",
 				"default_air_idle": "animation.hydreigon.air_idle",
-				"default_water_idle": "animation.hydreigon.water_idle",
-				"default_walking": "animation.hydreigon.walking",
+				"default_water_idle": "animation.hydreigon.ground_idle",
+				"default_walking": "animation.hydreigon.ground_idle",
 				"default_flying": "animation.hydreigon.flying",
 				"default_ride_flying": "animation.hydreigon.flying",
-				"default_swimming": "animation.hydreigon.swimming",
+				"default_swimming": "animation.hydreigon.ground_idle",
 				"default_sleeping": "animation.hydreigon.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.hydreigon.attack",
 				"blink": "animation.hydreigon.blink",
 				"controller": "controller.animation.pokemon"

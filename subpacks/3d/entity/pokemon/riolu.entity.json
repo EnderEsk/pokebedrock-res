@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/riolu/shiny_riolu.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.riolu.ground_idle",
 				"default_air_idle": "animation.riolu.ground_idle",
-				"default_water_idle": "animation.riolu.water_idle",
+				"default_water_idle": "animation.riolu.ground_idle",
 				"default_walking": "animation.riolu.walking",
 				"default_flying": "animation.riolu.ground_idle",
 				"default_ride_flying": "animation.riolu.ground_idle",
-				"default_swimming": "animation.riolu.swimming",
+				"default_swimming": "animation.riolu.ground_idle",
 				"default_sleeping": "animation.riolu.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.riolu.attack",
 				"blink": "animation.riolu.blink",
 				"controller": "controller.animation.pokemon"

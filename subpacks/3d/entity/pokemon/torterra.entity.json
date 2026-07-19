@@ -16,7 +16,8 @@
 				"shiny_stpatrick": "textures/entity/pokemon/torterra/shiny_torterra_stpatrick.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -43,6 +44,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -50,11 +54,11 @@
 				"default_blink": "animation.torterra.blink",
 				"default_ground_idle": "animation.torterra.ground_idle",
 				"default_air_idle": "animation.torterra.ground_idle",
-				"default_water_idle": "animation.torterra.water_idle",
+				"default_water_idle": "animation.torterra.ground_idle",
 				"default_walking": "animation.torterra.walking",
 				"default_flying": "animation.torterra.ground_idle",
 				"default_ride_flying": "animation.torterra.ground_idle",
-				"default_swimming": "animation.torterra.swimming",
+				"default_swimming": "animation.torterra.ground_idle",
 				"default_sleeping": "animation.torterra.sleeping",
 				"default_attack": "animation.torterra.attack",
 				"stpatrick_ground_idle": "animation.torterra_stpatrick.ground_idle",
@@ -66,6 +70,7 @@
 				"stpatrick_faint": "animation.torterra_stpatrick.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.torterra_attack",
 				"blink": "controller.animation.pokemon.torterra_blink",
 				"controller": "controller.animation.pokemon.torterra"

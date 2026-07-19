@@ -15,7 +15,8 @@
 				"shiny_omega": "textures/entity/pokemon/arceusdark/shiny_arceusdark_omega.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -58,6 +62,7 @@
 				"default_attack": "animation.arceusdark.attack",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.arceusdark_attack",
 				"blink": "controller.animation.pokemon.arceusdark_blink",
 				"controller": "controller.animation.pokemon.arceusdark"

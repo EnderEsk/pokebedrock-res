@@ -15,7 +15,8 @@
 				"shiny_female_default": "textures/entity/pokemon/heracrossmega/heracrossmega.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,13 +53,14 @@
 				"default_ground_idle": "animation.heracrossmega.ground_idle",
 				"default_air_idle": "animation.heracrossmega.air_idle",
 				"default_water_idle": "animation.heracrossmega.ground_idle",
-				"default_walking": "animation.heracrossmega.walking",
+				"default_walking": "animation.heracrossmega.ground_idle",
 				"default_flying": "animation.heracrossmega.flying",
 				"default_ride_flying": "animation.heracrossmega.flying",
 				"default_swimming": "animation.heracrossmega.ground_idle",
-				"default_sleeping": "animation.heracrossmega.sleeping",
+				"default_sleeping": "animation.heracrossmega.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.heracrossmega.attack",
 				"blink": "animation.heracrossmega.blink",
 				"controller": "controller.animation.pokemon"

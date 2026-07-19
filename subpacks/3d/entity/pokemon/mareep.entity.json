@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/mareep/shiny_mareep.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.mareep.ground_idle",
 				"default_air_idle": "animation.mareep.ground_idle",
-				"default_water_idle": "animation.mareep.water_idle",
+				"default_water_idle": "animation.mareep.ground_idle",
 				"default_walking": "animation.mareep.walking",
 				"default_flying": "animation.mareep.ground_idle",
 				"default_ride_flying": "animation.mareep.ground_idle",
-				"default_swimming": "animation.mareep.swimming",
+				"default_swimming": "animation.mareep.ground_idle",
 				"default_sleeping": "animation.mareep.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.mareep.attack",
 				"blink": "animation.mareep.blink",
 				"controller": "controller.animation.pokemon"

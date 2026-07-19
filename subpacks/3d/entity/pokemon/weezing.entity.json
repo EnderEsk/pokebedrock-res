@@ -14,6 +14,7 @@
 			},
 			"particle_effects": {
 				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle",
 				"poison_smoke": "pokeb:poison_smoke"
 			},
 			"scripts": {
@@ -41,6 +42,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -55,6 +59,7 @@
 				"default_sleeping": "animation.weezing.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.weezing.attack",
 				"blink": "animation.weezing.blink",
 				"controller": "controller.animation.pokemon"

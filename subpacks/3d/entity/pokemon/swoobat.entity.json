@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/swoobat/shiny_swoobat.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.swoobat.ground_idle",
 				"default_air_idle": "animation.swoobat.air_idle",
-				"default_water_idle": "animation.swoobat.water_idle",
-				"default_walking": "animation.swoobat.walking",
+				"default_water_idle": "animation.swoobat.ground_idle",
+				"default_walking": "animation.swoobat.ground_idle",
 				"default_flying": "animation.swoobat.flying",
 				"default_ride_flying": "animation.swoobat.flying",
-				"default_swimming": "animation.swoobat.swimming",
-				"default_sleeping": "animation.swoobat.sleeping",
+				"default_swimming": "animation.swoobat.ground_idle",
+				"default_sleeping": "animation.swoobat.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.swoobat.attack",
 				"blink": "animation.swoobat.blink",
 				"controller": "controller.animation.pokemon"

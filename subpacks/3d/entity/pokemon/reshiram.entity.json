@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/reshiram/shiny_reshiram.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.reshiram.ground_idle",
 				"default_air_idle": "animation.reshiram.air_idle",
-				"default_water_idle": "animation.reshiram.water_idle",
-				"default_walking": "animation.reshiram.walking",
+				"default_water_idle": "animation.reshiram.ground_idle",
+				"default_walking": "animation.reshiram.ground_idle",
 				"default_flying": "animation.reshiram.flying",
 				"default_ride_flying": "animation.reshiram.flying",
-				"default_swimming": "animation.reshiram.swimming",
-				"default_sleeping": "animation.reshiram.sleeping",
+				"default_swimming": "animation.reshiram.ground_idle",
+				"default_sleeping": "animation.reshiram.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.reshiram.attack",
 				"blink": "animation.reshiram.blink",
 				"controller": "controller.animation.pokemon"

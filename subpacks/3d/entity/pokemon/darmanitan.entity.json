@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/darmanitan/shiny_darmanitan.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.darmanitan.ground_idle",
 				"default_air_idle": "animation.darmanitan.ground_idle",
-				"default_water_idle": "animation.darmanitan.water_idle",
+				"default_water_idle": "animation.darmanitan.ground_idle",
 				"default_walking": "animation.darmanitan.walking",
 				"default_flying": "animation.darmanitan.ground_idle",
 				"default_ride_flying": "animation.darmanitan.ground_idle",
-				"default_swimming": "animation.darmanitan.swimming",
+				"default_swimming": "animation.darmanitan.ground_idle",
 				"default_sleeping": "animation.darmanitan.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.darmanitan.attack",
 				"blink": "animation.darmanitan.blink",
 				"controller": "controller.animation.pokemon"

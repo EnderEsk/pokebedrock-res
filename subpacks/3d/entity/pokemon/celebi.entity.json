@@ -15,7 +15,8 @@
 				"shiny_halloween": "textures/entity/pokemon/celebi/shiny_celebi_halloween.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,20 +43,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.celebi.ground_idle",
 				"default_air_idle": "animation.celebi.air_idle",
-				"default_water_idle": "animation.celebi.water_idle",
+				"default_water_idle": "animation.celebi.ground_idle",
 				"default_walking": "animation.celebi.walking",
 				"default_flying": "animation.celebi.flying",
 				"default_ride_flying": "animation.celebi.flying",
-				"default_swimming": "animation.celebi.swimming",
-				"default_sleeping": "animation.celebi.sleeping",
+				"default_swimming": "animation.celebi.ground_idle",
+				"default_sleeping": "animation.celebi.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.celebi.attack",
 				"blink": "animation.celebi.blink",
 				"controller": "controller.animation.pokemon"

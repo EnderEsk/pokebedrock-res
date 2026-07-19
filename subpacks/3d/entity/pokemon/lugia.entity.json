@@ -17,7 +17,8 @@
 				"shiny_zohshia": "textures/entity/pokemon/lugia/shiny_lugia_zohshia.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -44,6 +45,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -52,7 +56,7 @@
 				"default_ground_idle": "animation.lugia.ground_idle",
 				"default_air_idle": "animation.lugia.air_idle",
 				"default_water_idle": "animation.lugia.water_idle",
-				"default_walking": "animation.lugia.walking",
+				"default_walking": "animation.lugia.ground_idle",
 				"default_flying": "animation.lugia.flying",
 				"default_ride_flying": "animation.lugia.flying",
 				"default_swimming": "animation.lugia.swimming",
@@ -82,6 +86,7 @@
 				"zohshia_faint": "animation.lugia_zohshia.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.lugia_attack",
 				"blink": "controller.animation.pokemon.lugia_blink",
 				"controller": "controller.animation.pokemon.lugia"

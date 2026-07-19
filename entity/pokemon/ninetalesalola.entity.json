@@ -18,6 +18,19 @@
 			"geometry": {
 				"default": "geometry.substitute"
 			},
+			"particle_effects": {
+				"shiny_sparkle": "pokeb:shiny_sparkle"
+			},
+			"animations": {
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle"
+			},
+			"scripts": {
+				"animate": [
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
+					}
+				]
+			},
 			"render_controllers": [
 				"controller.render.pokemon_substitute:ninetalesalola"
 			],

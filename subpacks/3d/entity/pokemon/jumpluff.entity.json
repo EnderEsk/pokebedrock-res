@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/jumpluff/shiny_jumpluff.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.jumpluff.ground_idle",
 				"default_air_idle": "animation.jumpluff.air_idle",
-				"default_water_idle": "animation.jumpluff.water_idle",
-				"default_walking": "animation.jumpluff.walking",
+				"default_water_idle": "animation.jumpluff.ground_idle",
+				"default_walking": "animation.jumpluff.ground_idle",
 				"default_flying": "animation.jumpluff.flying",
 				"default_ride_flying": "animation.jumpluff.flying",
-				"default_swimming": "animation.jumpluff.swimming",
+				"default_swimming": "animation.jumpluff.ground_idle",
 				"default_sleeping": "animation.jumpluff.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.jumpluff.attack",
 				"blink": "animation.jumpluff.blink",
 				"controller": "controller.animation.pokemon"

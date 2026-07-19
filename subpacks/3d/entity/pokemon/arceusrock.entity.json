@@ -15,7 +15,8 @@
 				"shiny_omega": "textures/entity/pokemon/arceusrock/shiny_arceusrock_omega.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,12 +53,12 @@
 				"default_blink": "animation.arceusrock.blink",
 				"default_ground_idle": "animation.arceusrock.ground_idle",
 				"default_air_idle": "animation.arceusrock.air_idle",
-				"default_water_idle": "animation.arceusrock.water_idle",
-				"default_walking": "animation.arceusrock.walking",
+				"default_water_idle": "animation.arceusrock.ground_idle",
+				"default_walking": "animation.arceusrock.ground_idle",
 				"default_flying": "animation.arceusrock.flying",
 				"default_ride_flying": "animation.arceusrock.flying",
-				"default_swimming": "animation.arceusrock.swimming",
-				"default_sleeping": "animation.arceusrock.sleeping",
+				"default_swimming": "animation.arceusrock.ground_idle",
+				"default_sleeping": "animation.arceusrock.ground_idle",
 				"default_attack": "animation.arceusrock.attack",
 				"omega_flying": "animation.arceusrock_omega.flying",
 				"omega_ride_flying": "animation.arceusrock_omega.ride_flying",
@@ -69,6 +73,7 @@
 				"omega_faint": "animation.arceusrock_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.arceusrock_attack",
 				"blink": "controller.animation.pokemon.arceusrock_blink",
 				"controller": "controller.animation.pokemon.arceusrock"

@@ -15,7 +15,8 @@
 				"shiny_christmas": "textures/entity/pokemon/maushold/shiny_maushold_christmas.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,20 +43,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.maushold.ground_idle",
 				"default_air_idle": "animation.maushold.ground_idle",
-				"default_water_idle": "animation.maushold.water_idle",
+				"default_water_idle": "animation.maushold.ground_idle",
 				"default_walking": "animation.maushold.walking",
 				"default_flying": "animation.maushold.ground_idle",
 				"default_ride_flying": "animation.maushold.ground_idle",
-				"default_swimming": "animation.maushold.swimming",
-				"default_sleeping": "animation.maushold.sleeping",
+				"default_swimming": "animation.maushold.ground_idle",
+				"default_sleeping": "animation.maushold.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.maushold.attack",
 				"blink": "animation.maushold.blink",
 				"controller": "controller.animation.pokemon"

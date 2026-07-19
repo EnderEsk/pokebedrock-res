@@ -14,7 +14,8 @@
 				"stpatrick": "textures/entity/pokemon/clodsire/clodsire_stpatrick.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -41,6 +42,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,11 +53,11 @@
 				"default_ground_idle": "animation.clodsire.ground_idle",
 				"default_air_idle": "animation.clodsire.ground_idle",
 				"default_water_idle": "animation.clodsire.water_idle",
-				"default_walking": "animation.clodsire.walking",
+				"default_walking": "animation.clodsire.ground_idle",
 				"default_flying": "animation.clodsire.ground_idle",
 				"default_ride_flying": "animation.clodsire.ground_idle",
 				"default_swimming": "animation.clodsire.swimming",
-				"default_sleeping": "animation.clodsire.sleeping",
+				"default_sleeping": "animation.clodsire.ground_idle",
 				"default_attack": "animation.clodsire.attack",
 				"stpatrick_walking": "animation.clodsire_stpatrick.walking",
 				"stpatrick_swimming": "animation.clodsire_stpatrick.swimming",
@@ -62,6 +66,7 @@
 				"stpatrick_faint": "animation.clodsire_stpatrick.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.clodsire_attack",
 				"blink": "controller.animation.pokemon.clodsire_blink",
 				"controller": "controller.animation.pokemon.clodsire"

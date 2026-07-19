@@ -15,7 +15,8 @@
 				"shiny_christmas": "textures/entity/pokemon/ninetalesalola/shiny_ninetalesalola_christmas.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,11 +53,11 @@
 				"default_blink": "animation.ninetalesalola.blink",
 				"default_ground_idle": "animation.ninetalesalola.ground_idle",
 				"default_air_idle": "animation.ninetalesalola.ground_idle",
-				"default_water_idle": "animation.ninetalesalola.water_idle",
+				"default_water_idle": "animation.ninetalesalola.ground_idle",
 				"default_walking": "animation.ninetalesalola.walking",
 				"default_flying": "animation.ninetalesalola.ground_idle",
 				"default_ride_flying": "animation.ninetalesalola.ground_idle",
-				"default_swimming": "animation.ninetalesalola.swimming",
+				"default_swimming": "animation.ninetalesalola.ground_idle",
 				"default_sleeping": "animation.ninetalesalola.sleeping",
 				"default_attack": "animation.ninetalesalola.attack",
 				"christmas_flying": "animation.ninetalesalola_christmas.flying",
@@ -69,6 +73,7 @@
 				"christmas_faint": "animation.ninetalesalola_christmas.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.ninetalesalola_attack",
 				"blink": "controller.animation.pokemon.ninetalesalola_blink",
 				"controller": "controller.animation.pokemon.ninetalesalola"

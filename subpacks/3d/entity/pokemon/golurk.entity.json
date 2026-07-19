@@ -19,7 +19,8 @@
 				"shiny_christmas": "textures/entity/pokemon/golurk/shiny_golurk_christmas.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -46,6 +47,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -53,11 +57,11 @@
 				"default_blink": "animation.golurk.blink",
 				"default_ground_idle": "animation.golurk.ground_idle",
 				"default_air_idle": "animation.golurk.air_idle",
-				"default_water_idle": "animation.golurk.water_idle",
+				"default_water_idle": "animation.golurk.ground_idle",
 				"default_walking": "animation.golurk.walking",
 				"default_flying": "animation.golurk.flying",
 				"default_ride_flying": "animation.golurk.flying",
-				"default_swimming": "animation.golurk.swimming",
+				"default_swimming": "animation.golurk.ground_idle",
 				"default_sleeping": "animation.golurk.sleeping",
 				"default_attack": "animation.golurk.attack",
 				"halloween_flying": "animation.golurk_halloween.flying",
@@ -95,6 +99,7 @@
 				"christmas_faint": "animation.golurk_christmas.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.golurk_attack",
 				"blink": "controller.animation.pokemon.golurk_blink",
 				"controller": "controller.animation.pokemon.golurk"

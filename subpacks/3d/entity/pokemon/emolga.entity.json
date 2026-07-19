@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/emolga/shiny_emolga.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.emolga.ground_idle",
 				"default_air_idle": "animation.emolga.air_idle",
-				"default_water_idle": "animation.emolga.water_idle",
-				"default_walking": "animation.emolga.walking",
+				"default_water_idle": "animation.emolga.ground_idle",
+				"default_walking": "animation.emolga.ground_idle",
 				"default_flying": "animation.emolga.flying",
 				"default_ride_flying": "animation.emolga.flying",
-				"default_swimming": "animation.emolga.swimming",
-				"default_sleeping": "animation.emolga.sleeping",
+				"default_swimming": "animation.emolga.ground_idle",
+				"default_sleeping": "animation.emolga.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.emolga.attack",
 				"blink": "animation.emolga.blink",
 				"controller": "controller.animation.pokemon"

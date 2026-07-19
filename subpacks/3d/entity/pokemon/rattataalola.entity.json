@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/rattataalola/shiny_rattataalola.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.rattataalola.ground_idle",
 				"default_air_idle": "animation.rattataalola.ground_idle",
-				"default_water_idle": "animation.rattataalola.water_idle",
+				"default_water_idle": "animation.rattataalola.ground_idle",
 				"default_walking": "animation.rattataalola.walking",
 				"default_flying": "animation.rattataalola.ground_idle",
 				"default_ride_flying": "animation.rattataalola.ground_idle",
-				"default_swimming": "animation.rattataalola.swimming",
+				"default_swimming": "animation.rattataalola.ground_idle",
 				"default_sleeping": "animation.rattataalola.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.rattataalola.attack",
 				"blink": "animation.rattataalola.blink",
 				"controller": "controller.animation.pokemon"

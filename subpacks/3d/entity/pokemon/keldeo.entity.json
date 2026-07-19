@@ -15,7 +15,8 @@
 				"shiny_pbranni": "textures/entity/pokemon/keldeo/shiny_keldeo_pbranni.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,12 +53,12 @@
 				"default_blink": "animation.keldeo.blink",
 				"default_ground_idle": "animation.keldeo.ground_idle",
 				"default_air_idle": "animation.keldeo.ground_idle",
-				"default_water_idle": "animation.keldeo.water_idle",
+				"default_water_idle": "animation.keldeo.ground_idle",
 				"default_walking": "animation.keldeo.walking",
 				"default_flying": "animation.keldeo.ground_idle",
 				"default_ride_flying": "animation.keldeo.ground_idle",
-				"default_swimming": "animation.keldeo.swimming",
-				"default_sleeping": "animation.keldeo.sleeping",
+				"default_swimming": "animation.keldeo.ground_idle",
+				"default_sleeping": "animation.keldeo.ground_idle",
 				"default_attack": "animation.keldeo.attack",
 				"pbranni_flying": "animation.keldeo_pbranni.flying",
 				"pbranni_ride_flying": "animation.keldeo_pbranni.ride_flying",
@@ -69,6 +73,7 @@
 				"pbranni_faint": "animation.keldeo_pbranni.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.keldeo_attack",
 				"blink": "controller.animation.pokemon.keldeo_blink",
 				"controller": "controller.animation.pokemon.keldeo"

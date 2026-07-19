@@ -14,7 +14,8 @@
 				"halloween": "textures/entity/pokemon/garbodor/garbodor_halloween.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -41,20 +42,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.garbodor.ground_idle",
 				"default_air_idle": "animation.garbodor.ground_idle",
-				"default_water_idle": "animation.garbodor.water_idle",
+				"default_water_idle": "animation.garbodor.ground_idle",
 				"default_walking": "animation.garbodor.walking",
 				"default_flying": "animation.garbodor.ground_idle",
 				"default_ride_flying": "animation.garbodor.ground_idle",
-				"default_swimming": "animation.garbodor.swimming",
-				"default_sleeping": "animation.garbodor.sleeping",
+				"default_swimming": "animation.garbodor.ground_idle",
+				"default_sleeping": "animation.garbodor.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.garbodor.attack",
 				"blink": "animation.garbodor.blink",
 				"controller": "controller.animation.pokemon"

@@ -15,7 +15,8 @@
 				"shiny_christmas": "textures/entity/pokemon/tyrantrum/shiny_tyrantrum_christmas.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,20 +43,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.tyrantrum.ground_idle",
 				"default_air_idle": "animation.tyrantrum.ground_idle",
-				"default_water_idle": "animation.tyrantrum.water_idle",
+				"default_water_idle": "animation.tyrantrum.ground_idle",
 				"default_walking": "animation.tyrantrum.walking",
 				"default_flying": "animation.tyrantrum.ground_idle",
 				"default_ride_flying": "animation.tyrantrum.ground_idle",
-				"default_swimming": "animation.tyrantrum.swimming",
+				"default_swimming": "animation.tyrantrum.ground_idle",
 				"default_sleeping": "animation.tyrantrum.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.tyrantrum.attack",
 				"blink": "animation.tyrantrum.blink",
 				"controller": "controller.animation.pokemon"

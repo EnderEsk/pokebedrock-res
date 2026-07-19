@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/rotomfrost/shiny_rotomfrost.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.rotomfrost.ground_idle",
 				"default_air_idle": "animation.rotomfrost.air_idle",
-				"default_water_idle": "animation.rotomfrost.water_idle",
+				"default_water_idle": "animation.rotomfrost.ground_idle",
 				"default_walking": "animation.rotomfrost.walking",
 				"default_flying": "animation.rotomfrost.flying",
 				"default_ride_flying": "animation.rotomfrost.flying",
-				"default_swimming": "animation.rotomfrost.swimming",
-				"default_sleeping": "animation.rotomfrost.sleeping",
+				"default_swimming": "animation.rotomfrost.ground_idle",
+				"default_sleeping": "animation.rotomfrost.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.rotomfrost.attack",
 				"blink": "animation.rotomfrost.blink",
 				"controller": "controller.animation.pokemon"

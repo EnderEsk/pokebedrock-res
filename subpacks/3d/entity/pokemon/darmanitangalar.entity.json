@@ -15,7 +15,8 @@
 				"shiny_christmas": "textures/entity/pokemon/darmanitangalar/shiny_darmanitangalar_christmas.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,11 +53,11 @@
 				"default_blink": "animation.darmanitangalar.blink",
 				"default_ground_idle": "animation.darmanitangalar.ground_idle",
 				"default_air_idle": "animation.darmanitangalar.ground_idle",
-				"default_water_idle": "animation.darmanitangalar.water_idle",
+				"default_water_idle": "animation.darmanitangalar.ground_idle",
 				"default_walking": "animation.darmanitangalar.walking",
 				"default_flying": "animation.darmanitangalar.ground_idle",
 				"default_ride_flying": "animation.darmanitangalar.ground_idle",
-				"default_swimming": "animation.darmanitangalar.swimming",
+				"default_swimming": "animation.darmanitangalar.ground_idle",
 				"default_sleeping": "animation.darmanitangalar.sleeping",
 				"default_attack": "animation.darmanitangalar.attack",
 				"christmas_flying": "animation.darmanitangalar_christmas.flying",
@@ -69,6 +73,7 @@
 				"christmas_faint": "animation.darmanitangalar_christmas.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.darmanitangalar_attack",
 				"blink": "controller.animation.pokemon.darmanitangalar_blink",
 				"controller": "controller.animation.pokemon.darmanitangalar"

@@ -15,7 +15,8 @@
 				"shiny_omega": "textures/entity/pokemon/arceuspoison/shiny_arceuspoison_omega.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,12 +53,12 @@
 				"default_blink": "animation.arceuspoison.blink",
 				"default_ground_idle": "animation.arceuspoison.ground_idle",
 				"default_air_idle": "animation.arceuspoison.air_idle",
-				"default_water_idle": "animation.arceuspoison.water_idle",
-				"default_walking": "animation.arceuspoison.walking",
+				"default_water_idle": "animation.arceuspoison.ground_idle",
+				"default_walking": "animation.arceuspoison.ground_idle",
 				"default_flying": "animation.arceuspoison.flying",
 				"default_ride_flying": "animation.arceuspoison.flying",
-				"default_swimming": "animation.arceuspoison.swimming",
-				"default_sleeping": "animation.arceuspoison.sleeping",
+				"default_swimming": "animation.arceuspoison.ground_idle",
+				"default_sleeping": "animation.arceuspoison.ground_idle",
 				"default_attack": "animation.arceuspoison.attack",
 				"omega_flying": "animation.arceuspoison_omega.flying",
 				"omega_ride_flying": "animation.arceuspoison_omega.ride_flying",
@@ -69,6 +73,7 @@
 				"omega_faint": "animation.arceuspoison_omega.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.arceuspoison_attack",
 				"blink": "controller.animation.pokemon.arceuspoison_blink",
 				"controller": "controller.animation.pokemon.arceuspoison"

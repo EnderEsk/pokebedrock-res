@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/oshawott/shiny_oshawott.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,6 +41,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -47,13 +51,14 @@
 				"default_ground_idle": "animation.oshawott.ground_idle",
 				"default_air_idle": "animation.oshawott.ground_idle",
 				"default_water_idle": "animation.oshawott.water_idle",
-				"default_walking": "animation.oshawott.walking",
+				"default_walking": "animation.oshawott.ground_idle",
 				"default_flying": "animation.oshawott.ground_idle",
 				"default_ride_flying": "animation.oshawott.ground_idle",
 				"default_swimming": "animation.oshawott.swimming",
 				"default_sleeping": "animation.oshawott.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.oshawott.attack",
 				"blink": "animation.oshawott.blink",
 				"controller": "controller.animation.pokemon"

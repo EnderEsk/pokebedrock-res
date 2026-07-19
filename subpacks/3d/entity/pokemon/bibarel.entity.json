@@ -15,7 +15,8 @@
 				"shiny_female_default": "textures/entity/pokemon/bibarel/bibarel.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,13 +53,14 @@
 				"default_ground_idle": "animation.bibarel.ground_idle",
 				"default_air_idle": "animation.bibarel.ground_idle",
 				"default_water_idle": "animation.bibarel.ground_idle",
-				"default_walking": "animation.bibarel.walking",
+				"default_walking": "animation.bibarel.ground_idle",
 				"default_flying": "animation.bibarel.ground_idle",
 				"default_ride_flying": "animation.bibarel.ground_idle",
 				"default_swimming": "animation.bibarel.ground_idle",
 				"default_sleeping": "animation.bibarel.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.bibarel.attack",
 				"blink": "animation.bibarel.blink",
 				"controller": "controller.animation.pokemon"

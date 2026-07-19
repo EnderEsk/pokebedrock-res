@@ -15,7 +15,8 @@
 				"shiny_christmas": "textures/entity/pokemon/lucario/shiny_lucario_christmas.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,20 +43,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.lucario.ground_idle",
 				"default_air_idle": "animation.lucario.ground_idle",
-				"default_water_idle": "animation.lucario.water_idle",
+				"default_water_idle": "animation.lucario.ground_idle",
 				"default_walking": "animation.lucario.walking",
 				"default_flying": "animation.lucario.ground_idle",
 				"default_ride_flying": "animation.lucario.ground_idle",
-				"default_swimming": "animation.lucario.swimming",
+				"default_swimming": "animation.lucario.ground_idle",
 				"default_sleeping": "animation.lucario.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.lucario.attack",
 				"blink": "animation.lucario.blink",
 				"controller": "controller.animation.pokemon"

@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/skiploom/shiny_skiploom.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.skiploom.ground_idle",
 				"default_air_idle": "animation.skiploom.air_idle",
-				"default_water_idle": "animation.skiploom.water_idle",
-				"default_walking": "animation.skiploom.walking",
+				"default_water_idle": "animation.skiploom.ground_idle",
+				"default_walking": "animation.skiploom.ground_idle",
 				"default_flying": "animation.skiploom.flying",
 				"default_ride_flying": "animation.skiploom.flying",
-				"default_swimming": "animation.skiploom.swimming",
+				"default_swimming": "animation.skiploom.ground_idle",
 				"default_sleeping": "animation.skiploom.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.skiploom.attack",
 				"blink": "animation.skiploom.blink",
 				"controller": "controller.animation.pokemon"

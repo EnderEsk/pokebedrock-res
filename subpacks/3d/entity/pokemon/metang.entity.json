@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/metang/shiny_metang.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.metang.ground_idle",
 				"default_air_idle": "animation.metang.air_idle",
-				"default_water_idle": "animation.metang.water_idle",
+				"default_water_idle": "animation.metang.ground_idle",
 				"default_walking": "animation.metang.walking",
 				"default_flying": "animation.metang.flying",
 				"default_ride_flying": "animation.metang.flying",
-				"default_swimming": "animation.metang.swimming",
+				"default_swimming": "animation.metang.ground_idle",
 				"default_sleeping": "animation.metang.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.metang.attack",
 				"blink": "animation.metang.blink",
 				"controller": "controller.animation.pokemon"

@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/magnezone/shiny_magnezone.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.magnezone.ground_idle",
 				"default_air_idle": "animation.magnezone.ground_idle",
-				"default_water_idle": "animation.magnezone.water_idle",
+				"default_water_idle": "animation.magnezone.ground_idle",
 				"default_walking": "animation.magnezone.walking",
 				"default_flying": "animation.magnezone.ground_idle",
 				"default_ride_flying": "animation.magnezone.ground_idle",
-				"default_swimming": "animation.magnezone.swimming",
+				"default_swimming": "animation.magnezone.ground_idle",
 				"default_sleeping": "animation.magnezone.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.magnezone.attack",
 				"blink": "animation.magnezone.blink",
 				"controller": "controller.animation.pokemon"

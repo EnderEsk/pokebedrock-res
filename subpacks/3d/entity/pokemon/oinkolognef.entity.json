@@ -15,7 +15,8 @@
 				"shiny_halloween": "textures/entity/pokemon/oinkolognef/shiny_oinkolognef_halloween.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,11 +53,11 @@
 				"default_blink": "animation.oinkolognef.blink",
 				"default_ground_idle": "animation.oinkolognef.ground_idle",
 				"default_air_idle": "animation.oinkolognef.ground_idle",
-				"default_water_idle": "animation.oinkolognef.water_idle",
+				"default_water_idle": "animation.oinkolognef.ground_idle",
 				"default_walking": "animation.oinkolognef.walking",
 				"default_flying": "animation.oinkolognef.ground_idle",
 				"default_ride_flying": "animation.oinkolognef.ground_idle",
-				"default_swimming": "animation.oinkolognef.swimming",
+				"default_swimming": "animation.oinkolognef.ground_idle",
 				"default_sleeping": "animation.oinkolognef.sleeping",
 				"default_attack": "animation.oinkolognef.attack",
 				"halloween_flying": "animation.oinkolognef_halloween.flying",
@@ -69,6 +73,7 @@
 				"halloween_faint": "animation.oinkolognef_halloween.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.oinkolognef_attack",
 				"blink": "controller.animation.pokemon.oinkolognef_blink",
 				"controller": "controller.animation.pokemon.oinkolognef"

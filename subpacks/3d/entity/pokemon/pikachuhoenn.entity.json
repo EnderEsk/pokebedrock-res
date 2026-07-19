@@ -15,7 +15,8 @@
 				"shiny_female_default": "textures/entity/pokemon/pikachuhoenn/female_shiny_pikachuhoenn.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,20 +43,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.pikachuhoenn.ground_idle",
 				"default_air_idle": "animation.pikachuhoenn.ground_idle",
-				"default_water_idle": "animation.pikachuhoenn.water_idle",
+				"default_water_idle": "animation.pikachuhoenn.ground_idle",
 				"default_walking": "animation.pikachuhoenn.walking",
 				"default_flying": "animation.pikachuhoenn.ground_idle",
 				"default_ride_flying": "animation.pikachuhoenn.ground_idle",
-				"default_swimming": "animation.pikachuhoenn.swimming",
+				"default_swimming": "animation.pikachuhoenn.ground_idle",
 				"default_sleeping": "animation.pikachuhoenn.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.pikachuhoenn.attack",
 				"blink": "animation.pikachuhoenn.blink",
 				"controller": "controller.animation.pokemon"

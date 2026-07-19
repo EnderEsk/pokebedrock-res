@@ -15,7 +15,8 @@
 				"shiny_christmas": "textures/entity/pokemon/toxapex/shiny_toxapex_christmas.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,20 +43,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.toxapex.ground_idle",
 				"default_air_idle": "animation.toxapex.ground_idle",
-				"default_water_idle": "animation.toxapex.water_idle",
+				"default_water_idle": "animation.toxapex.ground_idle",
 				"default_walking": "animation.toxapex.walking",
 				"default_flying": "animation.toxapex.ground_idle",
 				"default_ride_flying": "animation.toxapex.ground_idle",
-				"default_swimming": "animation.toxapex.swimming",
-				"default_sleeping": "animation.toxapex.sleeping",
+				"default_swimming": "animation.toxapex.ground_idle",
+				"default_sleeping": "animation.toxapex.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.toxapex.attack",
 				"blink": "animation.toxapex.blink",
 				"controller": "controller.animation.pokemon"

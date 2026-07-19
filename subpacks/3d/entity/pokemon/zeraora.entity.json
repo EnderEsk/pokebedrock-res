@@ -15,7 +15,8 @@
 				"shiny_mjolnirsoul": "textures/entity/pokemon/zeraora/shiny_zeraora_mjolnirsoul.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,12 +53,12 @@
 				"default_blink": "animation.zeraora.blink",
 				"default_ground_idle": "animation.zeraora.ground_idle",
 				"default_air_idle": "animation.zeraora.ground_idle",
-				"default_water_idle": "animation.zeraora.water_idle",
+				"default_water_idle": "animation.zeraora.ground_idle",
 				"default_walking": "animation.zeraora.walking",
 				"default_flying": "animation.zeraora.ground_idle",
 				"default_ride_flying": "animation.zeraora.ground_idle",
-				"default_swimming": "animation.zeraora.swimming",
-				"default_sleeping": "animation.zeraora.sleeping",
+				"default_swimming": "animation.zeraora.ground_idle",
+				"default_sleeping": "animation.zeraora.ground_idle",
 				"default_attack": "animation.zeraora.attack",
 				"mjolnirsoul_flying": "animation.zeraora_mjolnirsoul.flying",
 				"mjolnirsoul_ride_flying": "animation.zeraora_mjolnirsoul.ride_flying",
@@ -69,6 +73,7 @@
 				"mjolnirsoul_faint": "animation.zeraora_mjolnirsoul.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.zeraora_attack",
 				"blink": "controller.animation.pokemon.zeraora_blink",
 				"controller": "controller.animation.pokemon.zeraora"

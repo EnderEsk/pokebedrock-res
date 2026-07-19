@@ -17,7 +17,8 @@
 				"shiny_bnw": "textures/entity/pokemon/mewtwo/shiny_mewtwo_bnw.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -44,20 +45,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.mewtwo.ground_idle",
 				"default_air_idle": "animation.mewtwo.air_idle",
-				"default_water_idle": "animation.mewtwo.water_idle",
-				"default_walking": "animation.mewtwo.walking",
+				"default_water_idle": "animation.mewtwo.ground_idle",
+				"default_walking": "animation.mewtwo.ground_idle",
 				"default_flying": "animation.mewtwo.flying",
 				"default_ride_flying": "animation.mewtwo.flying",
-				"default_swimming": "animation.mewtwo.swimming",
-				"default_sleeping": "animation.mewtwo.sleeping",
+				"default_swimming": "animation.mewtwo.ground_idle",
+				"default_sleeping": "animation.mewtwo.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.mewtwo.attack",
 				"blink": "animation.mewtwo.blink",
 				"controller": "controller.animation.pokemon"

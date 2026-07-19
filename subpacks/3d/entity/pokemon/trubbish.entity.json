@@ -14,7 +14,8 @@
 				"halloween": "textures/entity/pokemon/trubbish/trubbish_halloween.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -41,20 +42,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.trubbish.ground_idle",
 				"default_air_idle": "animation.trubbish.ground_idle",
-				"default_water_idle": "animation.trubbish.water_idle",
+				"default_water_idle": "animation.trubbish.ground_idle",
 				"default_walking": "animation.trubbish.walking",
 				"default_flying": "animation.trubbish.ground_idle",
 				"default_ride_flying": "animation.trubbish.ground_idle",
-				"default_swimming": "animation.trubbish.swimming",
-				"default_sleeping": "animation.trubbish.sleeping",
+				"default_swimming": "animation.trubbish.ground_idle",
+				"default_sleeping": "animation.trubbish.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.trubbish.attack",
 				"blink": "animation.trubbish.blink",
 				"controller": "controller.animation.pokemon"

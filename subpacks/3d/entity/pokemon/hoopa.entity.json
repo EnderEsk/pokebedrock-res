@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/hoopa/shiny_hoopa.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.hoopa.ground_idle",
 				"default_air_idle": "animation.hoopa.air_idle",
-				"default_water_idle": "animation.hoopa.water_idle",
+				"default_water_idle": "animation.hoopa.ground_idle",
 				"default_walking": "animation.hoopa.walking",
 				"default_flying": "animation.hoopa.flying",
 				"default_ride_flying": "animation.hoopa.flying",
-				"default_swimming": "animation.hoopa.swimming",
-				"default_sleeping": "animation.hoopa.sleeping",
+				"default_swimming": "animation.hoopa.ground_idle",
+				"default_sleeping": "animation.hoopa.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.hoopa.attack",
 				"blink": "animation.hoopa.blink",
 				"controller": "controller.animation.pokemon"

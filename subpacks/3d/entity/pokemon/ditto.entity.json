@@ -17,7 +17,8 @@
 				"shiny_venom": "textures/entity/pokemon/ditto/shiny_ditto_venom.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -44,6 +45,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -51,11 +55,11 @@
 				"default_blink": "animation.ditto.blink",
 				"default_ground_idle": "animation.ditto.ground_idle",
 				"default_air_idle": "animation.ditto.ground_idle",
-				"default_water_idle": "animation.ditto.water_idle",
+				"default_water_idle": "animation.ditto.ground_idle",
 				"default_walking": "animation.ditto.walking",
 				"default_flying": "animation.ditto.ground_idle",
 				"default_ride_flying": "animation.ditto.ground_idle",
-				"default_swimming": "animation.ditto.swimming",
+				"default_swimming": "animation.ditto.ground_idle",
 				"default_sleeping": "animation.ditto.sleeping",
 				"default_attack": "animation.ditto.attack",
 				"slimeking_flying": "animation.ditto_slimeking.flying",
@@ -82,6 +86,7 @@
 				"venom_faint": "animation.ditto_venom.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.ditto_attack",
 				"blink": "controller.animation.pokemon.ditto_blink",
 				"controller": "controller.animation.pokemon.ditto"

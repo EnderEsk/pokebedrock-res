@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/rotomheat/shiny_rotomheat.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.rotomheat.ground_idle",
 				"default_air_idle": "animation.rotomheat.air_idle",
-				"default_water_idle": "animation.rotomheat.water_idle",
+				"default_water_idle": "animation.rotomheat.ground_idle",
 				"default_walking": "animation.rotomheat.walking",
 				"default_flying": "animation.rotomheat.flying",
 				"default_ride_flying": "animation.rotomheat.flying",
-				"default_swimming": "animation.rotomheat.swimming",
-				"default_sleeping": "animation.rotomheat.sleeping",
+				"default_swimming": "animation.rotomheat.ground_idle",
+				"default_sleeping": "animation.rotomheat.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.rotomheat.attack",
 				"blink": "animation.rotomheat.blink",
 				"controller": "controller.animation.pokemon"

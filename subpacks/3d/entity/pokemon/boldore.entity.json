@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/boldore/shiny_boldore.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.boldore.ground_idle",
 				"default_air_idle": "animation.boldore.ground_idle",
-				"default_water_idle": "animation.boldore.water_idle",
+				"default_water_idle": "animation.boldore.ground_idle",
 				"default_walking": "animation.boldore.walking",
 				"default_flying": "animation.boldore.ground_idle",
 				"default_ride_flying": "animation.boldore.ground_idle",
-				"default_swimming": "animation.boldore.swimming",
+				"default_swimming": "animation.boldore.ground_idle",
 				"default_sleeping": "animation.boldore.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.boldore.attack",
 				"blink": "animation.boldore.blink",
 				"controller": "controller.animation.pokemon"

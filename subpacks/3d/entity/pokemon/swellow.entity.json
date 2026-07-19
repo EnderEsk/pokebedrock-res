@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/swellow/shiny_swellow.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.swellow.ground_idle",
 				"default_air_idle": "animation.swellow.air_idle",
-				"default_water_idle": "animation.swellow.water_idle",
-				"default_walking": "animation.swellow.walking",
+				"default_water_idle": "animation.swellow.ground_idle",
+				"default_walking": "animation.swellow.ground_idle",
 				"default_flying": "animation.swellow.flying",
 				"default_ride_flying": "animation.swellow.flying",
-				"default_swimming": "animation.swellow.swimming",
+				"default_swimming": "animation.swellow.ground_idle",
 				"default_sleeping": "animation.swellow.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.swellow.attack",
 				"blink": "animation.swellow.blink",
 				"controller": "controller.animation.pokemon"

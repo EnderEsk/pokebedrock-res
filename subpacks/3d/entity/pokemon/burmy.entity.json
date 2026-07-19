@@ -15,7 +15,8 @@
 				"trash": "textures/entity/pokemon/burmy/burmy_trash.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,20 +43,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.burmy.ground_idle",
 				"default_air_idle": "animation.burmy.ground_idle",
-				"default_water_idle": "animation.burmy.water_idle",
+				"default_water_idle": "animation.burmy.ground_idle",
 				"default_walking": "animation.burmy.walking",
 				"default_flying": "animation.burmy.ground_idle",
 				"default_ride_flying": "animation.burmy.ground_idle",
-				"default_swimming": "animation.burmy.swimming",
-				"default_sleeping": "animation.burmy.sleeping",
+				"default_swimming": "animation.burmy.ground_idle",
+				"default_sleeping": "animation.burmy.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.burmy.attack",
 				"blink": "animation.burmy.blink",
 				"controller": "controller.animation.pokemon"

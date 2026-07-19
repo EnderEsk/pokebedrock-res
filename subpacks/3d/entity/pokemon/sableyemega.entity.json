@@ -15,7 +15,8 @@
 				"shiny_sculk": "textures/entity/pokemon/sableyemega/shiny_sableyemega_sculk.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,12 +53,12 @@
 				"default_blink": "animation.sableyemega.blink",
 				"default_ground_idle": "animation.sableyemega.ground_idle",
 				"default_air_idle": "animation.sableyemega.ground_idle",
-				"default_water_idle": "animation.sableyemega.water_idle",
+				"default_water_idle": "animation.sableyemega.ground_idle",
 				"default_walking": "animation.sableyemega.walking",
 				"default_flying": "animation.sableyemega.ground_idle",
 				"default_ride_flying": "animation.sableyemega.ground_idle",
-				"default_swimming": "animation.sableyemega.swimming",
-				"default_sleeping": "animation.sableyemega.sleeping",
+				"default_swimming": "animation.sableyemega.ground_idle",
+				"default_sleeping": "animation.sableyemega.ground_idle",
 				"default_attack": "animation.sableyemega.attack",
 				"sculk_flying": "animation.sableyemega_sculk.flying",
 				"sculk_ride_flying": "animation.sableyemega_sculk.ride_flying",
@@ -69,6 +73,7 @@
 				"sculk_faint": "animation.sableyemega_sculk.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.sableyemega_attack",
 				"blink": "controller.animation.pokemon.sableyemega_blink",
 				"controller": "controller.animation.pokemon.sableyemega"

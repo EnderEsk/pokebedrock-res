@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/pichu/shiny_pichu.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.pichu.ground_idle",
 				"default_air_idle": "animation.pichu.ground_idle",
-				"default_water_idle": "animation.pichu.water_idle",
+				"default_water_idle": "animation.pichu.ground_idle",
 				"default_walking": "animation.pichu.walking",
 				"default_flying": "animation.pichu.ground_idle",
 				"default_ride_flying": "animation.pichu.ground_idle",
-				"default_swimming": "animation.pichu.swimming",
+				"default_swimming": "animation.pichu.ground_idle",
 				"default_sleeping": "animation.pichu.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.pichu.attack",
 				"blink": "animation.pichu.blink",
 				"controller": "controller.animation.pokemon"

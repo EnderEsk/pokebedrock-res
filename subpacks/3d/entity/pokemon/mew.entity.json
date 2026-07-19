@@ -18,7 +18,8 @@
 				"shiny_princess": "textures/entity/pokemon/mew/shiny_mew_princess.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -45,6 +46,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -52,12 +56,12 @@
 				"default_blink": "animation.mew.blink",
 				"default_ground_idle": "animation.mew.ground_idle",
 				"default_air_idle": "animation.mew.air_idle",
-				"default_water_idle": "animation.mew.water_idle",
+				"default_water_idle": "animation.mew.ground_idle",
 				"default_walking": "animation.mew.walking",
 				"default_flying": "animation.mew.flying",
 				"default_ride_flying": "animation.mew.flying",
-				"default_swimming": "animation.mew.swimming",
-				"default_sleeping": "animation.mew.sleeping",
+				"default_swimming": "animation.mew.ground_idle",
+				"default_sleeping": "animation.mew.ground_idle",
 				"default_attack": "animation.mew.attack",
 				"christmas_flying": "animation.mew_christmas.flying",
 				"christmas_ride_flying": "animation.mew_christmas.ride_flying",
@@ -94,6 +98,7 @@
 				"princess_faint": "animation.mew_princess.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.mew_attack",
 				"blink": "controller.animation.pokemon.mew_blink",
 				"controller": "controller.animation.pokemon.mew"

@@ -15,7 +15,8 @@
 				"shiny_pbranni": "textures/entity/pokemon/floetteeternal/shiny_floetteeternal_pbranni.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,11 +53,11 @@
 				"default_blink": "animation.floetteeternal.blink",
 				"default_ground_idle": "animation.floetteeternal.ground_idle",
 				"default_air_idle": "animation.floetteeternal.air_idle",
-				"default_water_idle": "animation.floetteeternal.water_idle",
+				"default_water_idle": "animation.floetteeternal.ground_idle",
 				"default_walking": "animation.floetteeternal.walking",
 				"default_flying": "animation.floetteeternal.flying",
 				"default_ride_flying": "animation.floetteeternal.flying",
-				"default_swimming": "animation.floetteeternal.swimming",
+				"default_swimming": "animation.floetteeternal.ground_idle",
 				"default_sleeping": "animation.floetteeternal.sleeping",
 				"default_attack": "animation.floetteeternal.attack",
 				"pbranni_flying": "animation.floetteeternal_pbranni.flying",
@@ -69,6 +73,7 @@
 				"pbranni_faint": "animation.floetteeternal_pbranni.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.floetteeternal_attack",
 				"blink": "controller.animation.pokemon.floetteeternal_blink",
 				"controller": "controller.animation.pokemon.floetteeternal"

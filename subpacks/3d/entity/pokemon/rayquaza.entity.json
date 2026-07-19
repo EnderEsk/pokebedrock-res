@@ -15,7 +15,8 @@
 				"shiny_pbranni": "textures/entity/pokemon/rayquaza/shiny_rayquaza_pbranni.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,11 +53,11 @@
 				"default_blink": "animation.rayquaza.blink",
 				"default_ground_idle": "animation.rayquaza.ground_idle",
 				"default_air_idle": "animation.rayquaza.air_idle",
-				"default_water_idle": "animation.rayquaza.water_idle",
+				"default_water_idle": "animation.rayquaza.ground_idle",
 				"default_walking": "animation.rayquaza.walking",
 				"default_flying": "animation.rayquaza.flying",
 				"default_ride_flying": "animation.rayquaza.flying",
-				"default_swimming": "animation.rayquaza.swimming",
+				"default_swimming": "animation.rayquaza.ground_idle",
 				"default_sleeping": "animation.rayquaza.ground_idle",
 				"default_attack": "animation.rayquaza.attack",
 				"pbranni_flying": "animation.rayquaza_pbranni.flying",
@@ -69,6 +73,7 @@
 				"pbranni_faint": "animation.rayquaza_pbranni.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.rayquaza_attack",
 				"blink": "controller.animation.pokemon.rayquaza_blink",
 				"controller": "controller.animation.pokemon.rayquaza"

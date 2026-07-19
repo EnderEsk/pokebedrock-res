@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/cutiefly/shiny_cutiefly.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.cutiefly.ground_idle",
 				"default_air_idle": "animation.cutiefly.air_idle",
-				"default_water_idle": "animation.cutiefly.water_idle",
+				"default_water_idle": "animation.cutiefly.ground_idle",
 				"default_walking": "animation.cutiefly.walking",
 				"default_flying": "animation.cutiefly.flying",
 				"default_ride_flying": "animation.cutiefly.flying",
-				"default_swimming": "animation.cutiefly.swimming",
+				"default_swimming": "animation.cutiefly.ground_idle",
 				"default_sleeping": "animation.cutiefly.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.cutiefly.attack",
 				"blink": "animation.cutiefly.blink",
 				"controller": "controller.animation.pokemon"

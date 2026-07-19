@@ -15,7 +15,8 @@
 				"shiny_fly": "textures/entity/pokemon/flygon/shiny_flygon_fly.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,11 +53,11 @@
 				"default_blink": "animation.flygon.blink",
 				"default_ground_idle": "animation.flygon.ground_idle",
 				"default_air_idle": "animation.flygon.air_idle",
-				"default_water_idle": "animation.flygon.water_idle",
+				"default_water_idle": "animation.flygon.ground_idle",
 				"default_walking": "animation.flygon.walking",
 				"default_flying": "animation.flygon.flying",
 				"default_ride_flying": "animation.flygon.flying",
-				"default_swimming": "animation.flygon.swimming",
+				"default_swimming": "animation.flygon.ground_idle",
 				"default_sleeping": "animation.flygon.sleeping",
 				"default_attack": "animation.flygon.attack",
 				"fly_flying": "animation.flygon_fly.flying",
@@ -69,6 +73,7 @@
 				"fly_faint": "animation.flygon_fly.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.flygon_attack",
 				"blink": "controller.animation.pokemon.flygon_blink",
 				"controller": "controller.animation.pokemon.flygon"

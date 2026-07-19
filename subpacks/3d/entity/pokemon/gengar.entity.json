@@ -14,7 +14,8 @@
 				"halloween": "textures/entity/pokemon/gengar/gengar_halloween.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -41,6 +42,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -48,13 +52,14 @@
 				"default_ground_idle": "animation.gengar.ground_idle",
 				"default_air_idle": "animation.gengar.ground_idle",
 				"default_water_idle": "animation.gengar.ground_idle",
-				"default_walking": "animation.gengar.walking",
+				"default_walking": "animation.gengar.ground_idle",
 				"default_flying": "animation.gengar.ground_idle",
 				"default_ride_flying": "animation.gengar.ground_idle",
 				"default_swimming": "animation.gengar.ground_idle",
 				"default_sleeping": "animation.gengar.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.gengar.attack",
 				"blink": "animation.gengar.blink",
 				"controller": "controller.animation.pokemon"

@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/taillow/shiny_taillow.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.taillow.ground_idle",
 				"default_air_idle": "animation.taillow.air_idle",
-				"default_water_idle": "animation.taillow.water_idle",
-				"default_walking": "animation.taillow.walking",
+				"default_water_idle": "animation.taillow.ground_idle",
+				"default_walking": "animation.taillow.ground_idle",
 				"default_flying": "animation.taillow.flying",
 				"default_ride_flying": "animation.taillow.flying",
-				"default_swimming": "animation.taillow.swimming",
+				"default_swimming": "animation.taillow.ground_idle",
 				"default_sleeping": "animation.taillow.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.taillow.attack",
 				"blink": "animation.taillow.blink",
 				"controller": "controller.animation.pokemon"

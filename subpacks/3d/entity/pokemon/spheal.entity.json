@@ -14,7 +14,8 @@
 				"watermelon": "textures/entity/pokemon/spheal/spheal_watermelon.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -41,6 +42,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -48,13 +52,14 @@
 				"default_ground_idle": "animation.spheal.ground_idle",
 				"default_air_idle": "animation.spheal.ground_idle",
 				"default_water_idle": "animation.spheal.water_idle",
-				"default_walking": "animation.spheal.walking",
+				"default_walking": "animation.spheal.ground_idle",
 				"default_flying": "animation.spheal.ground_idle",
 				"default_ride_flying": "animation.spheal.ground_idle",
 				"default_swimming": "animation.spheal.swimming",
-				"default_sleeping": "animation.spheal.sleeping",
+				"default_sleeping": "animation.spheal.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.spheal.attack",
 				"blink": "animation.spheal.blink",
 				"controller": "controller.animation.pokemon"

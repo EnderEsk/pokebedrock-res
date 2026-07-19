@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/breloom/shiny_breloom.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.breloom.ground_idle",
 				"default_air_idle": "animation.breloom.ground_idle",
-				"default_water_idle": "animation.breloom.swimming",
+				"default_water_idle": "animation.breloom.ground_idle",
 				"default_walking": "animation.breloom.walking",
 				"default_flying": "animation.breloom.ground_idle",
 				"default_ride_flying": "animation.breloom.ground_idle",
-				"default_swimming": "animation.breloom.swimming",
+				"default_swimming": "animation.breloom.ground_idle",
 				"default_sleeping": "animation.breloom.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.breloom.attack",
 				"blink": "animation.breloom.blink",
 				"controller": "controller.animation.pokemon"

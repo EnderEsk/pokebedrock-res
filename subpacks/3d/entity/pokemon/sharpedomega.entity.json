@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/sharpedomega/shiny_sharpedomega.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,6 +41,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -51,9 +55,10 @@
 				"default_flying": "animation.sharpedomega.ground_idle",
 				"default_ride_flying": "animation.sharpedomega.ground_idle",
 				"default_swimming": "animation.sharpedomega.swimming",
-				"default_sleeping": "animation.sharpedomega.sleeping",
+				"default_sleeping": "animation.sharpedomega.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.sharpedomega.attack",
 				"blink": "animation.sharpedomega.blink",
 				"controller": "controller.animation.pokemon"

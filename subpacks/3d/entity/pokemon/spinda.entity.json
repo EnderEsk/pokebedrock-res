@@ -29,7 +29,8 @@
 				"shiny_heart": "textures/entity/pokemon/spinda/shiny_spinda_heart.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -56,20 +57,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.spinda.ground_idle",
 				"default_air_idle": "animation.spinda.ground_idle",
-				"default_water_idle": "animation.spinda.water_idle",
+				"default_water_idle": "animation.spinda.ground_idle",
 				"default_walking": "animation.spinda.walking",
 				"default_flying": "animation.spinda.ground_idle",
 				"default_ride_flying": "animation.spinda.ground_idle",
-				"default_swimming": "animation.spinda.swimming",
+				"default_swimming": "animation.spinda.ground_idle",
 				"default_sleeping": "animation.spinda.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.spinda.attack",
 				"blink": "animation.spinda.blink",
 				"controller": "controller.animation.pokemon"

@@ -17,7 +17,8 @@
 				"shiny_broly": "textures/entity/pokemon/rillaboom/shiny_rillaboom_broly.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -44,6 +45,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -58,6 +62,7 @@
 				"default_sleeping": "animation.rillaboom.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.rillaboom.attack",
 				"blink": "animation.rillaboom.blink",
 				"controller": "controller.animation.pokemon"

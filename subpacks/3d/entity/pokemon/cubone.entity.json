@@ -15,7 +15,8 @@
 				"shiny_independence": "textures/entity/pokemon/cubone/shiny_cubone_independence.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,6 +43,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -49,11 +53,11 @@
 				"default_blink": "animation.cubone.blink",
 				"default_ground_idle": "animation.cubone.ground_idle",
 				"default_air_idle": "animation.cubone.ground_idle",
-				"default_water_idle": "animation.cubone.water_idle",
+				"default_water_idle": "animation.cubone.ground_idle",
 				"default_walking": "animation.cubone.walking",
 				"default_flying": "animation.cubone.ground_idle",
 				"default_ride_flying": "animation.cubone.ground_idle",
-				"default_swimming": "animation.cubone.swimming",
+				"default_swimming": "animation.cubone.ground_idle",
 				"default_sleeping": "animation.cubone.ground_idle",
 				"default_attack": "animation.cubone.attack",
 				"independence_ground_idle": "animation.cubone_independence.ground_idle",
@@ -65,6 +69,7 @@
 				"independence_faint": "animation.cubone_independence.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.cubone_attack",
 				"blink": "controller.animation.pokemon.cubone_blink",
 				"controller": "controller.animation.pokemon.cubone"

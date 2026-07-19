@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/beedrill/shiny_beedrill.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.beedrill.ground_idle",
 				"default_air_idle": "animation.beedrill.air_idle",
-				"default_water_idle": "animation.beedrill.water_idle",
+				"default_water_idle": "animation.beedrill.ground_idle",
 				"default_walking": "animation.beedrill.walking",
 				"default_flying": "animation.beedrill.flying",
 				"default_ride_flying": "animation.beedrill.flying",
-				"default_swimming": "animation.beedrill.swimming",
+				"default_swimming": "animation.beedrill.ground_idle",
 				"default_sleeping": "animation.beedrill.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.beedrill.attack",
 				"blink": "animation.beedrill.blink",
 				"controller": "controller.animation.pokemon"

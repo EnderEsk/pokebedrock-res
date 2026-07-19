@@ -15,7 +15,8 @@
 				"shiny_christmas": "textures/entity/pokemon/cinderace/shiny_cinderace_christmas.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -42,20 +43,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.cinderace.ground_idle",
 				"default_air_idle": "animation.cinderace.ground_idle",
-				"default_water_idle": "animation.cinderace.water_idle",
+				"default_water_idle": "animation.cinderace.ground_idle",
 				"default_walking": "animation.cinderace.walking",
 				"default_flying": "animation.cinderace.ground_idle",
 				"default_ride_flying": "animation.cinderace.ground_idle",
-				"default_swimming": "animation.cinderace.swimming",
+				"default_swimming": "animation.cinderace.ground_idle",
 				"default_sleeping": "animation.cinderace.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.cinderace.attack",
 				"blink": "animation.cinderace.blink",
 				"controller": "controller.animation.pokemon"

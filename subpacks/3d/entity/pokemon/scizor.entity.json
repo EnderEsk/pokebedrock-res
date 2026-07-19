@@ -19,7 +19,8 @@
 				"shiny_female_ranger": "textures/entity/pokemon/scizor/shiny_female_scizor_ranger.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -46,6 +47,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -53,12 +57,12 @@
 				"default_blink": "animation.scizor.blink",
 				"default_ground_idle": "animation.scizor.ground_idle",
 				"default_air_idle": "animation.scizor.air_idle",
-				"default_water_idle": "animation.scizor.water_idle",
-				"default_walking": "animation.scizor.walking",
+				"default_water_idle": "animation.scizor.ground_idle",
+				"default_walking": "animation.scizor.ground_idle",
 				"default_flying": "animation.scizor.flying",
 				"default_ride_flying": "animation.scizor.flying",
-				"default_swimming": "animation.scizor.swimming",
-				"default_sleeping": "animation.scizor.sleeping",
+				"default_swimming": "animation.scizor.ground_idle",
+				"default_sleeping": "animation.scizor.ground_idle",
 				"default_attack": "animation.scizor.attack",
 				"ranger_flying": "animation.scizor_ranger.flying",
 				"ranger_ride_flying": "animation.scizor_ranger.ride_flying",
@@ -73,6 +77,7 @@
 				"ranger_faint": "animation.scizor_ranger.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.scizor_attack",
 				"blink": "controller.animation.pokemon.scizor_blink",
 				"controller": "controller.animation.pokemon.scizor"

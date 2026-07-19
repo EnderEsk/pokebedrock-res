@@ -17,7 +17,8 @@
 				"shiny_teamplasma": "textures/entity/pokemon/genesectshock/shiny_genesectshock_teamplasma.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -44,6 +45,9 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
@@ -51,12 +55,12 @@
 				"default_blink": "animation.genesectshock.blink",
 				"default_ground_idle": "animation.genesectshock.ground_idle",
 				"default_air_idle": "animation.genesectshock.air_idle",
-				"default_water_idle": "animation.genesectshock.water_idle",
-				"default_walking": "animation.genesectshock.walking",
+				"default_water_idle": "animation.genesectshock.ground_idle",
+				"default_walking": "animation.genesectshock.ground_idle",
 				"default_flying": "animation.genesectshock.flying",
 				"default_ride_flying": "animation.genesectshock.flying",
-				"default_swimming": "animation.genesectshock.swimming",
-				"default_sleeping": "animation.genesectshock.sleeping",
+				"default_swimming": "animation.genesectshock.ground_idle",
+				"default_sleeping": "animation.genesectshock.ground_idle",
 				"default_attack": "animation.genesectshock.attack",
 				"beru_flying": "animation.genesectshock_beru.flying",
 				"beru_ride_flying": "animation.genesectshock_beru.ride_flying",
@@ -82,6 +86,7 @@
 				"teamplasma_faint": "animation.genesectshock_teamplasma.faint",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "controller.animation.pokemon.genesectshock_attack",
 				"blink": "controller.animation.pokemon.genesectshock_blink",
 				"controller": "controller.animation.pokemon.genesectshock"

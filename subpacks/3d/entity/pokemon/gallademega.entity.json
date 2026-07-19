@@ -14,7 +14,8 @@
 				"christmas": "textures/entity/pokemon/gallademega/gallademega_christmas.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -41,20 +42,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.gallademega.ground_idle",
 				"default_air_idle": "animation.gallademega.ground_idle",
-				"default_water_idle": "animation.gallademega.water_idle",
+				"default_water_idle": "animation.gallademega.ground_idle",
 				"default_walking": "animation.gallademega.walking",
 				"default_flying": "animation.gallademega.ground_idle",
 				"default_ride_flying": "animation.gallademega.ground_idle",
-				"default_swimming": "animation.gallademega.swimming",
+				"default_swimming": "animation.gallademega.ground_idle",
 				"default_sleeping": "animation.gallademega.sleeping",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.gallademega.attack",
 				"blink": "animation.gallademega.blink",
 				"controller": "controller.animation.pokemon"

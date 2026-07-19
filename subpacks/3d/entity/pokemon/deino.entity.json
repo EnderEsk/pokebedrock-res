@@ -13,7 +13,8 @@
 				"shiny_default": "textures/entity/pokemon/deino/shiny_deino.png"
 			},
 			"particle_effects": {
-				"landing_puff": "pokeb:landing_puff"
+				"landing_puff": "pokeb:landing_puff",
+				"shiny_sparkle": "pokeb:shiny_sparkle"
 			},
 			"scripts": {
 				"scale": "q.property('pokeb:scale')",
@@ -40,20 +41,24 @@
 					},
 					{
 						"landing": "q.has_rider"
+					},
+					{
+						"shiny_sparkle": "query.property('pokeb:shiny')"
 					}
 				]
 			},
 			"animations": {
 				"default_ground_idle": "animation.deino.ground_idle",
 				"default_air_idle": "animation.deino.ground_idle",
-				"default_water_idle": "animation.deino.water_idle",
+				"default_water_idle": "animation.deino.ground_idle",
 				"default_walking": "animation.deino.walking",
 				"default_flying": "animation.deino.ground_idle",
 				"default_ride_flying": "animation.deino.ground_idle",
-				"default_swimming": "animation.deino.swimming",
-				"default_sleeping": "animation.deino.sleeping",
+				"default_swimming": "animation.deino.ground_idle",
+				"default_sleeping": "animation.deino.ground_idle",
 				"look_at_target": "animation.pokemon.look_at_target",
 				"landing": "controller.animation.pokemon_landing",
+				"shiny_sparkle": "animation.pokemon.shiny_sparkle",
 				"attack": "animation.deino.attack",
 				"blink": "animation.deino.blink",
 				"controller": "controller.animation.pokemon"
