@@ -1,0 +1,30 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokeb:rotom_fan",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/rotom_appliances/rotom_fan"
+      },
+      "geometry": {
+        "default": "geometry.rotom_fan"
+      },
+      "scripts": {
+        "animate": [
+          "controller"
+        ]
+      },
+      "animations": {
+        "controller": "controller.animation.rotom_fan",
+        "idle": "animation.rotom_fan_block.idle_off",
+        "rotom_use": "animation.rotom_fan_block.rotom_use"
+      },
+      "render_controllers": [
+        "controller.render.rotom_fan"
+      ]
+    }
+  }
+}

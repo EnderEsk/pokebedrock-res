@@ -7899,6 +7899,21 @@
     },
     "arceuspoison_omega": {
       "textures": "textures/sprites/default/arceuspoison_omega.png"
+    },
+    "rotom_fridge": {
+      "textures": "textures/items/rotom_appliances/rotom_fridge"
+    },
+    "rotom_oven": {
+      "textures": "textures/items/rotom_appliances/rotom_oven"
+    },
+    "rotom_fan": {
+      "textures": "textures/items/rotom_appliances/rotom_fan"
+    },
+    "rotom_mower": {
+      "textures": "textures/items/rotom_appliances/rotom_mower"
+    },
+    "rotom_washing_machine": {
+      "textures": "textures/items/rotom_appliances/rotom_washing_machine"
     }
   }
 }

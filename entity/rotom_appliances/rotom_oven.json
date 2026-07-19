@@ -1,0 +1,30 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokeb:rotom_oven",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/rotom_appliances/rotom_oven"
+      },
+      "geometry": {
+        "default": "geometry.rotom_oven"
+      },
+      "scripts": {
+        "animate": [
+          "controller"
+        ]
+      },
+      "animations": {
+        "controller": "controller.animation.rotom_oven",
+        "idle": "animation.rotom_oven_block_entity.idle",
+        "rotom_use": "animation.rotom_oven_block_entity.rotom_use"
+      },
+      "render_controllers": [
+        "controller.render.rotom_oven"
+      ]
+    }
+  }
+}

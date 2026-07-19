@@ -1,0 +1,30 @@
+{
+  "format_version": "1.18.3",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "pokeb:rotom_mower",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/rotom_appliances/rotom_mower"
+      },
+      "geometry": {
+        "default": "geometry.rotom_mower"
+      },
+      "scripts": {
+        "animate": [
+          "controller"
+        ]
+      },
+      "animations": {
+        "controller": "controller.animation.rotom_mower",
+        "idle": "animation.rotom_mower_block_entity.idle",
+        "rotom_use": "animation.rotom_mower_block_entity.rotom_use"
+      },
+      "render_controllers": [
+        "controller.render.rotom_mower"
+      ]
+    }
+  }
+}
