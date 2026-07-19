@@ -1,7 +1,7 @@
 {
   "format_version": "1.8.0",
   "animations": {
-    "animation.rotom_oven_block_entity.idle": {
+    "animation.rotom_microwave_block_entity.idle": {
       "loop": true,
       "animation_length": 1,
       "bones": {
@@ -19,7 +19,7 @@
         }
       }
     },
-    "animation.rotom_oven_block_entity.open": {
+    "animation.rotom_microwave_block_entity.open": {
       "loop": "hold_on_last_frame",
       "animation_length": 1.125,
       "bones": {
@@ -103,7 +103,7 @@
         }
       }
     },
-    "animation.rotom_oven_block_entity.close": {
+    "animation.rotom_microwave_block_entity.close": {
       "loop": "hold_on_last_frame",
       "animation_length": 1.125,
       "bones": {
@@ -187,7 +187,7 @@
         }
       }
     },
-    "animation.rotom_oven_block_entity.rotom_use": {
+    "animation.rotom_microwave_block_entity.rotom_use": {
       "loop": false,
       "animation_length": 1.75,
       "bones": {

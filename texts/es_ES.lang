@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v2.18.3 RES
+﻿pack.name=§lPokeBedrock v2.18.4 RES
 pack.description=§aUn addon Pokémon de alto nivel creado por Smell of Curry para Minecraft Bedrock
 
 ## Item Group Names
@@ -17,6 +17,7 @@ pokeb:itemGroup.name.boosters=Potenciadores
 pokeb:itemGroup.name.tradeMachineParts=Piezas de la máquina de intercambio
 pokeb:itemGroup.name.fossilMachineParts=Piezas de la máquina de fósiles
 pokeb:itemGroup.name.cloningMachineParts=Piezas de máquina de clonación
+pokeb:itemGroup.name.rotomAppliances=Rotom Appliances
 pokeb:itemGroup.name.pokedex=Pokédex
 pokeb:itemGroup.name.fossils=Fósiles
 pokeb:itemGroup.name.stones=Piedras
@@ -83,6 +84,13 @@ item.pokeb:broken_mew_eyelash=Pestaña de Mew rota
 item.pokeb:mew_eyelash=Pestaña de Mew
 
 item.pokeb:containment_fluid=Fluido de contención
+
+## Rotom Appliances
+item.pokeb:rotom_fridge=Refrigerator
+item.pokeb:rotom_microwave=Microwave
+item.pokeb:rotom_fan=Rotary Fan
+item.pokeb:rotom_mower=Lawn Mower
+item.pokeb:rotom_washing_machine=Washing Machine
 
 
 

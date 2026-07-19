@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v2.18.3 RES
+﻿pack.name=§lPokeBedrock v2.18.4 RES
 pack.description=Â§aUm addon PokÃ©mon de alto nÃ­vel criado por Smell of Curry para Minecraft Bedrock
 
 ## Item Group Names
@@ -17,6 +17,7 @@ pokeb:itemGroup.name.boosters=Impulsionadores
 pokeb:itemGroup.name.tradeMachineParts=PeÃ§as da mÃ¡quina de troca
 pokeb:itemGroup.name.fossilMachineParts=PeÃ§as da mÃ¡quina de fÃ³sseis
 pokeb:itemGroup.name.cloningMachineParts=Peças da máquina de clonagem
+pokeb:itemGroup.name.rotomAppliances=Rotom Appliances
 pokeb:itemGroup.name.pokedex=PokÃ©dex
 pokeb:itemGroup.name.fossils=FÃ³sseis
 pokeb:itemGroup.name.stones=Pedras
@@ -83,6 +84,13 @@ item.pokeb:broken_mew_eyelash=Cílio de Mew quebrado
 item.pokeb:mew_eyelash=Cílio de Mew
 
 item.pokeb:containment_fluid=Fluido de contenção
+
+## Rotom Appliances
+item.pokeb:rotom_fridge=Refrigerator
+item.pokeb:rotom_microwave=Microwave
+item.pokeb:rotom_fan=Rotary Fan
+item.pokeb:rotom_mower=Lawn Mower
+item.pokeb:rotom_washing_machine=Washing Machine
 
 
 

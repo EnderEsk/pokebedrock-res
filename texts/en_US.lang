@@ -17,6 +17,7 @@ pokeb:itemGroup.name.boosters=Boosters
 pokeb:itemGroup.name.tradeMachineParts=Trade Machine Parts
 pokeb:itemGroup.name.fossilMachineParts=Fossil Machine Parts
 pokeb:itemGroup.name.cloningMachineParts=Cloning Machine Parts
+pokeb:itemGroup.name.rotomAppliances=Rotom Appliances
 pokeb:itemGroup.name.pokedex=Pokedex
 pokeb:itemGroup.name.fossils=Fossils
 pokeb:itemGroup.name.stones=Stones
@@ -83,6 +84,13 @@ item.pokeb:broken_mew_eyelash=Broken Mew Eyelash
 item.pokeb:mew_eyelash=Mew Eyelash
 
 item.pokeb:containment_fluid=Containment Fluid
+
+## Rotom Appliances
+item.pokeb:rotom_fridge=Refrigerator
+item.pokeb:rotom_microwave=Microwave
+item.pokeb:rotom_fan=Rotary Fan
+item.pokeb:rotom_mower=Lawn Mower
+item.pokeb:rotom_washing_machine=Washing Machine
 
 
 

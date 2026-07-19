@@ -1,4 +1,4 @@
-pack.name=§lPokeBedrock v2.18.3 RES
+﻿pack.name=§lPokeBedrock v2.18.4 RES
 pack.description=§aPokročilý Pokémon addon vytvořený Smell of Curry pro Minecraft Bedrock
 
 ## Item Group Names
@@ -17,6 +17,7 @@ pokeb:itemGroup.name.boosters=Posilovače
 pokeb:itemGroup.name.tradeMachineParts=Díly výměnného stroje
 pokeb:itemGroup.name.fossilMachineParts=Díly fosilního stroje
 pokeb:itemGroup.name.cloningMachineParts=Díly klonovacího stroje
+pokeb:itemGroup.name.rotomAppliances=Rotom Appliances
 pokeb:itemGroup.name.pokedex=Pokédex
 pokeb:itemGroup.name.fossils=Fosilie
 pokeb:itemGroup.name.stones=Kameny
@@ -83,6 +84,13 @@ item.pokeb:broken_mew_eyelash=Rozbité řasy Mew
 item.pokeb:mew_eyelash=Řasy Mew
 
 item.pokeb:containment_fluid=Udržovací kapalina
+
+## Rotom Appliances
+item.pokeb:rotom_fridge=Refrigerator
+item.pokeb:rotom_microwave=Microwave
+item.pokeb:rotom_fan=Rotary Fan
+item.pokeb:rotom_mower=Lawn Mower
+item.pokeb:rotom_washing_machine=Washing Machine
 
 
 

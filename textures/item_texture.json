@@ -7903,8 +7903,8 @@
     "rotom_fridge": {
       "textures": "textures/items/rotom_appliances/rotom_fridge"
     },
-    "rotom_oven": {
-      "textures": "textures/items/rotom_appliances/rotom_oven"
+    "rotom_microwave": {
+      "textures": "textures/items/rotom_appliances/rotom_microwave"
     },
     "rotom_fan": {
       "textures": "textures/items/rotom_appliances/rotom_fan"
