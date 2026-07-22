@@ -10395,6 +10395,7 @@ forms.home.error.uniqueIdFailed=§cNepodařilo se vygenerovat unikátní Home ID
 forms.home.label.iconPath=IconPath
 forms.home.label.name=Název
 forms.home.prompt.confirmDelete=Opravdu chceš smazat domov: %1
+forms.home.prompt.confirmSetLocation=Opravdu chceš nastavit domov %1 na aktuální pozici?
 forms.home.title.createHome=Vytvořit domov
 forms.home.title.editHome=Upravit domov: %1
 forms.home.title.viewHome=Zobrazit domov: %1

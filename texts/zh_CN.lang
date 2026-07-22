@@ -10395,6 +10395,7 @@ forms.home.error.uniqueIdFailed=§c生成唯一 Home ID 失败。请重试。
 forms.home.label.iconPath=IconPath
 forms.home.label.name=名称
 forms.home.prompt.confirmDelete=确定要删除家：%1 吗
+forms.home.prompt.confirmSetLocation=确定要将家 %1 设置到当前位置吗？
 forms.home.title.createHome=创建家
 forms.home.title.editHome=编辑家：%1
 forms.home.title.viewHome=查看家：%1

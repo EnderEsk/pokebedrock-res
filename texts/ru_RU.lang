@@ -10395,6 +10395,7 @@ forms.home.error.uniqueIdFailed=§cНе удалось сгенерироват�
 forms.home.label.iconPath=IconPath
 forms.home.label.name=Имя
 forms.home.prompt.confirmDelete=Вы уверены, что хотите удалить дом: %1
+forms.home.prompt.confirmSetLocation=Вы уверены, что хотите установить дом %1 на вашу текущую позицию?
 forms.home.title.createHome=Создать дом
 forms.home.title.editHome=Изменить дом: %1
 forms.home.title.viewHome=Просмотр дома: %1

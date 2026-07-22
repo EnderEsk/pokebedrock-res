@@ -10395,6 +10395,7 @@ forms.home.error.uniqueIdFailed=§cEindeutige Home-ID konnte nicht erzeugt werde
 forms.home.label.iconPath=IconPath
 forms.home.label.name=Name
 forms.home.prompt.confirmDelete=Willst du Home %1 wirklich löschen?
+forms.home.prompt.confirmSetLocation=Möchtest du Home %1 wirklich auf deine aktuelle Position setzen?
 forms.home.title.createHome=Home erstellen
 forms.home.title.editHome=Home bearbeiten: %1
 forms.home.title.viewHome=Home ansehen: %1

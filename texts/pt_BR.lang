@@ -10395,6 +10395,7 @@ forms.home.error.uniqueIdFailed=§cFailed to generate a unique Home ID. Please t
 forms.home.label.iconPath=Caminho do ícone
 forms.home.label.name=Name
 forms.home.prompt.confirmDelete=Are you sure you want to delete home: %1
+forms.home.prompt.confirmSetLocation=Are you sure you want to set home %1 to your current position?
 forms.home.title.createHome=Create Home
 forms.home.title.editHome=Edit Home: %1
 forms.home.title.viewHome=View Home: %1

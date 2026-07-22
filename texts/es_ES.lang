@@ -10395,6 +10395,7 @@ forms.home.error.uniqueIdFailed=§cNo se pudo generar un ID único para el hogar
 forms.home.label.iconPath=Ruta del ícono
 forms.home.label.name=Nombre
 forms.home.prompt.confirmDelete=¿Estás seguro de que quieres eliminar el hogar: %1?
+forms.home.prompt.confirmSetLocation=¿Estás seguro de que quieres establecer el hogar %1 en tu posición actual?
 forms.home.title.createHome=Crear hogar
 forms.home.title.editHome=Editar hogar: %1
 forms.home.title.viewHome=Ver hogar: %1
