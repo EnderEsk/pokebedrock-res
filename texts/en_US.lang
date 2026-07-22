@@ -4368,6 +4368,7 @@ models.showdown.miss.avoided=%s§r§f avoided the attack!
 models.showdown.move.used=%s§r§f Used §l%s§r§f!
 models.showdown.move.usedOn=%s§r§f Used §l%s§r§f on %s§r§f!
 models.showdown.nothing.didNothing=Did nothing!
+models.showdown.ohko.hit=It's a one-hit KO!
 models.showdown.prepare.preparing=%s's is preparing to use %s!
 models.showdown.primal.reverted=%s§r§f reverted to its primal forme!
 models.showdown.recharge.mustRecharge=%s§r§f must recharge!

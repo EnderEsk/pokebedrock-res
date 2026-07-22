@@ -4368,6 +4368,7 @@ models.showdown.miss.avoided=%s§r§f уклонился от атаки!
 models.showdown.move.used=%s§r§f использовал §l%s§r§f!
 models.showdown.move.usedOn=%s§r§f использовал §l%s§r§f на %s§r§f!
 models.showdown.nothing.didNothing=Ничего не произошло!
+models.showdown.ohko.hit=Нокаут с одного удара!
 models.showdown.prepare.preparing=%s готовится использовать %s!
 models.showdown.primal.reverted=%s§r§f вернулся к первобытной форме!
 models.showdown.recharge.mustRecharge=%s§r§f должен перезарядиться!

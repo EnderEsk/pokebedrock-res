@@ -4368,6 +4368,7 @@ models.showdown.miss.avoided=%s§r§f 避开了攻击！
 models.showdown.move.used=%s§r§f 使用了 §l%s§r§f！
 models.showdown.move.usedOn=%s§r§f 使用了 §l%s§r§f，目标是 %s§r§f！
 models.showdown.nothing.didNothing=什么都没做！
+models.showdown.ohko.hit=一击必杀！
 models.showdown.prepare.preparing=%s 正在准备使用 %s！
 models.showdown.primal.reverted=%s§r§f 恢复为原始形态！
 models.showdown.recharge.mustRecharge=%s§r§f 必须重新充能！

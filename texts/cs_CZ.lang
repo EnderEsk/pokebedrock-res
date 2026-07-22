@@ -4368,6 +4368,7 @@ models.showdown.miss.avoided=%s§r§f se vyhnul útoku!
 models.showdown.move.used=%s§r§f použil §l%s§r§f!
 models.showdown.move.usedOn=%s§r§f použil §l%s§r§f na %s§r§f!
 models.showdown.nothing.didNothing=NeudÄ›lal nic!
+models.showdown.ohko.hit=K.O. jednou ranou!
 models.showdown.prepare.preparing=%s se připravuje k použití %s!
 models.showdown.primal.reverted=%s§r§f se vrátil do své původní podoby!
 models.showdown.recharge.mustRecharge=%s§r§f se musí dobít!
