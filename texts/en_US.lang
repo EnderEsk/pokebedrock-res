@@ -3962,8 +3962,29 @@ events.beforeChat.error.duplicate=§cYour previous message appears to be identic
 events.beforeChat.error.muted=§cCannot Send Messages, you are currently Muted!
 events.beforeChat.error.parseFailed=§cFailed to parse your data!
 events.beforeChat.error.tooFast=§cYou are sending messages too quickly. Please slow down and try again.
+events.beforeChat.error.tooManyEmojis=§cA maximum of %s emojis can be sent in a single message.
 events.beforeChat.error.zalgo=§cYour message contains zalgo and cannot be sent!
 events.beforeChat.format=§r§l§8[§r%s§r§l§8]§r§7 %s:§r %s
+
+## Emoji Update
+events.emoji.error.notOwned=§cYou don't own the §f:%s:§c emoji — buy the §e%s§c pack in §b/emojis§c to unlock it.
+forms.emojiShop.title.main=Emoji Shop
+forms.emojiShop.title.pack=%s
+forms.emojiShop.button.back=§aBack
+forms.emojiShop.button.buy=§aBUY FOR %s TOKENS
+forms.emojiShop.button.free=§aFREE
+forms.emojiShop.button.owned=§aOWNED
+forms.emojiShop.lore.price=§7Price: §e%s Tokens
+forms.emojiShop.lore.owned=§aUnlocked
+forms.emojiShop.lore.viewPack=§7Click to preview this pack
+forms.emojiShop.lore.emojiCode=§7Type §f:%s:§7 in chat
+forms.emojiShop.confirm.buy=Buy %s for %s Tokens?
+forms.emojiShop.confirm.claim=Claim %s?
+forms.emojiShop.success.purchased=§aYou unlocked the §e%s§a for §e%s§a Tokens!
+forms.emojiShop.success.claimed=§aYou claimed the §e%s§a!
+forms.emojiShop.error.insufficientTokens=§cYou need §e%s§c Tokens but only have §e%s§c.
+forms.emojiShop.error.alreadyOwned=§cYou already own the §e%s§c.
+
 events.biomeDiscovery.success.discovered=§aYou have discovered a new biome: %s.
 events.boosterManager.error.consumeFailed=§cFailed to consume booster item.
 events.boosterManager.error.invalidItem=§eThis booster item is invalid. Please contact staff.

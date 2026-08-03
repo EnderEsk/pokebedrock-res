@@ -11608,3 +11608,24 @@ commands.spawnrate.success=Spawnraten-Einstellungen aktualisiert.
 
 ## PHUD
 phud.playerPing.label=Aktueller Ping:
+## Emoji Update
+events.beforeChat.error.tooManyEmojis=§cA maximum of %s emojis can be sent in a single message.
+events.emoji.error.notOwned=§cYou don't own the §f:%s:§c emoji — buy the §e%s§c pack in §b/emojis§c to unlock it.
+forms.emojiShop.title.main=Emoji Shop
+forms.emojiShop.title.pack=%s
+forms.emojiShop.button.back=§aBack
+forms.emojiShop.button.buy=§aBUY FOR %s TOKENS
+forms.emojiShop.button.free=§aFREE
+forms.emojiShop.button.owned=§aOWNED
+forms.emojiShop.lore.price=§7Price: §e%s Tokens
+forms.emojiShop.lore.owned=§aUnlocked
+forms.emojiShop.lore.viewPack=§7Click to preview this pack
+forms.emojiShop.lore.emojiCode=§7Type §f:%s:§7 in chat
+forms.emojiShop.confirm.buy=Buy %s for %s Tokens?
+forms.emojiShop.confirm.claim=Claim %s?
+forms.emojiShop.success.purchased=§aYou unlocked the §e%s§a for §e%s§a Tokens!
+forms.emojiShop.success.claimed=§aYou claimed the §e%s§a!
+forms.emojiShop.error.insufficientTokens=§cYou need §e%s§c Tokens but only have §e%s§c.
+forms.emojiShop.error.alreadyOwned=§cYou already own the §e%s§c.
+forms.home.prompt.confirmSetLocation=Are you sure you want to set the location of home %1 to your current position?
+models.showdown.ohko.hit=§7§oIt's a one-hit KO!§r§f
