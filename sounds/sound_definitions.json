@@ -1,6 +1,55 @@
 {
   "format_version": "1.20.20",
   "sound_definitions": {
+    "frost_rotom_fridge": {
+      "category": "neutral",
+      "volume": 1.0,
+      "sounds": [
+        "sounds/blocks/rotom_appliances/frost_rotom_fridge"
+      ]
+    },
+    "heat_rotom_oven": {
+      "category": "neutral",
+      "volume": 1.0,
+      "sounds": [
+        "sounds/blocks/rotom_appliances/heat_rotom_oven"
+      ]
+    },
+    "wash_rotom_washing_machine": {
+      "category": "neutral",
+      "volume": 1.0,
+      "sounds": [
+        "sounds/blocks/rotom_appliances/wash_rotom_washing_machine"
+      ]
+    },
+    "fan_rotom_fan": {
+      "category": "neutral",
+      "volume": 1.0,
+      "sounds": [
+        "sounds/blocks/rotom_appliances/fan_rotom_fan"
+      ]
+    },
+    "mower_rotom_lawnmower": {
+      "category": "neutral",
+      "volume": 1.0,
+      "sounds": [
+        "sounds/blocks/rotom_appliances/mower_rotom_lawnmower"
+      ]
+    },
+    "rotom_entering_machine": {
+      "category": "neutral",
+      "volume": 1.0,
+      "sounds": [
+        "sounds/blocks/rotom_appliances/rotom_entering_machine"
+      ]
+    },
+    "rotom_form_change_complete": {
+      "category": "neutral",
+      "volume": 1.0,
+      "sounds": [
+        "sounds/blocks/rotom_appliances/rotom_form_change_complete"
+      ]
+    },
     "fossil_analyzer_opening": {
       "category": "neutral",
       "sounds": [

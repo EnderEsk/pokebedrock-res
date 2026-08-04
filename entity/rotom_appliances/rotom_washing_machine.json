@@ -20,6 +20,8 @@
       "animations": {
         "controller": "controller.animation.rotom_washing_machine",
         "idle": "animation.rotom_washing_machine_block.idle",
+        "open": "animation.rotom_washing_machine_block.open",
+        "close": "animation.rotom_washing_machine_block.close",
         "rotom_use": "animation.rotom_washing_machine_block.rotom_use"
       },
       "render_controllers": [

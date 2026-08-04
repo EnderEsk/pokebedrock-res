@@ -10,7 +10,39 @@
           ],
           "transitions": [
             {
+              "opening": "query.property('pokeb:appliance_state') == 'opening'"
+            },
+            {
               "using": "query.property('pokeb:appliance_state') == 'transforming'"
+            }
+          ]
+        },
+        "opening": {
+          "animations": [
+            "open"
+          ],
+          "transitions": [
+            {
+              "closing": "query.property('pokeb:appliance_state') == 'closing'"
+            },
+            {
+              "using": "query.property('pokeb:appliance_state') == 'transforming'"
+            },
+            {
+              "default": "query.property('pokeb:appliance_state') == 'idle'"
+            }
+          ]
+        },
+        "closing": {
+          "animations": [
+            "close"
+          ],
+          "transitions": [
+            {
+              "using": "query.property('pokeb:appliance_state') == 'transforming'"
+            },
+            {
+              "default": "query.property('pokeb:appliance_state') == 'idle'"
             }
           ]
         },

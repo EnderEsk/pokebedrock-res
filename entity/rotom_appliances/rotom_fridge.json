@@ -20,6 +20,8 @@
       "animations": {
         "controller": "controller.animation.rotom_fridge",
         "idle": "animation.rotom_fridge_block.idle",
+        "open": "animation.rotom_fridge_block.open",
+        "close": "animation.rotom_fridge_block.close",
         "rotom_use": "animation.rotom_fridge_block_entity.rotom_use"
       },
       "render_controllers": [

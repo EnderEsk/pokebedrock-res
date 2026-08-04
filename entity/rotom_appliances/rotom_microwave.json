@@ -20,6 +20,8 @@
       "animations": {
         "controller": "controller.animation.rotom_microwave",
         "idle": "animation.rotom_microwave_block_entity.idle",
+        "open": "animation.rotom_microwave_block_entity.open",
+        "close": "animation.rotom_microwave_block_entity.close",
         "rotom_use": "animation.rotom_microwave_block_entity.rotom_use"
       },
       "render_controllers": [
