@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import type { IItemsJson, ItemTextureFile } from "../types";
+import { readJsonFileStrippingComments } from "../utils";
 
 /**
  * A file that contains all the items in the PokeBedrock behavior pack.
@@ -19,14 +20,17 @@ const itemTexturesPath = path.join(
 test("Verify's that all item icons are present", async () => {
   if (!fs.existsSync(itemTexturesPath))
     throw new Error("item_texture.json not found");
-  const itemTextures = JSON.parse(
-    fs.readFileSync(itemTexturesPath, "utf-8")
-  ) as ItemTextureFile;
+  const itemTextures = readJsonFileStrippingComments(
+    itemTexturesPath
+  ) as ItemTextureFile | null;
+  if (!itemTextures) throw new Error("item_texture.json could not be parsed");
 
   if (!fs.existsSync(itemsJsonPath)) throw new Error("items.json not found");
-  const items = JSON.parse(
-    fs.readFileSync(itemsJsonPath, "utf-8")
-  ) as IItemsJson;
+  // items.json keeps disabled entries around as `//` comments, which JSON.parse
+  // rejects outright. Bedrock tolerates them, so they are stripped here rather
+  // than deleted from the file.
+  const items = readJsonFileStrippingComments(itemsJsonPath) as IItemsJson | null;
+  if (!items) throw new Error("items.json could not be parsed");
 
   // Creates a set with all the unique item icons.
   const itemIcons = new Set(Object.values(items));

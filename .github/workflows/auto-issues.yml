@@ -21,7 +21,7 @@ jobs:
 
       # Run your existing script that generates missing_info.md
       - name: Generate Missing Info Report
-        run: npm run generateEntityFiles
+        run: npm run generatePokemonFiles
 
       # Run a custom parser that creates or updates GitHub issues
       - name: Parse Report and Create Issues

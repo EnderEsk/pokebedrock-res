@@ -44,16 +44,51 @@ jobs:
       run: |
         npx ts-node --project tsconfig.json scripts/build.ts
 
-    - name: Release
-      uses: softprops/action-gh-release@v1
-      with:
-        body_path: CHANGELOG.md
-        name: "v${{ steps.get_version.outputs.version }}"
-        tag_name: "v${{ steps.get_version.outputs.version }}"
-        files: |
-          PokeBedrock RES ${{ steps.get_version.outputs.version }}.mcpack
-          PokeBedrock RES ${{ steps.get_version.outputs.version }}.zip
-        draft: false
+    # Replaces softprops/action-gh-release, which speaks the GitHub releases API
+    # and cannot publish to this Forgejo instance. Done with curl rather than a
+    # release action because the asset filenames contain spaces, which the
+    # directory-scanning release actions handle awkwardly.
+    #
+    # This is load-bearing beyond the repo itself: bds-manager and
+    # pokebedrock-hub fetch the latest release's .mcpack from this instance to
+    # serve resource packs, so a failure here stops packs shipping.
+    - name: Publish release
+      id: release
+      env:
+        FORGEJO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VERSION: ${{ steps.get_version.outputs.version }}
+      run: |
+        set -euo pipefail
+        api="${GITHUB_SERVER_URL}/api/v1/repos/${GITHUB_REPOSITORY}"
+
+        # ponytail: a re-run against an existing tag fails here instead of
+        # replacing the release. Deleting-then-recreating would briefly leave
+        # the servers with no downloadable pack, so failing loudly is the safer
+        # default. To redo a release, delete it in the UI first.
+        payload="$(jq -n \
+          --arg tag "v${VERSION}" \
+          --arg sha "${GITHUB_SHA}" \
+          --arg body "$(cat CHANGELOG.md)" \
+          '{tag_name: $tag, target_commitish: $sha, name: $tag, body: $body, draft: false, prerelease: false}')"
+
+        release_id="$(curl -sSf -X POST "${api}/releases" \
+          -H "Authorization: token ${FORGEJO_TOKEN}" \
+          -H 'Content-Type: application/json' \
+          -d "${payload}" | jq -r '.id')"
+        echo "Created release ${release_id} for v${VERSION}"
+
+        for asset in "PokeBedrock RES ${VERSION}.mcpack" "PokeBedrock RES ${VERSION}.zip"; do
+          [ -f "${asset}" ] || { echo "missing build artifact: ${asset}"; exit 1; }
+          # The name goes in the query string, so it must be percent-encoded —
+          # these filenames contain spaces.
+          encoded="$(jq -rn --arg v "${asset}" '$v | @uri')"
+          curl -sSf -X POST "${api}/releases/${release_id}/assets?name=${encoded}" \
+            -H "Authorization: token ${FORGEJO_TOKEN}" \
+            -F "attachment=@${asset}" > /dev/null
+          echo "Uploaded ${asset}"
+        done
+
+        echo "release_url=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/releases/tag/v${VERSION}" >> $GITHUB_OUTPUT
 
     - name: Read CHANGELOG.md
       id: read_changelog
@@ -63,18 +98,17 @@ jobs:
         echo "$changelog" >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
 
-    - name: Set Release URL
-      id: set_release_url
-      run: echo "release_url=https://github.com/${{ github.repository }}/releases/tag/v${{ steps.get_version.outputs.version }}" >> $GITHUB_OUTPUT
-
+    # Skipped rather than failed when the secret is absent, so a missing webhook
+    # cannot fail a run whose release already published.
     - name: Discord Webhook Action
+      if: ${{ secrets.WEBHOOK_URL != '' }}
       uses: tsickert/discord-webhook@v6.0.0
       with:
         avatar-url: "https://cdn.discordapp.com/avatars/1093906253517959248/afcb43ebb982eebca879819dda0ce635.webp"
         webhook-url: ${{ secrets.WEBHOOK_URL }}
         embed-title: "[RES] Update v${{ steps.get_version.outputs.version }}"
         embed-description: "${{ steps.read_changelog.outputs.changelog }}"
-        embed-url: "${{ steps.set_release_url.outputs.release_url }}"
+        embed-url: "${{ steps.release.outputs.release_url }}"
         filename: "PokeBedrock RES ${{ steps.get_version.outputs.version }}.mcpack"
 
     - name: Complete Workflow

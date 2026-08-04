@@ -30,29 +30,38 @@ jobs:
       - name: Generate missing_info.md and log file
         run: npm run generatePokemonFiles
 
+      # Forgejo's fork of upload-artifact. actions/upload-artifact@v4 cannot be
+      # used: @actions/artifact v2 detects any non-github.com API as "GHES" and
+      # aborts with GHESNotSupportedError before uploading anything.
       - name: Upload missing_info.md and log files as artifacts
-        uses: actions/upload-artifact@v4
+        uses: https://data.forgejo.org/forgejo/upload-artifact@v4
         with:
           name: reports
           path: |
             missing_info.md
             log-*.log
 
+      # Only meaningful on a pull request — on a push to main there is no issue
+      # number to comment on, so this previously failed every push.
+      #
+      # continue-on-error because Forgejo gives `pull_request` runs a read-only
+      # token, so the comment is best-effort: a missing report comment must not
+      # fail a run whose actual job (generating and archiving the report)
+      # succeeded. Moving this to a pull_request_target companion workflow would
+      # make it reliable, but that job must not check out PR code.
       - name: Post comments on pull request
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const fs = require('fs');
-            const path = require('path');
-            const missingInfoPath = path.join(process.cwd(), 'missing_info.md');
-            
-            const missingInfo = fs.existsSync(missingInfoPath) ? fs.readFileSync(missingInfoPath, 'utf8') : '';
-
-            if (missingInfo) {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.issue.number,
-                body: `### Missing Information Report\n\n${missingInfo}\n`
-              });
-            }
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          [ -s missing_info.md ] || { echo "no missing info to report"; exit 0; }
+          body="$(jq -Rs '"### Missing Information Report\n\n" + . + "\n"' < missing_info.md)"
+          curl -sSf -X POST \
+            "${GITHUB_SERVER_URL}/api/v1/repos/${GITHUB_REPOSITORY}/issues/${NUMBER}/comments" \
+            -H "Authorization: token ${TOKEN}" \
+            -H 'Content-Type: application/json' \
+            -d "{\"body\": ${body}}" > /dev/null
+          echo "Posted report to #${NUMBER}"

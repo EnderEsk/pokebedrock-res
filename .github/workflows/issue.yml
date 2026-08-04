@@ -1,9 +1,16 @@
 name: Auto Assign
+
 on:
   issues:
     types: [opened]
-  pull_request:
+  # pull_request_target, not pull_request: Forgejo hands `pull_request` runs a
+  # token with no write access (the PR content is untrusted), so assigning would
+  # always fail. pull_request_target runs in the context of the base branch and
+  # therefore gets a writable token. That is only safe because this workflow
+  # never checks out or executes the pull request's code.
+  pull_request_target:
     types: [opened]
+
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -11,9 +18,23 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - name: "Auto-assign issue"
-        uses: pozil/auto-assign-issue@v1
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          assignees: smell-of-curry
-          numOfAssignee: 1
+      # Replaces pozil/auto-assign-issue, which reads GitHub's event payload
+      # shape and fails on Forgejo with "Couldn't find issue info in current
+      # context". Forgejo numbers pull requests and issues in one sequence, so
+      # the same endpoint assigns both.
+      - name: Auto-assign
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMBER: ${{ github.event.issue.number || github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+          if [ -z "${NUMBER}" ]; then
+            echo "no issue or pull request number in this event; nothing to assign"
+            exit 0
+          fi
+          curl -sSf -X PATCH \
+            "${GITHUB_SERVER_URL}/api/v1/repos/${GITHUB_REPOSITORY}/issues/${NUMBER}" \
+            -H "Authorization: token ${TOKEN}" \
+            -H 'Content-Type: application/json' \
+            -d '{"assignees": ["smell-of-curry"]}' > /dev/null
+          echo "Assigned #${NUMBER} to smell-of-curry"

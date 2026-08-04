@@ -27,7 +27,17 @@ if (!GITHUB_TOKEN) {
   process.exit(1);
 }
 
-const octokit = new Octokit({ auth: GITHUB_TOKEN });
+// The repo is hosted on Forgejo, whose REST API is compatible with the issue
+// endpoints Octokit uses but lives at <instance>/api/v1 rather than
+// api.github.com. Actions sets GITHUB_API_URL to the right base, so honour it
+// and only fall back to GitHub when running outside CI.
+const octokit = new Octokit({
+  auth: GITHUB_TOKEN,
+  baseUrl: process.env["GITHUB_API_URL"] || "https://api.github.com",
+});
+
+/** Base URL for building human-facing links back to files in this repo. */
+const SERVER_URL = process.env["GITHUB_SERVER_URL"] || "https://github.com";
 
 // Path to the missing_info.md file
 const missingInfoPath = path.join(process.cwd(), "missing_info.md");
@@ -206,7 +216,7 @@ async function main(): Promise<void> {
     { header, filePath, details },
   ] of issuesMap.entries()) {
     validIssueTitles.add(issueTitle);
-    const githubUrl = `https://github.com/${OWNER}/${REPO}/blob/main/${filePath}`;
+    const githubUrl = `${SERVER_URL}/${OWNER}/${REPO}/blob/main/${filePath}`;
     const issueBody = `### ${header}
 
 ${details ? "**Missing Details:**\n" + formatDetailsAsTasks(details) : ""}
