@@ -527,6 +527,47 @@
             }
           ]
         }
+      },
+      {
+        "emoji_shop_grid": {
+          "type": "image",
+          "size": [206, 186],
+          "offset": [0, -5],
+          "texture": "textures/ui/gui/emoji_menu",
+          "$emoji_shop_chest_flag": "§c§h§e§s§t§e§m§o§j§i§s",
+          "layer": 0,
+          "controls": [
+            {
+              "close_button@common.close_button": {
+                "$close_button_offset": [-20, 40]
+              }
+            },
+            {
+              "emoji_shop_inner_grid": {
+                "type": "grid",
+                "grid_dimensions": [9, 6],
+                "size": [162, "100% - 78px"],
+                "offset": [20, 58],
+                "anchor_from": "top_left",
+                "anchor_to": "top_left",
+                "grid_item_template": "chest_ui.chest_item",
+                "collection_name": "form_buttons",
+                "layer": 1
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_name": "#title_text"
+            },
+            {
+              "binding_name": "#null",
+              "binding_type": "view",
+              "source_property_name": "(not ((#title_text - $emoji_shop_chest_flag) = #title_text))",
+              "target_property_name": "#visible"
+            }
+          ]
+        }
       }
     ]
   },
