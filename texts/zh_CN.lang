@@ -23,6 +23,13 @@ pokeb:itemGroup.name.stones=石头
 pokeb:itemGroup.name.pokemon=宝可梦
 pokeb:itemGroup.name.shrines=神殿
 pokeb:itemGroup.name.cosmetics=外观装饰
+pokeb:itemGroup.name.charms=护符
+
+## Charms
+item.pokeb:oval_charm=圆形护符
+item.pokeb:exp_charm=经验护符
+item.pokeb:catching_charm=捕获护符
+item.pokeb:shiny_charm=闪耀护符
 pokeb:itemGroup.name.plushies=Plushies
 
 ## Anniversary Event Items
@@ -1405,6 +1412,7 @@ item.spawn_egg.entity.pokeb:nursery_aide.name=生成培育助手 NPC
 item.spawn_egg.entity.pokeb:neuterer.name=生成 Neuterer NPC
 item.spawn_egg.entity.pokeb:colress.name=生成阿克罗玛 NPC
 item.spawn_egg.entity.pokeb:cynthia.name=生成竹兰 NPC
+item.spawn_egg.entity.pokeb:hyde.name=生成海德
 item.spawn_egg.entity.pokeb:professor_oak.name=大木博士
 item.spawn_egg.entity.pokeb:train_conductor.name=列车长
 item.spawn_egg.entity.pokeb:trainer_marla.name=训练家玛拉

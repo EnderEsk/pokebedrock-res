@@ -23,6 +23,13 @@ pokeb:itemGroup.name.stones=Камни
 pokeb:itemGroup.name.pokemon=Покемоны
 pokeb:itemGroup.name.shrines=Святилища
 pokeb:itemGroup.name.cosmetics=Косметика
+pokeb:itemGroup.name.charms=Талисманы
+
+## Charms
+item.pokeb:oval_charm=Овальный талисман
+item.pokeb:exp_charm=Талисман опыта
+item.pokeb:catching_charm=Талисман ловли
+item.pokeb:shiny_charm=Блестящий талисман
 pokeb:itemGroup.name.plushies=Plushies
 
 ## Anniversary Event Items
@@ -1405,6 +1412,7 @@ item.spawn_egg.entity.pokeb:nursery_aide.name=Создать помощника 
 item.spawn_egg.entity.pokeb:neuterer.name=Создать NPC Neuterer
 item.spawn_egg.entity.pokeb:colress.name=Создать NPC Колресс
 item.spawn_egg.entity.pokeb:cynthia.name=Создать NPC Синтия
+item.spawn_egg.entity.pokeb:hyde.name=Создать Хайда
 item.spawn_egg.entity.pokeb:professor_oak.name=Профессор Дуб
 item.spawn_egg.entity.pokeb:train_conductor.name=Проводник поезда
 item.spawn_egg.entity.pokeb:trainer_marla.name=Тренер Марла

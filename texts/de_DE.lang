@@ -23,6 +23,13 @@ pokeb:itemGroup.name.stones=Steine
 pokeb:itemGroup.name.pokemon=Pokémon
 pokeb:itemGroup.name.shrines=Schreine
 pokeb:itemGroup.name.cosmetics=Cosmetics
+pokeb:itemGroup.name.charms=Talismane
+
+## Charms
+item.pokeb:oval_charm=Ovaler Talisman
+item.pokeb:exp_charm=EP-Talisman
+item.pokeb:catching_charm=Fang-Talisman
+item.pokeb:shiny_charm=Bunt-Talisman
 pokeb:itemGroup.name.plushies=Plushies
 
 ## Anniversary Event Items
@@ -1405,6 +1412,7 @@ item.spawn_egg.entity.pokeb:nursery_aide.name=Kindergärtnerin NPC spawnen
 item.spawn_egg.entity.pokeb:neuterer.name=Neutralisierer NPC spawnen
 item.spawn_egg.entity.pokeb:colress.name=Colress NPC spawnen
 item.spawn_egg.entity.pokeb:cynthia.name=Cynthia NPC spawnen
+item.spawn_egg.entity.pokeb:hyde.name=Hyde spawnen
 item.spawn_egg.entity.pokeb:professor_oak.name=Professor Eich
 item.spawn_egg.entity.pokeb:train_conductor.name=Zugführer
 item.spawn_egg.entity.pokeb:trainer_marla.name=Trainer Marla
