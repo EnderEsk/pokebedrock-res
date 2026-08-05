@@ -539,7 +539,7 @@
           "controls": [
             {
               "close_button@common.close_button": {
-                "$close_button_offset": [-20, 40]
+                "$close_button_offset": [-16, 44]
               }
             },
             {
@@ -547,7 +547,7 @@
                 "type": "grid",
                 "grid_dimensions": [9, 6],
                 "size": [162, "100% - 78px"],
-                "offset": [20, 58],
+                "offset": [22, 58],
                 "anchor_from": "top_left",
                 "anchor_to": "top_left",
                 "grid_item_template": "chest_ui.chest_item",
