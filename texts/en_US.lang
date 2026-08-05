@@ -23,6 +23,7 @@ pokeb:itemGroup.name.stones=Stones
 pokeb:itemGroup.name.pokemon=Pokemon
 pokeb:itemGroup.name.shrines=Shrines
 pokeb:itemGroup.name.cosmetics=Cosmetics
+pokeb:itemGroup.name.charms=Charms
 
 ## Anniversary Event Items
 item.pokeb:anniversary_coin=Anniversary Coin
@@ -56,6 +57,12 @@ item.pokeb:booster_spawn_rate_short=Spawn Rate Booster (15 Minutes)
 item.pokeb:booster_xp_default=Booster Xp Default
 item.pokeb:booster_xp_long=Booster Xp Long
 item.pokeb:booster_xp_short=Booster Xp Short
+
+## Charms
+item.pokeb:oval_charm=Oval Charm
+item.pokeb:exp_charm=Exp Charm
+item.pokeb:catching_charm=Catching Charm
+item.pokeb:shiny_charm=Shiny Charm
 
 ## Orbs
 item.pokeb:orb=Orb
@@ -1380,6 +1387,7 @@ item.spawn_egg.entity.pokeb:neuterer.name=Spawn Neuterer NPC
 item.spawn_egg.entity.pokeb:colress.name=Spawn Colress NPC
 item.spawn_egg.entity.pokeb:cynthia.name=Spawn Cynthia NPC
 item.spawn_egg.entity.pokeb:professor_oak.name=Professor Oak
+item.spawn_egg.entity.pokeb:hyde.name=Spawn Hyde
 item.spawn_egg.entity.pokeb:train_conductor.name=Train Conductor
 item.spawn_egg.entity.pokeb:trainer_marla.name=Trainer Marla
 
