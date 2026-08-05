@@ -539,7 +539,7 @@
           "controls": [
             {
               "close_button@common.close_button": {
-                "$close_button_offset": [-16, 44]
+                "$close_button_offset": [-14, 42]
               }
             },
             {
