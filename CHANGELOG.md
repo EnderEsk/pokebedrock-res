@@ -1,7 +1,8 @@
-**Update v2.18.5**
+**Update v2.19.0**
 
-- Shiny Pokémon now sparkle via resource-pack animation + `pokeb:shiny_sparkle` particles (driven by `pokeb:shiny`), including 2D substitute entities.
-- Added Spawn Rate Booster item names and icons (15 minutes / 30 minutes / 1 hour).
-- Fixed PC locked hover text showing a blank/raw key (`forms.pc.hover.locked`).
-- Restored vanilla glowstone dust texture (removed incorrect crystal override).
-- Added missing strings across all seven locales: tutorial Marla battle gate, arena block-protection error, and `/spawnrate` settings labels.
+- Added placeable Pokémon plushies (starters, Eevee line, Pikachu, Clefairy) with block models, textures, shop sprites, and names across all seven locales.
+- Added Oval, Exp, Catching, and Shiny Charms — item icons plus wrist attachable models/animations.
+- Added Hyde NPC model, animations, texture, and spawn egg; refreshed Professor Oak entity assets.
+- Added OHKO battle-log string (`It's a one-hit KO!`) and home-set confirmation prompt across locales.
+- Added button icons to the server search form.
+- Fixed plushie texture glitches and Chikorita naming/file IDs.
